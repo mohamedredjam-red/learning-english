@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Level Test - A1 to C1</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins',sans-serif;
+        }
+        body{
+            color: #fff;
+            background: #09001d;
+            overflow: hidden;
+        }
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10%;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        .logo{
+            font-size: 32px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            filter: drop-shadow(0 0 5px #09001d);
+        }
+        .navbar a{
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+        }
+        .navbar a:hover{ 
+            color: #0a094e;
+        }
+        .main{
+            min-height: 100vh;
+            background: url('images/background.png');
+            background-size: cover;
+            background-position: center;
+            transition: .3s;
+            pointer-events: auto;
+        }
+        .main.active {
+            filter: blur(15px);
+            pointer-events: none;
+        }
+        .container{
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        .home{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: .5s ease-in-out;
+            z-index: 1;
+        }
+        .home.hide{
+            left: -100%;
+        }
+        .home-content{
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .home-content h1{
+            font-size: 78px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0 , 0 , 0 , .3);
+        }
+        .home-content p{
+            font-size: 16px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0 , 0 , 0 , .3);
+            margin-bottom: 30px;
+        }
+        .home-content .start-btn{
+            width: 190px;
+            height: 55px;
+            background: #0a094e;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            box-shadow: 0 0 10px #0a094e;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .home-content .start-btn:hover{
+            background: #09001d;
+            box-shadow: none;
+        }
+        .popup-info{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -50%) scale(.9);
+            width: 500px;
+            background: #fff;
+            border-radius: 6px;
+            padding: 10px 25px;
+            opacity: 0;
+            pointer-events: none;
+            transition: .3s ease;
+            z-index: 1000;
+        }
+        .popup-info.active{
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50% , -50%) scale(1);
+        }
+        .popup-info h2{
+            font-size: 50px;
+            color: #0a094e;
+        }
+        .popup-info .info{
+            display: inline-block;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            margin: 4px 0;
+        }
+        .popup-info .btn-group{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #999;
+            margin-top: 18px;
+            padding: 15px 0 7px;
+        }
+        .popup-info .btn-group .info-btn{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 130px;
+            height: 45px;
+            background: #0a094e;
+            border: 2px solid #0a094e;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(0 , 0 , 0 , .1);
+            cursor: pointer;
+            transition: .5s;
+        }
+        .popup-info .btn-group .info-btn:nth-child(1){
+            background: transparent;
+            color: #0a094e;
+        }
+        .popup-info .btn-group .info-btn:nth-child(1):hover{
+            background: #0a094e;
+            color: #fff;
+        }
+        .popup-info .btn-group .info-btn:nth-child(2):hover{
+            background: #060532;
+            border: #060532;
+        }
+        .quiz-section{
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100vh;
+            background: #09001d;
+            transition: .5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+        .quiz-section.active{
+            left: 0;
+        }
+        .quiz-section .quiz-box{
+            position: relative;
+            width: 450px;
+            max-width: 90%;
+            background: transparent;
+            border: 2px solid #0a094e;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 25px;
+        }
+        .quiz-box h1{
+            font-size: 28px;
+            text-align: center;
+            background: linear-gradient(45deg,transparent,#0a094e,transparent);
+            border-radius: 6px;
+        }
+        .quiz-box .quiz-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 2px solid #0a094e;
+            margin-bottom: 20px;
+        }
+        .quiz-header span{
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .quiz-header .header-score{
+            background: #0a094e;
+            border-radius: 3px;
+            padding: 5px 8px;
+        }
+        .quiz-box .question-text{
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .option-list .option{
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 2px solid rgba(255 , 255 , 255 , .2);
+            border-radius: 4px;
+            font-size: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: .3s;
+        }
+        .option-list .option:hover{
+            background: rgba(255 , 255 , 255 , .1);
+            border-color: rgba(255 , 255 , 255 , .1);
+        }
+        .option-list .option.selected{
+            background: #0a094e;
+            border-color: #0a094e;
+        }
+        .quiz-box .quiz-footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #0a094e;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        .quiz-footer .question-total{
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .quiz-footer .next-btn{
+            width: 90px;
+            height: 40px;
+            background: #0a094e;
+            border: 2px solid #0a094e;
+            outline: none;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .quiz-footer .next-btn:hover{
+            background: #060532;
+            border-color: #060532;
+        }
+        .result-box{
+            text-align: center;
+        }
+        .result-box h2{
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .result-box .score-text{
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .result-box .percentage{
+            font-size: 50px;
+            font-weight: 700;
+            color: #0a094e;
+            margin: 15px 0;
+        }
+        .result-box .level{
+            font-size: 24px;
+            margin-top: 15px;
+            padding: 8px;
+            border-radius: 6px;
+        }
+        .restart-btn{
+            width: 130px;
+            height: 40px;
+            background: #0a094e;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: .5s;
+        }
+        .restart-btn:hover{
+            background: #060532;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <header class="header">
+            <a href="#" class="logo">Quiz</a>
+            <nav class="navbar">
+                <a href="index.html" class="active">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Help</a>
+            </nav>
+        </header>
+        <div class="container">
+            <section class="quiz-section">
+                <div class="quiz-box">
+                    <h1>English Level Test</h1>
+                    <div class="quiz-header">
+                        <span>A1 to C1 Level Test</span>
+                        <span class="header-score">Score: <span class="score">0</span>/<span class="total-questions">0</span></span>
+                    </div>
+                    <h2 class="question-text"></h2>
+                    <div class="option-list"></div>
+                    <div class="quiz-footer">
+                        <span class="question-total"></span>
+                        <button class="next-btn">Next</button>
+                    </div>
+                </div>
+            </section>
+            <section class="home">
+                <div class="home-content">
+                    <h1>English Test</h1>
+                    <p>Test your English level from A1 to C1. The test contains 25 questions covering all levels. You will get your score and level at the end.</p>
+                    <button class="start-btn">Start Test</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="popup-info">
+        <h2>Quiz Guide</h2>
+        <span class="info">1. The test contains 25 questions from A1 to C1 level.</span>
+        <span class="info">2. Each question has 4 options.</span>
+        <span class="info">3. Choose the correct answer then click Next.</span>
+        <span class="info">4. You cannot change your answer after clicking Next.</span>
+        <span class="info">5. At the end, you will get your score and level.</span>
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Quiz</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
+        </div>
+    </div>
+    
+    <script src="javascript/questions.js"></script>
+    <script>
+        // Variables
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = new Array(questions.length).fill(null);
+        
+        // DOM Elements
+        const startBtn = document.querySelector('.start-btn');
+        const popupInfo = document.querySelector('.popup-info');
+        const exitBtn = document.querySelector('.exit-btn');
+        const main = document.querySelector('.main');
+        const continueBtn = document.querySelector('.continue-btn');
+        const quizSection = document.querySelector('.quiz-section');
+        const homeSection = document.querySelector('.home');
+        const nextBtn = document.querySelector('.next-btn');
+        const questionText = document.querySelector('.question-text');
+        const optionList = document.querySelector('.option-list');
+        const scoreSpan = document.querySelector('.score');
+        const totalQuestionsSpan = document.querySelector('.total-questions');
+        const questionTotalSpan = document.querySelector('.question-total');
+        
+        // Set total questions
+        totalQuestionsSpan.textContent = questions.length;
+        
+        // Display current question
+        function displayQuestion() {
+            const question = questions[currentQuestionIndex];
+            questionText.textContent = question.question;
+            questionTotalSpan.textContent = `${currentQuestionIndex + 1} of ${questions.length} Questions`;
+            scoreSpan.textContent = `${score}`;
+            
+            // Display options
+            optionList.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionDiv.classList.add('selected');
+                }
+                optionDiv.innerHTML = `<span>${option}</span>`;
+                optionDiv.onclick = () => selectOption(index);
+                optionList.appendChild(optionDiv);
+            });
+            
+            // Update next button
+            if (userAnswers[currentQuestionIndex] !== null) {
+                nextBtn.style.opacity = '1';
+            } else {
+                nextBtn.style.opacity = '0.5';
+            }
+        }
+        
+        // Select answer
+        function selectOption(index) {
+            if (userAnswers[currentQuestionIndex] !== null) return;
+            
+            userAnswers[currentQuestionIndex] = index;
+            
+            // Check if answer is correct
+            if (index === questions[currentQuestionIndex].correct) {
+                score++;
+                scoreSpan.textContent = `${score}`;
+            }
+            
+            // Update options UI
+            const options = document.querySelectorAll('.option');
+            options.forEach((option, i) => {
+                if (i === index) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            // Enable next button
+            nextBtn.style.opacity = '1';
+        }
+        
+        // Go to next question
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) return;
+            
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        // Show result
+        function showResult() {
+            const percentage = (score / questions.length) * 100;
+            let level = '';
+            let levelColor = '';
+            
+            if (percentage <= 20) {
+                level = 'A1 - Beginner';
+                levelColor = '#ff6b6b';
+            } else if (percentage <= 40) {
+                level = 'A2 - Elementary';
+                levelColor = '#ffa500';
+            } else if (percentage <= 60) {
+                level = 'B1 - Intermediate';
+                levelColor = '#ffd700';
+            } else if (percentage <= 80) {
+                level = 'B2 - Upper Intermediate';
+                levelColor = '#90ee90';
+            } else {
+                level = 'C1 - Advanced';
+                levelColor = '#0a094e';
+            }
+            
+            optionList.innerHTML = `
+                <div class="result-box">
+                    <h2>Quiz Completed!</h2>
+                    <div class="score-text">Your Score: ${score} out of ${questions.length}</div>
+                    <div class="percentage">${percentage.toFixed(1)}%</div>
+                    <div class="level" style="background: ${levelColor}; color: #fff;">Your Level: ${level}</div>
+                    <button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
+                </div>
+            `;
+            questionText.style.display = 'none';
+            document.querySelector('.quiz-header').style.display = 'none';
+            document.querySelector('.quiz-footer').style.display = 'none';
+            nextBtn.style.display = 'none';
+        }
+        
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = new Array(questions.length).fill(null);
+            
+            questionText.style.display = 'block';
+            document.querySelector('.quiz-header').style.display = 'flex';
+            document.querySelector('.quiz-footer').style.display = 'flex';
+            nextBtn.style.display = 'block';
+            
+            displayQuestion();
+        }
+        
+        // Events
+        startBtn.onclick = () => {
+            popupInfo.classList.add('active');
+            main.classList.add('active');
+        };
+        
+        exitBtn.onclick = () => {
+            popupInfo.classList.remove('active');
+            main.classList.remove('active');
+        };
+        
+        continueBtn.onclick = (e) => {
+            e.preventDefault();
+            quizSection.classList.add('active');
+            homeSection.classList.add('hide');
+            popupInfo.classList.remove('active');
+            main.classList.remove('active');
+            displayQuestion();
+        };
+        
+        nextBtn.onclick = nextQuestion;
+        
+        // Make restartQuiz global
+        window.restartQuiz = restartQuiz;
+    </script>
+</body>
+</html>

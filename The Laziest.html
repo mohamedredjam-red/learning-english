@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: The Laziest - Speaking A2</title>
+  <link rel="icon" href="logo7.png">
+  <style>
+    /* الإبقاء على نفس التنسيقات الرائعة لدرس الاعتذار */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .video-section {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    video {
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .question-item {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .question-item p {
+      margin-bottom: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #0a094e;
+    }
+
+    .answer-input {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .answer-input input {
+      flex: 2;
+      min-width: 250px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+    }
+
+    .answer-input button {
+      background: #ffc107;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .answer-feedback {
+      margin-top: 12px;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .correct { background: #d4edda; color: #155724; border-left: 4px solid #28a745; display: block; }
+    .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; display: block; }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .reset-all {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .next-lesson a {
+      background: #0a094e;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo"><a href="welcome.html">ENGLISH | LearnEnglish</a></div>
+  <div class="buttons">
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 2: The Laziest</h1>
+
+    <div class="video-section">
+      <video controls>
+        <source src="videos/01.2.mp4" type="video/mp4">
+      </video>
+      <p style="margin-top:10px;">🎬 Watch Gumball and Richard carefully, then answer:</p>
+    </div>
+
+    <div class="questions-container">
+      <div class="question-item" id="q1">
+        <p>❓ 1. Who said "If you move, you lose"?</p>
+        <div class="answer-input">
+          <input type="text" id="answer1" placeholder="Type the character's name...">
+          <button onclick="checkQuestion(1)">Check Answer</button>
+        </div>
+        <div id="feedback1" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q2">
+        <p>❓ 2. Who is feeling very hungry?</p>
+        <div class="answer-input">
+          <input type="text" id="answer2" placeholder="Hint: More than one character...">
+          <button onclick="checkQuestion(2)">Check Answer</button>
+        </div>
+        <div id="feedback2" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q3">
+        <p>❓ 3. What is Richard trying to get using his breath?</p>
+        <div class="answer-input">
+          <input type="text" id="answer3" placeholder="Hint: A kind of food...">
+          <button onclick="checkQuestion(3)">Check Answer</button>
+        </div>
+        <div id="feedback3" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q4">
+        <p>❓ 4. Why did Gumball move and lose the game?</p>
+        <div class="answer-input">
+          <input type="text" id="answer4" placeholder="What happened at the end?">
+          <button onclick="checkQuestion(4)">Check Answer</button>
+        </div>
+        <div id="feedback4" class="answer-feedback"></div>
+      </div>
+
+      <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+    </div>
+
+    <div class="next-lesson" style="text-align:center;">
+      <a href="three-bears.html">→ Next Lesson: We Bare Bears Movie</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p style="color:white;">© 2026 English Learning Platform</p>
+</div>
+
+<script>
+  // الإجابات الصحيحة بناءً على حلقة "The Laziest"
+  const correctAnswers = {
+    1: ["gumball", "gumball watterson", "gumball the cat"],
+    2: ["darwin", "darwin watterson", "richard", "dad", "dad and darwin", "darwin and dad"], // كلاهما جائع
+    3: ["pizza", "slice of pizza", "slice", "pizza slice"], // يريد البيتزا بالنفخ
+    4: ["toaster", "hit by toaster", "he was hit", "he moved"] // ضربه المحمصة
+  };
+
+  function checkQuestion(num) {
+    let input = document.getElementById(`answer${num}`);
+    let val = input.value.trim().toLowerCase();
+    let fb = document.getElementById(`feedback${num}`);
+    
+    if (val === "") return;
+
+    let isCorrect = correctAnswers[num].some(ans => val.includes(ans));
+
+    if (isCorrect) {
+      fb.innerHTML = "✅ Correct! Great job.";
+      fb.className = "answer-feedback correct";
+      input.style.border = "2px solid green";
+    } else {
+      let hints = [
+        "Hint: It's Gumball, the main character.",
+        "Hint: Look at Darwin and Richard's reactions.",
+        "Hint: He thinks he can have a slice of...",
+        "Hint: Think about what hit his head."
+      ];
+      fb.innerHTML = "❌ Try again! " + hints[num-1];
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid red";
+    }
+  }
+
+  function resetAllQuestions() {
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById(`answer${i}`).value = "";
+      document.getElementById(`answer${i}`).style.border = "2px solid #ddd";
+      document.getElementById(`feedback${i}`).className = "answer-feedback";
+    }
+  }
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

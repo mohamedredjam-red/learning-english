@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Language Translator | CodingNepal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <style>
+        /* Import Google Font - Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+       *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: 'Poppins', sans-serif;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg,#153677,#9e0909);
+
+        }
+        .container{
+            width: 690px;
+            background: #fff;
+            border-radius: 7px;
+            padding: 30px;
+        }
+
+        .wrapper{
+            border-radius: 5px;
+            border: 1px solid #bbb;
+
+        }
+        .wrapper .text-input{
+            display: flex;
+            border: 1px solid #bbb;
+
+        }
+        .text-input .to-text{
+            border-radius: 0px;
+            border-left: 1px solid #bbb;
+        }
+        .text-input textarea{
+            height: 250px;
+            width: 100%;
+            border: none;
+            outline: none;
+            resize: 18px;
+
+            font-size: 18px;
+            border-radius: 5px;
+            background: none;
+            padding: 10px 15px;
+        }
+        .controls, li, .icons, .icons i{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .controls{
+            list-style: none;
+            padding: 12px 15px;
+        }
+        .controls .row.from .icons{
+            padding-right: 15px;
+            border-right: 1px solid #bbb;
+        }
+        .controls .row.to .icons{
+            padding-left: 15px;
+            border-left: 1px solid #bbb;
+        }
+        .controls .icons{
+            width: 38%;
+        }
+        .controls .icons i{
+            width: 50px;
+            color: #9f9f9f;
+            font-size: 14px;
+            cursor: pointer;
+            justify-content: center;
+
+        }
+        .controls .row select{
+            border: none;
+            outline: none;
+            font-size: 18px;
+            background: none;
+        }
+        .controls .exchange{
+            color: #9f9f9f;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button{
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 17px;
+            border-radius: 5px;
+            background: #5372F0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="text-input">
+                <textarea class="from-text" placeholder="Enter text"></textarea>
+                <textarea class="to-text" placeholder="Transliton" readonly disabled></textarea>
+            </div>
+            <ul class="controls">
+                <li class="row from">
+                    <div class="icons">
+                        <i id="from" class="fas fa-volume-up"></i>
+                        <i id="from" class="fas fa-copy"></i>
+                    </div>
+                    <select >
+                    </select>
+                </li>
+                <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+                <li class="row to">
+                     <select >
+                    </select>
+                    <div class="icons">
+                        <i id="to" class="fas fa-volume-up"></i>
+                        <i id="to" class="fas fa-copy"></i>
+                    </div>
+                   
+                </li>
+            </ul>
+        </div>
+        <button>Translate Text</button>
+    </div>
+    <script src="javaScript/countries.js"></script>
+    <script>
+    const fromText = document.querySelector(".from-text"),
+    toText = document.querySelector(".to-text"),
+    selectTag = document.querySelectorAll("select"),
+    exchangeIcon = document.querySelector(".exchange"), // أضفنا الفاصلة هنا
+    translateBtn = document.querySelector("button"),
+    icons = document.querySelectorAll(".row i")
+
+    selectTag.forEach((tag, id) => {
+    for (const country_code in countries) {
+        let selected = ""; 
+        if (id == 0 && country_code == "en-GB") {
+            selected = "selected";
+        } else if (id == 1 && country_code == "ar-SA") {
+            selected = "selected";
+        }
+        
+        let option = `<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
+        tag.insertAdjacentHTML("beforeend", option); 
+    }            
+    });
+
+// ميزة التبديل المحسنة (تبديل النص واللغة)
+    exchangeIcon.addEventListener("click", () => {
+    // تبديل النصوص
+    let tempText = fromText.value;
+    fromText.value = toText.value;
+    toText.value = tempText;
+
+    // تبديل اللغات المختارة في القوائم
+    let tempLang = selectTag[0].value;
+    selectTag[0].value = selectTag[1].value;
+    selectTag[1].value = tempLang;
+    });
+
+    translateBtn.addEventListener("click", () => {
+    let text = fromText.value.trim();
+    let translateFrom = selectTag[0].value;
+    let translateTo = selectTag[1].value;
+
+    if (!text) return;
+
+    translateBtn.innerText = "Translating...";
+
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+    
+    fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+            toText.value = data.responseData.translatedText;
+            translateBtn.innerText = "Translate Text";
+        })
+        .catch(error => {
+            console.log("Error:", error);
+            translateBtn.innerText = "Translate Text";
+        });
+    });
+
+    icons.forEach(icon =>{
+        icon.addEventListener("click", ({target})=>{
+            if(target.classList.contains("fa-copy")){
+                if(target.id == "from"){
+                    navigator.clipboard.writeText(fromText.value)
+                }else{
+                    navigator.clipboard.writeText(toText.value)
+                }
+
+            }else{
+                let utterance;
+                if(target.id == "from"){
+                    utterance = new SpeechSynthesisUtterance(fromText.value)
+                    utterance.lang = selectTag[0].value
+                }else{
+                    utterance = new SpeechSynthesisUtterance(toText.value)
+                    utterance.lang = selectTag[1].value
+                }
+                speechSynthesis.speak(utterance)
+            }
+                
+           
+        })
+    })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - English Learning Platform</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+
+        body{
+            background-color: #000;
+        }
+
+        header{
+            position: fixed;
+            background: #000;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid #afafaa93;
+            z-index: 1000;
+        }
+
+        header nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 85%;
+            margin: auto;
+            height: 80px;
+        }
+
+        header nav .logo{
+            color: #fff;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        header nav .logo span{
+            color: #08d665;
+        }
+
+        header nav .links{
+            display: flex;
+            list-style: none;
+        }
+
+        header nav .links li{
+            position: relative;
+            margin: 0 25px;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        header nav .links li::after{
+            position: absolute;
+            content: '';
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #08d665;
+            transition: 0.3s;
+        }
+
+        header nav .links li:hover::after{
+            width: 100%;
+        }
+
+        header nav .links li a{
+            color: #c8c6c6;
+            font-size: 17px;
+            transition: 0.3s;
+        }
+
+        header nav .links li a:hover{
+            color: #fff;
+        }
+
+        /* About Section */
+        section{
+            color: white;
+            width: 85%;
+            margin: 120px auto;
+            line-height: 1.9;
+            animation: fadeIn 1s ease-in;
+        }
+
+        section h1{
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #08d665;
+        }
+
+        section p{
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        section ul{
+            margin-left: 20px;
+            margin-bottom: 15px;
+            list-style: none;
+        }
+
+        section ul li{
+            margin-bottom: 12px;
+            color: #ccc;
+        }
+
+        /* تنسيق الأيقونات */
+        section ul li i {
+            width: 30px;
+            color: #08d665;
+            margin-left: 8px;
+            font-size: 18px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer{
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            border-top: 1px solid #222;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            header nav .links li {
+                margin: 0 15px;
+                height: 50px;
+                line-height: 50px;
+            }
+            section {
+                margin-top: 180px;
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#" class="logo"><span>About Us</span></a>
+        <ul class="links">
+            <li><a href="welcome.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="https://www.instagram.com/english_learning_page__/" target="_blank">Contact</a></li>
+            <li><a href="Chat-bot.html">Help</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+
+    <p>Welcome to our English learning platform!</p>
+
+    <p>
+        Our goal is to help learners of all levels improve their English skills in a simple, interactive, and effective way. 
+        Whether you are a beginner or an advanced learner, our platform provides tools and exercises designed to develop 
+        your speaking, writing, reading, and listening abilities.
+    </p>
+
+    <p>We believe that learning English should be fun and practical. That's why we offer:</p>
+
+    <ul>
+       <li><i class="fa-solid fa-microphone"></i> Speaking practice with real-time feedback</li>
+       <li><i class="fa-solid fa-pencil"></i> Writing exercises with correction and scoring</li>
+       <li><i class="fa-solid fa-book-open-reader"></i> Reading materials for all levels</li>
+       <li><i class="fa-solid fa-headphones"></i> Listening activities to improve comprehension</li>
+    </ul>
+
+    <p>
+        Our system adapts to your level (A / B / C) and helps you track your progress step by step.
+    </p>
+
+    <p>
+        Start your journey today and become more confident in English!
+    </p>
+
+</section>
+
+<footer>
+    © 2026 English Learning Platform | All Rights Reserved
+</footer>
+
+<script>
+    function logout() {
+        localStorage.clear();
+        window.location.href = 'index.html';
+    }
+    
+    if (!localStorage.getItem('userId')) {
+        window.location.href = 'index.html';
+    }
+</script>
+
+</body>
+</html>

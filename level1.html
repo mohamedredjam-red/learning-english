@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/children.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Level 1 - Starter | Kids Learn</title>
+    <style>
+        /* تنسيق خاص بصفحة الدروس */
+        .lessons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s;
+        }
+        .lesson-card:hover {
+            transform: translateX(10px);
+        }
+        .lesson-number {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .lesson-info {
+            flex: 1;
+        }
+        .lesson-title {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .lesson-desc {
+            color: var(--gray);
+        }
+        .start-lesson {
+            background: var(--text);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .level-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .level-header h1 {
+            font-size: 48px;
+            color: var(--secondary);
+        }
+        .progress-bar {
+            background: #eee;
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 20px;
+        }
+        .progress {
+            background: var(--secondary);
+            width: 0%;
+            height: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="logo"> kidcare
+    </div>
+    <nav id="menu">
+       <a href="children-learning.html">Home</a>
+       <a href="#">programs</a>
+       <a href="about-kids.html">about</a>
+       <a href="https://www.instagram.com/english_learning_page__/" target="_blank">contact</a>
+       <a href="Chat-bot.html"  target="_blank>help" ></a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</header>
+
+<div class="lessons-container">
+    <a href="children-learning.html" class="back-btn">← Back to Levels</a>
+    
+    <div class="level-header">
+        <h1>📖 Level 1: Starter</h1>
+        <p>Ages 3-5 years | Learn the basics of English</p>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+
+    <!-- الدرس 1 -->
+    <div class="lesson-card" data-aos="fade-right">
+        <div class="lesson-number">1</div>
+        <div class="lesson-info">
+            <h3 class="lesson-title">🔤 ABC Letters</h3>
+            <p class="lesson-desc">Learn all 26 letters from A to Z with fun pictures and sounds</p>
+        </div>
+        <button class="start-lesson" onclick="startLesson(1)">Start →</button>
+    </div>
+
+    <!-- الدرس 2 -->
+    <div class="lesson-card" data-aos="fade-right" data-aos-delay="50">
+        <div class="lesson-number">2</div>
+        <div class="lesson-info">
+            <h3 class="lesson-title">🔢 Numbers 1-10</h3>
+            <p class="lesson-desc">Count from 1 to 10 with fun animals and objects</p>
+        </div>
+        <button class="start-lesson" onclick="startLesson(2)">Start →</button>
+    </div>
+
+    <!-- الدرس 3 -->
+    <div class="lesson-card" data-aos="fade-right" data-aos-delay="100">
+        <div class="lesson-number">3</div>
+        <div class="lesson-info">
+            <h3 class="lesson-title">🎨 Colors</h3>
+            <p class="lesson-desc">Red, blue, yellow, green - learn all the colors!</p>
+        </div>
+        <button class="start-lesson" onclick="startLesson(3)">Start →</button>
+    </div>
+
+    <!-- الدرس 4 -->
+    <div class="lesson-card" data-aos="fade-right" data-aos-delay="150">
+        <div class="lesson-number">4</div>
+        <div class="lesson-info">
+            <h3 class="lesson-title">👋 Greetings</h3>
+            <p class="lesson-desc">Hello, Good morning, How are you?</p>
+        </div>
+        <button class="start-lesson" onclick="startLesson(4)">Start →</button>
+    </div>
+
+    <!-- الدرس 5 -->
+    <div class="lesson-card" data-aos="fade-right" data-aos-delay="200">
+        <div class="lesson-number">5</div>
+        <div class="lesson-info">
+            <h3 class="lesson-title">🐶 Animals</h3>
+            <p class="lesson-desc">Cat, dog, bird, fish - learn animal names</p>
+        </div>
+        <button class="start-lesson" onclick="startLesson(5)">Start →</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({duration: 1000, once: true});
+    
+    // حفظ تقدم الدروس في localStorage
+    function startLesson(lessonNum) {
+        alert("Opening Lesson " + lessonNum + "!");
+        
+    }
+    
+    // حساب التقدم
+    let completedLessons = JSON.parse(localStorage.getItem("level1_progress") || "[]");
+    let progressPercent = (completedLessons.length / 5) * 100;
+    document.getElementById("progress").style.width = progressPercent + "%";
+</script>
+</body>
+</html>

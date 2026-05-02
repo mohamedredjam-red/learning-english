@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/children.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Level 3 - Intermediate | Kids Learn</title>
+    <style>
+        .lessons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s;
+            flex-wrap: wrap;
+        }
+        .lesson-card:hover {
+            transform: translateX(10px);
+        }
+        .lesson-number {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .lesson-info {
+            flex: 1;
+        }
+        .lesson-title {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+        .lesson-desc {
+            color: var(--gray);
+        }
+        .start-lesson {
+            background: var(--text);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .start-lesson:hover {
+            background: var(--secondary);
+        }
+        .level-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .level-header h1 {
+            font-size: 48px;
+            color: var(--secondary);
+        }
+        .progress-bar {
+            background: #eee;
+            border-radius: 10px;
+            height: 10px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .progress {
+            background: var(--secondary);
+            width: 0%;
+            height: 10px;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+        .completed-badge {
+            background: #2ec4b6;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        @media (max-width: 600px) {
+            .lesson-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .lesson-number {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="logo"> kidcare
+    </div>
+    <nav id="menu">
+       <a href="children-learning.html">Home</a>
+       <a href="#">programs</a>
+       <a href="about-kids.html">about</a>
+       <a href="https://www.instagram.com/english_learning_page__/" target="_blank">contact</a>
+       <a href="Chat-bot.html">help</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</header>
+
+<div class="lessons-container">
+    <a href="children-learning.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Levels</a>
+    
+    <div class="level-header">
+        <h1><i class="fa-solid fa-book-open"></i> Level 3: Intermediate</h1>
+        <p>Ages 7-9 years | Master grammar, reading, and writing</p>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <p id="progress-text" style="margin-top: 10px; color: var(--gray);"></p>
+    </div>
+
+    <div id="lessons-list"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({duration: 1000, once: true});
+    
+    const levelKey = "level3_progress";
+    
+    const lessons = [
+        { id: 1, title: "📚 Present Simple Tense", desc: "Learn 'I eat', 'She plays' - present tense rules", icon: "fa-solid fa-hourglass-half" },
+        { id: 2, title: "⏳ Past Simple Tense", desc: "Learn 'I walked', 'He went' - past tense rules", icon: "fa-solid fa-hourglass-start" },
+        { id: 3, title: "🔮 Future Tense", desc: "Learn 'I will go', 'She is going to play'", icon: "fa-solid fa-hourglass-end" },
+        { id: 4, title: "📖 Reading Comprehension", desc: "Read passages and answer questions", icon: "fa-solid fa-book-open-reader" },
+        { id: 5, title: "✍️ Writing Sentences", desc: "Write correct and beautiful sentences", icon: "fa-solid fa-pen-fancy" },
+        { id: 6, title: "💬 Making Conversations", desc: "Practice dialogues and speaking skills", icon: "fa-solid fa-comments" },
+        { id: 7, title: "❓ Question Words", desc: "Who, What, Where, When, Why, How", icon: "fa-solid fa-question-circle" },
+        { id: 8, title: "🔤 Prepositions", desc: "In, on, under, behind, next to - position words", icon: "fa-solid fa-location-dot" },
+        { id: 9, title: "🔗 Conjunctions", desc: "And, but, so, because - connecting words", icon: "fa-solid fa-link" },
+        { id: 10, title: "🎭 Adjectives & Adverbs", desc: "Describing words: big, small, quickly, slowly", icon: "fa-solid fa-spell-check" },
+        { id: 11, title: "📝 Writing Paragraphs", desc: "Write short paragraphs about topics", icon: "fa-solid fa-paragraph" },
+        { id: 12, title: "🎵 Learning with Songs", desc: "Sing along and learn English through music", icon: "fa-solid fa-music" }
+    ];
+    
+    let completedLessons = JSON.parse(localStorage.getItem(levelKey) || "[]");
+    
+    function saveProgress() {
+        localStorage.setItem(levelKey, JSON.stringify(completedLessons));
+        updateProgress();
+    }
+    
+    function updateProgress() {
+        let percent = (completedLessons.length / lessons.length) * 100;
+        document.getElementById("progress").style.width = percent + "%";
+        document.getElementById("progress-text").innerText = completedLessons.length + " of " + lessons.length + " lessons completed";
+        renderLessons();
+    }
+    
+    function toggleLesson(lessonId) {
+        if (completedLessons.includes(lessonId)) {
+            completedLessons = completedLessons.filter(id => id !== lessonId);
+        } else {
+            completedLessons.push(lessonId);
+        }
+        saveProgress();
+    }
+    
+    function startLesson(lessonId, title) {
+        alert("📖 Opening: " + title + "\n\n(Here you can add the full lesson content)");
+    }
+    
+    function renderLessons() {
+        const container = document.getElementById("lessons-list");
+        container.innerHTML = "";
+        
+        lessons.forEach((lesson, index) => {
+            const isCompleted = completedLessons.includes(lesson.id);
+            const card = document.createElement("div");
+            card.className = "lesson-card";
+            card.setAttribute("data-aos", "fade-right");
+            card.setAttribute("data-aos-delay", index * 50);
+            
+            card.innerHTML = `
+                <div class="lesson-number">${lesson.id}</div>
+                <div class="lesson-info">
+                    <h3 class="lesson-title">${lesson.title} ${isCompleted ? '<span class="completed-badge"><i class="fa-solid fa-check"></i> Done</span>' : ''}</h3>
+                    <p class="lesson-desc">${lesson.desc}</p>
+                </div>
+                <div>
+                    <button class="start-lesson" onclick="startLesson(${lesson.id}, '${lesson.title}')">Start →</button>
+                    <button onclick="toggleLesson(${lesson.id})" style="background: none; border: none; font-size: 24px; cursor: pointer; margin-left: 10px;">
+                        ${isCompleted ? '✅' : '⬜'}
+                    </button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+    
+    updateProgress();
+</script>
+</body>
+</html>

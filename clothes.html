@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothes </title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        body {
+            background: linear-gradient(#29376a,#940f0f);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .main-header {
+            background: #0a094e;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ffc107;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .platform-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffc107;
+            order: 2;
+        }
+
+        .search-icon-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            order: 1;
+        }
+
+        /* ===== شريط البحث المتغير ===== */
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .search-icon-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .search-icon-btn:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            overflow: hidden;
+            width: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        .search-wrapper.open .search-input-wrapper {
+            width: 300px;
+            opacity: 1;
+            visibility: visible;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            outline: none;
+            width: 220px;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: 2px solid #ffc107;
+        }
+
+        .search-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: #e0a800;
+        }
+
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .search-results-dropdown {
+            position: absolute;
+            top: 80px;
+            left: 40px;
+            right: auto;
+            width: 350px;
+            background: #0a094e;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results-dropdown.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 193, 7, 0.2);
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .back-home {
+            margin: 20px 40px;
+            text-align: left;
+        }
+
+        .back-home a {
+            color: #ffc107;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home a:hover {
+            color: #e0a800;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .white-card {
+            background: white;
+            padding: 25px;
+            color: #333;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .photo-card {
+            background-color: transparent;
+            width: 100%;
+            height: auto;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+        }
+
+        .photo-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front, .flip-back {
+            position: relative;
+            width: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .flip-front {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            z-index: 2;
+            border: 3px solid rgba(255, 193, 7, 0.6);
+            box-shadow: 0 0 0 2px rgba(10, 9, 78, 0.3), 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover .flip-front {
+            border: 3px solid rgba(255, 193, 7, 1);
+            box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3), 0 6px 16px rgba(0,0,0,0.15);
+            transform: scale(1.02);
+        }
+
+        .flip-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a094e, #1e1a7a);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 5px;
+            gap: 5px;
+            border-radius: 12px;
+            border: 3px solid rgba(255, 193, 7, 0.5);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .image-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #fff;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover .image-container img {
+            transform: scale(1.02);
+        }
+
+        /* ===== زر الصوت - شكل مربع رمادي ===== */
+        .sound-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(100, 100, 100, 0.85);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+        }
+
+        .sound-btn:hover {
+            background: #ffc107;
+            color: #0a094e;
+            transform: scale(1.05);
+        }
+
+        .flip-back h4 {
+            font-size: 11px;
+            margin-bottom: 3px;
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .flip-back input {
+            width: 90%;
+            padding: 5px 8px;
+            border: none;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 11px;
+            outline: none;
+            margin: 3px 0;
+            direction: ltr;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .flip-back input:focus {
+            border: 1px solid #ffc107;
+            box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+        }
+
+        .flip-back button {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 10px;
+            transition: 0.2s;
+            margin-top: 3px;
+        }
+
+        .flip-back button:hover {
+            background: #e0a800;
+            transform: scale(1.02);
+        }
+
+        .feedback-msg {
+            font-size: 9px;
+            margin-top: 4px;
+            padding: 3px 6px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.7);
+            text-align: center;
+            max-width: 95%;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+
+        .feedback-msg.correct {
+            color: #a5d6a5;
+        }
+
+        .feedback-msg.wrong {
+            color: #ffab91;
+        }
+
+        .external-text {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            margin: 0 0 15px 0;
+            border-radius: 8px;
+            text-align: right;
+            border-right: 4px solid #ffc107;
+        }
+
+        .external-text p {
+            color: #555;
+            line-height: 1.5;
+            font-size: 13px;
+        }
+
+        .external-text strong {
+            color: #0a094e;
+        }
+
+        .main-footer {
+            background: #0a094e;
+            padding: 30px;
+            margin-top: 30px;
+            border-top: 3px solid #ffc107;
+        }
+
+        .footer-links {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                max-width: 100%;
+                padding: 0 15px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .search-wrapper.open .search-input-wrapper {
+                width: 280px;
+            }
+            
+            .sound-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+                bottom: 8px;
+                right: 8px;
+                border-radius: 5px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .main-header {
+                padding: 12px 15px;
+            }
+            
+            .platform-logo {
+                font-size: 16px;
+            }
+            
+            .logout-btn {
+                padding: 5px 12px;
+                font-size: 11px;
+            }
+            
+            .back-home {
+                margin: 12px 20px;
+                text-align: left;
+            }
+            
+            .white-card {
+                padding: 15px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .search-wrapper.open .search-input-wrapper {
+                width: 230px;
+            }
+            
+            .search-input {
+                width: 150px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .search-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            
+            .flip-back h4 {
+                font-size: 10px;
+            }
+            
+            .flip-back input {
+                font-size: 9px;
+                padding: 4px 6px;
+            }
+            
+            .flip-back button {
+                font-size: 9px;
+                padding: 4px 10px;
+            }
+            
+            .feedback-msg {
+                font-size: 8px;
+            }
+            
+            .flip-front {
+                border: 2px solid rgba(255, 193, 7, 0.6);
+            }
+            
+            .sound-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                bottom: 5px;
+                right: 5px;
+                border-radius: 4px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .flip-back {
+                padding: 6px 3px;
+            }
+            
+            .flip-back input {
+                width: 95%;
+                padding: 3px 5px;
+                font-size: 8px;
+            }
+            
+            .search-wrapper.open .search-input-wrapper {
+                width: 200px;
+            }
+            
+            .search-input {
+                width: 130px;
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            
+            .sound-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
+                bottom: 4px;
+                right: 4px;
+                border-radius: 4px;
+            }
+        }
+        
+        .instruction {
+            text-align: center;
+            font-size: 12px;
+            color: #ffc107;
+            background: #0a094e;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 193, 7, 0.5);
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-header">
+        <div class="platform-logo">
+            <a href="welcome.html" style="color: #ffc107;"> ENGLISH | LearnEnglish</a>
+        </div>
+        
+        <div class="search-icon-container">
+            <div class="search-wrapper">
+                <button class="search-icon-btn" id="searchToggleBtn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="search-input-wrapper" id="searchInputWrapper">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search clothes..." onkeyup="if(event.key === 'Enter') searchItems()">
+                    <button class="search-btn" onclick="searchItems()">Search</button>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="search-results-dropdown" id="searchResults"></div>
+
+    <div class="back-home">
+        <a href="A1-A2 vocabulary.html">← Back to vocabulary Lessons</a>
+    </div>
+
+    <div class="main-container">
+        <div class="white-card">
+            <div class="external-text">
+                <strong>Clothes Collection </strong><br>
+            </div>
+            <div class="center-text">
+                <span class="instruction">🔊 Click the square button to hear the pronunciation</span>
+            </div>
+            <div class="cards-grid" id="cardsGrid">
+                <!-- coat -->
+                <div class="photo-card" data-name="coat" data-correct="coat" data-word="coat">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/coat.avif" alt="coat">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('coat')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- hat -->
+                <div class="photo-card" data-name="hat" data-correct="hat" data-word="hat">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/hat-.avif" alt="hat">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('hat')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- jacket -->
+                <div class="photo-card" data-name="jacket" data-correct="jacket" data-word="jacket">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/jacket.avif" alt="jacket">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('jacket')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- jeans -->
+                <div class="photo-card" data-name="jeans" data-correct="jeans" data-word="jeans">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/jeans.avif" alt="jeans">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('jeans')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- jumper -->
+                <div class="photo-card" data-name="jumper" data-correct="jumper" data-word="jumper">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/jumper.avif" alt="jumper">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('jumper')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- shirt -->
+                <div class="photo-card" data-name="shirt" data-correct="shirt" data-word="shirt">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/shirt.avif" alt="shirt">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('shirt')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- skirt -->
+                <div class="photo-card" data-name="skirt" data-correct="skirt" data-word="skirt">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/skirt.avif" alt="skirt">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('skirt')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- sweatshirt -->
+                <div class="photo-card" data-name="sweatshirt" data-correct="sweatshirt" data-word="sweatshirt">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/sweatshirt.avif" alt="sweatshirt">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('sweatshirt')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- top -->
+                <div class="photo-card" data-name="top" data-correct="top" data-word="top">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/top.avif" alt="top">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('top')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- trainers -->
+                <div class="photo-card" data-name="trainers" data-correct="trainers" data-word="trainers">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/trainers.avif" alt="trainers">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('trainers')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- trousers -->
+                <div class="photo-card" data-name="trousers" data-correct="trousers" data-word="trousers">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/trousers.avif" alt="trousers">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('trousers')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- T-shirt -->
+                <div class="photo-card" data-name="Tshirt" data-correct="Tshirt" data-word="t-shirt">
+                    <div class="flip-card-inner">
+                        <div class="flip-front">
+                            <div class="image-container">
+                                <img src="images/T-shirt.avif" alt="t-shirt">
+                                <button class="sound-btn" onclick="event.stopPropagation(); playSound('t-shirt')">🔊</button>
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <h4> Write name</h4>
+                            <input type="text" class="answer-input" placeholder="type here...">
+                            <button class="submit-answer">Submit</button>
+                            <div class="feedback-msg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <div class="footer-links">
+            <a href="welcome.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
+            <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer"
+            2026 English Learning Platform. All rights reserved ©
+        </div>
+    </div>
+
+    <script>
+        // ===== دالة تشغيل الصوت =====
+        function playSound(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                const setVoice = () => {
+                    const voices = window.speechSynthesis.getVoices();
+                    const femaleVoice = voices.find(voice => 
+                        voice.lang === 'en-US' && 
+                        (voice.name.includes('Google UK English Female') || 
+                         voice.name.includes('Samantha') ||
+                         voice.name.includes('Microsoft Zira'))
+                    );
+                    if (femaleVoice) utterance.voice = femaleVoice;
+                    window.speechSynthesis.speak(utterance);
+                };
+                
+                if (window.speechSynthesis.getVoices().length > 0) setVoice();
+                else window.speechSynthesis.onvoiceschanged = setVoice;
+            } else {
+                alert("Your browser does not support speech synthesis. Please try Chrome, Edge, or Safari.");
+            }
+        }
+        
+        // ===== قلب البطاقات =====
+        const cards = document.querySelectorAll('.photo-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                if(e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT') return;
+                cards.forEach(c => { if(c !== this) c.classList.remove('flipped'); });
+                this.classList.toggle('flipped');
+            });
+            
+            const submitBtn = card.querySelector('.submit-answer');
+            const answerInput = card.querySelector('.answer-input');
+            const feedbackDiv = card.querySelector('.feedback-msg');
+            const correctAnswer = card.getAttribute('data-correct');
+            
+            if(submitBtn && answerInput) {
+                submitBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const userAnswer = answerInput.value.trim().toLowerCase();
+                    if(userAnswer === '') {
+                        feedbackDiv.innerHTML = '⚠️ Write answer';
+                        feedbackDiv.className = 'feedback-msg wrong';
+                        return;
+                    }
+                    if(userAnswer === correctAnswer) {
+                        feedbackDiv.innerHTML = '✅ Correct!';
+                        feedbackDiv.className = 'feedback-msg correct';
+                        setTimeout(() => {
+                            card.classList.remove('flipped');
+                            answerInput.value = '';
+                            feedbackDiv.innerHTML = '';
+                        }, 1000);
+                    } else {
+                        feedbackDiv.innerHTML = `❌ Wrong! Answer: ${correctAnswer}`;
+                        feedbackDiv.className = 'feedback-msg wrong';
+                    }
+                });
+                
+                answerInput.addEventListener('keypress', function(e) {
+                    if(e.key === 'Enter') { e.stopPropagation(); submitBtn.click(); }
+                });
+            }
+        });
+        
+        // ===== شريط البحث المتغير =====
+        const searchToggleBtn = document.getElementById('searchToggleBtn');
+        const searchWrapper = document.querySelector('.search-wrapper');
+        const searchResultsDiv = document.getElementById('searchResults');
+
+        if (searchToggleBtn && searchWrapper) {
+            searchToggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchWrapper.classList.toggle('open');
+                if (searchWrapper.classList.contains('open')) {
+                    setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+                }
+            });
+        }
+
+        document.addEventListener('click', function(event) {
+            if (searchWrapper && !searchWrapper.contains(event.target)) {
+                searchWrapper.classList.remove('open');
+                searchResultsDiv.classList.remove('show');
+            }
+        });
+
+        const searchInputWrapper = document.getElementById('searchInputWrapper');
+        if (searchInputWrapper) {
+            searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+        }
+
+        function searchItems() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.photo-card');
+            
+            if (searchTerm === '') {
+                cards.forEach(card => card.style.display = 'block');
+                searchResultsDiv.classList.remove('show');
+                return;
+            }
+            
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name') || '';
+                if (name.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            if (visibleCount > 0) {
+                searchResultsDiv.innerHTML = `<div class="search-result-item">Found ${visibleCount} item(s)</div>`;
+                searchResultsDiv.classList.add('show');
+            } else {
+                searchResultsDiv.innerHTML = '<div class="no-results">No items found</div>';
+                searchResultsDiv.classList.add('show');
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+        
+        if (!localStorage.getItem('userId')) {
+            window.location.href = 'index.html';
+        }
+        
+        const searchInputField = document.getElementById('searchInput');
+        if(searchInputField) {
+            searchInputField.addEventListener('keyup', function(e) {
+                if(e.key === 'Enter') searchItems();
+            });
+        }
+    </script>
+</body>
+</html>

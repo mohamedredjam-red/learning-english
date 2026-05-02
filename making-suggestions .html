@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Making Suggestions - Speaking A1</title>
+  <link rel="icon" href="logo7.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+    }
+
+    .back {
+      margin: 20px 40px;
+    }
+
+    .back a {
+      color: #ffc107;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back a:hover {
+      color: #e0a800;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .task-block {
+      margin-top: 25px;
+    }
+
+    .task-block h3 {
+      color: #0a094e;
+      margin-bottom: 15px;
+      border-left: 4px solid #ffc107;
+      padding-left: 10px;
+    }
+
+    .question-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .question-card p {
+      font-weight: bold;
+      color: #0a094e;
+      margin-bottom: 10px;
+    }
+
+    .question-card label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .check-btn {
+      background: #ffc107;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .check-btn:hover {
+      background: #e0a800;
+    }
+
+    .reset-btn {
+      background: #0a094e;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    .reset-btn:hover {
+      background: #333366;
+    }
+
+    #word-bank, #answer-area {
+      margin: 15px 0;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    #word-bank {
+      background: #e8f4f8;
+      border: 2px dashed #0a094e;
+      min-height: 70px;
+    }
+
+    #answer-area {
+      background: #f0f8e8;
+      border: 2px solid #4caf50;
+      min-height: 70px;
+    }
+
+    #word-bank span, #answer-area span {
+      display: inline-block;
+      background: white;
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: grab;
+      border: 1px solid #0a094e;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    #answer-area span {
+      cursor: pointer;
+      background: #e8f5e9;
+    }
+
+    #word-bank span:active, #answer-area span:active {
+      cursor: grabbing;
+    }
+
+    .next-lesson {
+      text-align: center;
+      margin: 30px 0 0;
+    }
+
+    .next-lesson a {
+      background: #ffc107;
+      color: #0a094e;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .next-lesson a:hover {
+      background: #e0a800;
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 15px;
+    }
+
+    hr {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <a href="welcome.html">ENGLISH | LearnEnglish</a>
+  </div>
+  <div class="buttons">
+    <button>🔍</button>
+    <button onclick="logout()">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
+      
+    </button>
+     
+  </div>
+</div>
+
+<div class="back">
+  <a href="A1speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 2: Making Suggestions</h1>
+
+    <div class="video-section">
+      <video controls>
+        <source src="videos/19.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:10px;">🎬 Watch the video carefully, then answer:</p>
+    </div>
+
+    <!-- Task 1 -->
+    <div class="task-block">
+      <h3>Task 1: Choose the best summary</h3>
+      <div class="question-card">
+        <p>Which sentence gives the best summary of the video?</p>
+        <label><input type="radio" name="task1" value="A"> A. Yuna and Noelia have a long meeting and don't make any decisions.</label>
+        <label><input type="radio" name="task1" value="B"> B. Yuna and Noelia share lots of ideas and work very well in a short meeting.</label>
+        <label><input type="radio" name="task1" value="C"> C. Yuna and Noelia both get phone calls during the meeting.</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1()">Check Answer</button>
+      </div>
+    </div>
+
+    <!-- Task 2: Word Ordering with Drag & Drop -->
+    <div class="task-block">
+      <h3>Task 2: Word Ordering</h3>
+      <div class="question-card">
+        <p>Put the words in the correct order to make a sentence:</p>
+        <p style="font-size:14px; color:#666;">💡 Tip: "How about starting with social media?"</p>
+        
+        <div id="word-bank">
+          <span draggable="true">How</span>
+          <span draggable="true">about</span>
+          <span draggable="true">starting</span>
+          <span draggable="true">with</span>
+          <span draggable="true">social media?</span>
+        </div>
+        
+        <p style="margin:10px 0 5px;">→ Drop words here (in correct order):</p>
+        <div id="answer-area"></div>
+        
+        <button class="check-btn" onclick="checkTask2()">Check Answer</button>
+        <button class="reset-btn" onclick="resetAll()">Reset All</button>
+      </div>
+    </div>
+
+    <div class="next-lesson">
+      <a href="meeting-people .html">→ Next Lesson</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div>
+    <a href="welcome.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
+</div>
+
+<script>
+  // ========== Task 1: Check Summary ==========
+  function checkTask1() {
+    let selected = document.querySelector('input[name="task1"]:checked');
+    if (!selected) {
+      alert("⚠️ Please choose an option!");
+      return;
+    }
+    if (selected.value === "B") {
+      alert("✅ Correct! They shared lots of ideas and worked well together.");
+    } else {
+      alert("❌ Wrong! Watch the video again carefully.");
+    }
+  }
+
+  // ========== Task 2: Correct Order ==========
+  const correctOrder = ["How", "about", "starting", "with", "social media?"];
+  let draggedWord = null;
+
+  // إعداد السحب لجميع الكلمات
+  function setupDragEvents() {
+    // كلمات بنك الكلمات
+    document.querySelectorAll("#word-bank span").forEach(word => {
+      word.setAttribute("draggable", "true");
+      word.addEventListener("dragstart", handleDragStart);
+      word.addEventListener("dragend", handleDragEnd);
+    });
+
+    // كلمات منطقة الإجابة
+    document.querySelectorAll("#answer-area span").forEach(word => {
+      word.setAttribute("draggable", "true");
+      word.addEventListener("dragstart", handleDragStart);
+      word.addEventListener("dragend", handleDragEnd);
+    });
+  }
+
+  function handleDragStart(e) {
+    draggedWord = e.target;
+    e.dataTransfer.setData("text/plain", e.target.textContent);
+    e.target.style.opacity = "0.5";
+  }
+
+  function handleDragEnd(e) {
+    if (draggedWord) {
+      draggedWord.style.opacity = "1";
+      draggedWord = null;
+    }
+  }
+
+  // إعداد منطقة الإفلات
+  function setupDropZones() {
+    const wordBank = document.getElementById("word-bank");
+    const answerArea = document.getElementById("answer-area");
+
+    [wordBank, answerArea].forEach(zone => {
+      zone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+
+      zone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (!draggedWord) return;
+
+        const targetZone = e.currentTarget;
+        const clonedWord = draggedWord.cloneNode(true);
+        clonedWord.setAttribute("draggable", "true");
+        clonedWord.addEventListener("dragstart", handleDragStart);
+        clonedWord.addEventListener("dragend", handleDragEnd);
+        
+        // إضافة الكلمة إلى المنطقة الجديدة
+        targetZone.appendChild(clonedWord);
+        
+        // حذف الكلمة الأصلية
+        draggedWord.remove();
+        
+        draggedWord = null;
+      });
+    });
+  }
+
+  // التحقق من ترتيب Task 2
+  function checkTask2() {
+    const answerArea = document.getElementById("answer-area");
+    const words = Array.from(answerArea.querySelectorAll("span")).map(s => s.textContent.trim());
+    
+    if (words.length !== correctOrder.length) {
+      alert(`❌ You need all ${correctOrder.length} words in the answer area! You have ${words.length}.`);
+      return;
+    }
+    
+    if (JSON.stringify(words) === JSON.stringify(correctOrder)) {
+      alert("✅ Perfect! The sentence is correct: 'How about starting with social media?'");
+    } else {
+      alert("❌ Wrong order! Try again. The correct sentence is: 'How about starting with social media?'");
+    }
+  }
+
+  // إعادة تعيين كل شيء
+  function resetAll() {
+    // إعادة تعيين Task 1
+    document.querySelectorAll('input[name="task1"]').forEach(radio => {
+      radio.checked = false;
+    });
+    
+    // إعادة تعيين Task 2 - إعادة الكلمات إلى بنك الكلمات
+    const wordBank = document.getElementById("word-bank");
+    const answerArea = document.getElementById("answer-area");
+    
+    // جمع كل الكلمات من كلا المنطقتين
+    const allWords = [];
+    
+    answerArea.querySelectorAll("span").forEach(span => {
+      allWords.push(span.textContent);
+    });
+    
+    wordBank.querySelectorAll("span").forEach(span => {
+      allWords.push(span.textContent);
+    });
+    
+    // تفريغ المنطقتين
+    wordBank.innerHTML = "";
+    answerArea.innerHTML = "";
+    
+    // إعادة إنشاء الكلمات في بنك الكلمات بالترتيب الصحيح
+    const defaultWords = ["How", "about", "starting", "with", "social media?"];
+    defaultWords.forEach(word => {
+      const span = document.createElement("span");
+      span.textContent = word;
+      span.setAttribute("draggable", "true");
+      span.addEventListener("dragstart", handleDragStart);
+      span.addEventListener("dragend", handleDragEnd);
+      wordBank.appendChild(span);
+    });
+  }
+
+  // تسجيل الخروج
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+
+  // تهيئة الصفحة
+  document.addEventListener("DOMContentLoaded", () => {
+    setupDropZones();
+    setupDragEvents();
+  });
+</script>
+
+</body>
+</html>

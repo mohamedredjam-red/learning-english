@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Apologising - Speaking A2</title>
+  <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* ===== شريط البحث المتغير ===== */
+    .search-icon-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+
+    .search-icon-btn {
+      background: #ffc107;
+      color: #0a094e;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .search-icon-btn:hover {
+      background: #e0a800;
+      transform: scale(1.05);
+    }
+
+    .search-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow: hidden;
+      width: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+      visibility: hidden;
+    }
+
+    .search-wrapper.open .search-input-wrapper {
+      width: 300px;
+      opacity: 1;
+      visibility: visible;
+      margin-right: 10px;
+    }
+
+    .search-input {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 40px;
+      font-size: 14px;
+      outline: none;
+      width: 220px;
+      background: white;
+    }
+
+    .search-input:focus {
+      outline: 2px solid #ffc107;
+    }
+
+    .search-btn {
+      background: #ffc107;
+      color: #0a094e;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover {
+      background: #e0a800;
+    }
+
+    .logout-btn {
+      background: #ffc107;
+      color: #0a094e;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      background: #e0a800;
+    }
+
+    .search-results-dropdown {
+      position: absolute;
+      top: 80px;
+      right: 40px;
+      width: 350px;
+      background: #0a094e;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      max-height: 400px;
+      overflow-y: auto;
+      z-index: 1000;
+      display: none;
+    }
+
+    .search-results-dropdown.show {
+      display: block;
+    }
+
+    .search-result-item {
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      color: white;
+    }
+
+    .search-result-item:hover {
+      background: rgba(255,193,7,0.2);
+    }
+
+    .back {
+      margin: 20px 40px;
+    }
+
+    .back a {
+      color: #ffc107;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back a:hover {
+      color: #e0a800;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .section {
+      margin-top: 25px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .section-title {
+      background: #f1f1f1;
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      color: #0a094e;
+    }
+
+    .section-title:hover {
+      background: #e9ecef;
+    }
+
+    .section-content {
+      display: none;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+    }
+
+    .section.open .section-content {
+      display: block;
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+    }
+
+    .section.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .question {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .question p {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .btn-true, .btn-false {
+      padding: 6px 15px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #f0f0f0;
+    }
+
+    .btn-true:hover, .btn-false:hover {
+      background: #e0e0e0;
+    }
+
+    .feedback {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    .feedback.correct {
+      color: green;
+    }
+
+    .feedback.wrong {
+      color: red;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-group input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 250px;
+    }
+
+    .btn {
+      padding: 8px 20px;
+      margin-top: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #f0f0f0;
+    }
+
+    .btn:hover {
+      background: #e0e0e0;
+    }
+
+    .counter {
+      margin-top: 15px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    hr {
+      margin: 15px 0;
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <a href="welcome.html">ENGLISH | LearnEnglish</a>
+  </div>
+  <div class="search-icon-container">
+    <div class="search-wrapper">
+      <button class="search-icon-btn" id="searchToggleBtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+      <div class="search-input-wrapper" id="searchInputWrapper">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search lesson..." onkeyup="if(event.key === 'Enter') searchContent()">
+        <button class="search-btn" onclick="searchContent()">Search</button>
+      </div>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="search-results-dropdown" id="searchResults"></div>
+
+<div class="back">
+  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 1: Apologising</h1>
+
+    <!-- ========== الدرس التعليمي ========== -->
+    <div class="section" id="lesson">
+      <div class="section-title" onclick="toggleSection('lesson')">
+        <span>📖 Lesson Content</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-content">
+        <p><strong>Transcript:</strong></p>
+        <p>
+          <strong>Ana:</strong> Hi! I'm Ana. Welcome to What to Say!<br><br>
+          Do you know what to say when you want to apologise? Listen out for useful language for apologising.<br><br>
+          <strong>Paul:</strong> Noelia! I am so sorry! Are you OK?<br>
+          <strong>Noelia:</strong> I think so. That was lucky.<br>
+          <strong>Paul:</strong> I'm really sorry! I didn't see you!<br>
+          <strong>Noelia:</strong> That's all right. I shouldn't have been running.<br>
+          <strong>Paul:</strong> Still, it was my fault and I'm sorry.<br>
+          <strong>Noelia:</strong> I'm sorry too.<br>
+          <strong>Paul:</strong> Honestly, it's fine. Don't worry about it.
+        </p>
+        <hr>
+        <p><strong>📌 Useful phrases:</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>I'm so sorry.</li>
+          <li>I'm really sorry.</li>
+          <li>That's all right.</li>
+          <li>It was my fault.</li>
+          <li>I'm sorry too.</li>
+          <li>Don't worry about it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ========== التمرين 1: True or False ========== -->
+    <div class="section" id="task1">
+      <div class="section-title" onclick="toggleSection('task1')">
+        <span>📝 Task 1: True or False</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-content">
+        <div class="question" id="q1">
+          <p>1. Noelia is trying to go quickly.</p>
+          <button class="btn-true" onclick="checkAnswer('q1', true, this)">True</button>
+          <button class="btn-false" onclick="checkAnswer('q1', false, this)">False</button>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="question" id="q2">
+          <p>2. Paul thinks it's funny that Noelia falls over.</p>
+          <button class="btn-true" onclick="checkAnswer('q2', false, this)">True</button>
+          <button class="btn-false" onclick="checkAnswer('q2', true, this)">False</button>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="question" id="q3">
+          <p>3. They both apologise.</p>
+          <button class="btn-true" onclick="checkAnswer('q3', true, this)">True</button>
+          <button class="btn-false" onclick="checkAnswer('q3', false, this)">False</button>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="question" id="q4">
+          <p>4. Noelia is hurt.</p>
+          <button class="btn-true" onclick="checkAnswer('q4', false, this)">True</button>
+          <button class="btn-false" onclick="checkAnswer('q4', true, this)">False</button>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="counter" id="counter1">4 items remaining</div>
+        <button class="btn" onclick="resetTask('task1')">Try again</button>
+      </div>
+    </div>
+
+    <!-- ========== التمرين 2: Complete the dialogue ========== -->
+    <div class="section" id="task2">
+      <div class="section-title" onclick="toggleSection('task2')">
+        <span>📝 Task 2: Complete the dialogue</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="section-content">
+        <p><strong>Complete the dialogue using:</strong> about, fault, OK, fine, so sorry, really, too, right</p>
+
+        <div class="input-group">
+          <label>Paul: Noelia! I am <input type="text" id="gap1" placeholder="...">! Are you <input type="text" id="gap2" placeholder="...">?</label>
+        </div>
+        <div class="input-group">
+          <label>Noelia: I think so. That was lucky.</label>
+        </div>
+        <div class="input-group">
+          <label>Paul: I'm <input type="text" id="gap3" placeholder="..."> sorry! I didn't see you!</label>
+        </div>
+        <div class="input-group">
+          <label>Noelia: That's all <input type="text" id="gap4" placeholder="...">. I shouldn't have been running.</label>
+        </div>
+        <div class="input-group">
+          <label>Paul: Still, it was my <input type="text" id="gap5" placeholder="..."> and I'm sorry.</label>
+        </div>
+        <div class="input-group">
+          <label>Noelia: I'm sorry <input type="text" id="gap6" placeholder="...">.</label>
+        </div>
+        <div class="input-group">
+          <label>Paul: Honestly, it's <input type="text" id="gap7" placeholder="...">. Don't worry <input type="text" id="gap8" placeholder="..."> it.</label>
+        </div>
+
+        <button class="btn" onclick="checkDialogue()">Check Answers</button>
+        <button class="btn" onclick="clearDialogue()">Clear</button>
+        <div id="dialogueFeedback" class="feedback" style="display:block; margin-top:10px;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <div>
+    <a href="welcome.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
+    <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer">Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
+</div>
+
+<script>
+  // ========== فتح وإغلاق الأقسام ==========
+  function toggleSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    if (section.classList.contains('open')) {
+      section.classList.remove('open');
+    } else {
+      section.classList.add('open');
+    }
+  }
+
+  // ========== التحقق من الإجابة (True/False) ==========
+  function checkAnswer(questionId, correctValue, buttonElement) {
+    var questionDiv = document.getElementById(questionId);
+    var feedbackSpan = questionDiv.querySelector('.feedback');
+    
+    if (feedbackSpan.innerHTML !== '') return;
+    
+    if (correctValue === true) {
+      feedbackSpan.innerHTML = '✓ Correct!';
+      feedbackSpan.className = 'feedback correct';
+    } else {
+      feedbackSpan.innerHTML = '✗ Wrong!';
+      feedbackSpan.className = 'feedback wrong';
+    }
+    
+    var buttons = questionDiv.querySelectorAll('button');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = true;
+    }
+    
+    updateCounter();
+  }
+  
+  // ========== تحديث العداد ==========
+  function updateCounter() {
+    var allQuestions = document.querySelectorAll('#task1 .question');
+    var remaining = 0;
+    
+    for (var i = 0; i < allQuestions.length; i++) {
+      var feedback = allQuestions[i].querySelector('.feedback');
+      if (feedback.innerHTML === '') {
+        remaining++;
+      }
+    }
+    
+    var counter = document.getElementById('counter1');
+    if (counter) counter.innerHTML = remaining + ' items remaining';
+  }
+  
+  // ========== إعادة تعيين التمرين ==========
+  function resetTask(taskId) {
+    var task = document.getElementById(taskId);
+    var questions = task.querySelectorAll('.question');
+    
+    for (var i = 0; i < questions.length; i++) {
+      var feedback = questions[i].querySelector('.feedback');
+      feedback.innerHTML = '';
+      feedback.className = 'feedback';
+      
+      var buttons = questions[i].querySelectorAll('button');
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].disabled = false;
+      }
+    }
+    
+    updateCounter();
+  }
+  
+  // ========== التحقق من الحوار ==========
+  function checkDialogue() {
+    var answers = {
+      gap1: 'so sorry',
+      gap2: 'OK',
+      gap3: 'really',
+      gap4: 'right',
+      gap5: 'fault',
+      gap6: 'too',
+      gap7: 'fine',
+      gap8: 'about'
+    };
+    
+    var correctCount = 0;
+    var total = 8;
+    
+    for (var key in answers) {
+      var input = document.getElementById(key);
+      if (input) {
+        var userAnswer = input.value.trim().toLowerCase();
+        if (userAnswer === answers[key]) {
+          correctCount++;
+          input.style.border = '2px solid green';
+        } else {
+          input.style.border = '2px solid red';
+        }
+      }
+    }
+    
+    var feedback = document.getElementById('dialogueFeedback');
+    feedback.innerHTML = 'You got ' + correctCount + ' out of ' + total + ' correct!';
+    if (correctCount === total) {
+      feedback.style.color = 'green';
+    } else {
+      feedback.style.color = 'red';
+    }
+  }
+  
+  // ========== مسح الحقول ==========
+  function clearDialogue() {
+    var inputs = document.querySelectorAll('#task2 input');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].value = '';
+      inputs[i].style.border = '1px solid #ccc';
+    }
+    document.getElementById('dialogueFeedback').innerHTML = '';
+  }
+
+  // ===== شريط البحث المتغير =====
+  const searchToggleBtn = document.getElementById('searchToggleBtn');
+  const searchWrapper = document.querySelector('.search-wrapper');
+  const searchResultsDiv = document.getElementById('searchResults');
+
+  if (searchToggleBtn && searchWrapper) {
+    searchToggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      searchWrapper.classList.toggle('open');
+      if (searchWrapper.classList.contains('open')) {
+        setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+      }
+    });
+  }
+
+  document.addEventListener('click', function(event) {
+    if (searchWrapper && !searchWrapper.contains(event.target)) {
+      searchWrapper.classList.remove('open');
+      if (searchResultsDiv) searchResultsDiv.classList.remove('show');
+    }
+  });
+
+  const searchInputWrapper = document.getElementById('searchInputWrapper');
+  if (searchInputWrapper) {
+    searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+  }
+
+  function searchContent() {
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+    
+    if (searchTerm === '') {
+      if (searchResultsDiv) searchResultsDiv.classList.remove('show');
+      return;
+    }
+    
+    if (searchResultsDiv) {
+      searchResultsDiv.innerHTML = `<div class="search-result-item">🔍 Searching for: "${searchTerm}"</div>
+                                    <div class="search-result-item">📚 This lesson covers: Apologising phrases, dialogue completion, True/False questions</div>`;
+      searchResultsDiv.classList.add('show');
+    }
+  }
+  
+  // ========== تسجيل الخروج ==========
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+  
+  // ========== التحقق من تسجيل الدخول ==========
+  if (!localStorage.getItem('userId')) {
+    window.location.href = 'index.html';
+  }
+</script>
+</body>
+</html>

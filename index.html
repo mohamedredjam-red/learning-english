@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Platform</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('images/333.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .navbar {
+            background: #0a094e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #ffc107;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        h1 span {
+            color: #ffc107;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
+            min-width: 200px;
+        }
+
+        .btn-primary {
+            background: #ffc107;
+            color: #1a2b3c;
+        }
+
+        .btn-primary:hover {
+            background: #e0a800;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: #1a2b3c;
+            color: white;
+            border: 2px solid #ffc107;
+        }
+
+        .btn-secondary:hover {
+            background: #2c3e50;
+            transform: translateY(-3px);
+        }
+
+        .features {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #ffc107;
+        }
+
+        .feature p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #0a094e;
+            color: white;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 36px; }
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 250px; }
+            .navbar { flex-direction: column; gap: 10px; }
+            .nav-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="welcome.html" class="logo"><h3>English Learning Platform</h3></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Features</a>
+            <a href="about.html">About</a>
+            <a href="interface.html">Login</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="content">
+            <h1>Learn <span>English</span> Easily</h1>
+            <p>Start your journey to learn English with our simple and effective platform. Practice speaking, writing, and listening at your own pace.</p>
+            
+            <div class="buttons">
+                <a href="placement-test.html" class="btn btn-primary">Start Test</a>
+                <a href="interface.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 English Learning Platform. All rights reserved.</p>
+    </div>
+</body>
+</html>

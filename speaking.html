@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Platform - A1-A2 Grammar Lessons</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(#29376a,#940f0f);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .main-header {
+            background: #0a094e;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 3px solid #ffc107;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .platform-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffc107;
+            line-height: 1.2;
+        }
+
+        .platform-logo span {
+            color: white;
+            font-weight: 400;
+            margin: 0 5px;
+        }
+
+        .platform-sub {
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .learn-english {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            border-left: 2px solid #ffc107;
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        .logout-container {
+            margin-left: auto;
+        }
+
+        /* ===== شريط البحث المتغير ===== */
+        .search-icon-container {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .search-icon-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .search-icon-btn:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            overflow: hidden;
+            width: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        .search-wrapper.open .search-input-wrapper {
+            width: 300px;
+            opacity: 1;
+            visibility: visible;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            outline: none;
+            width: 220px;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: 2px solid #ffc107;
+        }
+
+        .search-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: #e0a800;
+        }
+
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .search-results-dropdown {
+            position: absolute;
+            top: 80px;
+            right: 140px;
+            width: 350px;
+            background: #0a094e;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results-dropdown.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 193, 7, 0.2);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            color: #ffc107;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .search-result-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .main-nav {
+            background: #0a094e;
+            padding: 10px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 5px 0;
+            display: block;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .nav-link i {
+            font-size: 12px;
+            margin-left: 5px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #0a094e;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 250px;
+            padding: 10px 0;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .dropdown-item {
+            padding: 12px 20px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            color: #ffc107;
+        }
+
+        .welcome-banner {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 40px;
+            margin: 30px 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .welcome-text h1 {
+            font-size: 28px;
+            color: rgb(13, 30, 113);
+            margin-bottom: 5px;
+        }
+
+        .welcome-text p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+
+        .level-badge {
+            background: #ffc107;
+            color: #0a094e;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .lessons-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .content {
+            flex: 0 0 auto;
+        }
+
+        .lessons-section h1 {
+            font-size: 36px;
+            color: #ffc107;
+            margin-bottom: 30px;
+            font-weight: 600;
+            margin-top: -50px; /* إضافة هذا السطر لرفع النص للأعلى */
+        }
+
+        .lesson-item {
+            margin-bottom: 40px;
+        }
+
+        .lesson-item h2 {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .lesson-item h2 a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .lesson-item h2 a:hover {
+            color: #ffc107;
+        }
+
+        .lesson-item p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .lesson-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+            border: none;
+        }
+
+        .back-home {
+            margin: 20px 40px;
+        }
+
+        .back-home a {
+            color: #ffc107;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .back-home a:hover {
+            transform: translateX(-5px);
+        }
+
+        .main-footer {
+            background: #0a094e;
+            padding: 30px 30px;
+            margin-top: auto;
+            border-top: 3px solid #ffc107;
+            width: 100%;
+        }
+        .footer-links {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .logout-container {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .logout-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .main-nav {
+                padding: 15px;
+                gap: 15px;
+            }
+            
+            .welcome-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                margin: 15px;
+                padding: 20px;
+            }
+            
+            .lessons-section {
+                padding: 0 20px;
+            }
+            
+            .lessons-section h1 {
+                font-size: 28px;
+            }
+            
+            .lesson-item h2 {
+                font-size: 20px;
+            }
+        }
+         .project-card{
+            background-color: #fff;
+            border: 1px solid #fff;
+            min-height: 14em;
+            width: 23em;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 20px;
+            transition: 0.7s ease;
+        }
+        .project-card:hover{
+            transform: scale(1.1);
+        }
+        .project-card:hover .project-image{
+            opacity: 0.9;
+        }
+        .project-image img{
+            width: 100%;
+        }
+        .project-info{
+            padding: 1em;
+
+        }
+        .project-category{
+            font-size: 0.8em;
+            color: #000;
+        }
+        .project-title{
+            display: flex;
+            justify-content: space-between;
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+        span{
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-header">
+        <div class="logo-section">
+            <div class="platform-logo">
+                <i class="fas fa-book-open"></i> <a href="welcome.html" class="logo">ENGLISH <span>|</span> LearnEnglish</a>
+                <div class="platform-sub">PLATFORM</div>
+            </div>
+        </div>
+        
+        <div class="search-icon-container">
+            <div class="search-wrapper">
+                <button class="search-icon-btn" id="searchToggleBtn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="search-input-wrapper" id="searchInputWrapper">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search lessons..." onkeyup="if(event.key === 'Enter') searchLessons()">
+                    <button class="search-btn" onclick="searchLessons()">Search</button>
+                </div>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="search-results-dropdown" id="searchResults"></div>
+
+   <div class="main-nav">
+        <div class="nav-item">
+            <a href="welcome.html" class="nav-link">Home</a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#" class="nav-link">Skills <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown">
+                <div class="dropdown-item" onclick="goToSpeaking()"><i class="fa-solid fa-microphone"></i> Speaking</div>
+                <div class="dropdown-item" onclick="goToWriting()"><i class="fa-solid fa-pen"></i> Writing</div>
+                <div class="dropdown-item" onclick="goToReading()"><i class="fa-solid fa-book"></i> Reading</div>
+                <div class="dropdown-item" onclick="goToListening()"><i class="fa-solid fa-headphones"></i> Listening</div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <a href="#" class="nav-link">Grammar <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown">
+                <div class="dropdown-item" onclick="window.location.href='A1-A2 Grammar.html'"><i class="fa-solid fa-layer-group"></i> A1-A2 Grammar</div>
+                <div class="dropdown-item" onclick="window.location.href='B1-B2 grammar.html'"><i class="fa-solid fa-chart-line"></i> B1-B2 Grammar</div>
+                <div class="dropdown-item"><i class="fa-solid fa-chart-simple"></i> C1 Grammar</div>
+                <div class="dropdown-item"><i class="fa-solid fa-book-open"></i> English grammar reference</div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <a href="#" class="nav-link">Vocabulary <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown">
+                <div class="dropdown-item" onclick="window.location.href='A1-A2 vocabulary.html'"><i class="fa-solid fa-seedling"></i> A1-A2 Vocabulary</div>
+                <div class="dropdown-item"><i class="fa-solid fa-tree"></i> B1-B2 Vocabulary</div>
+                <div class="dropdown-item"><i class="fa-solid fa-crown"></i> C1 Vocabulary</div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <a href="#" class="nav-link">Business English <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown">
+                <div class="dropdown-item"><i class="fa-solid fa-users"></i> Meetings</div>
+                <div class="dropdown-item"><i class="fa-solid fa-chalkboard"></i> Presentations</div>
+                <div class="dropdown-item"><i class="fa-solid fa-handshake"></i> Negotiations</div>
+                <div class="dropdown-item">
+                    <a href="Emails.html">
+                        <i class="fa-solid fa-envelope"></i> Emails
+                    </a>
+                </div>            
+            </div>
+        </div>
+        <div class="nav-item">
+            <a href="#" class="nav-link">Games <i class="fa-solid fa-chevron-down"></i></a>
+            <div class="dropdown">
+                <div class="dropdown-item" onclick="window.location.href='game.html'"><i class="fa-solid fa-person-hanging"></i> Hangman Game</div>
+                <div class="dropdown-item" onclick="window.location.href='wordScramble.html'"><i class="fa-solid fa-puzzle-piece"></i> Word Scramble Game</div>
+            </div>
+        </div>
+         <div class="nav-item">
+            <a href="to-do-list.html" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-check-circle"></i> Set your goals</a>
+        </div>
+        <div class="nav-item">
+            <a href="traduction.html" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-language"></i> Translate any text</a>
+        </div>
+         <div class="nav-item">
+            <a href="Online-courses.html" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-laptop"></i> Online courses</a>
+        </div>
+        <div class="nav-item">
+            <a href="children-learning.html" class="nav-link" target="_blank" rel="noopener noreferrer"> Kids learn English</a>
+        </div>
+    </div>
+
+    <div class="back-home">
+        <a href="welcome.html">← Back</a>
+    </div>
+
+    <div class="welcome-banner">
+        <div class="welcome-text">
+            <h1>Speaking</h1>
+            <p>Choose a speaking lesson</p>
+        </div>
+        <div class="level-badge" id="levelDisplay">Level A - Beginner</div>
+    </div>
+
+    <div class="lessons-section">
+        <h1>Choose a speaking lesson</h1>
+
+        <div class="content">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/A1-S.jpg" alt="">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Level</p>
+                    <strong class="project-title">
+                        <span>A1 speaking<br></span>
+                        <a class="more-details" href="A1speaking.html">view more</a>
+                    </strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/A2-S.webp" alt="">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Level</p>
+                    <strong class="project-title">
+                        <span>A2 speaking   </span>
+                        <a class="more-details" href="A2speaking.html">view more</a>
+                    </strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/B1-S.png" alt="">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Level</p>
+                    <strong class="project-title">
+                        <span>B1 speaking</span>
+                        <a class="more-details" href="#">view more</a>
+                    </strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/B2-S.png" alt="">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Level</p>
+                    <strong class="project-title">
+                        <span>B2 speaking </span>
+                        <a class="more-details" href="#">view more</a>
+                    </strong>
+
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="images/C1-S.jpg" alt="">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Level</p>
+                    <strong class="project-title">
+                        <span>C1 speaking</span>
+                        <a class="more-details" href="#">view more</a>
+                    </strong>
+
+                </div>
+            </div>
+        </div>
+        
+
+
+    </div>
+
+    <script>
+        const userLevel = localStorage.getItem('level') || 'A';
+        
+        let levelText = '';
+        if (userLevel === 'A') levelText = 'Level A - Beginner';
+        else if (userLevel === 'B') levelText = 'Level B - Intermediate';
+        else levelText = 'Level C - Advanced';
+        
+        document.getElementById('levelDisplay').textContent = levelText;
+
+        // ===== شريط البحث المتغير =====
+        const searchToggleBtn = document.getElementById('searchToggleBtn');
+        const searchWrapper = document.querySelector('.search-wrapper');
+        const searchResultsDiv = document.getElementById('searchResults');
+
+        if (searchToggleBtn && searchWrapper) {
+            searchToggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                searchWrapper.classList.toggle('open');
+                if (searchWrapper.classList.contains('open')) {
+                    setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+                }
+            });
+        }
+
+        document.addEventListener('click', function(event) {
+            if (searchWrapper && !searchWrapper.contains(event.target)) {
+                searchWrapper.classList.remove('open');
+                searchResultsDiv.classList.remove('show');
+            }
+        });
+
+        const searchInputWrapper = document.getElementById('searchInputWrapper');
+        if (searchInputWrapper) {
+            searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+        }
+
+        function searchLessons() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const lessonItems = document.querySelectorAll('.lesson-item');
+            
+            if (searchTerm === '') {
+                searchResultsDiv.classList.remove('show');
+                lessonItems.forEach(item => item.classList.remove('highlight-lesson'));
+                return;
+            }
+            
+            let results = [];
+            
+            lessonItems.forEach(item => {
+                const title = item.querySelector('h2 a').textContent;
+                const description = item.querySelector('p').textContent;
+                const link = item.querySelector('a').getAttribute('href');
+                
+                if (title.toLowerCase().includes(searchTerm) || description.toLowerCase().includes(searchTerm)) {
+                    item.classList.add('highlight-lesson');
+                    results.push({ title, description: description.substring(0, 60) + '...', link });
+                } else {
+                    item.classList.remove('highlight-lesson');
+                }
+            });
+            
+            if (results.length > 0) {
+                let html = '';
+                results.slice(0, 5).forEach(result => {
+                    html += `
+                        <div class="search-result-item" onclick="window.location.href='${result.link}'">
+                            <div class="search-result-title">${result.title}</div>
+                            <div class="search-result-description">${result.description}</div>
+                        </div>
+                    `;
+                });
+                if (results.length > 5) {
+                    html += `<div class="search-result-item">... and ${results.length - 5} more results</div>`;
+                }
+                searchResultsDiv.innerHTML = html;
+                searchResultsDiv.classList.add('show');
+            } else {
+                searchResultsDiv.innerHTML = '<div class="no-results">No lessons found</div>';
+                searchResultsDiv.classList.add('show');
+            }
+        }
+
+         function goToSpeaking() {
+        window.location.href = 'speaking.html';
+        }
+
+        function goToWriting() {
+            window.location.href = 'writing.html';
+        }
+
+        function goToReading() {
+            window.location.href = 'reading.html';
+        }
+
+        function goToListening() {
+            window.location.href = 'listening.html';
+        }
+
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+        
+        if (!localStorage.getItem('userId')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

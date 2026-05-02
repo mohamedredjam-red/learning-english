@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking A2 - Lessons</title>
+    <link rel="icon" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(#29376a,#940f0f);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            background: #0a094e;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ffc107;
+            flex-wrap: wrap;
+        }
+
+        .platform-logo a {
+            color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* ===== شريط البحث المتغير ===== */
+        .search-icon-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .search-icon-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .search-icon-btn:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            overflow: hidden;
+            width: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            visibility: hidden;
+        }
+
+        .search-wrapper.open .search-input-wrapper {
+            width: 300px;
+            opacity: 1;
+            visibility: visible;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 40px;
+            font-size: 14px;
+            outline: none;
+            width: 220px;
+            background: white;
+        }
+
+        .search-input:focus {
+            outline: 2px solid #ffc107;
+        }
+
+        .search-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            background: #e0a800;
+        }
+
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .search-results-dropdown {
+            position: absolute;
+            top: 80px;
+            right: 40px;
+            width: 350px;
+            background: #0a094e;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .search-results-dropdown.show {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            color: white;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255,193,7,0.2);
+        }
+
+        .back-home {
+            margin: 20px 40px;
+        }
+
+        .back-home a {
+            color: #ffc107;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            color: #333;
+        }
+
+        .card h1 {
+            color: #0a094e;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ffc107;
+            padding-bottom: 10px;
+        }
+
+        .lesson-card {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .lesson-header {
+            background: #f1f1f1;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lesson-header:hover {
+            background: #e9ecef;
+        }
+
+        .lesson-content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .lesson-card.active .lesson-content {
+            display: block;
+        }
+
+        .main-footer {
+            background: #0a094e;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 3px solid #ffc107;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="platform-logo">
+        <a href="welcome.html">ENGLISH | LearnEnglish</a>
+    </div>
+    <div class="search-icon-container">
+        <div class="search-wrapper">
+            <button class="search-icon-btn" id="searchToggleBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <div class="search-input-wrapper" id="searchInputWrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search lessons..." onkeyup="if(event.key === 'Enter') searchLessons()">
+                <button class="search-btn" onclick="searchLessons()">Search</button>
+            </div>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="search-results-dropdown" id="searchResults"></div>
+
+<div class="back-home">
+    <a href="speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="main-container">
+    <div class="card">
+        <h1>Speaking A2</h1>
+
+        <div class="lesson-card" id="L1">
+            <div class="lesson-header" onclick="toggleLesson('L1')">
+                <span>Lesson 1: Apologising</span>
+                <span>▼</span>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Start learning:</strong> <a href="lesson1-apologising.html">Click here to start Lesson 1</a></p>
+            </div>
+        </div>
+
+        <div class="lesson-card" id="L2">
+            <div class="lesson-header" onclick="toggleLesson('L2')">
+                <span>Lesson 2: Giving instructions</span>
+                <span>▼</span>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Start learning:</strong> <a href="giving-instructions.html">Click here to start Lesson 2</a></p>
+            </div>
+        </div>
+
+        <div class="lesson-card" id="L3">
+            <div class="lesson-header" onclick="toggleLesson('L3')">
+                <span>Lesson 3: Showing interest</span>
+                <span>▼</span>
+            </div>
+            <div class="lesson-content">
+                <p><strong>Start learning:</strong> <a href="showing-interest .html">Click here to start Lesson 3</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-footer">
+    <div class="footer-links">
+        <a href="welcome.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
+        <a href="Chat-bot.html"  target="_blank" rel="noopener noreferrer">Help</a>
+    </div>
+    <div class="copyright">
+        © 2026 English Learning Platform. All rights reserved.
+    </div>
+</div>
+
+<script>
+    function toggleLesson(id) {
+        document.getElementById(id).classList.toggle("active");
+    }
+
+    // ===== شريط البحث المتغير =====
+    const searchToggleBtn = document.getElementById('searchToggleBtn');
+    const searchWrapper = document.querySelector('.search-wrapper');
+    const searchResultsDiv = document.getElementById('searchResults');
+
+    if (searchToggleBtn && searchWrapper) {
+        searchToggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            searchWrapper.classList.toggle('open');
+            if (searchWrapper.classList.contains('open')) {
+                setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+            }
+        });
+    }
+
+    document.addEventListener('click', function(event) {
+        if (searchWrapper && !searchWrapper.contains(event.target)) {
+            searchWrapper.classList.remove('open');
+            searchResultsDiv.classList.remove('show');
+        }
+    });
+
+    const searchInputWrapper = document.getElementById('searchInputWrapper');
+    if (searchInputWrapper) {
+        searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+    }
+
+    function searchLessons() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+            searchResultsDiv.classList.remove('show');
+            return;
+        }
+        
+        searchResultsDiv.innerHTML = `
+            <div class="search-result-item">🔍 Searching for: "${searchTerm}"</div>
+            <div class="search-result-item">📚 Lessons: Apologising, Giving Instructions, Showing Interest</div>
+        `;
+        searchResultsDiv.classList.add('show');
+    }
+
+    function logout() {
+        localStorage.clear();
+        window.location.href = 'index.html';
+    }
+    
+    if (!localStorage.getItem('userId')) {
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+</html>

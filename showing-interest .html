@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: Showing interest - Speaking A2</title>
+  <link rel="icon" href="logo7.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+    }
+
+    .back {
+      margin: 20px 40px;
+    }
+
+    .back a {
+      color: #ffc107;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back a:hover {
+      color: #e0a800;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .question-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .question-card label {
+      display: block;
+      font-weight: bold;
+      color: #0a094e;
+      margin-bottom: 10px;
+    }
+
+    .question-card input {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+
+    .question-card input:focus {
+      border-color: #ffc107;
+      outline: none;
+    }
+
+    .check-btn {
+      background: #ffc107;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .check-btn:hover {
+      background: #e0a800;
+    }
+
+    .reset-btn {
+      background: #0a094e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .reset-btn:hover {
+      background: #333366;
+    }
+
+    .feedback {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+
+    .feedback.correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .feedback.wrong {
+      color: red;
+      font-weight: bold;
+    }
+
+    .next-link {
+      display: inline-block;
+      margin-left: 15px;
+      background: #ffc107;
+      color: #0a094e;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .next-link:hover {
+      background: #e0a800;
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <a href="welcome.html">ENGLISH | LearnEnglish</a>
+  </div>
+  <div class="buttons">
+    <button>🔍</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="back">
+  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 3: Showing interest</h1>
+
+    <div class="video-section">
+      <video controls>
+        <source src="videos/18.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:10px;">🎬 Watch the video carefully, then answer:</p>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question-card">
+      <label>1. Noelia thinks that the weather in the UK is horrible.</label>
+      <input type="text" id="answer1" placeholder="Type True or False...">
+      <button class="check-btn" onclick="checkQuestion(1)">Check Answer</button>
+      <span id="feedback1" class="feedback"></span>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-card">
+      <label>2. Bob has always lived in the UK.</label>
+      <input type="text" id="answer2" placeholder="Type True or False...">
+      <button class="check-btn" onclick="checkQuestion(2)">Check Answer</button>
+      <span id="feedback2" class="feedback"></span>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-card">
+      <label>3. Bob broke his leg in the summer.</label>
+      <input type="text" id="answer3" placeholder="Type True or False...">
+      <button class="check-btn" onclick="checkQuestion(3)">Check Answer</button>
+      <span id="feedback3" class="feedback"></span>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question-card">
+      <label>4. Bob still has problems with his leg today.</label>
+      <input type="text" id="answer4" placeholder="Type True or False...">
+      <button class="check-btn" onclick="checkQuestion(4)">Check Answer</button>
+      <span id="feedback4" class="feedback"></span>
+    </div>
+
+    <button class="reset-btn" onclick="resetAllQuestions()">Reset All Answers</button>
+    <a href="lesson4_speaking_a2.html" class="next-link">→ Next Lesson</a>
+  </div>
+</div>
+
+<div class="footer">
+  <div>
+    <a href="welcome.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
+</div>
+
+<script>
+  // الإجابات الصحيحة (بدون مسافات زائدة)
+  const correctAnswers = {
+    1: ["true"],
+    2: ["false"],
+    3: ["true"],
+    4: ["true"]
+  };
+
+  // دالة التحقق من الإجابة
+  function checkQuestion(num) {
+    let input = document.getElementById(`answer${num}`);
+    let val = input.value.trim().toLowerCase();
+    let fb = document.getElementById(`feedback${num}`);
+
+    if (val === "") {
+      alert("⚠️ Please type an answer (True or False)!");
+      return;
+    }
+
+    let isCorrect = correctAnswers[num].some(ans => val === ans);
+
+    if (isCorrect) {
+      fb.innerHTML = "✅ Correct! Well done!";
+      fb.className = "feedback correct";
+      input.style.border = "2px solid green";
+    } else {
+      fb.innerHTML = "❌ Wrong! The correct answer is " + correctAnswers[num][0].toUpperCase() + ". Watch the video again.";
+      fb.className = "feedback wrong";
+      input.style.border = "2px solid red";
+    }
+  }
+
+  // دالة إعادة تعيين جميع الإجابات
+  function resetAllQuestions() {
+    for (let i = 1; i <= 4; i++) {
+      let input = document.getElementById(`answer${i}`);
+      if (input) {
+        input.value = "";
+        input.style.border = "1px solid #ccc";
+      }
+      let feedback = document.getElementById(`feedback${i}`);
+      if (feedback) {
+        feedback.innerHTML = "";
+        feedback.className = "feedback";
+      }
+    }
+    alert("🔄 All answers have been reset!");
+  }
+
+  // دالة تسجيل الخروج
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

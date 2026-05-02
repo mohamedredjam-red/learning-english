@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Leila And The wolf</title>
+    <style>
+        :root {
+            --width: 600px;  
+            --height: 400px; 
+            --bg-color: #2c3e50; 
+            --page-color: #fff;  
+            --speed: 1s;         
+        }
+
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;     
+            height: 100vh;
+            margin: 0;
+            padding-right: 50px; 
+            perspective: 2500px; 
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .book {
+            width: var(--width);
+            height: var(--height);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            cursor: grab;
+            transform: rotateX(5deg) rotateY(-5deg); 
+        }
+
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: left center; 
+            transform-style: preserve-3d;
+            transition: transform var(--speed) cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; 
+            background: var(--page-color);
+            box-shadow: inset -3px 0px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            box-shadow: inset 3px 0px 20px rgba(0,0,0,0.1);
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        .front .page-number { right: 15px; }
+        .back .page-number { left: 15px; }
+
+        .flipped {
+            transform: rotateY(-180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="book" id="myBook">
+        
+        <div class="page flipped" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/0.png" alt="Page 1">
+                <span class="page-number">1</span>
+            </div>
+            <div class="back">
+                <img src="images/1.png" alt="Page 2">
+                <span class="page-number">2</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/2.png" alt="Page 3">
+                <span class="page-number">3</span>
+            </div>
+            <div class="back">
+                <img src="images/3.png" alt="Page 4">
+                <span class="page-number">4</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/4.png" alt="Page 5">
+                <span class="page-number">5</span>
+            </div>
+            <div class="back">
+                <img src="images/5.png" alt="Page 6">
+                <span class="page-number">6</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/6.png" alt="Page 7">
+                <span class="page-number">7</span>
+            </div>
+            <div class="back">
+                <img src="images/7.png" alt="Page 8">
+                <span class="page-number">8</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/8.png" alt="Page 9">
+                <span class="page-number">9</span>
+            </div>
+            <div class="back">
+                <img src="images/9.png" alt="Page 10">
+                <span class="page-number">10</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/10.png" alt="Page 11">
+                <span class="page-number">11</span>
+            </div>
+            <div class="back">
+                <img src="images/11.png" alt="Page 12">
+                <span class="page-number">12</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/12.png" alt="Page 13">
+                <span class="page-number">13</span>
+            </div>
+            <div class="back">
+                <img src="images/13.png" alt="Page 14">
+                <span class="page-number">14</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/14.png" alt="Page 15">
+                <span class="page-number">15</span>
+            </div>
+            <div class="back">
+                <img src="images/15.png" alt="Page 16">
+                <span class="page-number">16</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/16.png" alt="Page 17">
+                <span class="page-number">17</span>
+            </div>
+            <div class="back">
+                <img src="images/17.png" alt="Page 18">
+                <span class="page-number">18</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/18.png" alt="Page 19">
+                <span class="page-number">19</span>
+            </div>
+            <div class="back">
+                <img src="images/19.png" alt="Page 20">
+                <span class="page-number">20</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/20.png" alt="Page 21">
+                <span class="page-number">21</span>
+            </div>
+            <div class="back">
+                <img src="images/21.png" alt="Page 22">
+                <span class="page-number">22</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/22.png" alt="Page 23">
+                <span class="page-number">23</span>
+            </div>
+            <div class="back">
+                <img src="images/23.png" alt="Page 24">
+                <span class="page-number">24</span>
+            </div>
+        </div>
+
+        <div class="page" onclick="flipPage(this)">
+            <div class="front">
+                <img src="images/24.png" alt="Page 25">
+                <span class="page-number">25</span>
+            </div>
+            <div class="back">
+                <img src="images/25.png" alt="Back Cover">
+                <span class="page-number">26</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const book = document.getElementById('myBook');
+        const pages = document.querySelectorAll('.page');
+
+        function flipPage(clickedPage) {
+            clickedPage.classList.toggle('flipped');
+            updateZIndex();
+        }
+
+        function updateZIndex() {
+            pages.forEach((page, index) => {
+                if (page.classList.contains('flipped')) {
+                    // الصفحات المقلوبة تتراكم تحت بعضها
+                    page.style.zIndex = index + 1;
+                } else {
+                    // الصفحات غير المقلوبة تتراكم فوق بعضها (الأولى هي الأعلى)
+                    page.style.zIndex = pages.length - index;
+                }
+            });
+        }
+
+        // تدوير الكتاب بالفأرة
+        let isDragging = false, startX, startY, rotateX = 5, rotateY = -5;
+        document.addEventListener('mousedown', (e) => {
+            if(e.target.tagName !== 'IMG') {
+                isDragging = true;
+                startX = e.pageX; startY = e.pageY;
+            }
+        });
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            rotateY += (e.pageX - startX) * 0.4;
+            rotateX -= (e.pageY - startY) * 0.4;
+            book.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            startX = e.pageX; startY = e.pageY;
+        });
+        document.addEventListener('mouseup', () => isDragging = false);
+
+        // تشغيل الترتيب الأولي
+        updateZIndex();
+    </script>
+</body>
+</html>

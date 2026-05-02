@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Addresses - Business English</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(#29376a,#940f0f);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            background: #0a094e;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 3px solid #ffc107;
+        }
+
+        .platform-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffc107;
+        }
+
+        .logout-container {
+            margin-left: auto;
+        }
+
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .back-home {
+            margin: 20px 40px;
+        }
+
+        .back-home a {
+            color: #ffc107;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home a:hover {
+            color: #e0a800;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .white-card {
+            background: white;
+            padding: 35px;
+            color: #333;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #0a094e;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            border-left: 4px solid #ffc107;
+            padding-left: 15px;
+        }
+
+        h2 {
+            color: #0a094e;
+            font-size: 22px;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        h3 {
+            color: #0a094e;
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .intro-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .email-example {
+            background: #eef2ff;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 16px;
+            margin: 10px 0;
+            border-left: 3px solid #ffc107;
+        }
+
+        .pronunciation-box {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid #22c55e;
+        }
+
+        .pronunciation-box p {
+            color: #166534;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0a094e;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .domain-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .domain-item {
+            background: #f3f4f6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .domain-item span {
+            font-weight: bold;
+            color: #0a094e;
+        }
+
+        .footer {
+            background: #0a094e;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: center;
+            border-top: 3px solid #ffc107;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+
+        .footer a:hover {
+            color: #ffc107;
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            margin-top: 15px;
+        }
+
+        .next-lesson {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .next-lesson a {
+            background: #ffc107;
+            color: #0a094e;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .next-lesson a:hover {
+            background: #e0a800;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-header">
+        <div class="platform-logo">ENGLISH | LearnEnglish</div>
+        <div class="logout-container">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div class="back-home">
+        <a href="welcome.html">← Back to Home</a>
+    </div>
+
+    <div class="main-container">
+        <div class="white-card">
+            <h1>📧 Email Addresses in English</h1>
+            <p class="intro-text">Email addresses are essential in business – do you know how to say them correctly?</p>
+
+            <!-- Email Addresses Section -->
+            <h2>📨 Email Addresses</h2>
+            <p class="intro-text">Every email address contains this sign: <span class="highlight">@</span>. Here are some email addresses:</p>
+            
+            <div class="email-example">bob@yahoo.bh</div>
+            <div class="email-example">jeffery.amherst@britishcouncil.org</div>
+            <div class="email-example">reservations@beachhotelbern.com</div>
+
+            <p class="intro-text">As you can see, Bob uses his first name only in his email address: <strong>bob@yahoo.bh</strong>. Jeffery Amherst uses his first name and surname in his email address: <strong>jeffery.amherst@britishcouncil.org</strong>. The address <strong>reservations@beachhotelbern.com</strong> gives the name of the department (Reservations), but not the name of the person.</p>
+
+            <!-- Saying Email Addresses -->
+            <h2>🎤 Saying Email Addresses</h2>
+            <p class="intro-text">When you say an email address:</p>
+            
+            <div class="pronunciation-box">
+                <p>📌 <span class="highlight">@</span> is pronounced <strong>"at"</strong></p>
+                <p>📌 <span class="highlight">.</span> is pronounced <strong>"dot"</strong></p>
+                <p>📌 <span class="highlight">_</span> is called <strong>"underscore"</strong></p>
+            </div>
+
+            <h3>Examples:</h3>
+            <div class="email-example">reservations@beachhotelbern.com</div>
+            <p class="intro-text">→ <strong>"reservations at beach hotel bern dot com"</strong></p>
+
+            <div class="email-example">jeffery.amherst@britishcouncil.org</div>
+            <p class="intro-text">→ <strong>"jeffery dot amherst at british council dot org"</strong></p>
+
+            <div class="email-example">teaching_job@english_academy.id</div>
+            <p class="intro-text">→ <strong>"teaching underscore job at english underscore academy dot I D"</strong></p>
+
+            <h3>💡 Note:</h3>
+            <p class="intro-text">It is not necessary to use capital letters in email addresses. People sometimes write them with capitals (<strong>Jeffery.Amherst@britishcouncil.org</strong>) or all capitals (<strong>JEFFERY.AMHERST@BRITISHCOUNCIL.ORG</strong>). However, most people write email addresses without capital letters (<strong>jeffery.amherst@britishcouncil.org</strong>).</p>
+
+            <!-- Address Books -->
+            <h2>📚 Address Books</h2>
+            <p class="intro-text">Email addresses appear in alphabetical order (A–Z). When names start with the same letter, look at the second letter. Here, all the names begin with <strong>F</strong>, but the second letters are: <strong>e, i, r, u</strong>. These are in alphabetical order.</p>
+
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Email address</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Fellah</td><td>fellah@bqbaccounting.com</td></tr>
+                    <tr><td>Fida</td><td>fhussein@arabianairways.org</td></tr>
+                    <tr><td>Fred Aston</td><td>fred99@astoncity.biz</td></tr>
+                    <tr><td>Fudail H</td><td>fudailh@aglant.net</td></tr>
+                </tbody>
+            </table>
+
+            <!-- Domain Names -->
+            <h2>🌍 Domain Names</h2>
+            <p class="intro-text">Email addresses often include the name of the country that the address is from. This is the final two letters of the address. Here are some examples:</p>
+
+            <div class="domain-list">
+                <div class="domain-item"><span>.af</span> → Afghanistan</div>
+                <div class="domain-item"><span>.id</span> → Indonesia</div>
+                <div class="domain-item"><span>.ma</span> → Morocco</div>
+                <div class="domain-item"><span>.se</span> → Sweden</div>
+                <div class="domain-item"><span>.uy</span> → Uruguay</div>
+            </div>
+
+            <hr>
+
+            <!-- Next Lesson Button -->
+            <div class="next-lesson">
+                <a href="#">→ Next Lesson</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>
+            <a href="welcome.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="copyright">
+            © 2026 English Learning Platform. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

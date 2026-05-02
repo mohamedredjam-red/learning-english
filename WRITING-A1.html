@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing A1 | A message to say you're late</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                  url('writing.avif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a094e 0%, #1a1a7f 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-bottom: 3px solid #ffc107;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .lesson-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 25px 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      color: #000;
+      transition: all 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .chat-box {
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid #ffc107;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+    }
+
+    .message {
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      max-width: 85%;
+      word-wrap: break-word;
+    }
+
+    .message.other {
+      background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+      border-left: 4px solid #0a094e;
+      color: #333;
+      margin-right: auto;
+    }
+
+    .message.user {
+      background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+      border-left: 4px solid #0a094e;
+      color: #0a094e;
+      margin-left: auto;
+      font-weight: 500;
+    }
+
+    .question-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .question-card h3 {
+      color: #0a094e;
+      margin-bottom: 15px;
+    }
+
+    .question-card label {
+      display: block;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .question-card input[type="radio"] {
+      margin-right: 10px;
+      accent-color: #ffc107;
+    }
+
+    button {
+      margin: 8px 8px 8px 0;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    .check-btn {
+      background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+      color: #0a094e;
+    }
+
+    .reset-btn {
+      background: linear-gradient(135deg, #0a094e 0%, #1a1a7f 100%);
+      color: white;
+      border: 2px solid #ffc107;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 2px solid rgba(255, 193, 7, 0.3);
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    footer nav a {
+      color: #ffc107;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer nav a:hover {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 24px;
+      }
+      .message {
+        max-width: 100%;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Writing A1 | Lesson 1: A message to say you're late</h1>
+  </header>
+
+  <div class="lesson-container">
+    <div class="section-box">
+      <!-- Chat Conversation -->
+      <div class="chat-box">
+        <div class="message other">This is not my day! I'm here but can't find a place to park.</div>
+        <div class="message user">OK, LMK when you find a place.</div>
+        <div class="message user">I might get something to eat tho.</div>
+        <div class="message other">Of course! I'll be as quick as I can.</div>
+        <div class="message user">OK!</div>
+        <div class="message other">Found one! Be there in 10 mins.</div>
+      </div>
+
+      <!-- Task 1 -->
+      <div class="question-card">
+        <h3>📝 Task 1: Multiple Choice</h3>
+        <p>What is <strong>'mins'</strong> short for?</p>
+        <label><input type="radio" name="q1" value="minimum"> minimum</label>
+        <label><input type="radio" name="q1" value="minute"> minute</label>
+        <label><input type="radio" name="q1" value="minutes"> minutes</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1()">✅ Check Answer</button>
+        <button class="reset-btn" onclick="resetTask1()">🔄 Try again</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <nav>
+      <a href="welcome.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="#">Contact</a> | 
+      <a href="#">Help</a>
+    </nav>
+    <p>© 2026 English Learning Platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const correctAnswer = "minutes";
+
+    function checkTask1() {
+      let selected = document.querySelector('input[name="q1"]:checked');
+      if (!selected) {
+        alert("⚠️ Please choose an option!");
+        return;
+      }
+      if (selected.value === correctAnswer) {
+        alert("✅ Correct! 'mins' is short for minutes.");
+      } else {
+        alert("❌ Wrong! 'mins' is short for minutes.");
+      }
+    }
+
+    function resetTask1() {
+      document.querySelectorAll('input[name="q1"]').forEach(r => r.checked = false);
+    }
+  </script>
+</body>
+</html>

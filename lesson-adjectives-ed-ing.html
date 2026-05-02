@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adjectives ending in '-ed' and '-ing'</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(#29376a,#940f0f);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+        }
+
+        .main-header {
+            background: #0a094e;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 3px solid #ffc107;
+        }
+
+        .platform-logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #ffc107;
+        }
+
+        .logout-container {
+            margin-left: auto;
+        }
+
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .back-home {
+            margin: 20px 40px;
+        }
+
+        .back-home a {
+            color: #ffc107;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home a:hover {
+            color: #e0a800;
+        }
+
+        .main-container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0;
+        }
+
+        .white-card {
+            background: white;
+            padding: 30px;
+            color: #333;
+        }
+
+        .white-card:first-of-type {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .white-card:last-of-type {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        h1 {
+            color: #0a094e;
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: #0a094e;
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .examples-box {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .examples-title {
+            color: #0a094e;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .example-item {
+            padding: 8px 0;
+            color: #333;
+        }
+
+        .example-item strong {
+            color: #0a094e;
+        }
+
+        .exercise-title {
+            color: #0a094e;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .question-card {
+            background: white;
+            color: #333;
+        }
+
+        .question-header {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .question-header:hover {
+            background: #e9ecef;
+        }
+
+        .question-header h3 {
+            color: #0a094e;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .arrow {
+            color: #0a094e;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        .arrow.up {
+            transform: rotate(180deg);
+        }
+
+        .question-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .question-content.show {
+            display: block;
+        }
+
+        .instruction {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: #0a094e;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            color: #333;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .option-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 10px 25px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .option-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .option-btn.selected {
+            background: #0a094e;
+            color: white;
+            border-color: #0a094e;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: #f0f0f0;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            padding: 8px 20px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .items-counter {
+            color: #888;
+            font-size: 14px;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.wrong {
+            background: #f8d7da;
+            border: 1px solid #dc3545;
+            color: #721c24;
+        }
+
+        .test-again {
+            margin-top: 20px;
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #0a094e;
+        }
+
+        .main-footer {
+            background: #0a094e;
+            padding: 30px;
+            margin-top: 30px;
+            border-top: 3px solid #ffc107;
+        }
+
+        .footer-links {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-header">
+        <div class="platform-logo">
+            ENGLISH | LearnEnglish
+        </div>
+        
+        <div class="logout-container">
+            <button class="logout-btn" onclick="logout()">
+                Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="back-home">
+        <a href="A1-A2 Grammar.html">← Back to Grammar Lessons</a>
+    </div>
+
+    <div class="main-container">
+        <!-- البطاقة 1: Grammar test 1 -->
+        <div class="white-card">
+            <h1>Grammar test 1</h1>
+            <h2>Grammar A1-A2: Adjectives ending in '-ed' and '-ing':1</h2>
+            
+            <div class="intro-text">
+                Do you know the difference between bored and boring? Test what you know with interactive exercises and read the explanation to help you.
+            </div>
+
+            <div class="examples-box">
+                <div class="examples-title">Look at these examples to see how adjectives ending in -ed and -ing are used.</div>
+                <div class="example-item">
+                    I was really <strong>bored</strong> in that presentation.
+                </div>
+                <div class="example-item">
+                    That was a really <strong>boring</strong> presentation.
+                </div>
+            </div>
+
+            <div class="exercise-title">
+                Try this exercise to test your grammar.
+            </div>
+        </div>
+
+        <!-- البطاقة 2: بطاقة الأسئلة مع سهم للإخفاء والإظهار -->
+        <div class="question-card">
+            <div class="question-header" onclick="toggleQuestions()">
+                <h3>Grammar A1-A2: Adjectives ending in '-ed' and '-ing': 1</h3>
+                <span class="arrow" id="toggle-arrow">▼</span>
+            </div>
+            
+            <div class="question-content" id="question-content">
+                <div class="instruction">Choose the correct word.</div>
+                
+                <div class="question-number" id="question-number">Question 1 of 7</div>
+                <div class="question-text" id="question-text">Loading...</div>
+                
+                <div class="options" id="options-container">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()" disabled>← Previous</button>
+                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showAnswer()">Show answers</button>
+                    <button class="action-btn" onclick="showFeedback()">Show feedback</button>
+                    <button class="action-btn" onclick="resetCurrentQuestion()">Try again</button>
+                </div>
+
+                <div class="feedback" id="feedback-message"></div>
+                <div class="items-counter" id="items-counter">7 items remaining</div>
+            </div>
+        </div>
+
+        <!-- البطاقة 3: Grammar Explanation -->
+        <div class="white-card">
+            <h2>Read the explanation to learn more.</h2>
+            
+            <div style="color:#555; line-height:1.6; margin-bottom:15px;">
+                <strong>Grammar explanation</strong><br>
+                Adjectives that end in -ed (e.g. bored, interested) and adjectives that end in -ing (e.g. boring, interesting) are often confused.
+            </div>
+
+            <div style="margin:20px 0;">
+                <h4 style="color:#0a094e; margin-bottom:10px;">-ed adjectives</h4>
+                <p style="color:#555;">Adjectives that end in -ed generally describe emotions – they tell us how people feel.</p>
+                <ul style="color:#555; margin-left:20px;">
+                    <li>I was so bored in that lesson, I almost fell asleep.</li>
+                    <li>He was surprised to see Helen after all those years.</li>
+                    <li>She was really tired and went to bed early.</li>
+                </ul>
+            </div>
+
+            <div style="margin:20px 0;">
+                <h4 style="color:#0a094e; margin-bottom:10px;">-ing adjectives</h4>
+                <p style="color:#555;">Adjectives that end in -ing generally describe the thing that causes the emotion – a boring lesson makes you feel bored.</p>
+                <ul style="color:#555; margin-left:20px;">
+                    <li>Have you seen that film? It's really frightening.</li>
+                    <li>I could listen to her for hours. She's so interesting.</li>
+                    <li>I can't sleep! That noise is really annoying!</li>
+                </ul>
+            </div>
+
+            <table>
+                <tr>
+                    <th>ed adjectives (how you feel)</th>
+                    <th>ing adjectives (description)</th>
+                </tr>
+                <tr><td>annoyed</td><td>annoying</td></tr>
+                <tr><td>bored</td><td>boring</td></tr>
+                <tr><td>confused</td><td>confusing</td></tr>
+                <tr><td>disappointed</td><td>disappointing</td></tr>
+                <tr><td>excited</td><td>exciting</td></tr>
+                <tr><td>frightened</td><td>frightening</td></tr>
+                <tr><td>interested</td><td>interesting</td></tr>
+                <tr><td>surprised</td><td>surprising</td></tr>
+                <tr><td>tired</td><td>tiring</td></tr>
+                <tr><td>worried</td><td>worrying</td></tr>
+            </table>
+        </div>
+
+        <!-- البطاقة 4: Grammar Test 2 -->
+        <div class="white-card">
+            <h1>Grammar A1-A2: Adjectives ending in '-ed' and '-ing': 2</h1>
+            
+            <div class="instruction">Choose the correct word.</div>
+            
+            <div class="question-number" id="test2-question-number">Question 1 of 5</div>
+            <div class="question-text" id="test2-question-text">Loading...</div>
+            
+            <div class="options" id="test2-options-container"></div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn" id="test2-prev-btn" onclick="prevTest2Question()" disabled>← Previous</button>
+                <button class="nav-btn" id="test2-next-btn" onclick="nextTest2Question()">Next →</button>
+            </div>
+
+            <div style="display:flex; gap:15px; margin:20px 0;">
+                <button class="action-btn" onclick="checkTest2Answer()">Check</button>
+                <button class="action-btn" onclick="resetTest2()">Try again</button>
+            </div>
+
+            <div class="feedback" id="test2-feedback"></div>
+            <div class="items-counter" id="test2-counter">5 items remaining</div>
+
+            <div class="test-again">
+                Do this exercise to test your grammar again.
+            </div>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <div class="footer-links">
+            <a href="welcome.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
+            <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer">Help</a>
+        </div>
+        <div class="copyright">
+            © 2026 English Learning Platform. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        // الأسئلة للتمرين الأول
+        const questions = [
+            { text: "You look really ___. Why don't you go to bed?", options: ["tired", "tiring"], correct: "tired" },
+            { text: "Can I call you? I've got some very ___ news for you!", options: ["excited", "exciting"], correct: "exciting" },
+            { text: "My neighbour is always playing loud music. It's very ___.", options: ["annoyed", "annoying"], correct: "annoying" },
+            { text: "The directions were ___ and we got lost.", options: ["confused", "confusing"], correct: "confusing" },
+            { text: "I was really ___ that I won the competition.", options: ["surprised", "surprising"], correct: "surprised" },
+            { text: "She didn't call about the car. I don't think she's ___ in buying it.", options: ["interested", "interesting"], correct: "interested" },
+            { text: "My cats get really ___ when there's a thunderstorm.", options: ["frightened", "frightening"], correct: "frightened" }
+        ];
+
+        let currentQuestion = 0;
+        let selectedAnswers = {};
+
+        // الأسئلة للتمرين الثاني
+        const test2Questions = [
+            { text: "She's a big dog but you don't need to be ___.", options: ["frightened", "frightening"], correct: "frightened" },
+            { text: "The instructions for my new coffee machine are really ___.", options: ["confused", "confusing"], correct: "confusing" },
+            { text: "I loved my maths teacher! Lessons with her were never ___.", options: ["bored", "boring"], correct: "boring" },
+            { text: "That shop never has any customers. I'm ___ it's still there.", options: ["surprised", "surprising"], correct: "surprised" },
+            { text: "The battery on my phone only lasts about two hours. It's really ___.", options: ["annoyed", "annoying"], correct: "annoying" }
+        ];
+
+        let test2CurrentQuestion = 0;
+        let test2Answers = {};
+
+        // Toggle questions visibility
+        function toggleQuestions() {
+            const content = document.getElementById('question-content');
+            const arrow = document.getElementById('toggle-arrow');
+            content.classList.toggle('show');
+            arrow.classList.toggle('up');
+        }
+
+        // Load current question للتمرين الأول
+        function loadQuestion(index) {
+            const question = questions[index];
+            document.getElementById('question-number').textContent = `Question ${index + 1} of ${questions.length}`;
+            document.getElementById('question-text').textContent = question.text;
+            document.getElementById('items-counter').textContent = `${questions.length - index} items remaining`;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            question.options.forEach(option => {
+                const optionBtn = document.createElement('span');
+                optionBtn.className = 'option-btn';
+                if (selectedAnswers[index] === option) {
+                    optionBtn.classList.add('selected');
+                }
+                optionBtn.textContent = option;
+                optionBtn.onclick = () => selectOption(index, option);
+                optionsContainer.appendChild(optionBtn);
+            });
+
+            document.getElementById('prev-btn').disabled = index === 0;
+            document.getElementById('next-btn').disabled = index === questions.length - 1;
+
+            document.getElementById('feedback-message').innerHTML = '';
+            document.getElementById('feedback-message').classList.remove('show', 'correct', 'wrong');
+        }
+
+        // Select option للتمرين الأول
+        function selectOption(questionIndex, value) {
+            selectedAnswers[questionIndex] = value;
+            
+            document.querySelectorAll('#options-container .option-btn').forEach(btn => {
+                if (btn.textContent === value) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        // Next question للتمرين الأول
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                loadQuestion(currentQuestion);
+            }
+        }
+
+        // Previous question للتمرين الأول
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion(currentQuestion);
+            }
+        }
+
+        // Show answer للتمرين الأول
+        function showAnswer() {
+            const feedback = document.getElementById('feedback-message');
+            const correctAnswer = questions[currentQuestion].correct;
+            
+            feedback.innerHTML = `<strong>The correct answer is "${correctAnswer}".</strong>`;
+            feedback.className = 'feedback show';
+        }
+
+        // Show feedback للتمرين الأول
+        function showFeedback() {
+            const feedback = document.getElementById('feedback-message');
+            const correctAnswer = questions[currentQuestion].correct;
+            const userAnswer = selectedAnswers[currentQuestion];
+            
+            if (!userAnswer) {
+                feedback.innerHTML = 'Please select an answer first.';
+                feedback.className = 'feedback show wrong';
+                return;
+            }
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = '✓ Excellent! That\'s correct.';
+                feedback.className = 'feedback show correct';
+            } else {
+                feedback.innerHTML = `✗ Sorry, that's not right. The correct answer is "${correctAnswer}".`;
+                feedback.className = 'feedback show wrong';
+            }
+        }
+
+        // Reset current question للتمرين الأول
+        function resetCurrentQuestion() {
+            selectedAnswers[currentQuestion] = null;
+            document.querySelectorAll('#options-container .option-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.getElementById('feedback-message').innerHTML = '';
+            document.getElementById('feedback-message').classList.remove('show', 'correct', 'wrong');
+        }
+
+        // ========== دوال التمرين الثاني ==========
+        
+        function loadTest2Question(index) {
+            const question = test2Questions[index];
+            document.getElementById('test2-question-number').textContent = `Question ${index + 1} of ${test2Questions.length}`;
+            document.getElementById('test2-question-text').textContent = question.text;
+            document.getElementById('test2-counter').textContent = `${test2Questions.length - index} items remaining`;
+
+            const optionsContainer = document.getElementById('test2-options-container');
+            optionsContainer.innerHTML = '';
+            question.options.forEach(option => {
+                const optionBtn = document.createElement('span');
+                optionBtn.className = 'option-btn';
+                if (test2Answers[index] === option) {
+                    optionBtn.classList.add('selected');
+                }
+                optionBtn.textContent = option;
+                optionBtn.onclick = () => selectTest2Option(index, option);
+                optionsContainer.appendChild(optionBtn);
+            });
+
+            document.getElementById('test2-prev-btn').disabled = index === 0;
+            document.getElementById('test2-next-btn').disabled = index === test2Questions.length - 1;
+            
+            document.getElementById('test2-feedback').innerHTML = '';
+            document.getElementById('test2-feedback').style.display = 'none';
+        }
+
+        function selectTest2Option(questionIndex, value) {
+            test2Answers[questionIndex] = value;
+            
+            document.querySelectorAll('#test2-options-container .option-btn').forEach(btn => {
+                if (btn.textContent === value) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+        }
+
+        function nextTest2Question() {
+            if (test2CurrentQuestion < test2Questions.length - 1) {
+                test2CurrentQuestion++;
+                loadTest2Question(test2CurrentQuestion);
+            }
+        }
+
+        function prevTest2Question() {
+            if (test2CurrentQuestion > 0) {
+                test2CurrentQuestion--;
+                loadTest2Question(test2CurrentQuestion);
+            }
+        }
+
+        function checkTest2Answer() {
+            const feedback = document.getElementById('test2-feedback');
+            const correctAnswer = test2Questions[test2CurrentQuestion].correct;
+            const userAnswer = test2Answers[test2CurrentQuestion];
+            
+            if (!userAnswer) {
+                feedback.innerHTML = 'Please select an answer first.';
+                feedback.className = 'feedback show wrong';
+                feedback.style.display = 'block';
+                return;
+            }
+            
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = '✓ Correct! Well done.';
+                feedback.className = 'feedback show correct';
+            } else {
+                feedback.innerHTML = `✗ Wrong. The correct answer is "${correctAnswer}".`;
+                feedback.className = 'feedback show wrong';
+            }
+            feedback.style.display = 'block';
+        }
+
+        function resetTest2() {
+            test2Answers = {};
+            test2CurrentQuestion = 0;
+            loadTest2Question(0);
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                window.location.href = 'index.html';
+            }
+        }
+
+        if (!localStorage.getItem('userId')) {
+            window.location.href = 'index.html';
+        }
+
+        // Load first question
+        loadQuestion(0);
+        loadTest2Question(0);
+    </script>
+</body>
+</html>

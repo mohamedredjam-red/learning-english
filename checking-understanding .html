@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: Checking Understanding - Speaking A1</title>
+  <link rel="icon" href="logo7.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+    }
+
+    .back {
+      margin: 20px 40px;
+    }
+
+    .back a {
+      color: #ffc107;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .task-block {
+      margin-top: 25px;
+    }
+
+    .task-block h3 {
+      color: #003366;
+      margin-bottom: 15px;
+    }
+
+    .question-card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .question-card p {
+      font-weight: bold;
+      color: #0a094e;
+      margin-bottom: 10px;
+    }
+
+    .question-card label {
+      margin-right: 20px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .check-btn {
+      background: #ffc107;
+      border: none;
+      padding: 6px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .check-btn:hover {
+      background: #e0a800;
+    }
+
+    .reset-btn {
+      background: #0a094e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .reset-btn:hover {
+      background: #333366;
+    }
+
+    .next-lesson {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .next-lesson a {
+      background: #ffc107;
+      color: #0a094e;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .next-lesson a:hover {
+      background: #e0a800;
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <a href="welcome.html">ENGLISH | LearnEnglish</a>
+  </div>
+  <div class="buttons">
+    <button>🔍</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="back">
+  <a href="A1speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 1: Checking Understanding</h1>
+    
+    <div class="video-section">
+      <video controls>
+        <source src="videos/20.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:10px;">🎬 Watch Video 1 carefully, then answer:</p>
+    </div>
+
+    <div class="task-block">
+      <h3>Task 1: True / False</h3>
+
+      <div class="question-card">
+        <p>1. Bob wants the hammer.</p>
+        <label><input type="radio" name="q1" value="True"> True</label>
+        <label><input type="radio" name="q1" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(1)">Check Answer</button>
+      </div>
+
+      <div class="question-card">
+        <p>2. Paul is ill.</p>
+        <label><input type="radio" name="q2" value="True"> True</label>
+        <label><input type="radio" name="q2" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(2)">Check Answer</button>
+      </div>
+
+      <div class="question-card">
+        <p>3. The hammer is in the toolbox.</p>
+        <label><input type="radio" name="q3" value="True"> True</label>
+        <label><input type="radio" name="q3" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(3)">Check Answer</button>
+      </div>
+
+      <div class="question-card">
+        <p>4. The hammer is on the right.</p>
+        <label><input type="radio" name="q4" value="True"> True</label>
+        <label><input type="radio" name="q4" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(4)">Check Answer</button>
+      </div>
+
+      <div class="question-card">
+        <p>5. Paul gives Bob the scissors.</p>
+        <label><input type="radio" name="q5" value="True"> True</label>
+        <label><input type="radio" name="q5" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(5)">Check Answer</button>
+      </div>
+
+      <div class="question-card">
+        <p>6. Paul thinks Bob spoke clearly.</p>
+        <label><input type="radio" name="q6" value="True"> True</label>
+        <label><input type="radio" name="q6" value="False"> False</label>
+        <br>
+        <button class="check-btn" onclick="checkTask1(6)">Check Answer</button>
+      </div>
+
+      <button class="reset-btn" onclick="resetTask1()">Reset All Answers</button>
+    </div>
+  </div>
+</div>
+
+<div class="next-lesson">
+  <a href="making-suggestions .html">→ Next Lesson</a>
+</div>
+
+<div class="footer">
+  <div>
+    <a href="welcome.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
+</div>
+
+<script>
+  // الإجابات الصحيحة
+  const correctAnswers = {
+    1: "True",
+    2: "False",
+    3: "True",
+    4: "False",
+    5: "False",
+    6: "True"
+  };
+
+  // دالة التحقق من الإجابة
+  function checkTask1(num) {
+    let selected = document.querySelector(`input[name="q${num}"]:checked`);
+    if (!selected) {
+      alert("⚠️ Please choose an option!");
+      return;
+    }
+    if (selected.value === correctAnswers[num]) {
+      alert("✅ Correct! Well done!");
+    } else {
+      alert("❌ Wrong! Try again.");
+    }
+  }
+
+  // دالة إعادة تعيين جميع الإجابات
+  function resetTask1() {
+    for (let i = 1; i <= 6; i++) {
+      let radios = document.querySelectorAll(`input[name="q${i}"]`);
+      radios.forEach(radio => {
+        radio.checked = false;
+      });
+    }
+    alert("🔄 All answers have been reset!");
+  }
+
+  // دالة تسجيل الخروج
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

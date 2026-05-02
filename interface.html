@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - English Platform</title>
+    <link rel="icon" href="logo7.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('images/333.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .navbar {
+            background: #0a094e;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255,0.1);
+        }
+
+        .navbar h3 {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #ffc107;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(255, 255, 255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #ffc107;
+            color: #1a2b3c;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus {
+            outline: 2px solid #ffc107;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            background: #ffc107;
+            color: #1a2b3c;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: #e0a800;
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .guest-section {
+            margin-top: 25px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 25px;
+        }
+
+        .guest-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid #ffc107;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+
+        .guest-btn:hover {
+            background: #ffc107;
+            color: #1a2b3c;
+        }
+
+        .guest-note {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(40, 167, 69, 0.3);
+            color: #d4edda;
+            border: 1px solid #28a745;
+        }
+
+        .message.error {
+            background: rgba(220, 53, 69, 0.3);
+            color: #f8d7da;
+            border: 1px solid #dc3545;
+        }
+
+        .demo-accounts {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .demo-accounts p {
+            margin: 5px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .demo-accounts strong {
+            color: #ffc107;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link a:hover {
+            color: #ffc107;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #ffc107;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 500px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .nav-links a {
+                margin: 0 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" style="text-decoration: none;"><h3>English Learning Platform</h3></a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about.html">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h2>Welcome Back</h2>
+            
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+            </div>
+
+            <!-- Login Tab -->
+            <div id="login-tab" class="tab-content active">
+                <form id="loginForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" value="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" value="123456" required>
+                    </div>
+                    <button type="button" class="btn-submit" id="loginBtn" onclick="handleLogin()">Login</button>
+                </form>
+                <div id="loginMessage" class="message"></div>
+            </div>
+
+            <!-- Register Tab -->
+            <div id="register-tab" class="tab-content">
+                <form id="registerForm" onsubmit="return false;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="regPassword" minlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="regConfirm" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Level</label>
+                        <select id="regLevel">
+                            <option value="A">A - Beginner</option>
+                            <option value="B">B - Intermediate</option>
+                            <option value="C">C - Advanced</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn-submit" id="registerBtn" onclick="handleRegister()">Create Account</button>
+                </form>
+                <div id="registerMessage" class="message"></div>
+            </div>
+
+            <!-- Guest Access Section -->
+            <div class="guest-section">
+                <button class="guest-btn" onclick="continueAsGuest()">
+                    Continue as Guest
+                </button>
+                <p class="guest-note">
+                    No account needed. Your progress won't be saved.
+                </p>
+            </div>
+
+            <div class="demo-accounts">
+                <p><strong>Demo Accounts:</strong></p>
+                <p>📧 student@example.com / 123456</p>
+                <p>📧 teacher@example.com / 123456</p>
+                <p>📧 mohamed@gmail.com / 123456</p>
+            </div>
+
+            <div class="back-link">
+                <a href="/">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== API Base URL ==========
+        const API_URL = 'http://localhost:5000/api';
+
+        // ========== تبديل التبويبات ==========
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('login-tab').classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('register-tab').classList.add('active');
+            }
+            
+            document.getElementById('loginMessage').style.display = 'none';
+            document.getElementById('registerMessage').style.display = 'none';
+        }
+
+        // ========== تسجيل الدخول ==========
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const messageDiv = document.getElementById('loginMessage');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            messageDiv.style.display = 'none';
+            messageDiv.innerHTML = '';
+            
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="loading"></span> Logging in...';
+            
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // حفظ بيانات المستخدم في localStorage
+                    localStorage.setItem('userId', data.user.id);
+                    localStorage.setItem('userName', data.user.name);
+                    localStorage.setItem('userEmail', data.user.email);
+                    localStorage.setItem('level', data.user.level);
+                    localStorage.setItem('sessionId', data.session_id);
+                    
+                    messageDiv.className = 'message success';
+                    messageDiv.innerHTML = '✅ Login successful! Redirecting...';
+                    messageDiv.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        window.location.href = '/welcome.html';
+                    }, 1000);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.innerHTML = '❌ ' + data.message;
+                    messageDiv.style.display = 'block';
+                    
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = 'Login';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                messageDiv.className = 'message error';
+                messageDiv.innerHTML = '❌ Connection error. Please make sure the server is running.';
+                messageDiv.style.display = 'block';
+                
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = 'Login';
+            }
+        }
+
+        // ========== تسجيل مستخدم جديد ==========
+        async function handleRegister() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const confirm = document.getElementById('regConfirm').value;
+            const level = document.getElementById('regLevel').value;
+            const messageDiv = document.getElementById('registerMessage');
+            const registerBtn = document.getElementById('registerBtn');
+            
+            messageDiv.style.display = 'none';
+            messageDiv.innerHTML = '';
+            
+            // التحقق من تطابق كلمة المرور
+            if (password !== confirm) {
+                messageDiv.className = 'message error';
+                messageDiv.innerHTML = '❌ Passwords do not match';
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            registerBtn.disabled = true;
+            registerBtn.innerHTML = '<span class="loading"></span> Creating account...';
+            
+            try {
+                const response = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, password, level })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // حفظ بيانات المستخدم في localStorage
+                    localStorage.setItem('userId', data.user.id);
+                    localStorage.setItem('userName', data.user.name);
+                    localStorage.setItem('userEmail', data.user.email);
+                    localStorage.setItem('level', data.user.level);
+                    localStorage.setItem('sessionId', data.session_id);
+                    
+                    messageDiv.className = 'message success';
+                    messageDiv.innerHTML = '✅ Account created! Redirecting...';
+                    messageDiv.style.display = 'block';
+                    
+                    setTimeout(() => {
+                        window.location.href = '/welcome.html';
+                    }, 1000);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.innerHTML = '❌ ' + data.message;
+                    messageDiv.style.display = 'block';
+                    
+                    registerBtn.disabled = false;
+                    registerBtn.innerHTML = 'Create Account';
+                }
+            } catch (error) {
+                console.error('Register error:', error);
+                messageDiv.className = 'message error';
+                messageDiv.innerHTML = '❌ Connection error. Please try again.';
+                messageDiv.style.display = 'block';
+                
+                registerBtn.disabled = false;
+                registerBtn.innerHTML = 'Create Account';
+            }
+        }
+
+        // ========== الدخول كزائر ==========
+        function continueAsGuest() {
+            const guestId = 'guest_' + Date.now();
+            const guestName = 'Guest User';
+            const guestLevel = 'A';
+            
+            localStorage.setItem('userId', guestId);
+            localStorage.setItem('userName', guestName);
+            localStorage.setItem('userEmail', 'guest@example.com');
+            localStorage.setItem('level', guestLevel);
+            
+            const loginMessage = document.getElementById('loginMessage');
+            loginMessage.className = 'message success';
+            loginMessage.innerHTML = '👤 Continuing as guest...';
+            loginMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                window.location.href = '/welcome.html';
+            }, 500);
+        }
+
+        // ========== التحقق من تسجيل الدخول مسبقاً ==========
+        if (localStorage.getItem('userId') && !localStorage.getItem('userId').startsWith('guest_')) {
+            // التحقق من صحة الجلسة مع الخادم
+            const sessionId = localStorage.getItem('sessionId');
+            if (sessionId) {
+                fetch(`${API_URL}/verify`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ session_id: sessionId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.valid) {
+                        window.location.href = '/welcome.html';
+                    } else {
+                        // الجلسة غير صالحة، مسح البيانات
+                        localStorage.clear();
+                    }
+                })
+                .catch(() => {
+                    // في حالة خطأ الاتصال، لا نقوم بالتوجيه التلقائي
+                });
+            } else {
+                window.location.href = '/welcome.html';
+            }
+        }
+    </script>
+</body>
+</html>

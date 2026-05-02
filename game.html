@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="javaScript/word-list.js" defer></script>
+    <script src="javaScript/script.js" defer></script>
+    <link rel="icon" type="image/png" href="logo7.png">
+
+    <title>Hangman Game</title>
+</head>
+<body>
+    <div class="back-home" style="background-color: #4CAF50; padding: 10px;">
+       <a href="welcome.html" style="color: white; text-decoration: none;">Back</a>
+    </div>
+    <div class="game-modal">
+        <div class="content">
+            <img src="lost.gif" alt="gif">
+            <h4>Game Over!</h4>
+            <p>The correct word was: <b>rainbow</b></p>
+            <button class="play-again" onclick="location.reload()">Play Again</button>        </div>
+        
+    </div>
+    <div class="container">
+        <div class="hangman-box">
+            <img src="hangman-0.svg" alt="hangman-img">
+            <h1>Hangman Game</h1>
+        </div>
+        <div class="game-box">
+            <ul class="word-display"></ul>
+                           
+           <h4 class="hint-text">
+                Hint:
+                <b>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</b>
+            </h4>
+            <h4 class="guesses-text">
+                Incorrect guesses:
+                <b>0 / 6<b>
+            </h4>
+            <div class="keyboard"></div>
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

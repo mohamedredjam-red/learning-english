@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium English Learning</title>
+<link rel="icon" type="image/png" href="logo7.png">
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    }
+
+    body{
+    font-family:'Poppins',sans-serif;
+    }
+
+    /* Navbar */
+    nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:6px 30px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
+    z-index:1000;
+    }
+
+    nav img{
+    width:110px;
+    cursor:pointer;
+    }
+
+    nav ul{
+    display:flex;
+    align-items:center;
+    }
+
+    nav ul li{
+    list-style:none;
+    margin-left:20px;
+    }
+
+    nav ul li a{
+    text-decoration:none;
+    color:#151564;
+    font-size:14px;
+    font-weight:500;
+    transition:0.3s;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+    color:#Fdc93b;
+    }
+
+    /* Home */
+    #home{
+    background-image:linear-gradient(rgba(9,5,54,0.3),rgba(5,4,46,0.6)),url(images/image.png);
+    background-size:cover;
+    background-position:center;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    }
+
+    #home h2{
+    color:#fff;
+    font-size:2.3rem;
+    margin-bottom:15px;
+    }
+
+    #home p{
+    color:#fff;
+    width:60%;
+    font-size:15px;
+    line-height:28px;
+    margin-bottom:25px;
+    }
+
+    /* Buttons */
+    .btn a{
+    text-decoration:none;
+    padding:12px 24px;
+    margin:8px;
+    border-radius:5px;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+    }
+
+    .blue{
+    background:#151564;
+    color:#fff;
+    }
+
+    .blue:hover{
+    background:#Fdc93b;
+    color:#000;
+    }
+
+    .yellow{
+    background:#Fdc93b;
+    color:#000;
+    }
+
+    .yellow:hover{
+    background:#fff;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+
+    nav{
+    padding:8px 15px;
+    }
+
+    nav img{
+    width:90px;
+    }
+
+    nav ul li{
+    margin-left:10px;
+    }
+
+    nav ul li a{
+    font-size:12px;
+    }
+
+    #home h2{
+    font-size:1.6rem;
+    }
+
+    #home p{
+    width:90%;
+    font-size:13px;
+    }
+
+    }
+    #features{
+        padding: 5vw 8vw 0 8vw;
+        text-align: center;
+    }
+    #features .fea-base{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+        grid-gap: 1rem;
+        margin-top: 50px;
+    }
+    #features .fea-box{
+        background-color: #F9F9FF;
+        text-align: start;
+    }
+    #features .fea-box i{
+        font-size: 2.3rem;
+        color: rgb(44, 44, 80);
+    }
+    #features .fea-box h3{
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: rgb(46, 46, 59);
+        padding: 13px 0 7px 0;
+    }
+    #features .fea-box p{
+        font-size: 1rem;
+        font-weight: 400;
+        color: rgb(70, 70, 87);
+    }
+
+    #course{
+        padding: 8vw 8vw 0 8vw;
+        text-align: center;
+    }
+    #course .course-box{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+        grid-gap: 1rem;
+        margin-top: 50px;
+    }
+    #course .courses{
+        text-align: start;
+        background-color: #F9F9FF;
+        height: 100%;
+        position: relative;
+    }
+
+    #course .courses img{
+        width: 100%;
+        height: 60%;
+        background-size: cover;
+        background-position: center;
+    }
+     #course .courses .details{
+        padding: 15px 15px 0 15px;
+     }
+      #course .courses .details i{
+        color: #Fdc93b;
+        font-size: .9rem;
+      }
+       #course .courses .cost{
+        background-color: rgb(74, 74, 136);
+        color: #fff;
+        line-height: 70px;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        right: 15px;
+        bottom: 100px;
+       }
+       #experts{
+        padding: 8vw 8vw 0 8vw;
+        text-align: center;
+       }
+       
+       #experts .profile img{
+        width: 160px;
+        height: 160px;
+
+       }
+
+       #experts .expert-box{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        grid-gap: 1rem;
+        margin-top: 50px;
+       }
+       #experts .expert-box .profile{
+        background: #fafaf1;
+        padding: 30px 10px;
+       }
+       #experts .expert-box .profile  
+       .pro-links{
+        margin-top: 10px;
+
+       }
+       .pro-links i{
+        padding: 10px 13px;
+        border: 1px solid rgb(21, 21, 100);
+        cursor: pointer;
+        transition: 0.3s ease;
+       }
+       .pro-links i:hover{
+        background: rgb(21, 21, 100);
+        color: #fff;
+        border: 1px solid rgb(21, 21, 100);
+        cursor: pointer;
+        
+       }
+       footer{
+        padding: 8vw;
+        background-color: #101C32;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+       }
+       footer .footer-col{
+        padding-bottom: 40px;
+       }
+       footer h3{
+        color: rgb(241, 240, 245);
+        font-weight: 600;
+        padding-bottom: 20px;
+       }
+       footer li{
+        list-style: none;
+        color: #7b838a;
+        padding: 10px 0;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s ease;
+       }
+       footer li:hover{
+        color: rgb(241, 240, 245);
+       }
+       footer p{
+        color: #7b838a;
+       }
+       footer .subscribe{
+        margin-top: 20px;
+       }
+       footer input{
+        width: 220px;
+        padding: 15px 12px;
+        background: #334F6C;
+        border: none;
+        outline: none;
+        color: #fff;
+       }
+       footer .subscribe a{
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 12px 15px;
+        background-color: #fff;
+        font-weight: 600;
+       }
+       footer .subscribe a.yellow{
+        color: #2C2C2C;
+        background: #Fdc93b;
+        transition: 0.3s ease;
+
+       }
+       footer .subscribe a.yellow:hover{
+        color: rgb(21, 21, 100);
+        background: #fff;
+       }
+       footer .copyright{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+       }
+       footer .copyright p{
+        color: #fff;
+       }
+       footer .copyright .pro-links{
+        margin-top: 0px;
+
+       }
+       footer .copyright .pro-links i{
+        background-color: #5f7185;
+        color: #fff;
+       }
+       footer .copyright .pro-links i:hover{
+        background-color: #Fdc93b;
+        color: #2c2c2c;
+        
+       }
+
+
+</style>
+</head>
+
+<body>
+
+    <nav>
+        <img src="images/logo12.png" alt="Logo">
+
+    <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Help</a></li>
+    </ul>
+</nav>
+
+<section id="home">
+    <h2>Unlock Premium English Learning Excellence</h2>
+
+    <p>
+        Welcome to a premium English learning experience designed for ambitious learners who seek real progress and lasting success. Learn speaking, grammar, writing and listening with confidence.
+    </p>
+
+    <div class="btn">
+        <a href="#" class="blue">Learn More</a>
+        <a href="#" class="yellow">Visit Courses</a>
+    </div>
+
+</section>
+<section id="features">
+    <h1>Awesome features</h1>
+    <p>Improve your English skills with expert lessons and modern tools designed for success.</p>
+    <div class="fea-base">
+        <div class="fea-box">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Expert English Teachers</h3>
+            <p>Learn from professional instructors with modern teaching methods and real experience.</p>
+
+        </div>
+        <div class="fea-box">
+            <i class="fas fa-file-certificate"></i>
+            <h3>Interactive Online Courses</h3>
+            <p>Enjoy engaging lessons in grammar, speaking, writing, and listening anytime.</p>
+
+        </div>
+        <div class="fea-box">
+            <i class="fas fa-award"></i>
+            <h3>International Certificate</h3>
+            <p>Receive a trusted certificate after completing your English learning journey.</p>
+
+        </div>
+    </div>
+</section>
+<section id="course">
+    <h1>Our Popular Courses</h1>
+    <p>Explore our most popular English courses designed to improve your skills quickly and effectively.</p>
+    <div class="course-box">
+        <div class="courses">
+            <img src="images/EP.png" alt="">
+            <div class="details">
+                <span>Updates 22/04/2026</span>
+                <h6>Exam Preparation Course</h6>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(239)</span>
+                </div>
+            </div>
+            <div class="cost">
+                $42.99
+            </div>
+        </div>
+        <div class="courses">
+            <img src="images/ESP.png" alt="">
+            <div class="details">
+                <span>Updates 22/04/2026</span>
+                <h6>English For Specific Purposes Course</h6>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(218)</span>
+                </div>
+            </div>
+            <div class="cost">
+                $59.99
+            </div>
+        </div>
+        <div class="courses">
+            <img src="images/BE.png" alt="">
+            <div class="details">
+                <span>Updates 22/04/2026</span>
+                <h6>Buisness English Course</h6>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(150)</span>
+                </div>
+            </div>
+            <div class="cost">
+                $33.99
+            </div>
+        </div>
+        <div class="courses">
+            <img src="images/GE.png" alt="">
+            <div class="details">
+                <span>Updates 22/04/2026</span>
+                <h6>General English Course</h6>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>(314)</span>
+                </div>
+            </div>
+            <div class="cost">
+                $29.99
+            </div>
+        </div>
+    </div>
+</section>
+<section id="experts">
+    <h1>community Experts</h1>
+    <p>Meet our professional English experts dedicated to helping you improve your skills with modern methods, clear guidance, and real results.</p>
+    
+    <div class="expert-box">
+        <div class="profile">
+            <img src="images/pro1.png" alt="">
+            <h6>David Smith</h6>
+            <p>Business English Coach</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="images/pro2.png" alt="">
+            <h6>Sarah Brown</h6>
+            <p>Grammar & Writing Expert</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="images/pro3.png" alt="">
+            <h6>Emma Johnson</h6>
+            <p>IELTS & Speaking Expert</p>
+            <div class="pro-links">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-linkedin"></i>
+            </div>
+        </div>
+    </div> 
+</section>
+<footer>
+    <div class="footer-col">
+        <h3>Popular Courses</h3>
+        <li>English Grammar Mastery</li>
+        <li>Speaking Confidence</li>
+        <li>Business English</li>
+        <li>IELTS Preparation</li>
+    </div>
+
+    <div class="footer-col">
+        <h3>Quick Links</h3>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Courses</li>
+        <li>Contact Us</li>
+    </div>
+
+    <div class="footer-col">
+        <h3>Learning Resources</h3>
+        <li>Free Lessons</li>
+        <li>Vocabulary Guides</li>
+        <li>Pronunciation Tips</li>
+        <li>Study Blog</li>
+    </div>
+
+    <div class="footer-col">
+        <h3>Support</h3>
+        <li>Help Center</li>
+        <li>FAQ</li>
+        <li>Terms of Service</li>
+        <li>Privacy Policy</li>
+    </div>
+
+    <div class="footer-col">
+        <h3>Newsletter</h3>
+        <p>Subscribe to receive new courses, learning tips, and exclusive offers.</p>
+
+        <div class="subscribe">
+            <input type="text" placeholder="Enter Your Email">
+            <a href="#" class="yellow">SUBSCRIBE</a>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 All Rights Reserved | Designed by ENGLISH ACADEMY</p>
+
+        <div class="pro-links">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-youtube"></i>
+        </div>
+    </div>
+</footer>
+
+<script>
+/* ضع هذا الكود فقط قبل </body> مباشرة */
+/* لا يغيّر أي شيء في HTML أو CSS */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* روابط القائمة العلوية */
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    navLinks[0].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "Online-courses.html";
+    };
+
+    navLinks[1].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "about_premium.html";
+    };
+
+    navLinks[2].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "courses.html";
+    };
+
+    navLinks[3].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "contact.html";
+    };
+
+    navLinks[4].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "help.html";
+    };
+
+    /* أزرار الصفحة الرئيسية */
+    const buttons = document.querySelectorAll(".btn a");
+
+    buttons[0].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "about.html";
+    };
+
+    buttons[1].onclick = function(e){
+        e.preventDefault();
+        window.location.href = "courses.html";
+    };
+
+    /* بطاقات الدروس */
+    const courses = document.querySelectorAll(".courses");
+
+    courses[0].onclick = function(){
+        window.location.href = "exam-preparation.html";
+    };
+
+    courses[1].onclick = function(){
+        window.location.href = "esp-course.html";
+    };
+
+    courses[2].onclick = function(){
+        window.location.href = "business-english.html";
+    };
+
+    courses[3].onclick = function(){
+        window.location.href = "general-english.html";
+    };
+
+    /* جعل البطاقات قابلة للنقر */
+    courses.forEach(function(course){
+        course.style.cursor = "pointer";
+    });
+
+    /* زر الاشتراك */
+    const subscribeBtn = document.querySelector(".subscribe a");
+
+    subscribeBtn.onclick = function(e){
+        e.preventDefault();
+        alert("Thank you for subscribing!");
+    };
+
+});
+</script>
+</body>
+</html>

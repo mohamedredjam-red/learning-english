@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Writing A2 | Personal Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0a094e 0%, #1a1a7f 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+      border-bottom: 3px solid #ffc107;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .lesson-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-box {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      margin: 25px 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      color: #000;
+      transition: all 0.3s ease;
+    }
+
+    .section-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .section-box h2 {
+      margin-bottom: 15px;
+      color: #0a094e;
+      font-size: 24px;
+      border-bottom: 2px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    .section-box h3 {
+      color: #1a1a7f;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .section-box p {
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .question-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+
+    .question-card h3 {
+      color: #0a094e;
+      margin-bottom: 15px;
+    }
+
+    .group-box {
+      background: #f8f9fa;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .group-box h4 {
+      color: #0a094e;
+      margin-bottom: 10px;
+    }
+
+    .group-box label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    .group-box input[type="checkbox"] {
+      margin-right: 10px;
+      accent-color: #ffc107;
+    }
+
+    button {
+      margin: 8px 8px 8px 0;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+    }
+
+    .check-btn {
+      background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+      color: #0a094e;
+    }
+
+    .reset-btn {
+      background: linear-gradient(135deg, #0a094e 0%, #1a1a7f 100%);
+      color: white;
+      border: 2px solid #ffc107;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      border-top: 2px solid rgba(255, 193, 7, 0.3);
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    footer nav a {
+      color: #ffc107;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer nav a:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Writing A2 | Lesson: A personal profile</h1>
+  </header>
+
+  <div class="lesson-container">
+    <!-- Reading Text -->
+    <div class="section-box">
+      <h2>📖 Reading text</h2>
+      <h3>About me</h3>
+      <p>By day I'm a regular guy and by night a superhero ... How tiring is that?! Just joking! I'm a regular guy all the time, good job, close to my family, just bought my own flat with a cat. Actually, my cat thinks I'm a hero because I saved her from the street. I'm a talkative person and I believe communication is the most important thing in a relationship.</p>
+
+      <h3>Likes and dislikes</h3>
+      <p>I love pizza if it's Italian, wine if it's white, and football if it's the World Cup. I read a lot, especially true life stories, but most of my books live on my phone.</p>
+
+      <h3>Hobbies</h3>
+      <p>I love to travel and I'm always planning my next trip. I prefer an active holiday like hiking, skiing or watersports and I get bored lying on the beach. I post lots of photos on Instagram as I'm a good photographer but I'd really love to share the holiday with someone. Maybe you'll take the photos on the next trip. 😊</p>
+    </div>
+
+    <!-- Tips -->
+    <div class="section-box">
+      <h2>💡 Tips</h2>
+      <ol>
+        <li>Write about your good points, not your bad points.</li>
+        <li>Don't include every single thing. Choose a few points and focus on them.</li>
+        <li>Don't add your contact details (e.g. address, phone number).</li>
+        <li>Check your spelling and punctuation before you post.</li>
+        <li>You can use punctuation and emojis when you're joking, e.g. ?! and 😊.</li>
+      </ol>
+    </div>
+
+    <!-- Task 1: Classify Sentences -->
+    <div class="section-box">
+      <h2>📝 Task 1: Classify the sentences</h2>
+      <p>Select which group each sentence belongs to:</p>
+
+      <div class="group-box">
+        <h4>✅ Facts (True statements about the writer)</h4>
+        <label><input type="checkbox" class="fact" value="I'm a good photographer."> I'm a good photographer.</label>
+        <label><input type="checkbox" class="fact" value="I believe communication is the most important thing."> I believe communication is the most important thing.</label>
+        <label><input type="checkbox" class="fact" value="I'd really love to share the holiday with someone."> I'd really love to share the holiday with someone.</label>
+        <label><input type="checkbox" class="fact" value="I prefer an active holiday."> I prefer an active holiday.</label>
+      </div>
+
+      <div class="group-box">
+        <h4>😂 Funny things to say (Jokes or humorous statements)</h4>
+        <label><input type="checkbox" class="funny" value="Maybe you'll take the photos on the next trip. ;)"> Maybe you'll take the photos on the next trip. ;)</label>
+        <label><input type="checkbox" class="funny" value="I'm a superhero."> I'm a superhero.</label>
+        <label><input type="checkbox" class="funny" value="My cat thinks I'm a hero."> My cat thinks I'm a hero.</label>
+      </div>
+
+      <button class="check-btn" onclick="checkTask1()">✅ Check Answer</button>
+      <button class="reset-btn" onclick="resetTask1()">🔄 Reset</button>
+    </div>
+  </div>
+
+  <footer>
+    <nav>
+      <a href="welcome.html">Home</a> | 
+      <a href="about.html">About</a> | 
+      <a href="#">Contact</a> | 
+      <a href="#">Help</a>
+    </nav>
+    <p>© 2026 English Learning Platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const correctFacts = [
+      "I'm a good photographer.",
+      "I believe communication is the most important thing.",
+      "I'd really love to share the holiday with someone.",
+      "I prefer an active holiday."
+    ];
+
+    const correctFunny = [
+      "Maybe you'll take the photos on the next trip. ;)",
+      "I'm a superhero.",
+      "My cat thinks I'm a hero."
+    ];
+
+    function checkTask1() {
+      let selectedFacts = [];
+      let selectedFunny = [];
+
+      document.querySelectorAll('.fact:checked').forEach(el => {
+        selectedFacts.push(el.value);
+      });
+      document.querySelectorAll('.funny:checked').forEach(el => {
+        selectedFunny.push(el.value);
+      });
+
+      let allFactsCorrect = correctFacts.every(f => selectedFacts.includes(f));
+      let allFunnyCorrect = correctFunny.every(f => selectedFunny.includes(f));
+      let noExtraFacts = selectedFacts.length === correctFacts.length;
+      let noExtraFunny = selectedFunny.length === correctFunny.length;
+
+      if (allFactsCorrect && allFunnyCorrect && noExtraFacts && noExtraFunny) {
+        alert("✅ Perfect! All sentences are correctly classified!");
+      } else {
+        alert("❌ Some sentences are misplaced. Make sure you select ALL correct sentences in each group!");
+      }
+    }
+
+    function resetTask1() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+        el.checked = false;
+      });
+    }
+  </script>
+</body>
+</html>

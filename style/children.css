@@ -1,0 +1,333 @@
+:root{
+    --primary:#ee813929;
+    --dark:#3d4b5c;
+    --black:#000;
+    --white:#fff;
+    --secondary:#ff7a18;
+    --gray:#777;
+    --text:#2ec4b6;
+    --shadow:0 5px 15px rgba(0,0,0,0.1);
+    --max-width: 120px;
+}
+body{
+    overflow-x: hidden;
+}
+body::-webkit-scrollbar{
+    width: 10px;
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--secondary);
+    border-radius: 10px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+
+}
+html{scroll-behavior: smooth;}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: var(--secondary);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.logo{
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--white);
+    line-height: 38px;
+}
+.logo img{
+    width: 40px;
+    vertical-align: bottom;
+}
+nav{display: flex; gap: 25px;}
+nav a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 15px;
+
+}
+.hamburger{
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+
+}
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('images/heroBack.png'),var(--primary);
+    padding: 60px 8%;
+    background-size: 100%;
+    flex-wrap: wrap;
+}
+.hero-text{
+    flex: 1;
+    min-width: 300px
+}
+.subTitle{
+    color: var(--secondary);
+    font-weight: bold;
+}
+.heading{
+    font-size: 58px;
+    margin: 15px 0;
+    font-weight: 900;
+    color: var(--dark);
+
+}
+.desc{
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 25px;
+
+}
+.btn{
+    font-size: 17px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+
+}
+.btn1{
+    background: var(--secondary);
+    color: var(--white);
+}
+.btn2{
+    background: var(--text);
+    color: var(--white);
+}
+.hero-img{
+    flex: 1;
+    text-align: center;
+    min-width: 300px;
+    position: relative;
+}
+.hero-img img{
+    max-width: 450px;
+    border-radius: 10px;
+    margin-bottom: -60px;
+}
+.heroIcon1,
+.heroIcon2,
+.heroIcon3,
+.heroIcon4{
+    position: absolute;
+    z-index: 9999;
+    width: 100px!important;
+
+}
+.heroIcon1{
+    left: 10px;
+    top: 100px;
+    animation: slideDown 1s ease-in-out infinite alternate;
+}
+.heroIcon2{
+    right: 0;
+    bottom: 0;
+    animation: slideRight 1s ease-in-out infinite alternate;
+
+}
+.heroIcon3{
+    left: 0;
+    bottom: 0;
+    animation: slideDown1 1s ease-in-out infinite alternate;
+}
+.heroIcon4{
+    right: 0;
+    bottom: 10px;
+    animation: slideRight1 1s ease-in-out infinite alternate;
+}
+@keyframes slideDown{
+    from{top: 100px}
+    to{top: 120px;}
+}
+@keyframes slideRight{
+    from{right: 0px}
+    to{right: 20px;}
+}
+@keyframes slideDown1{
+    from{bottom: 0px;}
+    to{bottom: 20px;}
+}
+@keyframes slideRight1{
+    from{right: 0px;}
+    to{right: 20px;}
+}
+
+/* ========== قسم المستويات ========== */
+.levels-section {
+    padding: 80px 8%;
+    background: linear-gradient(135deg, #fef9f0 0%, #fff 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header .subTitle {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: 42px;
+    color: var(--dark);
+    margin: 15px 0;
+}
+
+.section-title span {
+    color: var(--secondary);
+}
+
+.section-desc {
+    color: var(--gray);
+    font-size: 18px;
+}
+
+/* شبكة البطاقات */
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* بطاقة المستوى */
+.level-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.level-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.level-number {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    color: rgba(238, 129, 57, 0.15);
+    font-family: Arial, sans-serif;
+}
+
+.level-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.level-icon i {
+    font-size: 40px;
+    color: var(--secondary);
+}
+
+.level-title {
+    font-size: 28px;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.level-age {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #eee;
+}
+
+.level-topics {
+    list-style: none;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.level-topics li {
+    padding: 8px 0;
+    color: var(--gray);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.level-topics li i {
+    color: var(--secondary);
+    font-size: 16px;
+    width: 20px;
+}
+
+.level-btn {
+    background: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.level-btn:hover {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .levels-section {
+        padding: 50px 5%;
+    }
+    
+    .level-card {
+        padding: 25px 20px;
+    }
+    
+    .level-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .levels-grid {
+        grid-template-columns: 1fr;
+    }
+}

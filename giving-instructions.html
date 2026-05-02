@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: Giving instructions - Speaking A2</title>
+  <link rel="icon" href="logo7.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+    }
+
+    .back {
+      margin: 20px 40px;
+    }
+
+    .back a {
+      color: #ffc107;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back a:hover {
+      color: #e0a800;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    video {
+      width: 100%;        
+      max-width: 700px; 
+      height: auto;      
+      display: block;
+      margin: 0 auto;     
+      border-radius: 10px; 
+    }
+
+    .questions-container {
+      margin-top: 20px;
+    }
+
+    .question-item {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      transition: box-shadow 0.3s;
+    }
+
+    .question-item:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .question-item p {
+      font-weight: bold;
+      color: #0a094e;
+      margin-bottom: 10px;
+    }
+
+    .answer-input {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .answer-input input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      min-width: 200px;
+    }
+
+    .answer-input button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #0a094e;
+    }
+
+    .answer-input button:hover {
+      background: #e0a800;
+    }
+
+    .answer-feedback {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .answer-feedback.correct {
+      color: green;
+      font-weight: bold;
+    }
+
+    .answer-feedback.wrong {
+      color: red;
+      font-weight: bold;
+    }
+
+    .reset-all {
+      background: #0a094e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .reset-all:hover {
+      background: #333366;
+    }
+
+    .next-lesson {
+      text-align: center;
+      margin: 30px 0 0;
+    }
+
+    .next-lesson a {
+      background: #ffc107;
+      color: #0a094e;
+      text-decoration: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .next-lesson a:hover {
+      background: #e0a800;
+    }
+
+    hr {
+      margin: 25px 0;
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      margin-top: 40px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+    }
+
+    .footer a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <a href="welcome.html">ENGLISH | LearnEnglish</a>
+  </div>
+  <div class="buttons">
+    <button>🔍</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="back">
+  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 2: Giving instructions</h1>
+
+    <!-- الفيديو الأول -->
+    <div class="video-section">
+      <video controls>
+        <source src="videos/7.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:10px;">🎬 Watch Video 1 carefully, then answer:</p>
+    </div>
+
+    <div class="questions-container">
+      <div class="question-item" id="q1">
+        <p>❓ 1. What did Peppa say to the queen to make her stop?</p>
+        <div class="answer-input">
+          <input type="text" id="answer1" placeholder="Type your answer here.....">
+          <button onclick="checkQuestion(1)">Check Answer</button>
+        </div>
+        <div id="feedback1" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q2">
+        <p>❓ 2. What instruction did Peppa give the queen regarding the silkworm in the mud?</p>
+        <div class="answer-input">
+          <input type="text" id="answer2" placeholder="Type your answer here.....">
+          <button onclick="checkQuestion(2)">Check Answer</button>
+        </div>
+        <div id="feedback2" class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- الفيديو الثاني -->
+    <div class="video-section">
+      <video controls>
+        <source src="videos/8.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p style="margin-top:10px;">🎬 Watch Video 2 carefully, then answer:</p>
+    </div>
+
+    <div class="questions-container">
+      <div class="question-item" id="q3">
+        <p>❓ 3. What instructions did Peppa give George to make perfume?</p>
+        <div class="answer-input">
+          <input type="text" id="answer3" placeholder="Type your answer...">
+          <button onclick="checkQuestion(3)">Check Answer</button>
+        </div>
+        <div id="feedback3" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q4">
+        <p>❓ 4. What did Peppa say to George when he tried to put grass in the beaker?</p>
+        <div class="answer-input">
+          <input type="text" id="answer4" placeholder="Type your answer...">
+          <button onclick="checkQuestion(4)">Check Answer</button>
+        </div>
+        <div id="feedback4" class="answer-feedback"></div>
+      </div>
+    </div>
+
+    <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+
+    <div class="next-lesson">
+      <a href="showing-interest .html">→ Next Lesson</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div>
+    <a href="welcome.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
+</div>
+
+<script>
+  // الإجابات الصحيحة
+  const correctAnswers = {
+    1: ["stop"], 
+    2: ["you must wear your boots"], 
+    3: ["first i pick a smelly flower then i put it in my beaker"], 
+    4: ["you can't put grass in my perfume, it needs to smell of flowers"]  
+  };
+
+  // دالة التحقق من الإجابة
+  function checkQuestion(num) {
+    let input = document.getElementById(`answer${num}`);
+    let val = input.value.trim().toLowerCase();
+    let fb = document.getElementById(`feedback${num}`);
+
+    if (val === "") {
+      alert("⚠️ Please type an answer before checking!");
+      return;
+    }
+
+    let isCorrect = correctAnswers[num].some(ans => val === ans);
+
+    if (isCorrect) {
+      fb.innerHTML = "✅ Correct! Well done!";
+      fb.className = "answer-feedback correct";
+      input.style.border = "2px solid green";
+    } else {
+      fb.innerHTML = "❌ Try again! Watch the video carefully.";
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid red";
+    }
+  }
+
+  // دالة إعادة تعيين جميع الإجابات
+  function resetAllQuestions() {
+    for (let i = 1; i <= 4; i++) {
+      let input = document.getElementById(`answer${i}`);
+      if (input) {
+        input.value = "";
+        input.style.border = "2px solid #ddd";
+      }
+      let feedback = document.getElementById(`feedback${i}`);
+      if (feedback) {
+        feedback.innerHTML = "";
+        feedback.className = "answer-feedback";
+      }
+    }
+  }
+
+  // دالة تسجيل الخروج
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

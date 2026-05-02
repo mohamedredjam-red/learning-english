@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>About Us | Children's Learning Hub</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Ubuntu for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(145deg, #eef5ff 0%, #d9e9ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ----- NAVBAR (fixed, modern) ----- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 16px 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        nav .navbar {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .navbar .logo a {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e3c72, #2b4c8a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        nav .navbar .logo a:hover {
+            transform: scale(1.02);
+        }
+
+        nav .navbar .menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav .navbar .menu li a {
+            font-size: 17px;
+            font-weight: 500;
+            color: #1e2f4e;
+            transition: all 0.25s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav .navbar .menu li a:hover {
+            color: #2b6ef0;
+            border-bottom-color: #2b6ef0;
+        }
+
+        nav .navbar .menu li:last-child a {
+            color: #1e2f4e;
+        }
+
+        /* Responsive navbar */
+        @media (max-width: 750px) {
+            nav .navbar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 0;
+            }
+            nav .navbar .menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+            nav {
+                padding: 12px 0;
+            }
+        }
+
+        /* ----- MAIN SECTION: Blue background with TEXT on LEFT, IMAGE on RIGHT ----- */
+        .about-hero {
+            margin-top: 88px;
+            width: 100%;
+            min-height: calc(100vh - 88px);
+            background: linear-gradient(115deg, #0a2b5e 0%, #1a4a8b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle floating shapes for depth */
+        .about-hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .about-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -15%;
+            left: -5%;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(64,128,255,0.12) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* main container: split 2 columns */
+        .about-container {
+            max-width: 1300px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            z-index: 2;
+            backdrop-filter: blur(2px);
+        }
+
+        /* LEFT SIDE - TEXT AREA */
+        .text-side {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 48px;
+            padding: 44px 40px;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .text-side:hover {
+            transform: translateY(-5px);
+        }
+
+        /* paragraph area styling */
+        .content-paragraph {
+            font-size: 1.12rem;
+            line-height: 1.7;
+            color: #1f2e4a;
+            font-weight: 500;
+        }
+
+        .content-paragraph p {
+            margin-bottom: 18px;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #0a2b5e, #2b6ef0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 5px solid #2b6ef0;
+            padding-left: 20px;
+        }
+
+        .welcome-title i {
+            font-size: 2rem;
+            color: #2b6ef0;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #2b6ef0;
+        }
+
+        .highlight-text {
+            background: #f0f7ff;
+            padding: 14px 18px;
+            border-radius: 28px;
+            border-left: 4px solid #2b6ef0;
+            margin: 24px 0;
+            font-weight: 500;
+        }
+
+        .decor-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            color: #2b6ef0;
+            font-weight: 600;
+        }
+
+        .decor-icon i {
+            font-size: 24px;
+        }
+
+        /* RIGHT SIDE - IMAGE with zoom-in effect (from smaller to larger - zoom in effect) */
+        .image-side {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .image-frame {
+            max-width: 480px;
+            width: 100%;
+            border-radius: 42px;
+            overflow: hidden;
+            box-shadow: 0 35px 55px -15px rgba(0, 0, 0, 0.35), 0 0 0 8px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* ZOOM-IN EFFECT: starts SMALL (scale 0.75) and grows to LARGER (scale 1.1) then settles to normal */
+            /* لكن حسب الطلب: "من التصغير للتكبير" - من صغير إلى كبير */
+            animation: zoomFromSmallToLarge 1.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+        }
+
+        /* تأثير الزوم: يبدأ الصورة أصغر حجماً (مصغرة) ثم يكبر ليصبح أكبر قليلاً من حجمها الطبيعي */
+        @keyframes zoomFromSmallToLarge {
+            0% {
+                transform: scale(0.7);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Hover effect: image scales smoothly inside frame */
+        .image-frame:hover img {
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+
+        /* responsive adjustments */
+        @media (max-width: 850px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .text-side {
+                text-align: left;
+                order: 1;
+                padding: 32px 28px;
+            }
+            .image-side {
+                order: 2;
+            }
+            .welcome-title {
+                border-left: none;
+                padding-left: 0;
+                justify-content: center;
+            }
+            .image-frame {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .about-hero {
+                padding: 40px 5%;
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .text-side {
+                padding: 28px 20px;
+            }
+            .welcome-title {
+                font-size: 1.6rem;
+            }
+            .content-paragraph {
+                font-size: 1rem;
+            }
+        }
+
+        /* footer styling */
+        .footer-note {
+            background: #0a1c34;
+            text-align: center;
+            padding: 18px;
+            color: #bbd4ff;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .footer-note a {
+            color: #7dabff;
+            text-decoration: none;
+        }
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="navbar">
+        <div class="logo"><a href="#">✨ About Us</a></div>
+        <ul class="menu">
+            <li><a href="children-learning.html"> Home</a></li>
+            <li><a href="about-kids.html"> About</a></li>
+            <li><a href="Chat-bot.html"> Help</a></li>
+            <li><a href="https://www.instagram.com/english_learning_page__/" target="_blank"> Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main blue background section: TEXT on LEFT, IMAGE on RIGHT -->
+<section class="about-hero">
+    <div class="about-container">
+        <!-- LEFT SIDE: Text area with the provided paragraph (enhanced) -->
+        <div class="text-side">
+            <div class="welcome-title">
+                <i class="fas fa-child"></i> 
+                <span>Welcome to Our Learning World!</span>
+            </div>
+            <div class="content-paragraph">
+                <p>🌟 We believe that every child between the ages of 3 and 12 deserves a fun, safe, and engaging space to learn English. Our platform is specially designed to turn language learning into an exciting adventure through interactive stories, catchy songs, colorful games, and animated lessons.</p>
+                
+                <p>🎯 Whether your child is just starting to say their first English words or is already building sentences, we meet them at their exact level. Our team of educators and child development experts works hard to create content that builds confidence, sparks curiosity, and makes learning English a joyful daily habit.</p>
+                
+                <div class="highlight-text">
+                    <i class="fas fa-heart" style="margin-right: 10px; color: #2b6ef0;"></i>
+                    <strong>Join us today</strong> and watch your little one fall in love with English, naturally and happily!
+                </div>
+                
+                <div class="decor-icon">
+                    <i class="fas fa-smile-wink"></i>
+                    <span><a href="children-learning.html">Start the adventure →</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: Image with ZOOM IN effect (from small to large - zoom in dynamic) -->
+        <div class="image-side">
+            <div class="image-frame">
+                
+                <img src="images/hero2.png" alt="Kids learning together - creative illustration">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="footer-note">
+    <a href="#">Contact team</a>
+</div>
+
+
+</body>
+</html>
