@@ -23,6 +23,8 @@
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
+            display: flex;
+            flex-direction: column;
         }
 
         /* ===== HEADER ===== */
@@ -95,7 +97,7 @@
         /* ===== شريط البحث المتغير ===== */
         .search-wrapper {
             display: flex;
-            align-items: center;
+-align-items: center;
             gap: 0;
             position: relative;
         }
@@ -357,13 +359,15 @@
 
         .main-content {
             min-height: 200px;
+            flex: 1;
         }
 
         .main-footer {
             background: #0a094e;
             padding: 30px 30px;
-            margin-top: 30px;
             border-top: 3px solid #ffc107;
+            width: 100%;
+            margin-top: auto;
         }
 
         .footer-links {
@@ -506,6 +510,14 @@
                 right: 10px;
                 width: 280px;
             }
+            
+            .main-footer {
+                padding: 25px 20px;
+            }
+            
+            .footer-links {
+                gap: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -615,6 +627,16 @@
             
             .search-result-description {
                 font-size: 10px;
+            }
+            
+            .main-footer {
+                padding: 20px 15px;
+            }
+            
+            .footer-links {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
