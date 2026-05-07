@@ -86,6 +86,68 @@
             background-position-x: calc(100% - 20px);
             background-position-y: 20px;
         }
+        
+        /* ========== FIXED MEDIA QUERIES ONLY ========== */
+        @media (max-width: 782px) {
+            .hero h1 {
+                font-size: 35px;
+                margin-top: -20px;
+                margin-bottom: 30px;
+                text-align: center;
+                padding: 0 15px;
+            }
+            
+            textarea {
+                width: 90%;
+                max-width: 500px;
+                height: 220px;
+            }
+            
+            .row {
+                width: 90%;
+                max-width: 500px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            select {
+                width: 100%;
+                background-position-y: center;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+                margin-top: 0;
+                margin-bottom: 25px;
+            }
+            
+            textarea {
+                width: 95%;
+                height: 200px;
+                font-size: 14px;
+            }
+            
+            .row {
+                width: 95%;
+            }
+            
+            select {
+                height: 45px;
+                font-size: 14px;
+            }
+            
+            button {
+                padding: 8px 20px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +155,7 @@
         <h1>Text to speech <span>converter</span></h1>
         <textarea placeholder="Write anything here...."></textarea>
         <div class="row">
-            <select ></select>
+            <select></select>
             <button><img src="images/play.png">Listen</button>
         </div>
     </div>

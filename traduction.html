@@ -108,7 +108,137 @@
             background: #5372F0;
         }
 
+        /* ========== FIXED MEDIA QUERIES ONLY ========== */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .text-input textarea {
+                height: 200px;
+                font-size: 16px;
+            }
+            
+            .controls .row select {
+                font-size: 14px;
+            }
+            
+            .controls .icons i {
+                width: 40px;
+                font-size: 12px;
+            }
+        }
 
+        @media (max-width: 600px) {
+            .wrapper .text-input {
+                flex-direction: column;
+            }
+            
+            .text-input .to-text {
+                border-left: none;
+                border-top: 1px solid #bbb;
+            }
+            
+            .text-input textarea {
+                height: 180px;
+                font-size: 15px;
+            }
+            
+            .controls {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .controls .row {
+                width: 45%;
+            }
+            
+            .controls .exchange {
+                order: 2;
+            }
+            
+            .controls .row.from {
+                order: 1;
+            }
+            
+            .controls .row.to {
+                order: 3;
+            }
+            
+            .controls .icons {
+                width: 45%;
+            }
+            
+            .controls .icons i {
+                width: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .text-input textarea {
+                height: 150px;
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+            
+            .controls {
+                padding: 10px;
+            }
+            
+            .controls .row {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .controls .exchange {
+                order: 4;
+                margin: 10px auto;
+            }
+            
+            .controls .icons {
+                width: auto;
+                gap: 10px;
+            }
+            
+            .controls .row select {
+                font-size: 13px;
+                width: auto;
+                min-width: 120px;
+            }
+            
+            .controls .icons i {
+                width: 30px;
+                font-size: 11px;
+            }
+            
+            .container button {
+                padding: 12px;
+                font-size: 15px;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .controls .row select {
+                min-width: 100px;
+                font-size: 12px;
+            }
+            
+            .text-input textarea {
+                height: 130px;
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
