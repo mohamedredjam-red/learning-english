@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Level Test - A1 to C1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>English Level Test - A1 to C1 | متجاوب مع جميع الشاشات</title>
     <style>
         *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'poppins',sans-serif;
+            font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
         }
         body{
             color: #fff;
             background: #09001d;
-            overflow: hidden;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* إصلاح مشكلة overflow على الأجهزة الصغيرة */
+        .main, .container, .quiz-section, .home {
+            overflow-x: hidden;
         }
         .header{
             position: fixed;
@@ -27,6 +32,8 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
+            flex-wrap: wrap;
+            gap: 15px;
         }
         .logo{
             font-size: 32px;
@@ -41,6 +48,7 @@
             text-decoration: none;
             font-weight: 500;
             margin-left: 35px;
+            transition: color 0.2s;
         }
         .navbar a:hover{ 
             color: #0a094e;
@@ -60,28 +68,32 @@
         .container{
             position: relative;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
         }
         .home{
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             transition: .5s ease-in-out;
             z-index: 1;
+            padding: 100px 20px;
         }
         .home.hide{
             left: -100%;
         }
         .home-content{
             max-width: 600px;
+            width: 100%;
             display: flex;
             align-items: center;
             flex-direction: column;
+            text-align: center;
+            padding: 20px;
         }
         .home-content h1{
             font-size: 78px;
@@ -93,6 +105,7 @@
             text-align: center;
             text-shadow: 0 0 10px rgba(0 , 0 , 0 , .3);
             margin-bottom: 30px;
+            padding: 0 10px;
         }
         .home-content .start-btn{
             width: 190px;
@@ -112,18 +125,20 @@
             box-shadow: none;
         }
         .popup-info{
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50% , -50%) scale(.9);
-            width: 500px;
+            width: 90%;
+            max-width: 500px;
             background: #fff;
             border-radius: 6px;
-            padding: 10px 25px;
+            padding: 20px 25px;
             opacity: 0;
             pointer-events: none;
             transition: .3s ease;
             z-index: 1000;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
         }
         .popup-info.active{
             opacity: 1;
@@ -133,13 +148,15 @@
         .popup-info h2{
             font-size: 50px;
             color: #0a094e;
+            margin-bottom: 10px;
         }
         .popup-info .info{
-            display: inline-block;
+            display: block;
             font-size: 16px;
             color: #333;
             font-weight: 500;
-            margin: 4px 0;
+            margin: 8px 0;
+            line-height: 1.4;
         }
         .popup-info .btn-group{
             display: flex;
@@ -148,6 +165,8 @@
             border-top: 1px solid #999;
             margin-top: 18px;
             padding: 15px 0 7px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         .popup-info .btn-group .info-btn{
             display: inline-flex;
@@ -183,13 +202,14 @@
             top: 0;
             left: 100%;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             background: #09001d;
             transition: .5s ease-in-out;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2;
+            padding: 100px 20px;
         }
         .quiz-section.active{
             left: 0;
@@ -197,19 +217,21 @@
         .quiz-section .quiz-box{
             position: relative;
             width: 450px;
-            max-width: 90%;
+            max-width: 100%;
             background: transparent;
             border: 2px solid #0a094e;
             border-radius: 6px;
             display: flex;
             flex-direction: column;
-            padding: 15px 25px;
+            padding: 20px 25px;
+            margin: 0 auto;
         }
         .quiz-box h1{
             font-size: 28px;
             text-align: center;
             background: linear-gradient(45deg,transparent,#0a094e,transparent);
             border-radius: 6px;
+            padding: 8px 0;
         }
         .quiz-box .quiz-header{
             display: flex;
@@ -218,6 +240,8 @@
             padding: 15px 0;
             border-bottom: 2px solid #0a094e;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .quiz-header span{
             font-size: 16px;
@@ -226,23 +250,26 @@
         .quiz-header .header-score{
             background: #0a094e;
             border-radius: 3px;
-            padding: 5px 8px;
+            padding: 5px 12px;
+            white-space: nowrap;
         }
         .quiz-box .question-text{
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
         .option-list .option{
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             background: transparent;
             border: 2px solid rgba(255 , 255 , 255 , .2);
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 15px;
             margin: 10px 0;
             cursor: pointer;
-            transition: .3s;
+            transition: .2s;
+            word-break: break-word;
         }
         .option-list .option:hover{
             background: rgba(255 , 255 , 255 , .1);
@@ -259,6 +286,8 @@
             border-top: 2px solid #0a094e;
             padding-top: 15px;
             margin-top: 15px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .quiz-footer .question-total{
             font-size: 14px;
@@ -283,13 +312,14 @@
         }
         .result-box{
             text-align: center;
+            padding: 10px 0;
         }
         .result-box h2{
             font-size: 32px;
             margin-bottom: 15px;
         }
         .result-box .score-text{
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 15px;
         }
         .result-box .percentage{
@@ -297,12 +327,17 @@
             font-weight: 700;
             color: #0a094e;
             margin: 15px 0;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
         }
         .result-box .level{
             font-size: 24px;
             margin-top: 15px;
-            padding: 8px;
+            padding: 10px 15px;
             border-radius: 6px;
+            font-weight: 600;
         }
         .restart-btn{
             width: 130px;
@@ -314,11 +349,203 @@
             color: #fff;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 20px;
             transition: .5s;
         }
         .restart-btn:hover{
             background: #060532;
+        }
+
+        /* ============================================ */
+        /*              MEDIA QUERIES                   */
+        /*    لجعل التصميم متجاوب مع جميع الشاشات        */
+        /* ============================================ */
+
+        /* الأجهزة اللوحية والشاشات المتوسطة */
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 15px 6%;
+            }
+            .navbar a {
+                margin-left: 20px;
+                font-size: 16px;
+            }
+            .quiz-section .quiz-box {
+                padding: 15px 20px;
+            }
+            .option-list .option {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            .quiz-header span {
+                font-size: 14px;
+            }
+            .popup-info {
+                max-width: 90%;
+                padding: 18px 20px;
+            }
+            .popup-info h2 {
+                font-size: 42px;
+            }
+        }
+
+        /* الهواتف الكبيرة (600px فأقل) */
+        @media screen and (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                background: rgba(9, 0, 29, 0.8);
+                backdrop-filter: blur(10px);
+                padding: 12px 5%;
+            }
+            .navbar {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .navbar a {
+                margin-left: 0;
+                font-size: 15px;
+            }
+            .logo {
+                font-size: 28px;
+            }
+            .home {
+                padding: 100px 15px 60px;
+            }
+            .home-content h1 {
+                font-size: 52px;
+            }
+            .home-content p {
+                font-size: 14px;
+            }
+            .quiz-section {
+                padding: 90px 15px 50px;
+                align-items: flex-start;
+            }
+            .quiz-box h1 {
+                font-size: 24px;
+            }
+            .quiz-box .question-text {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+            .option-list .option {
+                margin: 8px 0;
+                padding: 10px 12px;
+            }
+            .quiz-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .quiz-footer .next-btn {
+                width: 100%;
+                margin-top: 5px;
+            }
+            .result-box h2 {
+                font-size: 28px;
+            }
+            .result-box .percentage {
+                font-size: 42px;
+            }
+            .result-box .level {
+                font-size: 20px;
+            }
+        }
+
+        /* الهواتف الصغيرة جدًا (480px فأقل) */
+        @media screen and (max-width: 480px) {
+            .home-content h1 {
+                font-size: 42px;
+            }
+            .home-content .start-btn {
+                width: 170px;
+                height: 50px;
+                font-size: 16px;
+            }
+            .popup-info .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .popup-info .btn-group .info-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            .popup-info .info {
+                font-size: 14px;
+            }
+            .quiz-box .quiz-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .quiz-header .header-score {
+                align-self: flex-start;
+            }
+            .quiz-box .question-text {
+                font-size: 17px;
+            }
+            .restart-btn {
+                width: 100%;
+            }
+            .result-box .score-text {
+                font-size: 16px;
+            }
+        }
+
+        /* شاشات عريضة جدًا */
+        @media screen and (min-width: 1400px) {
+            .quiz-section .quiz-box {
+                width: 520px;
+            }
+            .home-content {
+                max-width: 750px;
+            }
+            .home-content h1 {
+                font-size: 88px;
+            }
+            .home-content p {
+                font-size: 18px;
+            }
+        }
+
+        /* الوضع الأفقي (landscape) على الهواتف */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .home {
+                padding: 60px 20px;
+            }
+            .quiz-section {
+                padding: 60px 20px;
+            }
+            .quiz-box {
+                padding: 12px 20px;
+            }
+            .option-list .option {
+                padding: 6px 10px;
+                margin: 6px 0;
+            }
+            .quiz-header {
+                padding: 8px 0;
+            }
+            .result-box .percentage {
+                font-size: 36px;
+                margin: 8px 0;
+            }
+        }
+
+        /* أجهزة صغيرة جدًا (تحت 360px) */
+        @media screen and (max-width: 360px) {
+            .quiz-box .question-text {
+                font-size: 16px;
+            }
+            .option-list .option {
+                font-size: 13px;
+            }
+            .popup-info h2 {
+                font-size: 32px;
+            }
+            .navbar a {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -371,14 +598,14 @@
         </div>
     </div>
     
+    <!-- ربط ملف الأسئلة الأصلي (questions.js) -->
     <script src="javaScript/questions.js"></script>
     <script>
-        // Variables
+        // ==== المنطق الأصلي للاختبار ====
         let currentQuestionIndex = 0;
         let score = 0;
         let userAnswers = new Array(questions.length).fill(null);
         
-        // DOM Elements
         const startBtn = document.querySelector('.start-btn');
         const popupInfo = document.querySelector('.popup-info');
         const exitBtn = document.querySelector('.exit-btn');
@@ -393,17 +620,14 @@
         const totalQuestionsSpan = document.querySelector('.total-questions');
         const questionTotalSpan = document.querySelector('.question-total');
         
-        // Set total questions
         totalQuestionsSpan.textContent = questions.length;
         
-        // Display current question
         function displayQuestion() {
             const question = questions[currentQuestionIndex];
             questionText.textContent = question.question;
             questionTotalSpan.textContent = `${currentQuestionIndex + 1} of ${questions.length} Questions`;
             scoreSpan.textContent = `${score}`;
             
-            // Display options
             optionList.innerHTML = '';
             question.options.forEach((option, index) => {
                 const optionDiv = document.createElement('div');
@@ -416,7 +640,6 @@
                 optionList.appendChild(optionDiv);
             });
             
-            // Update next button
             if (userAnswers[currentQuestionIndex] !== null) {
                 nextBtn.style.opacity = '1';
             } else {
@@ -424,19 +647,16 @@
             }
         }
         
-        // Select answer
         function selectOption(index) {
             if (userAnswers[currentQuestionIndex] !== null) return;
             
             userAnswers[currentQuestionIndex] = index;
             
-            // Check if answer is correct
             if (index === questions[currentQuestionIndex].correct) {
                 score++;
                 scoreSpan.textContent = `${score}`;
             }
             
-            // Update options UI
             const options = document.querySelectorAll('.option');
             options.forEach((option, i) => {
                 if (i === index) {
@@ -444,11 +664,9 @@
                 }
             });
             
-            // Enable next button
             nextBtn.style.opacity = '1';
         }
         
-        // Go to next question
         function nextQuestion() {
             if (userAnswers[currentQuestionIndex] === null) return;
             
@@ -461,7 +679,6 @@
             }
         }
         
-        // Show result
         function showResult() {
             const percentage = (score / questions.length) * 100;
             let level = '';
@@ -499,7 +716,6 @@
             nextBtn.style.display = 'none';
         }
         
-        // Restart quiz
         function restartQuiz() {
             currentQuestionIndex = 0;
             score = 0;
@@ -513,7 +729,6 @@
             displayQuestion();
         }
         
-        // Events
         startBtn.onclick = () => {
             popupInfo.classList.add('active');
             main.classList.add('active');
@@ -534,8 +749,6 @@
         };
         
         nextBtn.onclick = nextQuestion;
-        
-        // Make restartQuiz global
         window.restartQuiz = restartQuiz;
     </script>
 </body>
