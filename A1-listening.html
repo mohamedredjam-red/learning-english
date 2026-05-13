@@ -2,314 +2,466 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listening A1 - Lessons</title>
-    <link rel="icon" href="logo7.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <title>A1 Listening</title>
     <style>
-        /* التنسيقات العامة */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
         * {
-            margin: 0;
+            margin : 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            font-size: 10px;
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: white;
-            display: flex;
-            flex-direction: column;
+            font-family: "Roboto","Arial",sans-serif;
         }
-
-        .main-header {
-            background: #0a094e;
-            padding: 15px 40px;
+        header{
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            border-bottom: 3px solid #ffc107;
-            flex-wrap: wrap;
+            align-items: center;
+            height: 56px;
+            padding: 0 16px;
         }
-
-        .platform-logo a {
-            color: #ffc107;
-            font-size: 22px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .search-icon-container {
+        .left-section{
             display: flex;
             align-items: center;
-            gap: 15px;
+            cursor: pointer;
         }
-
-        .search-wrapper {
+        .left-section img{
+            width: auto;
+            height: 60px;
+            padding-left: 16px;
+        }
+        .mid-section{
             display: flex;
             align-items: center;
-            position: relative;
-        }
+            margin-left: -9%;
 
-        .search-icon-btn {
-            background: #ffc107;
-            color: #0a094e;
-            border: none;
+        }
+        .mid-section form{
+            display: flex;
+            height: 40px;
+            width: 628px;
+        }
+        .mid-section input{
+            width: 100%;
+            border-radius: 2px 0 0 2px;
+            padding: 12px;
+            font-size: 1.6rem;
+            border-right: none;
+            border: 1px solid #d3d3d3;
+        }
+        .mid-section button{
+            width: 64px;
+            border: 1px solid #d3d3d3;
+            border-radius: 0 2px 2px 0;
+            padding-top: 4px;
+            background-color: #f8f8f8;
+            cursor: pointer;
+        }
+        .mid-section button:hover{
+            border-color: #c6c6c6; 
+            background-color: #f0f0f0;
+        }
+        .mid-section .mic{
             width: 40px;
             height: 40px;
-            border-radius: 40px;
-            font-size: 20px;
+            border-radius: 50%;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
             cursor: pointer;
-            z-index: 10;
-            transition: 0.3s;
+        }
+        .right-section a{
+           padding-right: 18px; 
+           text-decoration: none;
+           color: black;
         }
 
-        .search-input-wrapper {
+        .content-area{
+            height: calc(100vh - 56px);
+            display: flex;
+            background-color: #f9f9f9;
+        }
+        aside{
+           height: 100%; 
+           width: 280px;
+           background-color: #fff;
+           overflow-y: auto;
+        }
+        nav{
+            width: 100%;
+            display: flex;
+            flex-direction: column ;
+            margin: 15px 0;
+            padding-right: 15px;
+        }
+        .nav-link{
             display: flex;
             align-items: center;
-            gap: 5px;
-            width: 0;
-            opacity: 0;
-            overflow: hidden;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            padding: 10px 16px;
+            text-decoration: none;
+            color: #030303;
         }
-
-        .search-wrapper.open .search-input-wrapper {
-            width: 300px;
-            opacity: 1;
-            visibility: visible;
-            margin-right: 10px;
+        .nav-link:hover{
+            background-color: rgba(0, 0, 0, 0.05);
         }
-
-        .search-input {
-            padding: 10px 15px;
+        .nav-link span{
+            margin-left: 24px;
+            font-size: 1.4rem;
+            line-height: 2em;
+            font-weight: 400;
+            color: #030303;
+        }
+        .active{
+            background-color: #e5e5e5;
+        }
+        #active-span{
+            font-weight: 500;
+        }
+        hr{
+            height: 1px;
+            background-color: #e5e5e5;
             border: none;
-            border-radius: 40px;
-            outline: none;
-            width: 200px;
+            margin: 10px 0;
         }
-
-        .logout-btn {
-            background: #ffc107;
-            color: #0a094e;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-            flex: 1;
-        }
-
-        .card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            color: #333;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .card h1 {
-            color: #0a094e;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #ffc107;
-            padding-bottom: 10px;
-        }
-
-        .lesson-card {
-            margin-top: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .lesson-header {
-            background: #f8f9fa;
-            padding: 15px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            color: #0a094e;
-            transition: 0.3s;
-        }
-
-        .lesson-header:hover {
-            background: #e9ecef;
-        }
-
-        .lesson-content {
-            display: none;
-            padding: 20px;
-            background: #fff;
+        main{
+            width: 100%;
+            height: 100%;
+            padding: 35px 15px;
             border-top: 1px solid #ddd;
-        }
+            overflow-y: auto;
 
-        .lesson-card.active .lesson-content {
-            display: block;
         }
-
-        .lesson-card.active .lesson-header {
-            background: #5553d7;
+        .videos-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
-
-        .start-link {
-            color: #0a094e;
+        .video{
+            width: 330px;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+        .thumbnail{
+            width: 100%;
+            height: 187px;
+            margin-bottom: 12px;
+        }
+        .thumbnail img{
+            height: 100% ;
+            width: 100%;
+        }
+        .title a{
             text-decoration: none;
-            font-weight: bold;
-            background: #5553d7;
-            padding: 5px 15px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-top: 10px;
+        }
+        .video-title {
+            color: rgb(3, 3, 3);
+            font-size: 1.6rem;
+            max-width: 278px;
+            font-weight: 500;
+            line-height: 2.2rem;
+            margin-bottom: 4px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+
+        }
+        /* ======== ONLY MEDIA QUERIES ADDED (NO OTHER CHANGES) ======== */
+        
+        /* Large tablets and small desktops (1024px and below) */
+        @media (max-width: 1024px) {
+            .mid-section {
+                margin-left: 0;
+                flex: 1;
+                justify-content: flex-end;
+            }
+            .mid-section form {
+                width: 400px;
+                max-width: 100%;
+            }
+            .left-section img {
+                height: 52px;
+                padding-left: 8px;
+            }
         }
 
-        .main-footer {
-            background: #0a094e;
-            padding: 30px;
-            margin-top: 40px;
-            text-align: center;
-            border-top: 3px solid #ffc107;
+        /* Tablets (768px and below) */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 12px;
+            }
+            .mid-section form {
+                width: 280px;
+            }
+            .mid-section input {
+                font-size: 1.4rem;
+                padding: 8px;
+            }
+            .mid-section button {
+                width: 56px;
+            }
+            .mid-section .mic {
+                width: 36px;
+                height: 36px;
+                margin-left: 6px;
+            }
+            .right-section a {
+                padding-right: 8px;
+            }
+            .left-section img {
+                height: 44px;
+                padding-left: 6px;
+            }
         }
 
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 14px;
+        /* Mobile landscape (600px and below) */
+        @media (max-width: 600px) {
+            .left-section img {
+                height: 38px;
+                padding-left: 4px;
+            }
+            .mid-section form {
+                width: 200px;
+            }
+            .mid-section input {
+                font-size: 1.3rem;
+                padding: 6px;
+            }
+            .mid-section button {
+                width: 48px;
+            }
+            .mid-section .mic {
+                width: 32px;
+                height: 32px;
+                margin-left: 5px;
+            }
+            .right-section a {
+                padding-right: 6px;
+            }
+            .right-section a i {
+                font-size: 2rem;
+            }
         }
 
-        .search-results-dropdown {
-            position: absolute;
-            top: 80px;
-            right: 40px;
-            width: 300px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            display: none;
-            z-index: 1000;
-            color: #333;
+        /* Small mobile devices (480px and below) */
+        @media (max-width: 480px) {
+            header {
+                padding: 0 8px;
+                gap: 6px;
+            }
+            .left-section .material-icons {
+                font-size: 2rem;
+            }
+            .left-section img {
+                height: 32px;
+                padding-left: 2px;
+            }
+            .mid-section form {
+                width: 150px;
+            }
+            .mid-section input {
+                font-size: 1.2rem;
+                padding: 4px 6px;
+            }
+            .mid-section button {
+                width: 42px;
+            }
+            .mid-section button i {
+                font-size: 1.8rem;
+            }
+            .mid-section .mic {
+                width: 30px;
+                height: 30px;
+                margin-left: 4px;
+            }
+            .mid-section .mic i {
+                font-size: 1.8rem;
+            }
+            .right-section a {
+                padding-right: 4px;
+            }
+            .right-section a i {
+                font-size: 2rem;
+            }
         }
 
-        .search-results-dropdown.show { display: block; }
-        img{
-            font-size: 12px;
-            height: 95px;
-            width: auto;
+        /* Very narrow devices (360px and below) - keeps everything visible */
+        @media (max-width: 360px) {
+            .mid-section form {
+                width: 120px;
+            }
+            .mid-section input {
+                font-size: 1.1rem;
+                padding: 4px;
+            }
+            .mid-section button {
+                width: 38px;
+            }
+            .left-section img {
+                height: 28px;
+            }
+            .right-section a i {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="main-header">
-    <div class="platform-logo">
-        <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-    </div>
-    <div class="search-icon-container">
-        <div class="search-wrapper">
-            <button class="search-icon-btn" id="searchToggleBtn">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <div class="search-input-wrapper" id="searchInputWrapper">
-                <input type="text" class="search-input" id="searchInput" placeholder="Search lessons..." onkeyup="if(event.key === 'Enter') searchLessons()">
-            </div>
+    <header>
+        <div class="left-section">
+            <i class="material-icons logo">menu</i>
+            <img src="images/A1-listening-logo.jpg" alt="">
         </div>
-        <button class="logout-btn" onclick="logout()">Logout</button>
-    </div>
-</div>
-
-<div class="search-results-dropdown" id="searchResults"></div>
-
-<div style="margin: 20px 40px;">
-    <a href="listening.html" style="color: #ffc107; text-decoration: none;">← Back to Listening Lessons</a>
-</div>
-
-<div class="main-container">
-    <div class="card">
-        <h1>Listening A1</h1>
-
-        <div class="lesson-card" id="L1">
-            <div class="lesson-header" onclick="toggleLesson('L1')">
-                <span>Lesson 1: Simple sentences of Gumball cartoon</span>
-                <span>▼</span>
-            </div>
-            <div class="lesson-content">
-                <p>Learn how to apologise and interact with others using Gumball characters.</p>
-                <a href="lesson1-apologising2.html" class="start-link">Click here to start Lesson 1</a>
-            </div>
+        <div class="mid-section">
+            <form action="">
+                <input type="text" placeholder="search">
+                <button><i class="material-icons logo">search</i></button>
+            </form>
+            <i class="material-icons mic">mic</i>
         </div>
-
-        <div class="lesson-card" id="L2">
-            <div class="lesson-header" onclick="toggleLesson('L2')">
-                <span>Lesson 2: Simple sentences of We Bare Bears cartoon</span>
-                <span>▼</span>
-            </div>
-            <div class="lesson-content">
-                <p>Improve your listening by watching the first meeting of the baby bears.</p>
-                <a href="three-bears.html" class="start-link">Click here to start Lesson 2</a>
-            </div>
+        <div class="right-section">
+            <a href="">
+                <i class="material-icons logo">notifications</i>
+            </a>
         </div>
+    </header>
+    <div class="content-area">
+        <aside>
+            <nav>
+                <a href="" class="nav-link active">
+                    <i class="material-icons logo">home</i>
+                    <span id="active-span">Home</span>
+                </a>
+                <a href="" class="nav-link">
+                    <i class="material-icons-outlined">explore</i>
+                    <span >Explore</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons-outlined">subscriptions</i>
+                    <span >Subscriptions</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons-outlined">ondemand_video</i>
+                    <span >Originals</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons">play_circle_outline</i>
+                    <span >Music</span>
+                </a>
+                <hr>
+                <a href="" class="nav-link">
+                    <i class="material-icons-outlined">video_library</i>
+                    <span >Library</span>
+                </a>
+                <a href="" class="nav-link">
+                    <i class="material-icons-outlined">history</i>
+                    <span >History</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons">download</i>
+                    <span >Downloads</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons-outlined">watch_later</i>
+                    <span >Watch later</span>
+                </a>
+                <a href="" class="nav-link ">
+                    <i class="material-icons-outlined">thumb_up</i>
+                    <span >Liked videos</span>
+                </a>
+                
+            </nav>
+        </aside>
+        <main>
+            <div class="videos-container">
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="The Laziest.html"><img src="images/The Laziest.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="The Laziest.html" class="video-title">
+                                Richard vs. Gumball: The Laziest Battle
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="three-bears.html"><img src="images/first-meet.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="three-bears.html" class="video-title">
+                                How They Actually Met!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/The Enchiridion!.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="#" class="video-title">
+                                Find The Enchiridion!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/The Big Sister.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="#" class="video-title">
+                                Dexter's Laboratory: The Big Sister 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/Craig of the Creek.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="#" class="video-title">
+                                Craig of the Creek: Itch to explore
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <div class="thumbnail">
+                        <a href="#"><img src="images/The Powerpuff Girls.jpg" alt=""></a>
+                    </div>
+                    <div class="video-details">
+                        <div class="title">
+                            <a href="#" class="video-title">
+                                The Powerpuff Girls Birthday Bash
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
     </div>
-</div>
-
-<div class="main-footer">
-    <div class="footer-links">
-        <a href="welcome.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="#">Contact</a>
-    </div>
-    <div style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 10px;">
-        © 2026 English Learning Platform. All rights reserved.
-    </div>
-</div>
-
-<script>
-    // الدالة المسؤولة عن فتح وإغلاق الدروس بشكل صحيح
-    function toggleLesson(id) {
-        // إغلاق أي درس مفتوح آخر (اختياري لجعل الشكل أرتب)
-        document.querySelectorAll('.lesson-card').forEach(card => {
-            if(card.id !== id) card.classList.remove('active');
-        });
-        // فتح أو إغلاق الدرس المختار
-        document.getElementById(id).classList.toggle("active");
-    }
-
-    // شريط البحث المتغير
-    const searchToggleBtn = document.getElementById('searchToggleBtn');
-    const searchWrapper = document.querySelector('.search-wrapper');
-
-    searchToggleBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        searchWrapper.classList.toggle('open');
-    });
-
-    document.addEventListener('click', function(event) {
-        if (!searchWrapper.contains(event.target)) {
-            searchWrapper.classList.remove('open');
-        }
-    });
-
-    function logout() {
-        localStorage.clear();
-        window.location.href = 'index.html';
-    }
-
-    // التحقق من تسجيل الدخول
-    if (!localStorage.getItem('userId')) {
-        window.location.href = 'index.html';
-    }
-</script>
-
+    
 </body>
 </html>
