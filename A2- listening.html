@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
     <title>A2 Listening</title>
     <style>
@@ -28,6 +28,10 @@
             align-items: center;
             height: 56px;
             padding: 0 16px;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .left-section{
             display: flex;
@@ -91,12 +95,22 @@
             height: calc(100vh - 56px);
             display: flex;
             background-color: #f9f9f9;
+            position: relative;
         }
         aside{
            height: 100%; 
            width: 280px;
            background-color: #fff;
            overflow-y: auto;
+           position: fixed;
+           top: 56px;
+           left: -280px;
+           z-index: 1000;
+           transition: left 0.3s ease-in-out;
+           box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        aside.open {
+            left: 0;
         }
         nav{
             width: 100%;
@@ -140,7 +154,7 @@
             padding: 35px 15px;
             border-top: 1px solid #ddd;
             overflow-y: auto;
-
+            transition: opacity 0.3s ease;
         }
         .videos-container{
             display: flex;
@@ -161,6 +175,7 @@
         .thumbnail img{
             height: 100% ;
             width: 100%;
+            object-fit: cover;
         }
         .title a{
             text-decoration: none;
@@ -177,6 +192,25 @@
             -webkit-box-orient: vertical;
 
         }
+        
+        /* Overlay الخلفية الداكنة */
+        .overlay {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 56px);
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
         /* ======== ONLY MEDIA QUERIES ADDED (NO OTHER CHANGES) ======== */
         
         /* Large tablets and small desktops (1024px and below) */
@@ -337,7 +371,7 @@
         </div>
     </header>
     <div class="content-area">
-        <aside>
+        <aside id="sidebar">
             <nav>
                 <a href="" class="nav-link active">
                     <i class="material-icons logo">home</i>
@@ -380,9 +414,12 @@
                     <i class="material-icons-outlined">thumb_up</i>
                     <span >Liked videos</span>
                 </a>
-                
             </nav>
         </aside>
+        
+        <!-- الخلفية الداكنة (Overlay) -->
+        <div id="overlay" class="overlay"></div>
+        
         <main>
             <div class="videos-container">
                 <div class="video">
@@ -417,7 +454,7 @@
                     <div class="video-details">
                         <div class="title">
                             <a href="#" class="video-title">
-                                images/The Terminal (2004)
+                                The Terminal (2004)
                             </a>
                         </div>
                     </div>
@@ -463,50 +500,62 @@
         </main>
     </div>
     
-    <!-- ===== ADDED SCRIPT ONLY - NO CHANGES TO HTML/CSS ===== -->
+    <!-- ===== السكريبت المسؤول عن ظهور القائمة فوق المحتوى مع الخلفية الداكنة ===== -->
     <script>
         (function() {
-            document.addEventListener('DOMContentLoaded', function() {
-                // الحصول على عنصر القائمة (nav) الذي يحتوي على جميع الروابط
-                const navMenu = document.querySelector('aside nav');
-                const menuIcon = document.querySelector('.left-section .material-icons.logo');
-                
-                if (!navMenu || !menuIcon) return;
-                
-                // إخفاء جميع عناصر القائمة (الروابط والفاصل hr) بشكل افتراضي
-                const allNavLinks = navMenu.querySelectorAll('.nav-link, hr');
-                
-                // مصفوفة لحفظ العناصر التي تم إخفاؤها
-                let hiddenItems = [];
-                
-                // إخفاء كل العناصر وحفظها في مصفوفة
-                allNavLinks.forEach(function(item) {
-                    if (item.style.display !== 'none') {
-                        item.style.display = 'none';
-                        hiddenItems.push(item);
-                    }
-                });
-                
-                // حفظ حالة القائمة (مغلقة افتراضياً)
-                let isMenuOpen = false;
-                
-                // إضافة حدث النقر على أيقونة القائمة
-                menuIcon.addEventListener('click', function(event) {
-                    event.stopPropagation();
-                    
-                    if (isMenuOpen) {
-                        // إغلاق القائمة: إخفاء جميع العناصر مرة أخرى
-                        hiddenItems.forEach(function(item) {
-                            item.style.display = 'none';
-                        });
-                        isMenuOpen = false;
-                    } else {
-                        // فتح القائمة: إظهار جميع العناصر (إرجاعها إلى حالتها الأصلية)
-                        hiddenItems.forEach(function(item) {
-                            item.style.display = '';
-                        });
-                        isMenuOpen = true;
-                    }
+            // العناصر المطلوبة
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            const menuIcon = document.querySelector('.left-section .material-icons.logo');
+            
+            if (!sidebar || !overlay || !menuIcon) return;
+            
+            // دالة لفتح القائمة
+            function openMenu() {
+                sidebar.classList.add('open');
+                overlay.classList.add('show');
+                document.body.style.overflow = 'hidden'; // منع تمرير الصفحة خلف القائمة
+            }
+            
+            // دالة لإغلاق القائمة
+            function closeMenu() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                document.body.style.overflow = ''; // إعادة التمرير
+            }
+            
+            // تبديل حالة القائمة
+            function toggleMenu() {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+            
+            // عند النقر على أيقونة القائمة
+            menuIcon.addEventListener('click', function(event) {
+                event.stopPropagation();
+                toggleMenu();
+            });
+            
+            // عند النقر على الخلفية الداكنة (overlay) يتم إغلاق القائمة
+            overlay.addEventListener('click', function() {
+                closeMenu();
+            });
+            
+            // عند الضغط على زر Esc في لوحة المفاتيح يتم إغلاق القائمة
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                    closeMenu();
+                }
+            });
+            
+            // عند النقر على أي رابط داخل القائمة، يتم إغلاق القائمة (اختياري لتجربة أفضل)
+            const navLinks = sidebar.querySelectorAll('.nav-link');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    closeMenu();
                 });
             });
         })();
