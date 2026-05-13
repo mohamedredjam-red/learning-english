@@ -462,145 +462,31 @@
             </div>
         </main>
     </div>
-    <!-- ========== ADDED SCRIPT (ONLY JAVASCRIPT, NO CHANGES TO HTML/CSS) ========== -->
+    
+    <!-- ===== ADDED SCRIPT ONLY - NO CHANGES TO HTML/CSS ===== -->
     <script>
         (function() {
-            // Wait for DOM to be fully loaded
             document.addEventListener('DOMContentLoaded', function() {
-                // 1. Create the "More" section container and items
-                const nav = document.querySelector('aside nav');
-                if (!nav) return;
-
-                // Find the last <hr> before "Library" section? Actually we want to insert "More" button 
-                // and the collapsible group after the existing "Liked videos" link, but before the end of nav.
-                // But to keep design consistent, we will insert a new "More" toggle button, 
-                // and a set of extra links that are initially hidden.
-                // According to requirement: "قائمة المزيد مغلقة افتراضيا ويفتحها ويغلقها بالنقر على ثلاث خطوط"
-                // The three lines refer to the "menu" icon in header left section.
-                
-                // Create the collapsible group element (the "More" list)
-                const moreGroup = document.createElement('div');
-                moreGroup.id = "more-group";
-                moreGroup.style.display = "none";  // initially closed
-                moreGroup.style.flexDirection = "column";
-                moreGroup.style.width = "100%";
-                
-                // Create additional "More" nav links (common extra items)
-                const moreItems = [
-                    { icon: "settings", label: "Settings" },
-                    { icon: "help_outline", label: "Help" },
-                    { icon: "feedback", label: "Send feedback" },
-                    { icon: "flag", label: "Report history" }
-                ];
-                
-                moreItems.forEach(item => {
-                    const link = document.createElement('a');
-                    link.href = "#";
-                    link.className = "nav-link";
-                    // Create icon element
-                    const iconSpan = document.createElement('i');
-                    // Use appropriate Material Icons class based on icon name
-                    if (item.icon === "settings") iconSpan.className = "material-icons";
-                    else if (item.icon === "help_outline") iconSpan.className = "material-icons-outlined";
-                    else if (item.icon === "feedback") iconSpan.className = "material-icons-outlined";
-                    else if (item.icon === "flag") iconSpan.className = "material-icons-outlined";
-                    else iconSpan.className = "material-icons-outlined";
-                    iconSpan.textContent = item.icon;
-                    const textSpan = document.createElement('span');
-                    textSpan.textContent = item.label;
-                    link.appendChild(iconSpan);
-                    link.appendChild(textSpan);
-                    moreGroup.appendChild(link);
-                });
-                
-                // Also add a horizontal line before the more group for better separation
-                const moreHr = document.createElement('hr');
-                moreGroup.appendChild(moreHr.cloneNode(false)); // simple hr
-                
-                // Insert the moreGroup into nav after the last .nav-link (Liked videos) 
-                // but before any potential closing. We find the last nav-link that is Liked videos.
-                const allNavLinks = nav.querySelectorAll('.nav-link');
-                if (allNavLinks.length > 0) {
-                    const lastLink = allNavLinks[allNavLinks.length - 1];
-                    // Insert after the last link
-                    lastLink.insertAdjacentElement('afterend', moreGroup);
-                } else {
-                    nav.appendChild(moreGroup);
-                }
-                
-                // Remove the duplicate hr inside moreGroup if needed (the one we added) — keep it simple, just add after items.
-                // Actually better: create hr before more items. Let's restructure:
-                // Clear moreGroup content and rebuild properly.
-                moreGroup.innerHTML = ''; // reset
-                const topHr = document.createElement('hr');
-                moreGroup.appendChild(topHr);
-                
-                // Add the additional links
-                const extraLinks = [
-                    { icon: "settings", label: "Settings", type: "material-icons" },
-                    { icon: "help_outline", label: "Help", type: "material-icons-outlined" },
-                    { icon: "feedback", label: "Send feedback", type: "material-icons-outlined" },
-                    { icon: "flag", label: "Report history", type: "material-icons-outlined" }
-                ];
-                
-                extraLinks.forEach(linkData => {
-                    const a = document.createElement('a');
-                    a.href = "#";
-                    a.className = "nav-link";
-                    const iElem = document.createElement('i');
-                    iElem.className = linkData.type;
-                    iElem.textContent = linkData.icon;
-                    const spanElem = document.createElement('span');
-                    spanElem.textContent = linkData.label;
-                    a.appendChild(iElem);
-                    a.appendChild(spanElem);
-                    moreGroup.appendChild(a);
-                });
-                
-                // Now ensure the moreGroup is hidden by default (closed)
-                moreGroup.style.display = "none";
-                
-                // 2. Add toggle functionality on the menu icon (three lines in left-section)
+                const sidebar = document.querySelector('.content-area aside');
                 const menuIcon = document.querySelector('.left-section .material-icons.logo');
-                if (!menuIcon) return;
                 
-                // Make sure menuIcon has pointer cursor (already via CSS but enforce)
-                menuIcon.style.cursor = "pointer";
+                if (!sidebar || !menuIcon) return;
                 
-                // Flag to track more menu state
-                let isMoreOpen = false;
+                let isSidebarVisible = false;
                 
-                // Function to toggle more group visibility
-                function toggleMoreMenu() {
-                    if (moreGroup.style.display === "none") {
-                        moreGroup.style.display = "flex";
-                        isMoreOpen = true;
-                    } else {
-                        moreGroup.style.display = "none";
-                        isMoreOpen = false;
-                    }
-                }
+                sidebar.style.display = 'none';
                 
-                // Add click event listener to menu icon
                 menuIcon.addEventListener('click', function(event) {
                     event.stopPropagation();
-                    toggleMoreMenu();
+                    
+                    if (isSidebarVisible) {
+                        sidebar.style.display = 'none';
+                        isSidebarVisible = false;
+                    } else {
+                        sidebar.style.display = 'block';
+                        isSidebarVisible = true;
+                    }
                 });
-                
-                // Optional: Close the more menu if clicking outside? But spec only says open/close on three lines.
-                // To improve UX, we can also close when clicking a link in moreGroup? Not necessary but nice.
-                // However spec doesn't forbid, we just implement exactly: "يفتحها ويغلقها بالنقر على ثلاث خطوط"
-                // So we stick to toggling via menu icon only.
-                // Additionally: if we want the "more" group to be initially closed (already done).
-                
-                // Also for consistency: ensure that when window resizes or anything, layout not affected.
-                // No other changes to CSS/HTML.
-                
-                // Edge case: If there is any double initialization, just ignore.
-                // Also, we might want to handle the scenario where "More" group could be left open,
-                // but user can close by clicking same menu icon again. Works perfectly.
-                
-                // Additionally: improve active/focus style but not required.
             });
         })();
     </script>
