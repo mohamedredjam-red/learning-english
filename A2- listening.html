@@ -463,104 +463,32 @@
         </main>
     </div>
     
-    <!-- ===== ADDED SCRIPT ONLY - NO CHANGES TO HTML/CSS STRUCTURE ===== -->
+    <!-- ===== ADDED SCRIPT ONLY - NO CHANGES TO HTML/CSS ===== -->
     <script>
         (function() {
-            // Ensure DOM is fully loaded before executing
             document.addEventListener('DOMContentLoaded', function() {
-                // 1. Locate the navigation sidebar and the menu icon (three lines)
-                const navSidebar = document.querySelector('aside nav');
+                const sidebar = document.querySelector('.content-area aside');
                 const menuIcon = document.querySelector('.left-section .material-icons.logo');
                 
-                // If critical elements are missing, exit gracefully
-                if (!navSidebar || !menuIcon) return;
+                if (!sidebar || !menuIcon) return;
                 
-                // 2. Create the "More" section group (initially hidden / closed)
-                //    This group will contain a separator line and additional navigation links.
-                const moreGroup = document.createElement('div');
-                moreGroup.id = "moreGroupContainer";
-                moreGroup.style.display = "none";    // closed by default
-                moreGroup.style.flexDirection = "column";
-                moreGroup.style.width = "100%";
+                let isSidebarVisible = false;
                 
-                // Add a horizontal rule (separator) at the top of the More section
-                const topHr = document.createElement('hr');
-                moreGroup.appendChild(topHr);
+                sidebar.style.display = 'none';
                 
-                // Define the extra menu items for the "More" section
-                // Each object contains icon name, label text, and the Material Icons style class
-                const extraMoreItems = [
-                    { icon: "settings", label: "Settings", iconType: "material-icons" },
-                    { icon: "help_outline", label: "Help", iconType: "material-icons-outlined" },
-                    { icon: "feedback", label: "Send feedback", iconType: "material-icons-outlined" },
-                    { icon: "flag", label: "Report history", iconType: "material-icons-outlined" },
-                    { icon: "person_outline", label: "Your channel", iconType: "material-icons-outlined" }
-                ];
-                
-                // Dynamically create each navigation link inside the moreGroup
-                extraMoreItems.forEach(function(item) {
-                    const link = document.createElement('a');
-                    link.href = "#";
-                    link.className = "nav-link";
-                    
-                    // Create icon element with appropriate Material Icons class
-                    const iconElem = document.createElement('i');
-                    iconElem.className = item.iconType;
-                    iconElem.textContent = item.icon;
-                    
-                    // Create span element for the label text
-                    const labelSpan = document.createElement('span');
-                    labelSpan.textContent = item.label;
-                    
-                    // Assemble the link
-                    link.appendChild(iconElem);
-                    link.appendChild(labelSpan);
-                    moreGroup.appendChild(link);
-                });
-                
-                // 3. Insert the moreGroup into the sidebar navigation.
-                //    We place it after the last existing .nav-link (which is "Liked videos").
-                const allNavLinks = navSidebar.querySelectorAll('.nav-link');
-                if (allNavLinks.length > 0) {
-                    const lastNavLink = allNavLinks[allNavLinks.length - 1];
-                    lastNavLink.insertAdjacentElement('afterend', moreGroup);
-                } else {
-                    // Fallback: if there are no nav-links for some reason, append to nav
-                    navSidebar.appendChild(moreGroup);
-                }
-                
-                // 4. Ensure the More group remains hidden initially (closed)
-                moreGroup.style.display = "none";
-                
-                // 5. Add click event listener to the menu icon (three lines) to toggle More section.
-                //    Clicking once opens it (if closed), clicking again closes it (if open).
-                let isMoreVisible = false;
-                
-                function toggleMoreMenu() {
-                    if (isMoreVisible) {
-                        moreGroup.style.display = "none";
-                        isMoreVisible = false;
-                    } else {
-                        moreGroup.style.display = "flex";
-                        isMoreVisible = true;
-                    }
-                }
-                
-                // Attach the toggle function to the menu icon click event
                 menuIcon.addEventListener('click', function(event) {
-                    event.stopPropagation();  // Prevent any unintended bubbling
-                    toggleMoreMenu();
+                    event.stopPropagation();
+                    
+                    if (isSidebarVisible) {
+                        sidebar.style.display = 'none';
+                        isSidebarVisible = false;
+                    } else {
+                        sidebar.style.display = 'block';
+                        isSidebarVisible = true;
+                    }
                 });
                 
-                // Optional but good practice: if user clicks any link inside the More section,
-                // we could keep the menu open (by default, stays open). The requirement only 
-                // specifies that the three lines open/close the list. No further auto-close needed.
-                // However, to match typical behavior, we do not auto-close on internal link click.
-                // This respects exactly: "يفتحها ويغلقها بالنقر على ثلاث خطوط"
                 
-                // Also ensure that no changes have been made to original HTML or CSS.
-                // The sidebar now has a collapsible "More" section that shows extra items.
-                // The menu icon toggle works perfectly.
             });
         })();
     </script>
