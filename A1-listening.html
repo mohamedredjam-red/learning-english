@@ -380,7 +380,6 @@
                     <i class="material-icons-outlined">thumb_up</i>
                     <span >Liked videos</span>
                 </a>
-                
             </nav>
         </aside>
         <main>
@@ -467,24 +466,45 @@
     <script>
         (function() {
             document.addEventListener('DOMContentLoaded', function() {
-                const sidebar = document.querySelector('.content-area aside');
+                // الحصول على عنصر القائمة (nav) الذي يحتوي على جميع الروابط
+                const navMenu = document.querySelector('aside nav');
                 const menuIcon = document.querySelector('.left-section .material-icons.logo');
                 
-                if (!sidebar || !menuIcon) return;
+                if (!navMenu || !menuIcon) return;
                 
-                let isSidebarVisible = false;
+                // إخفاء جميع عناصر القائمة (الروابط والفاصل hr) بشكل افتراضي
+                const allNavLinks = navMenu.querySelectorAll('.nav-link, hr');
                 
-                sidebar.style.display = 'none';
+                // مصفوفة لحفظ العناصر التي تم إخفاؤها
+                let hiddenItems = [];
                 
+                // إخفاء كل العناصر وحفظها في مصفوفة
+                allNavLinks.forEach(function(item) {
+                    if (item.style.display !== 'none') {
+                        item.style.display = 'none';
+                        hiddenItems.push(item);
+                    }
+                });
+                
+                // حفظ حالة القائمة (مغلقة افتراضياً)
+                let isMenuOpen = false;
+                
+                // إضافة حدث النقر على أيقونة القائمة
                 menuIcon.addEventListener('click', function(event) {
                     event.stopPropagation();
                     
-                    if (isSidebarVisible) {
-                        sidebar.style.display = 'none';
-                        isSidebarVisible = false;
+                    if (isMenuOpen) {
+                        // إغلاق القائمة: إخفاء جميع العناصر مرة أخرى
+                        hiddenItems.forEach(function(item) {
+                            item.style.display = 'none';
+                        });
+                        isMenuOpen = false;
                     } else {
-                        sidebar.style.display = 'block';
-                        isSidebarVisible = true;
+                        // فتح القائمة: إظهار جميع العناصر (إرجاعها إلى حالتها الأصلية)
+                        hiddenItems.forEach(function(item) {
+                            item.style.display = '';
+                        });
+                        isMenuOpen = true;
                     }
                 });
             });
