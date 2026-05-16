@@ -2,66 +2,158 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My English Missions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>My English Missions - To-Do List</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         *{
             margin: 0;
             padding: 0;
-            font-family: 'poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
             box-sizing: border-box;
         }
+        
+        body {
+            background: linear-gradient(135deg, #0e2c68, #8e1515);
+            min-height: 100vh;
+        }
+        
         .container{
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(135deg,#0e2c68,#8e1515);
-            padding: 10px;
-
+            background: linear-gradient(135deg, #0e2c68, #8e1515);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-button:hover {
+            background: #ffc107;
+            color: #0a094e;
+            transform: translateX(-5px);
+        }
+        
         .todo-app{
             width: 100%;
             max-width: 540px;
             background: #fff;
-            margin: 100px auto 20px;
+            margin: 80px auto 20px;
             padding: 40px 30px 70px;
-            border-radius: 10px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.5s ease;
         }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         .todo-app h2{
-            color:#002765;
+            color: #0e2c68;
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 28px;
+            gap: 10px;
         }
+        
+        .todo-app h2 i {
+            color: #ff5945;
+            font-size: 32px;
+        }
+        
         .todo-app h2 img{
             width: 30px;
             margin-left: 10px;
         }
+        
         .row{
             display: flex;
             align-items: center;
             justify-content: space-between;
             background: #edeef0;
-            border-radius: 30px;
+            border-radius: 40px;
             padding-left: 20px;
             margin-bottom: 25px;
+            transition: 0.3s;
         }
+        
+        .row:focus-within {
+            box-shadow: 0 0 0 2px #ff5945;
+        }
+        
         input{
-           flex: 1;
-           border: none; 
-           outline: none;
-           background: transparent;
-           padding: 10px;
+            flex: 1;
+            border: none; 
+            outline: none;
+            background: transparent;
+            padding: 16px 10px;
+            font-size: 16px;
         }
+        
         button{
-           border: none; 
-           outline: none;
-           padding: 16px 50px;
-           background: #ff5945;
-           color: #fff;
-           font-size: 16px;
-           cursor: pointer;
-           border-radius: 40px;
+            border: none; 
+            outline: none;
+            padding: 16px 40px;
+            background: #ff5945;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+        
+        button:hover {
+            background: #e04a38;
+            transform: scale(1.02);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 2px solid #edeef0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .stats span {
+            color: #ff5945;
+            font-weight: bold;
+        }
+        
         ul li{
             list-style: none;
             font-size: 17px;
@@ -69,7 +161,15 @@
             user-select: none;
             cursor: pointer;
             position: relative;
+            transition: 0.2s;
+            border-radius: 8px;
+            margin: 5px 0;
         }
+        
+        ul li:hover {
+            background: #f5f5f5;
+        }
+        
         ul li::before {
             content: '';
             position: absolute;
@@ -81,87 +181,281 @@
             background-position: center;
             top: 12px;
             left: 8px;
+            transition: 0.2s;
         }
+        
         ul li.checked{
             color: #555;
             text-decoration: line-through;
         }
+        
         ul li.checked::before{
             background-image: url(images/checked.png);
         }
+        
         ul li span{
             position: absolute;
-            right: 0;
-            top: 5px;
-            width: 40px;
-            height: 40px;
-            font-size: 22px;
-            color: #555;
-            line-height: 40px;
+            right: 5px;
+            top: 8px;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            color: #999;
+            line-height: 36px;
             text-align: center;
             border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
         }
+        
         ul li span:hover{
-            background: #edeef0;
+            background: #ff5945;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .clear-btn {
+            width: 100%;
+            background: #6c757d;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .clear-btn:hover {
+            background: #5a6268;
+        }
+        
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+            font-style: italic;
+        }
+        
+        /* ========== MEDIA QUERIES ========== */
+        
+        @media (max-width: 600px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .todo-app {
+                padding: 25px 20px 50px;
+                margin: 70px auto 20px;
+            }
+            
+            .todo-app h2 {
+                font-size: 24px;
+            }
+            
+            .todo-app h2 i {
+                font-size: 28px;
+            }
+            
+            button {
+                padding: 14px 25px;
+                font-size: 14px;
+            }
+            
+            input {
+                padding: 14px 10px;
+                font-size: 14px;
+            }
+            
+            .row {
+                padding-left: 15px;
+            }
+            
+            ul li {
+                font-size: 15px;
+                padding: 10px 8px 10px 45px;
+            }
+            
+            ul li::before {
+                height: 24px;
+                width: 24px;
+                top: 10px;
+                left: 8px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .todo-app h2 {
+                font-size: 20px;
+            }
+            
+            button {
+                padding: 12px 20px;
+            }
+            
+            button span {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <a href="welcome.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+    
     <div class="container">
         <div class="todo-app">
-            <h2>My English Missions <img src="images/icon.png" alt=""></h2>
+            <h2>
+                <i class="fa-solid fa-list-check"></i> 
+                My English Missions
+            </h2>
+            
             <div class="row">
-                <input type="text" id="input-box" placeholder="add your text">
-                <button onclick="AddTask()">Add</button>
+                <input type="text" id="input-box" placeholder="Add your English learning mission... (e.g., Learn 10 new words)">
+                <button onclick="AddTask()">
+                    <i class="fa-solid fa-plus"></i> <span>Add</span>
+                </button>
             </div>
+            
+            <div class="stats">
+                <span id="totalCount">0</span> total missions | 
+                <span id="completedCount">0</span> completed
+            </div>
+            
             <ul id="list-container">
-               <!-- <li class="checked">Task 1</li>
-                <li>Task 2</li>
-                <li>Task 3</li>
-                <li>Task 4</li>-->
+                <!-- المهام ستظهر هنا -->
             </ul>
+            
+            <button class="clear-btn" onclick="clearAllTasks()">
+                <i class="fa-solid fa-trash"></i> Clear All
+            </button>
         </div>
-
     </div>
 
     <script>
-       const inputBox = document.getElementById("input-box")  // تغيير
-       const listContainer = document.getElementById("list-container")  // تغيير
-
-      function AddTask(){
-        if(inputBox.value === ''){
-            alert("you must write something!")
+        const inputBox = document.getElementById("input-box");
+        const listContainer = document.getElementById("list-container");
+        const totalCountSpan = document.getElementById("totalCount");
+        const completedCountSpan = document.getElementById("completedCount");
+        
+        // تحديث الإحصائيات
+        function updateStats() {
+            const items = listContainer.querySelectorAll('li:not(.empty-message)');
+            const total = items.length;
+            const completed = Array.from(items).filter(li => li.classList.contains('checked')).length;
+            
+            totalCountSpan.textContent = total;
+            completedCountSpan.textContent = completed;
+            
+            // عرض رسالة إذا كانت القائمة فارغة
+            if (total === 0 && !listContainer.querySelector('.empty-message')) {
+                const emptyMsg = document.createElement('li');
+                emptyMsg.className = 'empty-message';
+                emptyMsg.innerHTML = '<i class="fa-regular fa-folder-open"></i> No missions yet. Add your first mission!';
+                emptyMsg.style.pointerEvents = 'none';
+                listContainer.appendChild(emptyMsg);
+            } else if (total > 0) {
+                const emptyMsg = listContainer.querySelector('.empty-message');
+                if (emptyMsg) emptyMsg.remove();
+            }
         }
-        else{
-           let li = document.createElement("li")
-           li.innerHTML = inputBox.value
-           listContainer.appendChild(li)
-           let span = document.createElement("span")
-           span.innerHTML ="\u00d7"
-           li.appendChild(span)
+        
+        // إضافة مهمة جديدة
+        function AddTask() {
+            const taskText = inputBox.value.trim();
+            
+            if (taskText === '') {
+                alert("⚠️ Please write a mission before adding!");
+                inputBox.style.border = "2px solid #ff5945";
+                setTimeout(() => {
+                    inputBox.style.border = "none";
+                }, 1500);
+                return;
+            }
+            
+            let li = document.createElement("li");
+            li.innerHTML = taskText;
+            listContainer.appendChild(li);
+            
+            let span = document.createElement("span");
+            span.innerHTML = "✗";
+            span.title = "Delete mission";
+            li.appendChild(span);
+            
+            inputBox.value = '';
+            saveData();
+            updateStats();
         }
-        inputBox.value = '' 
-        saveData()
-     }
-     listContainer.addEventListener("click",function(e){
-        if(e.target.tagName === "LI"){
-            e.target.classList.toggle("checked")
-            saveData()
+        
+        // معالجة النقر على المهام (تحديد كـ completed أو حذف)
+        listContainer.addEventListener("click", function(e) {
+            if (e.target.tagName === "LI") {
+                e.target.classList.toggle("checked");
+                saveData();
+                updateStats();
+            }
+            else if (e.target.tagName === "SPAN") {
+                e.target.parentElement.remove();
+                saveData();
+                updateStats();
+            }
+        });
+        
+        // حذف جميع المهام
+        function clearAllTasks() {
+            if (confirm('Are you sure you want to clear all missions?')) {
+                const items = listContainer.querySelectorAll('li:not(.empty-message)');
+                items.forEach(item => item.remove());
+                saveData();
+                updateStats();
+            }
         }
-        else if(e.target.tagName === "SPAN"){
-            e.target.parentElement.remove()
-            saveData()
+        
+        // حفظ البيانات في LocalStorage
+        function saveData() {
+            localStorage.setItem("missionsData", listContainer.innerHTML);
         }
-     },false)
-     function saveData(){
-        localStorage.setItem("data",listContainer.innerHTML)
-     }
-     function showTask(){
-        listContainer.innerHTML =localStorage.getItem("data")
-     }
-     showTask()
-
-     
+        
+        // استعراض المهام المحفوظة
+        function showTasks() {
+            const savedData = localStorage.getItem("missionsData");
+            if (savedData) {
+                listContainer.innerHTML = savedData;
+            }
+            updateStats();
+        }
+        
+        // دعم إضافة المهمة بالضغط على Enter
+        inputBox.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                AddTask();
+            }
+        });
+        
+        // تحميل المهام عند فتح الصفحة
+        showTasks();
+        
+        // إضافة بعض الأمثلة الافتراضية إذا كانت القائمة فارغة
+        setTimeout(() => {
+            if (listContainer.querySelectorAll('li:not(.empty-message)').length === 0 && !localStorage.getItem("missionsData")) {
+                const examples = [
+                    "Complete daily vocabulary quiz",
+                    "Watch an English video with subtitles",
+                    "Practice speaking for 15 minutes",
+                    "Write a short paragraph about my day",
+                    "Learn 5 new idioms"
+                ];
+                examples.forEach(text => {
+                    let li = document.createElement("li");
+                    li.innerHTML = text;
+                    listContainer.appendChild(li);
+                    let span = document.createElement("span");
+                    span.innerHTML = "✗";
+                    li.appendChild(span);
+                });
+                saveData();
+                updateStats();
+            }
+        }, 100);
     </script>
 </body>
 </html>

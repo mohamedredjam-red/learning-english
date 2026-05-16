@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Adjectives and prepositions - Grammar Test</title>
     <link rel="icon" type="image/png" href="logo7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,9 +16,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -29,24 +27,40 @@
             padding: 15px 40px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
             border-bottom: 3px solid #ffc107;
             flex-wrap: wrap;
-            position: relative;
         }
 
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
             color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
-        /* ===== شريط البحث المتغير ===== */
         .search-icon-container {
-            margin-left: auto;
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .search-wrapper {
@@ -57,7 +71,7 @@
         }
 
         .search-icon-btn {
-            background: #ffc107;
+            background: #fcfaf6;
             color: #0a094e;
             border: none;
             width: 40px;
@@ -130,12 +144,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -146,7 +163,7 @@
         .search-results-dropdown {
             position: absolute;
             top: 80px;
-            right: 40px;
+            right: 140px;
             width: 350px;
             background: #0a094e;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -173,17 +190,6 @@
             background: rgba(255, 193, 7, 0.2);
         }
 
-        .search-result-title {
-            color: #ffc107;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .search-result-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-        }
-
         .no-results {
             padding: 20px;
             text-align: center;
@@ -201,16 +207,18 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.2s;
         }
 
         .back-home a:hover {
+            transform: translateX(-5px);
             color: #e0a800;
         }
 
         .main-container {
             max-width: 700px;
             margin: 30px auto;
-            padding: 0;
+            padding: 0 20px;
         }
 
         .white-card {
@@ -254,6 +262,8 @@
             background: #f8f9fa;
             padding: 20px;
             margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
         }
 
         .examples-title {
@@ -292,6 +302,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #ddd;
+            transition: 0.2s;
         }
 
         .question-header:hover {
@@ -353,14 +364,17 @@
         .option-btn {
             background: #f0f0f0;
             border: 1px solid #ddd;
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-size: 16px;
             color: #333;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
         }
 
         .option-btn:hover {
             background: #e0e0e0;
+            transform: scale(1.02);
         }
 
         .option-btn.selected {
@@ -384,10 +398,13 @@
             color: #333;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
         }
 
-        .nav-btn:hover {
+        .nav-btn:hover:not(:disabled) {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .nav-btn:disabled {
@@ -409,10 +426,16 @@
             font-size: 14px;
             color: #333;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .action-btn:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .items-counter {
@@ -427,6 +450,7 @@
             padding: 15px;
             font-size: 14px;
             display: none;
+            border-radius: 8px;
         }
 
         .feedback.show {
@@ -475,6 +499,10 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer-links a:hover {
@@ -488,44 +516,30 @@
             font-size: 12px;
         }
 
-        .highlight-lesson {
-            background: rgba(255, 193, 7, 0.3) !important;
-            border-left: 4px solid #ffc107 !important;
-            transition: 0.3s;
-        }
-
-        @media (max-width: 900px) {
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 768px) {
             .main-header {
+                padding: 12px 20px;
                 flex-direction: column;
                 align-items: stretch;
             }
             
-            .search-popup {
-                top: 120px;
-                right: 20px;
-                left: 20px;
-                width: auto;
+            .logo-img {
+                height: 45px;
             }
             
-            .search-results-dropdown {
-                top: 180px;
-                right: 20px;
-                left: 20px;
-                width: auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-                padding: 15px;
+            .search-icon-container {
+                justify-content: center;
             }
             
             .logout-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .back-home {
+                margin: 15px 20px;
             }
             
             .main-container {
@@ -553,19 +567,62 @@
                 padding: 8px 15px;
                 font-size: 14px;
             }
+            
+            .search-results-dropdown {
+                top: 180px;
+                right: 20px;
+                left: 20px;
+                width: auto;
+            }
         }
-         img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        @media (max-width: 550px) {
+            .logo-img {
+                height: 40px;
+            }
+            
+            .question-header {
+                padding: 15px 20px;
+            }
+            
+            .question-header h3 {
+                font-size: 16px;
+            }
+            
+            .question-content {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 16px;
+            }
+            
+            .option-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .nav-btn, .action-btn {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-header">
-        <div class="platform-logo">
-           <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-        </div>
+        <a href="welcome.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         
         <div class="search-icon-container">
             <div class="search-wrapper">
@@ -577,48 +634,155 @@
                     <button class="search-btn" onclick="searchLessons()">Search</button>
                 </div>
             </div>
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
         </div>
     </div>
 
     <div class="search-results-dropdown" id="searchResults"></div>
 
     <div class="back-home">
-        <a href="A1-A2 Grammar.html">← Back to Grammar Lessons</a>
+        <a href="A1-A2 Grammar.html">
+            <i class="fa-solid fa-arrow-left"></i> Back to Grammar Lessons
+        </a>
     </div>
 
     <div class="main-container">
-        <!-- باقي محتوى الصفحة كما هو - دروس وتمارين -->
+        <!-- البطاقة 1: Grammar test 1 -->
         <div class="white-card">
-            <h1>Grammar test 1</h1>
-            <h2>Grammar A1-A2: Adjectives and prepositions: 1</h2>
+            <h1><i class="fa-solid fa-spell-check"></i> Grammar test 1</h1>
+            <h2>Grammar A1-A2: Adjectives and prepositions</h2>
             
             <div class="intro-text">
-                Do you know how to use adjectives with prepositions like interested in or similar to? 
+                Do you know how to use adjectives with prepositions like <strong>interested in</strong> or <strong>similar to</strong>? 
                 Test what you know with interactive exercises and read the explanation to help you.
             </div>
 
             <div class="examples-box">
-                <div class="examples-title">Look at these examples:</div>
-                <div class="example-item">I'm <strong>interested in</strong> the idea.</div>
-                <div class="example-item">My jacket is <strong>similar to</strong> yours.</div>
-                <div class="example-item">She's <strong>brilliant at</strong> maths.</div>
-                <div class="example-item">My neighbour is <strong>angry about</strong> the party.</div>
+                <div class="examples-title">📚 Look at these examples:</div>
+                <div class="example-item"><i class="fa-solid fa-lightbulb"></i> I'm <strong>interested in</strong> the idea.</div>
+                <div class="example-item"><i class="fa-solid fa-lightbulb"></i> My jacket is <strong>similar to</strong> yours.</div>
+                <div class="example-item"><i class="fa-solid fa-lightbulb"></i> She's <strong>brilliant at</strong> maths.</div>
+                <div class="example-item"><i class="fa-solid fa-lightbulb"></i> My neighbour is <strong>angry about</strong> the party.</div>
             </div>
 
-            <div class="exercise-title">Try this exercise:</div>
+            <div class="exercise-title">
+                <i class="fa-solid fa-pen-to-square"></i> Try this exercise to test your grammar.
+            </div>
         </div>
 
-        <!-- باقي محتوى الصفحة (الأسئلة والتمارين) يبقى كما هو -->
-        <!-- ... -->
+        <!-- البطاقة 2: بطاقة الأسئلة الأولى -->
+        <div class="question-card">
+            <div class="question-header" onclick="toggleQuestions()">
+                <h3><i class="fa-solid fa-question-circle"></i> Exercise 1: Choose the correct preposition</h3>
+                <span class="arrow" id="toggle-arrow">▼</span>
+            </div>
+            
+            <div class="question-content" id="question-content">
+                <div class="instruction"><i class="fa-solid fa-check-circle"></i> Choose the correct preposition.</div>
+                
+                <div class="question-number" id="question-number">Question 1 of 7</div>
+                <div class="question-text" id="question-text">Loading...</div>
+                
+                <div class="options" id="options-container"></div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()" disabled>
+                        <i class="fa-solid fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()">
+                        Next <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showAnswer()">
+                        <i class="fa-solid fa-eye"></i> Show answers
+                    </button>
+                    <button class="action-btn" onclick="showFeedback()">
+                        <i class="fa-solid fa-comment"></i> Show feedback
+                    </button>
+                    <button class="action-btn" onclick="resetCurrentQuestion()">
+                        <i class="fa-solid fa-rotate-left"></i> Try again
+                    </button>
+                </div>
+
+                <div class="feedback" id="feedback-message"></div>
+                <div class="items-counter" id="items-counter">7 items remaining</div>
+            </div>
+        </div>
+
+        <!-- البطاقة 3: Grammar Explanation -->
+        <div class="white-card">
+            <h2><i class="fa-solid fa-book-open"></i> Read the explanation to learn more.</h2>
+            
+            <div style="color:#555; line-height:1.6; margin-bottom:15px;">
+                <strong>Grammar explanation</strong><br>
+                Some adjectives go with certain prepositions. There are no grammatical rules for which preposition is used with which adjective, so it's a good idea to try to learn them together.
+            </div>
+
+            <div style="margin:20px 0;">
+                <h4 style="color:#0a094e; margin-bottom:10px;"><i class="fa-solid fa-list"></i> Common adjective + preposition combinations:</h4>
+                <ul style="color:#555; margin-left:20px; margin-top:10px;">
+                    <li><strong>interested in</strong> - She's interested in art.</li>
+                    <li><strong>similar to</strong> - This is similar to what I saw.</li>
+                    <li><strong>proud of</strong> - I'm proud of you.</li>
+                    <li><strong>responsible for</strong> - He's responsible for the team.</li>
+                    <li><strong>allergic to</strong> - I'm allergic to nuts.</li>
+                    <li><strong>addicted to</strong> - He's addicted to video games.</li>
+                    <li><strong>bad for</strong> - Sugar is bad for your health.</li>
+                    <li><strong>excited about</strong> - We're excited about the trip.</li>
+                    <li><strong>angry about</strong> - She's angry about the delay.</li>
+                    <li><strong>nervous about</strong> - I'm nervous about the exam.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- البطاقة 4: Grammar Test 2 -->
+        <div class="white-card">
+            <h1><i class="fa-solid fa-pen-ruler"></i> Exercise 2: More practice</h1>
+            
+            <div class="instruction"><i class="fa-solid fa-check-circle"></i> Choose the correct preposition.</div>
+            
+            <div class="question-number" id="test2-question-number">Question 1 of 5</div>
+            <div class="question-text" id="test2-question-text">Loading...</div>
+            
+            <div class="options" id="test2-options-container"></div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn" id="test2-prev-btn" onclick="prevTest2Question()" disabled>
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button class="nav-btn" id="test2-next-btn" onclick="nextTest2Question()">
+                    Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-btn" onclick="checkTest2Answer()">
+                    <i class="fa-solid fa-check-double"></i> Check
+                </button>
+                <button class="action-btn" onclick="resetTest2()">
+                    <i class="fa-solid fa-rotate-left"></i> Try again
+                </button>
+            </div>
+
+            <div class="feedback" id="test2-feedback"></div>
+            <div class="items-counter" id="test2-counter">5 items remaining</div>
+
+            <div class="test-again">
+                <i class="fa-solid fa-repeat"></i> Do this exercise to test your grammar again.
+            </div>
+        </div>
     </div>
 
     <div class="main-footer">
         <div class="footer-links">
-            <a href="welcome.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-            <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer">Help</a>
+            <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
         </div>
         <div class="copyright">
             © 2026 English Learning Platform. All rights reserved.
@@ -626,12 +790,12 @@
     </div>
 
     <script>
-        // الأسئلة والتمارين كما هي في الكود الأصلي
+        // الأسئلة للتمرين الأول
         const questions = [
             { text: "I'm really proud ___ you!", options: ["of", "to", "with"], correct: "of" },
             { text: "She's responsible ___ health and safety.", options: ["for", "in", "of"], correct: "for" },
             { text: "He's allergic ___ seafood.", options: ["of", "to", "with"], correct: "to" },
-            { text: "They're interested ___ our project.", options: ["About", "in", "on"], correct: "in" },
+            { text: "They're interested ___ our project.", options: ["about", "in", "on"], correct: "in" },
             { text: "I'm addicted ___ that new series on Channel 4.", options: ["of", "to", "with"], correct: "to" },
             { text: "Sugar is bad ___ your teeth.", options: ["at", "for", "of"], correct: "for" },
             { text: "I'm really excited ___ the new house.", options: ["about", "of", "to"], correct: "about" }
@@ -640,6 +804,7 @@
         let currentQuestion = 0;
         let selectedAnswers = {};
 
+        // الأسئلة للتمرين الثاني
         const test2Questions = [
             { text: "She's interested ___ buying the flat.", options: ["about", "in", "on"], correct: "in" },
             { text: "I'm a bit nervous ___ going somewhere so different.", options: ["about", "of", "to"], correct: "about" },
@@ -651,6 +816,7 @@
         let test2CurrentQuestion = 0;
         let test2Answers = {};
 
+        // Toggle questions visibility
         function toggleQuestions() {
             const content = document.getElementById('question-content');
             const arrow = document.getElementById('toggle-arrow');
@@ -660,6 +826,7 @@
             }
         }
 
+        // Load current question للتمرين الأول
         function loadQuestion(index) {
             const question = questions[index];
             document.getElementById('question-number').textContent = `Question ${index + 1} of ${questions.length}`;
@@ -711,7 +878,7 @@
             const feedback = document.getElementById('feedback-message');
             const correctAnswer = questions[currentQuestion].correct;
             if (feedback) {
-                feedback.innerHTML = `<strong>The correct answer is "${correctAnswer}".</strong>`;
+                feedback.innerHTML = `<i class="fa-solid fa-lightbulb"></i> <strong>The correct answer is "${correctAnswer}".</strong>`;
                 feedback.className = 'feedback show';
             }
         }
@@ -722,16 +889,16 @@
             const userAnswer = selectedAnswers[currentQuestion];
             
             if (!userAnswer) {
-                feedback.innerHTML = 'Please select an answer first.';
+                feedback.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Please select an answer first.';
                 feedback.className = 'feedback show wrong';
                 return;
             }
             
             if (userAnswer === correctAnswer) {
-                feedback.innerHTML = '✓ Excellent! That\'s correct.';
+                feedback.innerHTML = '<i class="fa-solid fa-check-circle"></i> ✓ Excellent! That\'s correct.';
                 feedback.className = 'feedback show correct';
             } else {
-                feedback.innerHTML = `✗ Sorry, that's not right. The correct answer is "${correctAnswer}".`;
+                feedback.innerHTML = `<i class="fa-solid fa-times-circle"></i> ✗ Sorry, that's not right. The correct answer is "${correctAnswer}".`;
                 feedback.className = 'feedback show wrong';
             }
         }
@@ -743,6 +910,8 @@
             document.getElementById('feedback-message').classList.remove('show', 'correct', 'wrong');
         }
 
+        // ========== دوال التمرين الثاني ==========
+        
         function loadTest2Question(index) {
             const question = test2Questions[index];
             document.getElementById('test2-question-number').textContent = `Question ${index + 1} of ${test2Questions.length}`;
@@ -796,17 +965,17 @@
             const userAnswer = test2Answers[test2CurrentQuestion];
             
             if (!userAnswer) {
-                feedback.innerHTML = 'Please select an answer first.';
+                feedback.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Please select an answer first.';
                 feedback.className = 'feedback show wrong';
                 feedback.style.display = 'block';
                 return;
             }
             
             if (userAnswer === correctAnswer) {
-                feedback.innerHTML = '✓ Correct! Well done.';
+                feedback.innerHTML = '<i class="fa-solid fa-check-circle"></i> ✓ Correct! Well done.';
                 feedback.className = 'feedback show correct';
             } else {
-                feedback.innerHTML = `✗ Wrong. The correct answer is "${correctAnswer}".`;
+                feedback.innerHTML = `<i class="fa-solid fa-times-circle"></i> ✗ Wrong. The correct answer is "${correctAnswer}".`;
                 feedback.className = 'feedback show wrong';
             }
             feedback.style.display = 'block';
@@ -818,7 +987,7 @@
             loadTest2Question(0);
         }
 
-        // ===== شريط البحث المتغير =====
+        // ===== شريط البحث =====
         const searchToggleBtn = document.getElementById('searchToggleBtn');
         const searchWrapper = document.querySelector('.search-wrapper');
         const searchResultsDiv = document.getElementById('searchResults');
@@ -840,69 +1009,50 @@
             }
         });
 
-        const searchInputWrapper = document.getElementById('searchInputWrapper');
-        if (searchInputWrapper) {
-            searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
-        }
-
         function searchLessons() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            const lessonItems = document.querySelectorAll('.lesson-item');
             
             if (searchTerm === '') {
                 if (searchResultsDiv) searchResultsDiv.classList.remove('show');
-                lessonItems.forEach(item => item.classList.remove('highlight-lesson'));
                 return;
             }
             
-            let results = [];
-            lessonItems.forEach(item => {
-                const title = item.querySelector('h2 a')?.textContent;
-                const description = item.querySelector('p')?.textContent;
-                const link = item.querySelector('a')?.getAttribute('href');
-                
-                if (title?.toLowerCase().includes(searchTerm) || description?.toLowerCase().includes(searchTerm)) {
-                    item.classList.add('highlight-lesson');
-                    results.push({ title, description: description?.substring(0,60)+'...', link });
-                } else {
-                    item.classList.remove('highlight-lesson');
-                }
-            });
-            
             if (searchResultsDiv) {
-                if (results.length > 0) {
-                    let html = '';
-                    results.slice(0,5).forEach(result => {
-                        html += `<div class="search-result-item" onclick="window.location.href='${result.link}'">
-                                    <div class="search-result-title">${result.title}</div>
-                                    <div class="search-result-description">${result.description}</div>
-                                </div>`;
-                    });
-                    if (results.length > 5) html += `<div class="search-result-item">... and ${results.length - 5} more results</div>`;
-                    searchResultsDiv.innerHTML = html;
-                    searchResultsDiv.classList.add('show');
-                } else {
-                    searchResultsDiv.innerHTML = '<div class="no-results">No lessons found</div>';
-                    searchResultsDiv.classList.add('show');
-                }
+                searchResultsDiv.innerHTML = `<div class="search-result-item">🔍 Searching for: "${searchTerm}"</div>
+                    <div class="search-result-item">📚 Adjectives and prepositions lesson</div>`;
+                searchResultsDiv.classList.add('show');
             }
         }
 
+        // ===== تسجيل الخروج =====
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
                 localStorage.clear();
+                sessionStorage.clear();
                 window.location.href = 'index.html';
             }
         }
 
+        // ===== التحقق من تسجيل الدخول =====
         if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
 
-        if (document.getElementById('question-content')) {
-            loadQuestion(0);
-            loadTest2Question(0);
-        }
+        // ===== معالج خطأ الصورة =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+            
+            // تحميل الأسئلة
+            if (document.getElementById('question-content')) {
+                loadQuestion(0);
+                loadTest2Question(0);
+            }
+        });
     </script>
 </body>
 </html>

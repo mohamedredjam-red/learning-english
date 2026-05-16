@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>English Platform - A1-A2 Grammar Lessons</title>
     <link rel="icon" type="image/png" href="logo7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,9 +19,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(#29376a, #940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             color: white;
         }
@@ -42,35 +40,31 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .header-left {
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .menu-btn{
-
-            width:45px;
-            height:45px;
-
-            border:none;
-
-            border-radius:40px;
-
-            background:#0a094e;
-            color:#ffffff;
-
-            font-size:20px;
-
-            cursor:pointer;
-
-            transition:0.3s;
+        .menu-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 40px;
+            background: #0a094e;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .menu-btn:hover{
-            background:rgba(0, 0, 0, .4)
+        .menu-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .logo-section {
@@ -78,27 +72,28 @@
             align-items: center;
         }
 
-        .platform-logo {
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* نص احتياطي للشعار */
+        .logo-text {
+            color: #ffc107;
             font-size: 22px;
-            font-weight: 800;
-            color: #ffc107;
-            line-height: 1.2;
-        }
-
-        .platform-logo a {
-            color: #ffc107;
-        }
-
-        .platform-logo span {
-            color: white;
-            margin: 0 5px;
-        }
-
-        .platform-sub {
-            font-size: 13px;
-            color: white;
-            letter-spacing: 1px;
-            margin-top: 2px;
+            font-weight: bold;
+            display: none;
         }
 
         /* ================= SEARCH ================= */
@@ -106,6 +101,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .search-wrapper {
@@ -223,34 +219,6 @@
             display: block;
         }
 
-        .search-result-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .search-result-item:hover {
-            background: rgba(255, 193, 7, 0.2);
-        }
-
-        .search-result-title {
-            color: #ffc107;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .search-result-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 12px;
-        }
-
-        .no-results {
-            padding: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
         /* ================= SIDEBAR ================= */
         .sidebar {
             position: fixed;
@@ -342,6 +310,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .welcome-text h1 {
@@ -421,6 +390,8 @@
             text-transform: uppercase;
             font-weight: 800;
             margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .project-title span {
@@ -481,8 +452,20 @@
             color: rgba(255,255,255,0.6);
         }
 
-        /* ================= MEDIA QUERIES ================= */
-        @media (max-width: 1024px) {
+        /* ================= MEDIA QUERIES المتقدمة ================= */
+        
+        /* شاشات كبيرة (1200px+) */
+        @media (min-width: 1200px) {
+            .lessons-section {
+                max-width: 1400px;
+            }
+            .project-card {
+                width: 25em;
+            }
+        }
+
+        /* شاشات متوسطة (992px - 1199px) */
+        @media (max-width: 1199px) {
             .lessons-section {
                 gap: 20px;
             }
@@ -491,153 +474,254 @@
             }
         }
 
-        @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-            }
-
+        /* شاشات تابلت (768px - 991px) */
+        @media (max-width: 991px) {
             .main-header {
-                padding: 12px 15px;
+                padding: 12px 20px;
             }
-
-            .platform-logo {
-                font-size: 18px;
+            
+            .welcome-banner {
+                margin: 20px;
+                padding: 25px;
             }
-
-            .logout-btn {
-                padding: 8px 12px;
-                font-size: 12px;
+            
+            .welcome-text h1 {
+                font-size: 26px;
             }
-
-            .sidebar {
-                width: 270px;
+            
+            .lessons-section h1 {
+                font-size: 30px;
             }
+            
+            .project-card {
+                width: 18em;
+                margin: 15px;
+            }
+        }
 
+        /* شاشات تابلت صغيرة وجوالات كبيرة (576px - 767px) */
+        @media (max-width: 767px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-icon-container {
+                width: 100%;
+                justify-content: center;
+            }
+            
             .welcome-banner {
                 flex-direction: column;
                 text-align: center;
                 margin: 15px;
                 padding: 20px;
             }
-
+            
             .welcome-text h1 {
                 font-size: 24px;
             }
-
+            
+            .welcome-text p {
+                font-size: 14px;
+            }
+            
             .lessons-section {
                 padding: 0 20px;
                 gap: 15px;
             }
-
+            
             .lessons-section h1 {
                 font-size: 28px;
             }
-
+            
             .project-card {
-                width: 18em;
-                margin: 10px;
+                width: 100%;
+                max-width: 400px;
+                margin: 10px auto;
             }
-
+            
             .project-image img {
                 height: 180px;
             }
-
+            
             .back-home {
                 margin: 15px 20px;
             }
-
+            
             .search-wrapper.open .search-input-wrapper {
                 width: 250px;
             }
-
+            
             .search-input {
                 width: 150px;
             }
-
+            
             .search-results-dropdown {
                 width: 300px;
                 right: 10px;
-                top: 75px;
+                top: 130px;
             }
         }
 
-        @media (max-width: 600px) {
-            .project-card {
-                width: 100%;
-                max-width: 350px;
-                margin: 10px auto;
-            }
-        }
-
-        @media (max-width: 480px) {
+        /* جوالات (480px - 575px) */
+        @media (max-width: 575px) {
             .platform-logo {
-                font-size: 16px;
+                font-size: 18px;
             }
-
+            
+            .logo-img {
+                height: 45px;
+            }
+            
             .welcome-text h1 {
                 font-size: 20px;
             }
-
+            
             .welcome-text p {
                 font-size: 13px;
             }
-
+            
             .level-badge {
                 font-size: 13px;
                 padding: 8px 18px;
             }
-
+            
             .lessons-section h1 {
-                font-size: 22px;
+                font-size: 24px;
             }
-
+            
             .project-title {
                 font-size: 12px;
             }
-
+            
             .project-category {
                 font-size: 11px;
             }
-
+            
             .search-icon-btn {
                 width: 35px;
                 height: 35px;
                 font-size: 16px;
             }
-
+            
             .search-wrapper.open .search-input-wrapper {
                 width: 200px;
             }
-
+            
             .search-input {
                 width: 120px;
                 padding: 8px 10px;
                 font-size: 12px;
             }
-
+            
             .search-btn {
                 padding: 6px 10px;
                 font-size: 10px;
             }
-
+            
+            .logout-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
             .search-results-dropdown {
                 width: 280px;
                 right: 5px;
-                top: 70px;
+                top: 120px;
             }
-
+            
             .back-home {
                 margin: 10px 15px;
             }
-
+            
             .back-home a {
                 font-size: 13px;
             }
         }
-        img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        /* جوالات صغيرة جداً (أقل من 480px) */
+        @media (max-width: 479px) {
+            .main-header {
+                padding: 10px 15px;
+            }
+            
+            .menu-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .welcome-banner {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 18px;
+            }
+            
+            .lessons-section h1 {
+                font-size: 20px;
+            }
+            
+            .project-card {
+                margin: 8px auto;
+            }
+            
+            .project-image img {
+                height: 150px;
+            }
+            
+            .sidebar {
+                width: 260px;
+            }
+        }
+
+        /* وضع الشاشة الأفقي (Landscape) */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .welcome-banner {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .lessons-section {
+                margin: 20px auto;
+            }
+            
+            .project-card {
+                width: 45%;
+                margin: 10px;
+            }
+        }
+
+        /* شاشات عالية الدقة (Retina) */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        /* تقليل الحركة */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .project-card:hover {
+                transform: none !important;
+            }
         }
     </style>
 </head>
@@ -650,9 +734,11 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="logo-section">
-                <div class="platform-logo">
-                    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-                </div>
+                <a href="welcome.html" class="logo-link">
+                    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="logo-text">📚 English Platform</span>
+                </a>
             </div>
         </div>
         
@@ -884,7 +970,8 @@
         else if (userLevel === 'B') levelText = 'Level B - Intermediate';
         else levelText = 'Level C - Advanced';
         
-        document.getElementById('levelDisplay').textContent = levelText;
+        const levelDisplay = document.getElementById('levelDisplay');
+        if (levelDisplay) levelDisplay.textContent = levelText;
 
         // ================= SIDEBAR FUNCTIONS =================
         const menuBtn = document.getElementById("menuBtn");
@@ -922,7 +1009,10 @@
                 e.stopPropagation();
                 searchWrapper.classList.toggle('open');
                 if (searchWrapper.classList.contains('open')) {
-                    setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+                    setTimeout(() => { 
+                        const searchInput = document.getElementById('searchInput');
+                        if (searchInput) searchInput.focus();
+                    }, 100);
                 }
             });
         }
@@ -930,16 +1020,19 @@
         document.addEventListener('click', function(event) {
             if (searchWrapper && !searchWrapper.contains(event.target)) {
                 searchWrapper.classList.remove('open');
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
             }
         });
 
         function searchLessons() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const projectCards = document.querySelectorAll('.project-card');
             
             if (searchTerm === '') {
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
                 projectCards.forEach(card => card.style.display = 'block');
                 return;
             }
@@ -947,9 +1040,10 @@
             let results = [];
             
             projectCards.forEach(card => {
-                const title = card.querySelector('.project-title span').textContent.toLowerCase();
-                const category = card.querySelector('.project-category').textContent.toLowerCase();
-                const link = card.querySelector('.more-details').getAttribute('href');
+                const titleSpan = card.querySelector('.project-title span');
+                const title = titleSpan ? titleSpan.textContent.toLowerCase() : '';
+                const category = card.querySelector('.project-category')?.textContent.toLowerCase() || '';
+                const link = card.querySelector('.more-details')?.getAttribute('href') || '#';
                 
                 if (title.includes(searchTerm) || category.includes(searchTerm)) {
                     card.style.display = 'block';
@@ -959,36 +1053,58 @@
                 }
             });
             
-            if (results.length > 0) {
-                let html = '';
-                results.slice(0, 5).forEach(result => {
-                    html += `
-                        <div class="search-result-item" onclick="window.location.href='${result.link}'">
-                            <div class="search-result-title">${result.title}</div>
-                            <div class="search-result-description">${result.description}</div>
-                        </div>
-                    `;
-                });
-                searchResultsDiv.innerHTML = html;
-                searchResultsDiv.classList.add('show');
-            } else if (searchTerm !== '') {
-                searchResultsDiv.innerHTML = '<div class="no-results">No grammar lessons found</div>';
-                searchResultsDiv.classList.add('show');
-            } else {
-                searchResultsDiv.classList.remove('show');
+            if (searchResultsDiv) {
+                if (results.length > 0) {
+                    let html = '';
+                    results.slice(0, 5).forEach(result => {
+                        html += `
+                            <div class="search-result-item" onclick="window.location.href='${result.link}'">
+                                <div class="search-result-title">${escapeHtml(result.title)}</div>
+                                <div class="search-result-description">${escapeHtml(result.description)}</div>
+                            </div>
+                        `;
+                    });
+                    searchResultsDiv.innerHTML = html;
+                    searchResultsDiv.classList.add('show');
+                } else if (searchTerm !== '') {
+                    searchResultsDiv.innerHTML = '<div class="no-results">No grammar lessons found</div>';
+                    searchResultsDiv.classList.add('show');
+                } else {
+                    searchResultsDiv.classList.remove('show');
+                }
             }
         }
 
-        // ================= LOGOUT =================
+        // دالة مساعدة لمنع XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ================= LOGOUT المحسّن =================
         function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
         }
         
         // ================= CHECK LOGIN =================
         if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
+
+        // معالج خطأ الصورة
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 2: Giving instructions - Speaking A2</title>
   <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     * {
@@ -15,8 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -31,18 +31,37 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
     }
 
     .buttons {
       display: flex;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .buttons button {
@@ -52,10 +71,12 @@
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     .buttons button:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .back {
@@ -66,9 +87,14 @@
       color: #ffc107;
       text-decoration: none;
       font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
     }
 
     .back a:hover {
+      transform: translateX(-5px);
       color: #e0a800;
     }
 
@@ -77,6 +103,7 @@
       margin: 20px auto;
       padding: 0 20px;
       flex: 1;
+      width: 100%;
     }
 
     .card {
@@ -84,6 +111,7 @@
       border-radius: 10px;
       padding: 30px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .card h1 {
@@ -91,15 +119,28 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
-    video {
-      width: 100%;        
-      max-width: 700px; 
-      height: auto;      
+    .video-section {
+      margin-bottom: 20px;
+    }
+
+    .video-section video {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
       display: block;
-      margin: 0 auto;     
-      border-radius: 10px; 
+      margin: 0 auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
     }
 
     .questions-container {
@@ -123,6 +164,7 @@
       font-weight: bold;
       color: #0a094e;
       margin-bottom: 10px;
+      font-size: 16px;
     }
 
     .answer-input {
@@ -134,43 +176,58 @@
 
     .answer-input input {
       flex: 1;
-      padding: 8px;
-      border: 1px solid #ccc;
+      padding: 10px;
+      border: 2px solid #ddd;
       border-radius: 6px;
       min-width: 200px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .answer-input input:focus {
+      outline: none;
+      border-color: #ffc107;
     }
 
     .answer-input button {
       background: #ffc107;
       border: none;
-      padding: 8px 15px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
       color: #0a094e;
+      transition: 0.2s;
     }
 
     .answer-input button:hover {
       background: #e0a800;
+      transform: scale(1.02);
     }
 
     .answer-feedback {
       margin-top: 8px;
       font-size: 14px;
+      padding: 8px;
+      border-radius: 6px;
     }
 
     .answer-feedback.correct {
-      color: green;
+      background: #d4edda;
+      color: #155724;
+      border-left: 4px solid #28a745;
       font-weight: bold;
     }
 
     .answer-feedback.wrong {
-      color: red;
+      background: #f8d7da;
+      color: #721c24;
+      border-left: 4px solid #dc3545;
       font-weight: bold;
     }
 
     .reset-all {
-      background: #0a094e;
+      background: #6c757d;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -178,10 +235,15 @@
       cursor: pointer;
       font-weight: bold;
       margin-top: 15px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .reset-all:hover {
-      background: #333366;
+      background: #5a6268;
+      transform: scale(1.02);
     }
 
     .next-lesson {
@@ -193,18 +255,22 @@
       background: #ffc107;
       color: #0a094e;
       text-decoration: none;
-      padding: 10px 25px;
+      padding: 12px 30px;
       border-radius: 25px;
       font-weight: bold;
       display: inline-block;
+      transition: 0.3s;
     }
 
     .next-lesson a:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     hr {
       margin: 25px 0;
+      border: none;
+      border-top: 2px solid #e5e7eb;
     }
 
     .footer {
@@ -215,43 +281,189 @@
       border-top: 3px solid #ffc107;
     }
 
-    .footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 14px;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
-    .footer a:hover {
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .footer-links a:hover {
       color: #ffc107;
     }
 
     .copyright {
       color: rgba(255,255,255,0.5);
       font-size: 12px;
-      margin-top: 15px;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 6px 15px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 15px 20px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .question-item p {
+        font-size: 14px;
+      }
+      
+      .answer-input input {
+        padding: 8px;
+        font-size: 13px;
+      }
+      
+      .answer-input button {
+        padding: 8px 15px;
+        font-size: 13px;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .back {
+        margin: 12px 15px;
+      }
+      
+      .back a {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .question-item {
+        padding: 12px;
+      }
+      
+      .question-item p {
+        font-size: 13px;
+      }
+      
+      .answer-input {
+        flex-direction: column;
+      }
+      
+      .answer-input input {
+        width: 100%;
+        min-width: auto;
+      }
+      
+      .answer-input button {
+        width: 100%;
+      }
+      
+      .reset-all {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .next-lesson a {
+        padding: 10px 25px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-item p {
+        font-size: 12px;
+      }
+      
+      .answer-feedback {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">
-    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-  </div>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="buttons">
-    <button>🔍</button>
-    <button onclick="logout()">Logout</button>
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 </div>
 
 <div class="back">
-  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+  <a href="A2speaking.html">
+    <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+  </a>
 </div>
 
 <div class="container">
@@ -260,19 +472,19 @@
 
     <!-- الفيديو الأول -->
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/7.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch Video 1 carefully, then answer:</p>
+      <p class="video-caption">🎬 Watch Video 1 carefully, then answer:</p>
     </div>
 
     <div class="questions-container">
       <div class="question-item" id="q1">
         <p>❓ 1. What did Peppa say to the queen to make her stop?</p>
         <div class="answer-input">
-          <input type="text" id="answer1" placeholder="Type your answer here.....">
-          <button onclick="checkQuestion(1)">Check Answer</button>
+          <input type="text" id="answer1" placeholder="Type your answer here...">
+          <button onclick="checkQuestion(1)">✓ Check Answer</button>
         </div>
         <div id="feedback1" class="answer-feedback"></div>
       </div>
@@ -280,8 +492,8 @@
       <div class="question-item" id="q2">
         <p>❓ 2. What instruction did Peppa give the queen regarding the silkworm in the mud?</p>
         <div class="answer-input">
-          <input type="text" id="answer2" placeholder="Type your answer here.....">
-          <button onclick="checkQuestion(2)">Check Answer</button>
+          <input type="text" id="answer2" placeholder="Type your answer here...">
+          <button onclick="checkQuestion(2)">✓ Check Answer</button>
         </div>
         <div id="feedback2" class="answer-feedback"></div>
       </div>
@@ -291,11 +503,11 @@
 
     <!-- الفيديو الثاني -->
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/8.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch Video 2 carefully, then answer:</p>
+      <p class="video-caption">🎬 Watch Video 2 carefully, then answer:</p>
     </div>
 
     <div class="questions-container">
@@ -303,7 +515,7 @@
         <p>❓ 3. What instructions did Peppa give George to make perfume?</p>
         <div class="answer-input">
           <input type="text" id="answer3" placeholder="Type your answer...">
-          <button onclick="checkQuestion(3)">Check Answer</button>
+          <button onclick="checkQuestion(3)">✓ Check Answer</button>
         </div>
         <div id="feedback3" class="answer-feedback"></div>
       </div>
@@ -312,26 +524,28 @@
         <p>❓ 4. What did Peppa say to George when he tried to put grass in the beaker?</p>
         <div class="answer-input">
           <input type="text" id="answer4" placeholder="Type your answer...">
-          <button onclick="checkQuestion(4)">Check Answer</button>
+          <button onclick="checkQuestion(4)">✓ Check Answer</button>
         </div>
         <div id="feedback4" class="answer-feedback"></div>
       </div>
     </div>
 
-    <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+    <button class="reset-all" onclick="resetAllQuestions()">
+      <i class="fa-solid fa-rotate-left"></i> Reset All Answers
+    </button>
 
     <div class="next-lesson">
-      <a href="showing-interest .html">→ Next Lesson</a>
+      <a href="showing-interest .html">→ Next Lesson: Showing Interest</a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <div>
-    <a href="welcome.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#">Contact</a>
-    <a href="#">Help</a>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
   </div>
   <div class="copyright">
     © 2026 English Learning Platform. All rights reserved.
@@ -339,12 +553,12 @@
 </div>
 
 <script>
-  // الإجابات الصحيحة
+  // الإجابات الصحيحة (مع مرونة أكثر)
   const correctAnswers = {
-    1: ["stop"], 
-    2: ["you must wear your boots"], 
-    3: ["first i pick a smelly flower then i put it in my beaker"], 
-    4: ["you can't put grass in my perfume, it needs to smell of flowers"]  
+    1: ["stop", "stop!", "stop the car"], 
+    2: ["you must wear your boots", "wear your boots", "you need to wear your boots"], 
+    3: ["first i pick a smelly flower then i put it in my beaker", "pick a flower and put it in the beaker", "first pick a flower then put it in the beaker"], 
+    4: ["you can't put grass in my perfume, it needs to smell of flowers", "don't put grass in my perfume", "it needs to smell of flowers"]  
   };
 
   // دالة التحقق من الإجابة
@@ -354,20 +568,22 @@
     let fb = document.getElementById(`feedback${num}`);
 
     if (val === "") {
-      alert("⚠️ Please type an answer before checking!");
+      fb.innerHTML = "⚠️ Please write your answer before checking!";
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid #dc3545";
       return;
     }
 
-    let isCorrect = correctAnswers[num].some(ans => val === ans);
+    let isCorrect = correctAnswers[num].some(ans => val.includes(ans));
 
     if (isCorrect) {
       fb.innerHTML = "✅ Correct! Well done!";
       fb.className = "answer-feedback correct";
-      input.style.border = "2px solid green";
+      input.style.border = "2px solid #28a745";
     } else {
       fb.innerHTML = "❌ Try again! Watch the video carefully.";
       fb.className = "answer-feedback wrong";
-      input.style.border = "2px solid red";
+      input.style.border = "2px solid #dc3545";
     }
   }
 
@@ -385,13 +601,38 @@
         feedback.className = "answer-feedback";
       }
     }
+    // إظهار رسالة短暂ة
+    const resetBtn = document.querySelector('.reset-all');
+    const originalText = resetBtn.innerHTML;
+    resetBtn.innerHTML = '<i class="fa-solid fa-check"></i> Reset Complete!';
+    setTimeout(() => {
+      resetBtn.innerHTML = originalText;
+    }, 1500);
   }
 
-  // دالة تسجيل الخروج
+  // دالة تسجيل الخروج المحسنة
   function logout() {
-    localStorage.clear();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // التحقق من تسجيل الدخول
+  if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
+
+  // معالج خطأ الصورة
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 
 </body>

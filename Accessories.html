@@ -2,10 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessories </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Accessories - Vocabulary Lesson</title>
     <link rel="icon" type="image/png" href="logo7.png">
-    <!-- رابط Font Awesome الصحيح (الإصدار 6) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -21,9 +20,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -38,20 +35,36 @@
             border-bottom: 3px solid #ffc107;
             position: relative;
             flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
+        .platform-logo a {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
             color: #ffc107;
-            order: 2;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
         .search-icon-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            order: 1;
+            flex-wrap: wrap;
         }
 
         /* ===== شريط البحث المتغير ===== */
@@ -62,9 +75,8 @@
             position: relative;
         }
 
-        /* أيقونة البحث */
         .search-icon-btn {
-            background: #ffc107;
+            background: #fcfaf6;
             color: #0a094e;
             border: none;
             width: 40px;
@@ -84,7 +96,6 @@
             transform: scale(1.05);
         }
 
-        /* حاوية الإدخال (مخفية في البداية) */
         .search-input-wrapper {
             display: flex;
             align-items: center;
@@ -96,7 +107,6 @@
             visibility: hidden;
         }
 
-        /* عندما تكون مفتوحة */
         .search-wrapper.open .search-input-wrapper {
             width: 300px;
             opacity: 1;
@@ -104,7 +114,6 @@
             margin-right: 10px;
         }
 
-        /* حقل الإدخال */
         .search-input {
             padding: 10px 15px;
             border: none;
@@ -119,7 +128,6 @@
             outline: 2px solid #ffc107;
         }
 
-        /* زر البحث داخل الشريط */
         .search-btn {
             background: #ffc107;
             color: #0a094e;
@@ -141,12 +149,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -203,9 +214,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.2s;
         }
 
         .back-home a:hover {
+            transform: translateX(-5px);
             color: #e0a800;
         }
 
@@ -319,7 +332,6 @@
             transform: scale(1.02);
         }
 
-        /* ===== زر الصوت - شكل مربع رمادي ===== */
         .sound-btn {
             position: absolute;
             bottom: 10px;
@@ -448,6 +460,7 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.2s;
         }
 
         .footer-links a:hover {
@@ -461,7 +474,39 @@
             font-size: 12px;
         }
 
+        .instruction {
+            text-align: center;
+            font-size: 12px;
+            color: #ffc107;
+            background: #0a094e;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 193, 7, 0.5);
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+
+        /* ================= MEDIA QUERIES ================= */
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
             .main-container {
                 max-width: 100%;
                 padding: 0 15px;
@@ -484,6 +529,10 @@
                 right: 8px;
                 border-radius: 5px;
             }
+            
+            .back-home {
+                margin: 15px 20px;
+            }
         }
 
         @media (max-width: 550px) {
@@ -491,18 +540,17 @@
                 padding: 12px 15px;
             }
             
-            .platform-logo {
-                font-size: 16px;
+            .logo-img {
+                height: 40px;
             }
             
             .logout-btn {
-                padding: 5px 12px;
-                font-size: 11px;
+                padding: 6px 12px;
+                font-size: 12px;
             }
             
             .back-home {
                 margin: 12px 20px;
-                text-align: left;
             }
             
             .white-card {
@@ -562,6 +610,10 @@
         }
         
         @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -596,37 +648,26 @@
                 border-radius: 4px;
             }
         }
-        
-        .instruction {
-            text-align: center;
-            font-size: 12px;
-            color: #ffc107;
-            background: #0a094e;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 193, 7, 0.5);
-        }
-        
-        .center-text {
-            text-align: center;
-        }
-         img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-header">
         <div class="platform-logo">
-            <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+            <a href="welcome.html">
+                <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="logo-text">📚 English Platform</span>
+            </a>
         </div>
         
         <div class="search-icon-container">
-            <!-- شريط البحث المتغير -->
             <div class="search-wrapper">
                 <button class="search-icon-btn" id="searchToggleBtn">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -637,21 +678,25 @@
                 </div>
             </div>
             
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
         </div>
     </div>
 
-    <!-- نتائج البحث -->
     <div class="search-results-dropdown" id="searchResults"></div>
 
     <div class="back-home">
-        <a href="A1-A2 vocabulary.html">← Back to vocabulary Lessons</a>
+        <a href="A1-A2 vocabulary.html">
+            <i class="fa-solid fa-arrow-right"></i> Back to vocabulary Lessons
+        </a>
     </div>
 
     <div class="main-container">
         <div class="white-card">
             <div class="external-text">
-                <strong>Accessories Collection </strong><br>
+                <strong>👜 Accessories Collection</strong>
             </div>
             <div class="center-text">
                 <span class="instruction">🔊 Click the square button to hear the pronunciation</span>
@@ -662,12 +707,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/cap.avif" alt="cap">
+                                <img src="images/cap.avif" alt="cap" onerror="this.src='https://via.placeholder.com/150?text=cap'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('cap')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -680,12 +725,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/glasses.avif" alt="glasses">
+                                <img src="images/glasses.avif" alt="glasses" onerror="this.src='https://via.placeholder.com/150?text=glasses'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('glasses')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -698,12 +743,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/scarf.avif" alt="scarf">
+                                <img src="images/scarf.avif" alt="scarf" onerror="this.src='https://via.placeholder.com/150?text=scarf'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('scarf')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -716,12 +761,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/necklace.avif" alt="necklace">
+                                <img src="images/necklace.avif" alt="necklace" onerror="this.src='https://via.placeholder.com/150?text=necklace'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('necklace')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -734,12 +779,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/earrings.avif" alt="earrings">
+                                <img src="images/earrings.avif" alt="earrings" onerror="this.src='https://via.placeholder.com/150?text=earrings'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('earrings')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -752,12 +797,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/hat.avif" alt="hat">
+                                <img src="images/hat.avif" alt="hat" onerror="this.src='https://via.placeholder.com/150?text=hat'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('hat')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -770,12 +815,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/pocket.avif" alt="pocket">
+                                <img src="images/pocket.avif" alt="pocket" onerror="this.src='https://via.placeholder.com/150?text=pocket'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('pocket')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -788,12 +833,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/belt.avif" alt="belt">
+                                <img src="images/belt.avif" alt="belt" onerror="this.src='https://via.placeholder.com/150?text=belt'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('belt')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -806,12 +851,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/gloves.avif" alt="gloves">
+                                <img src="images/gloves.avif" alt="gloves" onerror="this.src='https://via.placeholder.com/150?text=gloves'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('gloves')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -824,12 +869,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/bracelet.avif" alt="bracelet">
+                                <img src="images/bracelet.avif" alt="bracelet" onerror="this.src='https://via.placeholder.com/150?text=bracelet'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('bracelet')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -842,12 +887,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/bag.avif" alt="bag">
+                                <img src="images/bag.avif" alt="bag" onerror="this.src='https://via.placeholder.com/150?text=bag'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('bag')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -860,12 +905,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/ruksack.avif" alt="rucksack">
+                                <img src="images/ruksack.avif" alt="rucksack" onerror="this.src='https://via.placeholder.com/150?text=rucksack'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('rucksack')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -878,13 +923,13 @@
 
     <div class="main-footer">
         <div class="footer-links">
-            <a href="welcome.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-            <a href="Chat-bot.html"  target="_blank" rel="noopener noreferrer">Help</a>
+            <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
         </div>
         <div class="copyright">
-            2026 English Learning Platform. All rights reserved ©
+            © 2026 English Learning Platform. All rights reserved.
         </div>
     </div>
 
@@ -950,13 +995,13 @@
                     const userAnswer = answerInput.value.trim().toLowerCase();
                     
                     if(userAnswer === '') {
-                        feedbackDiv.innerHTML = '⚠️ Write answer';
+                        feedbackDiv.innerHTML = '⚠️ Please write your answer';
                         feedbackDiv.className = 'feedback-msg wrong';
                         return;
                     }
                     
                     if(userAnswer === correctAnswer) {
-                        feedbackDiv.innerHTML = '✅ Correct!';
+                        feedbackDiv.innerHTML = '✅ Correct! Great job!';
                         feedbackDiv.className = 'feedback-msg correct';
                         setTimeout(() => {
                             card.classList.remove('flipped');
@@ -964,7 +1009,7 @@
                             feedbackDiv.innerHTML = '';
                         }, 1000);
                     } else {
-                        feedbackDiv.innerHTML = `❌ Wrong! Answer: ${correctAnswer}`;
+                        feedbackDiv.innerHTML = `❌ Wrong! The correct answer is: ${correctAnswer}`;
                         feedbackDiv.className = 'feedback-msg wrong';
                     }
                 });
@@ -981,6 +1026,7 @@
         // ===== شريط البحث المتغير =====
         const searchToggleBtn = document.getElementById('searchToggleBtn');
         const searchWrapper = document.querySelector('.search-wrapper');
+        const searchResultsDiv = document.getElementById('searchResults');
 
         if (searchToggleBtn && searchWrapper) {
             searchToggleBtn.addEventListener('click', function(e) {
@@ -994,14 +1040,13 @@
             });
         }
 
-        // إغلاق شريط البحث عند النقر خارجها
         document.addEventListener('click', function(event) {
             if (searchWrapper && !searchWrapper.contains(event.target)) {
                 searchWrapper.classList.remove('open');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
             }
         });
 
-        // منع إغلاق الشريط عند النقر داخل حقل الإدخال أو زر البحث
         const searchInputWrapper = document.getElementById('searchInputWrapper');
         if (searchInputWrapper) {
             searchInputWrapper.addEventListener('click', function(e) {
@@ -1011,7 +1056,10 @@
         
         // ===== وظائف البحث =====
         function searchItems() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.photo-card');
             const resultsDiv = document.getElementById('searchResults');
             
@@ -1034,19 +1082,28 @@
             
             if (resultsDiv) {
                 if (visibleCount > 0) {
-                    resultsDiv.innerHTML = `<div class="search-result-item">Found ${visibleCount} item(s)</div>`;
+                    resultsDiv.innerHTML = `<div class="search-result-item">🔍 Found ${visibleCount} item(s) matching "${escapeHtml(searchTerm)}"</div>`;
                     resultsDiv.classList.add('show');
                 } else {
-                    resultsDiv.innerHTML = '<div class="no-results">No items found</div>';
+                    resultsDiv.innerHTML = '<div class="no-results">📭 No items found matching "' + escapeHtml(searchTerm) + '"</div>';
                     resultsDiv.classList.add('show');
                 }
             }
         }
 
-        // ===== تسجيل الخروج =====
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ===== تسجيل الخروج المحسن =====
         function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
         }
         
         // ===== التحقق من تسجيل الدخول =====
@@ -1061,6 +1118,16 @@
                 if(e.key === 'Enter') searchItems();
             });
         }
+
+        // ===== معالج خطأ الصورة =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

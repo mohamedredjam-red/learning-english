@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leila And The Wolf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Leila And The Wolf - Interactive Story</title>
+    <link rel="icon" type="image/png" href="logo7.png">
     <style>
         :root {
             --width: 600px;  
@@ -21,6 +22,32 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* زر العودة */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .back-button:hover {
+            background: #ffc107;
+            color: #0a094e;
+            transform: translateX(-5px);
         }
 
         /* --- تنسيق الكمبيوتر (الكتاب المفتوح) --- */
@@ -56,6 +83,7 @@
                 backface-visibility: hidden; 
                 background: var(--page-color);
                 box-shadow: inset -3px 0px 20px rgba(0,0,0,0.1);
+                border-radius: 4px;
             }
             .back { transform: rotateY(180deg); }
             .flipped { transform: rotateY(-180deg); }
@@ -65,7 +93,14 @@
         @media (max-width: 768px) {
             body {
                 overflow-y: auto; 
-                display: block;   
+                display: block;
+                padding: 60px 0 20px;
+            }
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 6px 12px;
+                font-size: 12px;
             }
             .book {
                 width: 100%;
@@ -86,6 +121,7 @@
                 position: relative; 
                 margin-bottom: 10px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                border-radius: 8px;
             }
             .back { transform: none !important; }
             .page-number { bottom: 10px !important; }
@@ -97,89 +133,119 @@
             height: 100%;
             display: block;
             object-fit: cover;
+            border-radius: 4px;
         }
 
         .page-number {
             position: absolute;
             bottom: 15px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             color: white;
-            padding: 2px 10px;
-            border-radius: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
             font-size: 12px;
             z-index: 10;
+            font-weight: bold;
         }
         .front .page-number { right: 15px; }
         .back .page-number { left: 15px; }
+
+        /* تلميح للاستخدام */
+        .hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        @media (max-width: 768px) {
+            .hint {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <a href="lesson-A1-reading.html" class="back-button">
+        ← Back to Reading
+    </a>
+
+    <div class="hint">
+        📖 Click on pages to flip | Drag to rotate
+    </div>
+
     <div class="book" id="myBook">
         <!-- مجموعة الصفحات كاملة -->
         <div class="page flipped" onclick="flipPage(this)">
-            <div class="front"><img src="images/0.png" alt="1"><span class="page-number">1</span></div>
-            <div class="back"><img src="images/1.png" alt="2"><span class="page-number">2</span></div>
+            <div class="front"><img src="images/0.png" alt="Page 1"><span class="page-number">1</span></div>
+            <div class="back"><img src="images/1.png" alt="Page 2"><span class="page-number">2</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/2.png" alt="3"><span class="page-number">3</span></div>
-            <div class="back"><img src="images/3.png" alt="4"><span class="page-number">4</span></div>
+            <div class="front"><img src="images/2.png" alt="Page 3"><span class="page-number">3</span></div>
+            <div class="back"><img src="images/3.png" alt="Page 4"><span class="page-number">4</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/4.png" alt="5"><span class="page-number">5</span></div>
-            <div class="back"><img src="images/5.png" alt="6"><span class="page-number">6</span></div>
+            <div class="front"><img src="images/4.png" alt="Page 5"><span class="page-number">5</span></div>
+            <div class="back"><img src="images/5.png" alt="Page 6"><span class="page-number">6</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/6.png" alt="7"><span class="page-number">7</span></div>
-            <div class="back"><img src="images/7.png" alt="8"><span class="page-number">8</span></div>
+            <div class="front"><img src="images/6.png" alt="Page 7"><span class="page-number">7</span></div>
+            <div class="back"><img src="images/7.png" alt="Page 8"><span class="page-number">8</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/8.png" alt="9"><span class="page-number">9</span></div>
-            <div class="back"><img src="images/9.png" alt="10"><span class="page-number">10</span></div>
+            <div class="front"><img src="images/8.png" alt="Page 9"><span class="page-number">9</span></div>
+            <div class="back"><img src="images/9.png" alt="Page 10"><span class="page-number">10</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/10.png" alt="11"><span class="page-number">11</span></div>
-            <div class="back"><img src="images/11.png" alt="12"><span class="page-number">12</span></div>
+            <div class="front"><img src="images/10.png" alt="Page 11"><span class="page-number">11</span></div>
+            <div class="back"><img src="images/11.png" alt="Page 12"><span class="page-number">12</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/12.png" alt="13"><span class="page-number">13</span></div>
-            <div class="back"><img src="images/13.png" alt="14"><span class="page-number">14</span></div>
+            <div class="front"><img src="images/12.png" alt="Page 13"><span class="page-number">13</span></div>
+            <div class="back"><img src="images/13.png" alt="Page 14"><span class="page-number">14</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/14.png" alt="15"><span class="page-number">15</span></div>
-            <div class="back"><img src="images/15.png" alt="16"><span class="page-number">16</span></div>
+            <div class="front"><img src="images/14.png" alt="Page 15"><span class="page-number">15</span></div>
+            <div class="back"><img src="images/15.png" alt="Page 16"><span class="page-number">16</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/16.png" alt="17"><span class="page-number">17</span></div>
-            <div class="back"><img src="images/17.png" alt="18"><span class="page-number">18</span></div>
+            <div class="front"><img src="images/16.png" alt="Page 17"><span class="page-number">17</span></div>
+            <div class="back"><img src="images/17.png" alt="Page 18"><span class="page-number">18</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/18.png" alt="19"><span class="page-number">19</span></div>
-            <div class="back"><img src="images/19.png" alt="20"><span class="page-number">20</span></div>
+            <div class="front"><img src="images/18.png" alt="Page 19"><span class="page-number">19</span></div>
+            <div class="back"><img src="images/19.png" alt="Page 20"><span class="page-number">20</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/20.png" alt="21"><span class="page-number">21</span></div>
-            <div class="back"><img src="images/21.png" alt="22"><span class="page-number">22</span></div>
+            <div class="front"><img src="images/20.png" alt="Page 21"><span class="page-number">21</span></div>
+            <div class="back"><img src="images/21.png" alt="Page 22"><span class="page-number">22</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/22.png" alt="23"><span class="page-number">23</span></div>
-            <div class="back"><img src="images/23.png" alt="24"><span class="page-number">24</span></div>
+            <div class="front"><img src="images/22.png" alt="Page 23"><span class="page-number">23</span></div>
+            <div class="back"><img src="images/23.png" alt="Page 24"><span class="page-number">24</span></div>
         </div>
 
         <div class="page" onclick="flipPage(this)">
-            <div class="front"><img src="images/24.png" alt="25"><span class="page-number">25</span></div>
-            <div class="back"><img src="images/25.png" alt="26"><span class="page-number">26</span></div>
+            <div class="front"><img src="images/24.png" alt="Page 25"><span class="page-number">25</span></div>
+            <div class="back"><img src="images/25.png" alt="Page 26"><span class="page-number">26</span></div>
         </div>
     </div>
 
@@ -205,22 +271,79 @@
         }
 
         let isDragging = false, startX, startY, rotateX = 5, rotateY = -5;
+        
         document.addEventListener('mousedown', (e) => {
-            if(window.innerWidth > 768 && e.target.tagName !== 'IMG') {
-                isDragging = true; startX = e.pageX; startY = e.pageY;
+            if(window.innerWidth > 768 && e.target.tagName !== 'IMG' && e.target.tagName !== 'SPAN') {
+                isDragging = true; 
+                startX = e.pageX; 
+                startY = e.pageY;
+                book.style.cursor = 'grabbing';
             }
         });
+        
         document.addEventListener('mousemove', (e) => {
             if (!isDragging || window.innerWidth <= 768) return;
             rotateY += (e.pageX - startX) * 0.4;
             rotateX -= (e.pageY - startY) * 0.4;
+            
+            // حدود للدوران لمنع الدوران الزائد
+            rotateX = Math.min(30, Math.max(-15, rotateX));
+            rotateY = Math.min(30, Math.max(-30, rotateY));
+            
             book.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            startX = e.pageX; startY = e.pageY;
+            startX = e.pageX; 
+            startY = e.pageY;
         });
-        document.addEventListener('mouseup', () => isDragging = false);
+        
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                book.style.cursor = 'grab';
+            }
+        });
+        
+        // دعم اللمس للأجهزة اللوحية
+        let touchStartX, touchStartY;
+        
+        book.addEventListener('touchstart', (e) => {
+            if (window.innerWidth > 768 && e.touches.length === 1) {
+                touchStartX = e.touches[0].pageX;
+                touchStartY = e.touches[0].pageY;
+            }
+        });
+        
+        book.addEventListener('touchmove', (e) => {
+            if (window.innerWidth > 768 && touchStartX !== undefined) {
+                e.preventDefault();
+                const deltaX = e.touches[0].pageX - touchStartX;
+                const deltaY = e.touches[0].pageY - touchStartY;
+                rotateY += deltaX * 0.4;
+                rotateX -= deltaY * 0.4;
+                
+                rotateX = Math.min(30, Math.max(-15, rotateX));
+                rotateY = Math.min(30, Math.max(-30, rotateY));
+                
+                book.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                touchStartX = e.touches[0].pageX;
+                touchStartY = e.touches[0].pageY;
+            }
+        });
+        
+        book.addEventListener('touchend', () => {
+            touchStartX = undefined;
+            touchStartY = undefined;
+        });
 
         updateZIndex();
         window.addEventListener('resize', updateZIndex);
+        
+        // معالج خطأ الصورة
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/600x400?text=Page+Missing';
+            };
+        });
     </script>
 </body>
 </html>

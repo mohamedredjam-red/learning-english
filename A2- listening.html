@@ -211,7 +211,7 @@
             opacity: 1;
         }
 
-        /* ======== ONLY MEDIA QUERIES ADDED (NO OTHER CHANGES) ======== */
+        /* ======== MEDIA QUERIES المتقدمة ======== */
         
         /* Large tablets and small desktops (1024px and below) */
         @media (max-width: 1024px) {
@@ -286,6 +286,11 @@
             .right-section a i {
                 font-size: 2rem;
             }
+            .video {
+                width: 100%;
+                max-width: 330px;
+                margin: 0 auto 40px auto;
+            }
         }
 
         /* Small mobile devices (480px and below) */
@@ -328,9 +333,12 @@
             .right-section a i {
                 font-size: 2rem;
             }
+            .video-title {
+                font-size: 1.4rem;
+            }
         }
 
-        /* Very narrow devices (360px and below) - keeps everything visible */
+        /* Very narrow devices (360px and below) */
         @media (max-width: 360px) {
             .mid-section form {
                 width: 120px;
@@ -349,24 +357,35 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* وضع الشاشة الأفقي */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .video {
+                width: 280px;
+            }
+            .thumbnail {
+                height: 158px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="left-section">
-            <i class="material-icons logo">menu</i>
-            <img src="images/A2 listening.jpg" alt="">
+            <i class="material-icons logo" id="menuIcon">menu</i>
+            <img src="images/A2 listening.jpg" alt="A2 Listening Logo" 
+                 onerror="this.src='https://via.placeholder.com/60x60?text=A2+Listening'">
         </div>
         <div class="mid-section">
-            <form action="">
-                <input type="text" placeholder="search">
-                <button><i class="material-icons logo">search</i></button>
+            <form action="" onsubmit="return false;">
+                <input type="text" id="searchInput" placeholder="Search videos...">
+                <button type="button" id="searchBtn"><i class="material-icons logo">search</i></button>
             </form>
-            <i class="material-icons mic">mic</i>
+            <i class="material-icons mic" id="micBtn">mic</i>
         </div>
         <div class="right-section">
-            <a href="">
-                <i class="material-icons logo">notifications</i>
+            <a href="welcome.html" id="homeLink">
+                <i class="material-icons logo">home</i>
             </a>
         </div>
     </header>
@@ -381,45 +400,41 @@
 
                 <a href="speaking.html" class="nav-link">
                     <i class="material-icons mic">mic</i>
-                    <span >Speaking</span>
+                    <span>Speaking</span>
                 </a>
-                <a href="writing.html" class="nav-link ">
+                <a href="writing.html" class="nav-link">
                     <i class="material-icons">edit</i>
-
-                    <span >Writing</span>
+                    <span>Writing</span>
                 </a>
-                <a href="reading.html" class="nav-link ">
+                <a href="reading.html" class="nav-link">
                     <i class="material-icons">menu_book</i>
-
-                    <span >Reading</span>
+                    <span>Reading</span>
                 </a>
-                <a href="listening.html" class="nav-link ">
+                <a href="listening.html" class="nav-link">
                     <i class="material-icons">headphones</i>
-
-                    <span >listening</span>
+                    <span>Listening</span>
                 </a>
                 <hr>
                 <a href="A1-A2 Grammar.html" class="nav-link">
                     <i class="material-icons-round">layers</i>
-                    <span >A1-A2 Grammar</span>
+                    <span>A1-A2 Grammar</span>
                 </a>
                 <a href="B1-B2 grammar.html" class="nav-link">
                     <i class="material-icons-round">show_chart</i>
-                    <span >B1-B2 Grammar</span>
+                    <span>B1-B2 Grammar</span>
                 </a>
                 <hr>
-                <a href="A1-A2 vocabulary.html" class="nav-link ">
+                <a href="A1-A2 vocabulary.html" class="nav-link">
                     <i class="material-icons-round">grass</i>
-                    <span >A1-A2 Vocabulary</span>
+                    <span>A1-A2 Vocabulary</span>
                 </a>
-                <a href="game.html" class="nav-link ">
+                <a href="game.html" class="nav-link">
                     <i class="material-icons">sports_esports</i>
-                    <span >Hangman Game</span>
+                    <span>Hangman Game</span>
                 </a>
-                <a href="WordScramble.html" class="nav-link ">
+                <a href="WordScramble.html" class="nav-link">
                     <i class="material-icons-outlined">extension</i>
-
-                    <span >Word Scramble</span>
+                    <span>Word Scramble</span>
                 </a>
             </nav>
         </aside>
@@ -428,15 +443,15 @@
         <div id="overlay" class="overlay"></div>
         
         <main>
-            <div class="videos-container">
+            <div class="videos-container" id="videosContainer">
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="desnie-movies.html"><img src="images/the princess and the dragon.jpg" alt=""></a>
+                        <a href="desnie-movies.html"><img src="images/the princess and the dragon.jpg" alt="The Princess and the Dragon"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
                             <a href="desnie-movies.html" class="video-title">
-                                the princess and the dragon
+                                The Princess and the Dragon
                             </a>
                         </div>
                     </div>
@@ -444,19 +459,19 @@
             
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/The King’s Speech (2010).jpg" alt=""></a>
+                        <a href="#"><img src="images/The King’s Speech (2010).jpg" alt="The King's Speech"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
                             <a href="#" class="video-title">
-                                The King’s Speech (2010)
+                                The King's Speech (2010)
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/The Terminal (2004).jpg" alt=""></a>
+                        <a href="#"><img src="images/The Terminal (2004).jpg" alt="The Terminal"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -468,7 +483,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/It.jpg" alt=""></a>
+                        <a href="#"><img src="images/It.jpg" alt="IT"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -480,7 +495,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/Hachi.jpg" alt=""></a>
+                        <a href="#"><img src="images/Hachi.jpg" alt="Hachi"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -492,7 +507,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/Die Hard (1988).jpg" alt=""></a>
+                        <a href="#"><img src="images/Die Hard (1988).jpg" alt="Die Hard"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -502,69 +517,96 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </main>
     </div>
     
-    <!-- ===== السكريبت المسؤول عن ظهور القائمة فوق المحتوى مع الخلفية الداكنة ===== -->
     <script>
         (function() {
-            // العناصر المطلوبة
+            // ===== القائمة الجانبية المتحركة =====
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
-            const menuIcon = document.querySelector('.left-section .material-icons.logo');
+            const menuIcon = document.getElementById('menuIcon');
             
-            if (!sidebar || !overlay || !menuIcon) return;
-            
-            // دالة لفتح القائمة
-            function openMenu() {
-                sidebar.classList.add('open');
-                overlay.classList.add('show');
-                document.body.style.overflow = 'hidden'; // منع تمرير الصفحة خلف القائمة
-            }
-            
-            // دالة لإغلاق القائمة
-            function closeMenu() {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('show');
-                document.body.style.overflow = ''; // إعادة التمرير
-            }
-            
-            // تبديل حالة القائمة
-            function toggleMenu() {
-                if (sidebar.classList.contains('open')) {
-                    closeMenu();
-                } else {
-                    openMenu();
+            if (sidebar && overlay && menuIcon) {
+                function openMenu() {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('show');
+                    document.body.style.overflow = 'hidden';
                 }
-            }
-            
-            // عند النقر على أيقونة القائمة
-            menuIcon.addEventListener('click', function(event) {
-                event.stopPropagation();
-                toggleMenu();
-            });
-            
-            // عند النقر على الخلفية الداكنة (overlay) يتم إغلاق القائمة
-            overlay.addEventListener('click', function() {
-                closeMenu();
-            });
-            
-            // عند الضغط على زر Esc في لوحة المفاتيح يتم إغلاق القائمة
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sidebar.classList.contains('open')) {
-                    closeMenu();
+                
+                function closeMenu() {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                    document.body.style.overflow = '';
                 }
-            });
-            
-            // عند النقر على أي رابط داخل القائمة، يتم إغلاق القائمة (اختياري لتجربة أفضل)
-            const navLinks = sidebar.querySelectorAll('.nav-link');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
+                
+                function toggleMenu() {
+                    if (sidebar.classList.contains('open')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+                
+                menuIcon.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    toggleMenu();
+                });
+                
+                overlay.addEventListener('click', function() {
                     closeMenu();
                 });
-            });
+                
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+                
+                const navLinks = sidebar.querySelectorAll('.nav-link');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        closeMenu();
+                    });
+                });
+            }
+            
+            // ===== وظيفة البحث =====
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const videos = document.querySelectorAll('.video');
+            
+            function filterVideos() {
+                if (!searchInput) return;
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                videos.forEach(video => {
+                    const title = video.querySelector('.video-title')?.textContent.toLowerCase() || '';
+                    if (searchTerm === '' || title.includes(searchTerm)) {
+                        video.style.display = 'block';
+                    } else {
+                        video.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', filterVideos);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keyup', function(event) {
+                    if (event.key === 'Enter') {
+                        filterVideos();
+                    }
+                });
+            }
+            
+            // ===== التحقق من تسجيل الدخول =====
+            if (!localStorage.getItem('userId')) {
+                window.location.href = 'index.html';
+            }
         })();
     </script>
 </body>

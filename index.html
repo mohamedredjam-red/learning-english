@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Learning Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>English Learning Platform - Learn English Easily</title>
     <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         * {
@@ -18,7 +19,7 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
                         url('images/333.png');
             background-size: cover;
             background-position: center;
@@ -30,29 +31,58 @@
         }
 
         .navbar {
-            background: #0a094e;
+            background: rgba(10, 9, 78, 0.95);
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+            backdrop-filter: blur(10px);
         }
 
-        .navbar h3 {
+        .logo-link {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: #ffc107;
             font-size: 22px;
             font-weight: bold;
-            color: #ffc107;
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
             font-size: 16px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-links a:hover {
             color: #ffc107;
+            transform: translateY(-2px);
         }
 
         .main-content {
@@ -60,17 +90,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 60px 30px;
             text-align: center;
         }
 
         .content {
             max-width: 800px;
             width: 100%;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
@@ -79,10 +121,17 @@
             color: #ffc107;
         }
 
-        p {
+        .tagline {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .description {
             font-size: 18px;
             margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
             max-width: 600px;
             margin-left: auto;
@@ -94,41 +143,46 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .btn {
             padding: 15px 40px;
             border: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
             min-width: 200px;
+            justify-content: center;
         }
 
         .btn-primary {
             background: #ffc107;
-            color: #1a2b3c;
+            color: #0a094e;
         }
 
         .btn-primary:hover {
             background: #e0a800;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
         }
 
         .btn-secondary {
-            background: #1a2b3c;
+            background: transparent;
             color: white;
             border: 2px solid #ffc107;
         }
 
         .btn-secondary:hover {
-            background: #2c3e50;
+            background: rgba(255, 193, 7, 0.1);
             transform: translateY(-3px);
+            border-color: #e0a800;
         }
 
         .features {
@@ -136,72 +190,282 @@
             gap: 30px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .feature {
             flex: 1;
             min-width: 150px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature i {
+            font-size: 40px;
+            color: #ffc107;
+            margin-bottom: 15px;
         }
 
         .feature h3 {
             font-size: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: #ffc107;
         }
 
         .feature p {
             font-size: 14px;
             margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .footer {
             text-align: center;
-            padding: 20px;
-            background: #0a094e;
+            padding: 25px;
+            background: rgba(10, 9, 78, 0.95);
             color: white;
             font-size: 14px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 36px; }
-            .buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 250px; }
-            .navbar { flex-direction: column; gap: 10px; }
-            .nav-links a { margin: 0 10px; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
-         img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .footer-links a:hover {
+            color: #ffc107;
+        }
+
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            h1 {
+                font-size: 42px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .description {
+                font-size: 16px;
+                padding: 0 15px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+                min-width: 180px;
+            }
+            
+            .feature {
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+            }
+            
+            .main-content {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .tagline {
+                font-size: 16px;
+            }
+            
+            .description {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+            
+            .features {
+                gap: 15px;
+            }
+            
+            .feature {
+                min-width: 100%;
+                padding: 15px;
+            }
+            
+            .feature i {
+                font-size: 32px;
+            }
+            
+            .feature h3 {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .tagline {
+                font-size: 14px;
+            }
+            
+            .description {
+                font-size: 13px;
+            }
+            
+            .feature h3 {
+                font-size: 16px;
+            }
+            
+            .feature p {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content {
+                animation: none;
+            }
+            
+            .btn:hover,
+            .feature:hover,
+            .logo-link:hover,
+            .nav-links a:hover {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="welcome.html" class="logo"><img src="images/LOGO111.png" alt=""></a>
+        <a href="index.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="#">Features</a>
-            <a href="about.html">About</a>
-            <a href="interface.html">Login</a>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="#features"><i class="fa-solid fa-star"></i> Features</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="interface.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
         </div>
     </div>
 
     <div class="main-content">
         <div class="content">
             <h1>Learn <span>English</span> Easily</h1>
-            <p>Start your journey to learn English with our simple and effective platform. Practice speaking, writing, and listening at your own pace.</p>
+            <p class="tagline">✨ Your Gateway to English Fluency ✨</p>
+            <p class="description">Start your journey to learn English with our simple and effective platform. Practice speaking, writing, and listening at your own pace with interactive lessons and real-world content.</p>
             
             <div class="buttons">
-                <a href="placement-test.html" class="btn btn-primary">Start Test</a>
-                <a href="interface.html" class="btn btn-secondary">Login</a>
+                <a href="placement-test.html" class="btn btn-primary">
+                    <i class="fa-solid fa-play"></i> Start Test
+                </a>
+                <a href="interface.html" class="btn btn-secondary">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
             </div>
+
+            
         </div>
     </div>
 
     <div class="footer">
-        <p>© 2026 English Learning Platform. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa-solid fa-lock"></i> Privacy</a>
+        </div>
+        <p>© 2026 English Learning Platform. All rights reserved. <i class="fa-solid fa-heart" style="color: #ffc107;"></i></p>
     </div>
+
+    <script>
+        // معالج خطأ الصورة
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== "#" && href !== "#features") return;
+                e.preventDefault();
+                const target = document.querySelector('#features');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

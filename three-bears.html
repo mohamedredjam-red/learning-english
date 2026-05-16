@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 3: We Bare Bears - Speaking A2</title>
   <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     /* التنسيقات الأساسية الموحدة للمنصة */
     * {
@@ -15,8 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -28,14 +28,55 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 3px solid #8B4513; /* لون بني يناسب الدببة */
+      border-bottom: 3px solid #8B4513;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .container {
@@ -58,6 +99,7 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #8B4513;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .video-section {
@@ -69,8 +111,14 @@
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       border: 3px solid #8B4513;
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
     }
 
     .question-item {
@@ -79,6 +127,11 @@
       border-radius: 12px;
       margin-bottom: 20px;
       border-left: 4px solid #8B4513;
+      transition: 0.2s;
+    }
+
+    .question-item:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .question-item p {
@@ -102,6 +155,12 @@
       font-size: 16px;
       border: 2px solid #ddd;
       border-radius: 25px;
+      transition: 0.2s;
+    }
+
+    .answer-input input:focus {
+      outline: none;
+      border-color: #8B4513;
     }
 
     .answer-input button {
@@ -112,6 +171,12 @@
       border-radius: 30px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-input button:hover {
+      background: #6b3410;
+      transform: scale(1.02);
     }
 
     .answer-feedback {
@@ -122,18 +187,60 @@
       display: none;
     }
 
-    .correct { background: #d4edda; color: #155724; border-left: 4px solid #28a745; display: block; }
-    .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; display: block; }
+    .correct { 
+      background: #d4edda; 
+      color: #155724; 
+      border-left: 4px solid #28a745; 
+      display: block; 
+    }
+    
+    .wrong { 
+      background: #f8d7da; 
+      color: #721c24; 
+      border-left: 4px solid #dc3545; 
+      display: block; 
+    }
 
     .reset-all {
       background: #6c757d;
       color: white;
       border: none;
-      padding: 10px;
+      padding: 12px;
       width: 100%;
-      border-radius: 5px;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: bold;
       margin-top: 10px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .reset-all:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-link a {
+      color: #8B4513;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .back-link a:hover {
+      transform: translateX(-5px);
+      color: #6b3410;
     }
 
     .footer {
@@ -142,17 +249,170 @@
       text-align: center;
       border-top: 3px solid #8B4513;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+    }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .question-item p {
+        font-size: 16px;
+      }
+      
+      .answer-input input {
+        padding: 10px;
+        font-size: 14px;
+      }
+      
+      .answer-input button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .question-item {
+        padding: 15px;
+      }
+      
+      .question-item p {
+        font-size: 14px;
+      }
+      
+      .answer-input {
+        flex-direction: column;
+      }
+      
+      .answer-input input {
+        width: 100%;
+        min-width: auto;
+      }
+      
+      .answer-input button {
+        width: 100%;
+      }
+      
+      .reset-all {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-item p {
+        font-size: 13px;
+      }
+      
+      .answer-feedback {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
+  <div class="buttons">
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </div>
 </div>
 
 <div class="container">
@@ -160,10 +420,11 @@
     <h1>🐻 Lesson 3: The First Meeting</h1>
 
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/02.1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch how Grizz, Panda, and Ice Bear met!</p>
+      <p class="video-caption">🎬 Watch how Grizz, Panda, and Ice Bear met!</p>
     </div>
 
     <div class="questions-container">
@@ -171,7 +432,7 @@
         <p>❓ 1. What is the name of the brown bear?</p>
         <div class="answer-input">
           <input type="text" id="answer1" placeholder="Type his name...">
-          <button onclick="checkQuestion(1)">Check Answer</button>
+          <button onclick="checkQuestion(1)">✓ Check Answer</button>
         </div>
         <div id="feedback1" class="answer-feedback"></div>
       </div>
@@ -180,7 +441,7 @@
         <p>❓ 2. Where are the bears standing?</p>
         <div class="answer-input">
           <input type="text" id="answer2" placeholder="On the...">
-          <button onclick="checkQuestion(2)">Check Answer</button>
+          <button onclick="checkQuestion(2)">✓ Check Answer</button>
         </div>
         <div id="feedback2" class="answer-feedback"></div>
       </div>
@@ -189,30 +450,42 @@
         <p>❓ 3. Grizz said: "We make a great _____"</p>
         <div class="answer-input">
           <input type="text" id="answer3" placeholder="Complete the sentence...">
-          <button onclick="checkQuestion(3)">Check Answer</button>
+          <button onclick="checkQuestion(3)">✓ Check Answer</button>
         </div>
         <div id="feedback3" class="answer-feedback"></div>
       </div>
 
-      <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+      <button class="reset-all" onclick="resetAllQuestions()">
+        <i class="fa-solid fa-rotate-left"></i> Reset All Answers
+      </button>
     </div>
 
-    <div style="text-align:center; margin-top: 20px;">
-      <a href="A1-listening.html" style="color: #0a094e; font-weight: bold; text-decoration: none;">← Back to A1 lesson</a>
+    <div class="back-link">
+      <a href="A1-listening.html">
+        <i class="fa-solid fa-arrow-left"></i> Back to A1 lesson
+      </a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <p>© 2026 English Learning Platform</p>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
 </div>
 
 <script>
   // الإجابات الخاصة بلقاء الدببة
   const correctAnswers = {
-    1: ["grizz", "grizzly"],
-    2: ["railway", "track", "bridge", "train track"],
-    3: ["team", "a great team"]
+    1: ["grizz", "grizzly", "grizz bear", "grizzly bear"],
+    2: ["railway", "track", "bridge", "train track", "railroad", "train bridge"],
+    3: ["team", "a great team", "great team"]
   };
 
   function checkQuestion(num) {
@@ -220,33 +493,71 @@
     let val = input.value.trim().toLowerCase();
     let fb = document.getElementById(`feedback${num}`);
     
-    if (val === "") return;
+    if (val === "") {
+      fb.innerHTML = "⚠️ Please write your answer before checking!";
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid #dc3545";
+      return;
+    }
 
     let isCorrect = correctAnswers[num].some(ans => val.includes(ans));
 
     if (isCorrect) {
       fb.innerHTML = "✅ Correct! You're doing great!";
       fb.className = "answer-feedback correct";
-      input.style.border = "2px solid green";
+      input.style.border = "2px solid #28a745";
     } else {
       let hints = [
-        "Hint: His name starts with 'G'.",
-        "Hint: It's a place where trains go.",
-        "Hint: The word starts with 'T'."
+        "Hint: His name starts with 'G' and ends with 'zz'.",
+        "Hint: It's a place where trains go on metal lines.",
+        "Hint: The word starts with 'T' and means a group working together."
       ];
       fb.innerHTML = "❌ Try again! " + hints[num-1];
       fb.className = "answer-feedback wrong";
-      input.style.border = "2px solid red";
+      input.style.border = "2px solid #dc3545";
     }
   }
 
   function resetAllQuestions() {
     for (let i = 1; i <= 3; i++) {
-      document.getElementById(`answer${i}`).value = "";
-      document.getElementById(`answer${i}`).style.border = "2px solid #ddd";
+      let input = document.getElementById(`answer${i}`);
+      input.value = "";
+      input.style.border = "2px solid #ddd";
       document.getElementById(`feedback${i}`).className = "answer-feedback";
     }
+    
+    // إظهار رسالة短暂ة
+    const resetBtn = document.querySelector('.reset-all');
+    const originalText = resetBtn.innerHTML;
+    resetBtn.innerHTML = '<i class="fa-solid fa-check"></i> Reset Complete!';
+    setTimeout(() => {
+      resetBtn.innerHTML = originalText;
+    }, 1500);
   }
+
+  // ===== تسجيل الخروج المحسن =====
+  function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // ===== التحقق من تسجيل الدخول =====
+  if (!localStorage.getItem('userId')) {
+    window.location.href = 'index.html';
+  }
+
+  // ===== معالج خطأ الصورة =====
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 
 </body>

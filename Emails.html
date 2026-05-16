@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Email Addresses - Business English</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,9 +15,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -28,14 +28,33 @@
             padding: 15px 40px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
             border-bottom: 3px solid #ffc107;
+            flex-wrap: wrap;
         }
 
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
             color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
         .logout-container {
@@ -46,12 +65,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -70,9 +92,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.2s;
         }
 
         .back-home a:hover {
+            transform: translateX(-5px);
             color: #e0a800;
         }
 
@@ -81,6 +105,7 @@
             margin: 30px auto;
             padding: 0 20px;
             flex: 1;
+            width: 100%;
         }
 
         .white-card {
@@ -138,6 +163,8 @@
             font-size: 16px;
             margin: 10px 0;
             border-left: 3px solid #ffc107;
+            overflow-x: auto;
+            word-break: break-all;
         }
 
         .pronunciation-box {
@@ -150,6 +177,11 @@
 
         .pronunciation-box p {
             color: #166534;
+            margin-bottom: 8px;
+        }
+
+        .pronunciation-box p:last-child {
+            margin-bottom: 0;
         }
 
         table {
@@ -157,6 +189,8 @@
             width: 100%;
             margin: 20px 0;
             background: white;
+            overflow-x: auto;
+            display: block;
         }
 
         th, td {
@@ -188,6 +222,13 @@
             border-radius: 8px;
             font-family: monospace;
             font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .domain-item:hover {
+            background: #ffc107;
+            color: #0a094e;
+            transform: translateY(-2px);
         }
 
         .domain-item span {
@@ -203,21 +244,28 @@
             border-top: 3px solid #ffc107;
         }
 
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 14px;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
 
-        .footer a:hover {
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
             color: #ffc107;
         }
 
         .copyright {
             color: rgba(255,255,255,0.5);
             font-size: 12px;
-            margin-top: 15px;
         }
 
         .next-lesson {
@@ -229,14 +277,16 @@
             background: #ffc107;
             color: #0a094e;
             text-decoration: none;
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 25px;
             font-weight: bold;
             display: inline-block;
+            transition: 0.3s;
         }
 
         .next-lesson a:hover {
             background: #e0a800;
+            transform: translateY(-2px);
         }
 
         hr {
@@ -244,23 +294,180 @@
             border: none;
             border-top: 1px solid #e5e7eb;
         }
-        img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .logout-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .back-home {
+                margin: 15px 20px;
+            }
+            
+            .main-container {
+                padding: 0 15px;
+            }
+            
+            .white-card {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            h3 {
+                font-size: 16px;
+            }
+            
+            .intro-text {
+                font-size: 14px;
+            }
+            
+            .email-example {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+            
+            th, td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logout-container {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .logout-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .back-home {
+                margin: 12px 15px;
+            }
+            
+            .back-home a {
+                font-size: 13px;
+            }
+            
+            .white-card {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+                padding-left: 10px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            h3 {
+                font-size: 15px;
+            }
+            
+            .intro-text {
+                font-size: 13px;
+            }
+            
+            .email-example {
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+            
+            .domain-item {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            th, td {
+                padding: 6px;
+                font-size: 11px;
+            }
+            
+            .next-lesson a {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            h1 {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 16px;
+            }
+            
+            .intro-text {
+                font-size: 12px;
+            }
+            
+            .email-example {
+                font-size: 11px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-header">
-        <div class="platform-logo"><a href="welcome.html"><img src="images/LOGO111.png" alt=""></a></div>
+        <a href="welcome.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         <div class="logout-container">
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
         </div>
     </div>
 
     <div class="back-home">
-        <a href="welcome.html">← Back to Home</a>
+        <a href="welcome.html">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
     </div>
 
     <div class="main-container">
@@ -333,17 +540,17 @@
 
             <!-- Next Lesson Button -->
             <div class="next-lesson">
-                <a href="#">→ Next Lesson</a>
+                <a href="#">→ Next Lesson: Business Writing</a>
             </div>
         </div>
     </div>
 
     <div class="footer">
-        <div>
-            <a href="welcome.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Help</a>
+        <div class="footer-links">
+            <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
         </div>
         <div class="copyright">
             © 2026 English Learning Platform. All rights reserved.
@@ -351,12 +558,29 @@
     </div>
 
     <script>
+        // ===== تسجيل الخروج المحسن =====
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
                 localStorage.clear();
+                sessionStorage.clear();
                 window.location.href = 'index.html';
             }
         }
+        
+        // ===== التحقق من تسجيل الدخول =====
+        if (!localStorage.getItem('userId')) {
+            window.location.href = 'index.html';
+        }
+
+        // ===== معالج خطأ الصورة =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

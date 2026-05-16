@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lesson 2: The Laziest - Speaking A2 | Multi-Video Stories</title>
+  <link rel="icon" href="logo7.png">
+  <style>
+    /* الحفاظ على التصميم الأصلي بالكامل مع إضافة ميزة البوستات المتعددة */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(#29376a,#940f0f);
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: white;
+    }
+
+    .header {
+      background: #0a094e;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo a {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #ffc107;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      color: #333;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .card h1 {
+      color: #0a094e;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #ffc107;
+      padding-bottom: 10px;
+    }
+
+    /* ========== منطقة البوستات المتعددة (الميزة الجديدة) ========== */
+    .multi-posts-area {
+      background: #000;
+      border-radius: 24px;
+      margin: 20px 0 25px 0;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    /* حاوية الفيديو/الصورة الرئيسية */
+    .story-viewer {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16; /* نسبة القصص 9:16 */
+      background-color: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .media-element {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* فيديو تحكم كامل */
+    .media-element video,
+    .media-element img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* أزرار التنقل (السابق/التالي) */
+    .nav-buttons-overlay {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 15;
+    }
+
+    .nav-circle {
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      border: none;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-circle:active {
+      transform: scale(0.92);
+      background: rgba(255,215,0,0.8);
+    }
+
+    /* مؤشر التقدم (نقاط) */
+    .progress-strip {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+      direction: ltr;
+    }
+
+    .progress-dot {
+      flex: 1;
+      height: 3px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .progress-dot.active {
+      background: #ffc107;
+      box-shadow: 0 0 4px #ffc107;
+    }
+
+    /* عداد فيديو */
+    .video-counter {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: bold;
+      color: white;
+      z-index: 20;
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+
+    /* مناطق النقر الجانبية */
+    .click-zones {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      z-index: 12;
+    }
+
+    .click-left, .click-right {
+      flex: 1;
+      height: 100%;
+    }
+
+    /* تلميح إضافي */
+    .swipe-hint {
+      position: absolute;
+      bottom: 90px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.4);
+      width: fit-content;
+      margin: 0 auto;
+      padding: 4px 14px;
+      border-radius: 50px;
+      pointer-events: none;
+      z-index: 18;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    /* السؤال يبقى كما هو، لا تغيير في التصميم الاصلي */
+    .question-item {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .question-item p {
+      margin-bottom: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #0a094e;
+    }
+
+    .answer-input {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .answer-input input {
+      flex: 2;
+      min-width: 250px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+    }
+
+    .answer-input button {
+      background: #ffc107;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .answer-feedback {
+      margin-top: 12px;
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .correct { background: #d4edda; color: #155724; border-left: 4px solid #28a745; display: block; }
+    .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; display: block; }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .reset-all {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .next-lesson a {
+      background: #0a094e;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    
+    img {
+      font-size: 12px;
+      height: 60px;
+      width: auto;
+    }
+
+    /* ========== MEDIA QUERY للشاشات الصغيرة ========== */
+    @media (max-width: 650px) {
+      .header {
+        padding: 12px 20px;
+      }
+      .card {
+        padding: 20px;
+      }
+      .nav-circle {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+      }
+      .swipe-hint {
+        font-size: 10px;
+        bottom: 80px;
+        white-space: nowrap;
+      }
+      .video-counter {
+        font-size: 11px;
+        top: 12px;
+        right: 12px;
+      }
+      .progress-strip {
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        gap: 5px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      .story-viewer {
+        aspect-ratio: 9 / 16;
+      }
+      .question-item p {
+        font-size: 16px;
+      }
+      .answer-input input {
+        min-width: 180px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 1000px;
+      }
+      .story-viewer {
+        aspect-ratio: 9 / 16;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+  <div class="buttons">
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h1>📖 Lesson 2: The Laziest</h1>
+
+    <!-- ========== ميزة البوستات المتعددة (فيديو/صورة) ========== -->
+    <div class="multi-posts-area">
+      <div class="story-viewer" id="storyViewer">
+        <!-- العنصر المرئي ديناميكي -->
+        <div class="media-element" id="mediaElement"></div>
+        
+        <!-- شريط التقدم -->
+        <div class="progress-strip" id="progressStrip"></div>
+        
+        <!-- عداد الفيديو/البوست -->
+        <div class="video-counter" id="videoCounter">1 / 5</div>
+        
+        <!-- أزرار التنقل -->
+        <div class="nav-buttons-overlay">
+          <button class="nav-circle" id="prevStoryBtn">◀</button>
+          <button class="nav-circle" id="nextStoryBtn">▶</button>
+        </div>
+        
+        <!-- مناطق اللمس الجانبية -->
+        <div class="click-zones">
+          <div class="click-left" id="clickLeftZone"></div>
+          <div class="click-right" id="clickRightZone"></div>
+        </div>
+        
+        <!-- تلميح السحب -->
+        <div class="swipe-hint"></div>
+      </div>
+    </div>
+
+    <!-- تبقى الأسئلة كما هي تماماً -->
+    <div class="questions-container">
+      <div class="question-item" id="q1">
+        <p>❓ 1. Who said "If you move, you lose"?</p>
+        <div class="answer-input">
+          <input type="text" id="answer1" placeholder="Type the character's name...">
+          <button onclick="checkQuestion(1)">Check Answer</button>
+        </div>
+        <div id="feedback1" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q2">
+        <p>❓ 2. Who is feeling very hungry?</p>
+        <div class="answer-input">
+          <input type="text" id="answer2" placeholder="Hint: More than one character...">
+          <button onclick="checkQuestion(2)">Check Answer</button>
+        </div>
+        <div id="feedback2" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q3">
+        <p>❓ 3. What is Richard trying to get using his breath?</p>
+        <div class="answer-input">
+          <input type="text" id="answer3" placeholder="Hint: A kind of food...">
+          <button onclick="checkQuestion(3)">Check Answer</button>
+        </div>
+        <div id="feedback3" class="answer-feedback"></div>
+      </div>
+
+      <div class="question-item" id="q4">
+        <p>❓ 4. Why did Gumball move and lose the game?</p>
+        <div class="answer-input">
+          <input type="text" id="answer4" placeholder="What happened at the end?">
+          <button onclick="checkQuestion(4)">Check Answer</button>
+        </div>
+        <div id="feedback4" class="answer-feedback"></div>
+      </div>
+
+      <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+    </div>
+
+    <div class="next-lesson" style="text-align:center;">
+      <a href="three-bears.html">→ Next Lesson: We Bare Bears Movie</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p style="color:white;">© 2026 English Learning Platform</p>
+</div>
+
+<script>
+  // ========== قائمة البوستات (فيديوهات وصور) ==========
+  // يمكنك إضافة المزيد هنا بسهولة (فيديو أو صورة)
+  const mediaGallery = [
+    { type: "video", url: "images/The-Laziest-of-The-All-Gumball-Car_Media.mp4", title: "مشهد 1 - الحلقة" },
+    { type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFunflies.mp4", title: "مشهد 2 - المرح" },
+    { type: "image", url: "https://picsum.photos/id/20/720/1280", title: "ملصق توضيحي 1" },
+    { type: "video", url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4", title: "مشهد 3 - هروب" },
+    { type: "image", url: "https://picsum.photos/id/42/720/1280", title: "لحظة مميزة" }
+  ];
+
+  let currentMediaIndex = 0;
+  let currentVideoObj = null;   // لتتبع الفيديو الحالي وإيقافه
+
+  // عناصر DOM
+  const mediaContainer = document.getElementById('mediaElement');
+  const prevBtn = document.getElementById('prevStoryBtn');
+  const nextBtn = document.getElementById('nextStoryBtn');
+  const counterSpan = document.getElementById('videoCounter');
+  const progressStrip = document.getElementById('progressStrip');
+
+  // إنشاء نقاط التقدم
+  function createProgressDots() {
+    progressStrip.innerHTML = '';
+    for (let i = 0; i < mediaGallery.length; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('progress-dot');
+      if (i === currentMediaIndex) dot.classList.add('active');
+      progressStrip.appendChild(dot);
+    }
+  }
+
+  function updateProgressActive() {
+    const dots = document.querySelectorAll('.progress-dot');
+    dots.forEach((dot, idx) => {
+      if (idx === currentMediaIndex) dot.classList.add('active');
+      else dot.classList.remove('active');
+    });
+  }
+
+  // إيقاف أي فيديو يعمل حالياً
+  function stopVideoIfPlaying() {
+    if (currentVideoObj) {
+      currentVideoObj.pause();
+      currentVideoObj.currentTime = 0;
+      currentVideoObj = null;
+    }
+  }
+
+  // عرض المحتوى (صورة أو فيديو)
+  function loadCurrentMedia() {
+    stopVideoIfPlaying();
+    const item = mediaGallery[currentMediaIndex];
+    
+    // تنظيف الحاوية
+    mediaContainer.innerHTML = '';
+    
+    if (item.type === 'image') {
+      const img = document.createElement('img');
+      img.src = item.url;
+      img.alt = item.title;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      mediaContainer.appendChild(img);
+    } 
+    else if (item.type === 'video') {
+      const videoElem = document.createElement('video');
+      const source = document.createElement('source');
+      source.src = item.url;
+      source.type = 'video/mp4';
+      videoElem.appendChild(source);
+      videoElem.controls = true;        // أزرار تحكم الفيديو
+      videoElem.autoplay = false;
+      videoElem.loop = false;
+      videoElem.playsInline = true;
+      videoElem.style.width = '100%';
+      videoElem.style.height = '100%';
+      videoElem.style.objectFit = 'cover';
+      mediaContainer.appendChild(videoElem);
+      
+      // حفظ مرجع للفيديو الحالي
+      currentVideoObj = videoElem;
+      // إضافة مستمع لتشغيل الفيديو فقط عند التفاعل (حسب الحاجة)
+      videoElem.addEventListener('play', () => {});
+    }
+    
+    // تحديث العداد والنقاط
+    counterSpan.innerText = `${currentMediaIndex + 1} / ${mediaGallery.length}`;
+    updateProgressActive();
+  }
+
+  // التالي
+  function nextMedia() {
+    if (currentMediaIndex + 1 < mediaGallery.length) {
+      currentMediaIndex++;
+      loadCurrentMedia();
+    } else {
+      // عند آخر عنصر إشعار سريع
+      showFloatingMessage("", "#ffc107");
+    }
+  }
+
+  // السابق
+  function prevMedia() {
+    if (currentMediaIndex - 1 >= 0) {
+      currentMediaIndex--;
+      loadCurrentMedia();
+    } else {
+      showFloatingMessage("", "#ffaa33");
+    }
+  }
+
+  // إشعار منبثق جميل
+  function showFloatingMessage(msg, bgColor = "#000000cc") {
+    let toast = document.createElement('div');
+    toast.innerText = msg;
+    toast.style.position = 'fixed';
+    toast.style.bottom = '30%';
+    toast.style.left = '50%';
+    toast.style.transform = 'translateX(-50%)';
+    toast.style.backgroundColor = bgColor;
+    toast.style.color = 'white';
+    toast.style.padding = '10px 22px';
+    toast.style.borderRadius = '40px';
+    toast.style.fontSize = '14px';
+    toast.style.fontWeight = 'bold';
+    toast.style.zIndex = '9999';
+    toast.style.backdropFilter = 'blur(8px)';
+    toast.style.whiteSpace = 'nowrap';
+    toast.style.fontFamily = 'sans-serif';
+    toast.style.pointerEvents = 'none';
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 1600);
+  }
+
+  // ربط الأحداث
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    prevMedia();
+  });
+  
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    nextMedia();
+  });
+  
+  // مناطق جانبية
+  document.getElementById('clickLeftZone').addEventListener('click', (e) => {
+    e.stopPropagation();
+    prevMedia();
+  });
+  
+  document.getElementById('clickRightZone').addEventListener('click', (e) => {
+    e.stopPropagation();
+    nextMedia();
+  });
+  
+  // دعم اللمس للسحب الأفقي
+  let touchStart = 0;
+  const viewerArea = document.getElementById('storyViewer');
+  viewerArea.addEventListener('touchstart', (e) => {
+    touchStart = e.touches[0].clientX;
+  });
+  
+  viewerArea.addEventListener('touchend', (e) => {
+    if (touchStart === 0) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchEnd - touchStart;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) prevMedia();
+      else nextMedia();
+    }
+    touchStart = 0;
+  });
+  
+  // ========== وظائف الأسئلة والاختبار كما هي بدون تغيير ==========
+  const correctAnswers = {
+    1: ["gumball", "gumball watterson", "gumball the cat"],
+    2: ["darwin", "darwin watterson", "richard", "dad", "dad and darwin", "darwin and dad"],
+    3: ["pizza", "slice of pizza", "slice", "pizza slice"],
+    4: ["toaster", "hit by toaster", "he was hit", "he moved"]
+  };
+
+  function checkQuestion(num) {
+    let input = document.getElementById(`answer${num}`);
+    let val = input.value.trim().toLowerCase();
+    let fb = document.getElementById(`feedback${num}`);
+    
+    if (val === "") return;
+
+    let isCorrect = correctAnswers[num].some(ans => val.includes(ans));
+
+    if (isCorrect) {
+      fb.innerHTML = "✅ Correct! Great job.";
+      fb.className = "answer-feedback correct";
+      input.style.border = "2px solid green";
+    } else {
+      let hints = [
+        "Hint: It's Gumball, the main character.",
+        "Hint: Look at Darwin and Richard's reactions.",
+        "Hint: He thinks he can have a slice of...",
+        "Hint: Think about what hit his head."
+      ];
+      fb.innerHTML = "❌ Try again! " + hints[num-1];
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid red";
+    }
+  }
+
+  function resetAllQuestions() {
+    for (let i = 1; i <= 4; i++) {
+      document.getElementById(`answer${i}`).value = "";
+      document.getElementById(`answer${i}`).style.border = "2px solid #ddd";
+      document.getElementById(`feedback${i}`).className = "answer-feedback";
+    }
+  }
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+  
+  // بدء تشغيل البوستات المتعددة
+  createProgressDots();
+  loadCurrentMedia();
+</script>
+</body>
+</html>

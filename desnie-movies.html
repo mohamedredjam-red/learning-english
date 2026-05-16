@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 4: The Enchanted Journey - A2 Level</title>
   <link rel="icon" href="logo7.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,8 +11,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
     
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -25,9 +24,58 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #32cd32;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      color: #32cd32;
+      font-size: 22px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .buttons button {
+      background: #32cd32;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .buttons button:hover {
+      background: #28a428;
+      transform: translateY(-2px);
+    }
+
+    .container { 
+      max-width: 900px; 
+      margin: 30px auto; 
+      padding: 0 20px; 
+    }
 
     .card {
       background: white;
@@ -37,10 +85,31 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
-    h1 { color: #2e0854; margin-bottom: 20px; border-bottom: 4px solid #32cd32; padding-bottom: 10px; }
+    h1 { 
+      color: #2e0854; 
+      margin-bottom: 20px; 
+      border-bottom: 4px solid #32cd32; 
+      padding-bottom: 10px; 
+      font-size: 28px;
+    }
 
-    .video-section { text-align: center; margin-bottom: 30px; }
-    video { width: 100%; max-width: 700px; border-radius: 12px; border: 4px solid #2e0854; }
+    .video-section { 
+      text-align: center; 
+      margin-bottom: 30px; 
+    }
+    
+    video { 
+      width: 100%; 
+      max-width: 700px; 
+      border-radius: 12px; 
+      border: 4px solid #2e0854; 
+    }
+
+    .video-caption {
+      margin-top: 15px; 
+      color: #666; 
+      font-size: 14px;
+    }
 
     /* تنسيق الأسئلة */
     .question-item {
@@ -51,10 +120,16 @@
       border-left: 5px solid #32cd32;
     }
 
-    .question-item p { font-weight: bold; color: #2e0854; margin-bottom: 15px; font-size: 1.1em; }
+    .question-item p { 
+      font-weight: bold; 
+      color: #2e0854; 
+      margin-bottom: 15px; 
+      font-size: 1.1em; 
+    }
 
     /* خيارات الاختيار من متعدد */
     .options-list { list-style: none; }
+    
     .option-label {
       display: block;
       background: #fff;
@@ -65,17 +140,34 @@
       border: 1px solid #ddd;
       transition: 0.3s;
     }
+    
     .option-label:hover { background: #e9e0ff; }
-    input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+    
+    input[type="radio"] { 
+      margin-right: 10px; 
+      transform: scale(1.2); 
+      cursor: pointer;
+    }
 
     /* المدخلات النصية */
-    .text-answer-box { display: flex; gap: 10px; margin-top: 10px; }
+    .text-answer-box { 
+      display: flex; 
+      gap: 10px; 
+      margin-top: 10px; 
+      flex-wrap: wrap;
+    }
+    
     input[type="text"] {
       flex: 1;
       padding: 12px;
       border-radius: 25px;
       border: 2px solid #ddd;
       outline: none;
+      font-size: 14px;
+    }
+    
+    input[type="text"]:focus {
+      border-color: #32cd32;
     }
 
     button.check-btn {
@@ -86,25 +178,188 @@
       border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
+    }
+    
+    button.check-btn:hover {
+      background: #4a1a7a;
+      transform: scale(1.02);
     }
 
-    .feedback { margin-top: 12px; padding: 10px; border-radius: 8px; display: none; font-weight: 500; }
-    .correct { background: #d4edda; color: #155724; border-left: 5px solid #28a745; display: block; }
-    .wrong { background: #f8d7da; color: #721c24; border-left: 5px solid #dc3545; display: block; }
+    .feedback { 
+      margin-top: 12px; 
+      padding: 10px; 
+      border-radius: 8px; 
+      display: none; 
+      font-weight: 500; 
+    }
+    
+    .correct { 
+      background: #d4edda; 
+      color: #155724; 
+      border-left: 5px solid #28a745; 
+      display: block; 
+    }
+    
+    .wrong { 
+      background: #f8d7da; 
+      color: #721c24; 
+      border-left: 5px solid #dc3545; 
+      display: block; 
+    }
 
-    .footer-nav { text-align: center; margin-top: 30px; }
-    .back-link { color: #2e0854; text-decoration: none; font-weight: bold; }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+    .footer-nav { 
+      text-align: center; 
+      margin-top: 30px; 
+    }
+    
+    .back-link { 
+      color: #2e0854; 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-link:hover {
+      transform: translateX(-5px);
+      color: #4a1a7a;
+    }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 6px 15px;
+        font-size: 12px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      .question-item {
+        padding: 15px;
+      }
+      
+      .question-item p {
+        font-size: 1em;
+      }
+      
+      .text-answer-box {
+        flex-direction: column;
+      }
+      
+      button.check-btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 20px;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+      
+      .option-label {
+        padding: 10px;
+        font-size: 13px;
+      }
+      
+      input[type="text"] {
+        padding: 10px;
+        font-size: 13px;
+      }
+      
+      button.check-btn {
+        padding: 8px 20px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      h1 {
+        font-size: 18px;
+      }
+      
+      .question-item {
+        padding: 12px;
+      }
+      
+      .question-item p {
+        font-size: 13px;
+      }
+      
+      .option-label {
+        font-size: 12px;
+        padding: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
+  <div class="buttons">
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
+  </div>
 </div>
 
 <div class="container">
@@ -112,10 +367,11 @@
     <h1>✨ Lesson 4: The Magic World</h1>
 
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/3.0.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
-      <p style="margin-top:15px; color: #666;">Watch the magical adventure and complete the dialogue tasks.</p>
+      <p class="video-caption">🎬 Watch the magical adventure and complete the dialogue tasks.</p>
     </div>
 
     <div id="quiz-area">
@@ -124,7 +380,7 @@
         <p>❓ 1. What object does the girl use to travel to the magic forest?</p>
         <div class="text-answer-box">
           <input type="text" id="ans1" placeholder="It is a magic...">
-          <button class="check-btn" onclick="checkText(1)">Check</button>
+          <button class="check-btn" onclick="checkText(1)">✓ Check Answer</button>
         </div>
         <div id="fb1" class="feedback"></div>
       </div>
@@ -142,7 +398,7 @@
             <input type="radio" name="q2" value="wrong"> "I am looking for my phone."
           </label>
         </div>
-        <button class="check-btn" style="margin-top:10px;" onclick="checkRadio(2, 'correct')">Check Answer</button>
+        <button class="check-btn" style="margin-top:10px;" onclick="checkRadio(2, 'correct')">✓ Check Answer</button>
         <div id="fb2" class="feedback"></div>
       </div>
 
@@ -159,14 +415,16 @@
             <input type="radio" name="q3" value="wrong"> "I am very hungry, let's go to a restaurant."
           </label>
         </div>
-        <button class="check-btn" style="margin-top:10px;" onclick="checkRadio(3, 'correct')">Check Answer</button>
+        <button class="check-btn" style="margin-top:10px;" onclick="checkRadio(3, 'correct')">✓ Check Answer</button>
         <div id="fb3" class="feedback"></div>
       </div>
 
     </div>
 
     <div class="footer-nav">
-      <a href="A2- listening.html" class="back-link">← Return to Lessons List</a>
+      <a href="A2- listening.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Return to Lessons List
+      </a>
     </div>
   </div>
 </div>
@@ -174,19 +432,33 @@
 <script>
   // التحقق من الأسئلة النصية
   const textAnswers = {
-    1: ["book", "magic book"]
+    1: ["book", "magic book", "a book", "the book"]
   };
 
   function checkText(num) {
-    const val = document.getElementById(`ans${num}`).value.trim().toLowerCase();
+    const input = document.getElementById(`ans${num}`);
+    const val = input.value.trim().toLowerCase();
     const fb = document.getElementById(`fb${num}`);
+    
+    if (val === '') {
+      fb.innerHTML = "⚠️ Please write your answer.";
+      fb.className = "feedback wrong";
+      return;
+    }
     
     if (textAnswers[num].some(a => val.includes(a))) {
       fb.innerHTML = "✅ Correct! It's the magic book.";
       fb.className = "feedback correct";
+      input.style.borderColor = "#28a745";
+      setTimeout(() => {
+        if (fb.innerHTML === "✅ Correct! It's the magic book.") {
+          // نترك الرسالة تظهر لفترة
+        }
+      }, 2000);
     } else {
       fb.innerHTML = "❌ Try again. Hint: She found it in her room at 12:00.";
       fb.className = "feedback wrong";
+      input.style.borderColor = "#dc3545";
     }
   }
 
@@ -195,7 +467,11 @@
     const selected = document.querySelector(`input[name="q${num}"]:checked`);
     const fb = document.getElementById(`fb${num}`);
     
-    if (!selected) return;
+    if (!selected) {
+      fb.innerHTML = "⚠️ Please select an answer.";
+      fb.className = "feedback wrong";
+      return;
+    }
 
     if (selected.value === correctValue) {
       fb.innerHTML = "✅ Great job! This matches the friendly mood of the video.";
@@ -205,6 +481,30 @@
       fb.className = "feedback wrong";
     }
   }
+
+  // ===== تسجيل الخروج المحسن =====
+  function logout() {
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // ===== التحقق من تسجيل الدخول =====
+  if (!localStorage.getItem('userId')) {
+    window.location.href = 'index.html';
+  }
+
+  // ===== معالج خطأ الصورة =====
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 
 </body>

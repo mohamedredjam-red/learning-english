@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 1: Apologising - Speaking A2</title>
   <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    /* الإبقاء على نفس التنسيقات الرائعة التي صممتها */
     * {
       margin: 0;
       padding: 0;
@@ -15,8 +15,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -29,13 +28,31 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
     }
 
     .buttons {
@@ -46,10 +63,19 @@
     .buttons button {
       background: #ffc107;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .buttons button:hover {
+      background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .container {
@@ -72,6 +98,7 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .video-section {
@@ -84,6 +111,12 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       width: 100%;
       max-width: 700px;
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
     }
 
     .question-item {
@@ -111,47 +144,80 @@
     .answer-input input {
       flex: 2;
       min-width: 250px;
-      padding: 10px 15px;
+      padding: 12px 15px;
       font-size: 16px;
       border: 2px solid #ddd;
       border-radius: 25px;
+      transition: 0.2s;
+    }
+
+    .answer-input input:focus {
+      outline: none;
+      border-color: #ffc107;
     }
 
     .answer-input button {
       background: #ffc107;
       border: none;
-      padding: 10px 25px;
+      padding: 12px 25px;
       border-radius: 30px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-input button:hover {
+      background: #e0a800;
+      transform: scale(1.02);
     }
 
     .answer-feedback {
       margin-top: 12px;
       font-size: 14px;
-      padding: 8px 12px;
+      padding: 10px 15px;
       border-radius: 8px;
       display: none;
     }
 
-    .correct { background: #d4edda; color: #155724; border-left: 4px solid #28a745; display: block; }
-    .wrong { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; display: block; }
-
-    .footer {
-      background: #0a094e;
-      padding: 30px;
-      text-align: center;
-      border-top: 3px solid #ffc107;
+    .correct { 
+      background: #d4edda; 
+      color: #155724; 
+      border-left: 4px solid #28a745; 
+      display: block; 
+    }
+    
+    .wrong { 
+      background: #f8d7da; 
+      color: #721c24; 
+      border-left: 4px solid #dc3545; 
+      display: block; 
     }
 
     .reset-all {
       background: #6c757d;
       color: white;
       border: none;
-      padding: 10px;
+      padding: 12px;
       width: 100%;
-      border-radius: 5px;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .reset-all:hover {
+      background: #5a6268;
+      transform: translateY(-2px);
+    }
+    
+    .next-lesson {
+      text-align: center;
+      margin-top: 25px;
     }
     
     .next-lesson a {
@@ -161,34 +227,197 @@
       border-radius: 30px;
       text-decoration: none;
       display: inline-block;
-      margin-top: 20px;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
-    img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+    .next-lesson a:hover {
+      background: #1e1c7a;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background: #0a094e;
+      padding: 30px;
+      text-align: center;
+      border-top: 3px solid #ffc107;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
+      color: #ffc107;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 12px;
+    }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .question-item p {
+        font-size: 16px;
+      }
+      
+      .answer-input input {
+        padding: 10px;
+        font-size: 14px;
+      }
+      
+      .answer-input button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .buttons button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .question-item {
+        padding: 15px;
+      }
+      
+      .question-item p {
+        font-size: 14px;
+      }
+      
+      .answer-input {
+        flex-direction: column;
+      }
+      
+      .answer-input input {
+        width: 100%;
+        min-width: auto;
+      }
+      
+      .answer-input button {
+        width: 100%;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-item p {
+        font-size: 13px;
+      }
+      
+      .answer-feedback {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="buttons">
-    <button onclick="logout()">Logout</button>
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 </div>
 
 <div class="container">
   <div class="card">
-    <h1>📖 Lesson 1: Apologising</h1>
+    <h1><i class="fa-solid fa-hand-peace"></i> Lesson 1: Apologising</h1>
 
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/01.1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch Miss Simian and Gumball carefully, then answer:</p>
+      <p class="video-caption">🎬 Watch Miss Simian and Gumball carefully, then answer the questions below.</p>
     </div>
 
     <div class="questions-container">
@@ -196,7 +425,7 @@
         <p>❓ 1. What was Miss Simian trying to say to the boys?</p>
         <div class="answer-input">
           <input type="text" id="answer1" placeholder="Type your answer...">
-          <button onclick="checkQuestion(1)">Check Answer</button>
+          <button onclick="checkQuestion(1)">✓ Check Answer</button>
         </div>
         <div id="feedback1" class="answer-feedback"></div>
       </div>
@@ -205,7 +434,7 @@
         <p>❓ 2. Did Gumball hear her the first time?</p>
         <div class="answer-input">
           <input type="text" id="answer2" placeholder="Yes or No?">
-          <button onclick="checkQuestion(2)">Check Answer</button>
+          <button onclick="checkQuestion(2)">✓ Check Answer</button>
         </div>
         <div id="feedback2" class="answer-feedback"></div>
       </div>
@@ -214,7 +443,7 @@
         <p>❓ 3. Why did Gumball ask her to say it again?</p>
         <div class="answer-input">
           <input type="text" id="answer3" placeholder="Hint: He wanted to...">
-          <button onclick="checkQuestion(3)">Check Answer</button>
+          <button onclick="checkQuestion(3)">✓ Check Answer</button>
         </div>
         <div id="feedback3" class="answer-feedback"></div>
       </div>
@@ -223,31 +452,41 @@
         <p>❓ 4. Who was inside the car?</p>
         <div class="answer-input">
           <input type="text" id="answer4" placeholder="Who opened the window?">
-          <button onclick="checkQuestion(4)">Check Answer</button>
+          <button onclick="checkQuestion(4)">✓ Check Answer</button>
         </div>
         <div id="feedback4" class="answer-feedback"></div>
       </div>
 
-      <button class="reset-all" onclick="resetAllQuestions()">Reset All Answers</button>
+      <button class="reset-all" onclick="resetAllQuestions()">
+        <i class="fa-solid fa-rotate-left"></i> Reset All Answers
+      </button>
     </div>
 
-    <div class="next-lesson" style="text-align:center;">
+    <div class="next-lesson">
       <a href="The Laziest.html">→ Next Lesson: The Laziest</a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <p style="color:white;">© 2026 English Learning Platform</p>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+    <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
+  </div>
+  <div class="copyright">
+    © 2026 English Learning Platform. All rights reserved.
+  </div>
 </div>
 
 <script>
   // الإجابات الصحيحة بناءً على أحداث الفيديو الفعلي
   const correctAnswers = {
     1: ["sorry", "i'm sorry", "apologise", "apologize", "say sorry"],
-    2: ["yes", "he did", "yeah", "yep"], // غامبول قال "سمعتك من المرة الأولى"
-    3: ["milk it", "wanted to milk it", "to milk it", "enjoy"], // التعبير الشهير في الحلقة
-    4: ["brown", "principal brown", "mr brown", "the principal"] // المدير براون هو من كان بالسيارة
+    2: ["yes", "he did", "yeah", "yep", "yes he did"],
+    3: ["milk it", "wanted to milk it", "to milk it", "enjoy", "enjoy it", "to enjoy it"],
+    4: ["brown", "principal brown", "mr brown", "the principal", "mr. brown"]
   };
 
   function checkQuestion(num) {
@@ -255,14 +494,19 @@
     let val = input.value.trim().toLowerCase();
     let fb = document.getElementById(`feedback${num}`);
     
-    if (val === "") return;
+    if (val === "") {
+      fb.innerHTML = "⚠️ Please write your answer before checking!";
+      fb.className = "answer-feedback wrong";
+      input.style.border = "2px solid #dc3545";
+      return;
+    }
 
     let isCorrect = correctAnswers[num].some(ans => val.includes(ans));
 
     if (isCorrect) {
       fb.innerHTML = "✅ Correct! Well done!";
       fb.className = "answer-feedback correct";
-      input.style.border = "2px solid green";
+      input.style.border = "2px solid #28a745";
     } else {
       let hints = [
         "Hint: She wanted to apologize.",
@@ -272,22 +516,49 @@
       ];
       fb.innerHTML = "❌ Try again! " + hints[num-1];
       fb.className = "answer-feedback wrong";
-      input.style.border = "2px solid red";
+      input.style.border = "2px solid #dc3545";
     }
   }
 
   function resetAllQuestions() {
     for (let i = 1; i <= 4; i++) {
-      document.getElementById(`answer${i}`).value = "";
-      document.getElementById(`answer${i}`).style.border = "2px solid #ddd";
+      let input = document.getElementById(`answer${i}`);
+      input.value = "";
+      input.style.border = "2px solid #ddd";
       document.getElementById(`feedback${i}`).className = "answer-feedback";
     }
+    // إظهار رسالة短暂ة
+    const resetBtn = document.querySelector('.reset-all');
+    const originalText = resetBtn.innerHTML;
+    resetBtn.innerHTML = '<i class="fa-solid fa-check"></i> Reset Complete!';
+    setTimeout(() => {
+      resetBtn.innerHTML = originalText;
+    }, 1500);
   }
 
+  // ===== تسجيل الخروج المحسن =====
   function logout() {
-    localStorage.clear();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // ===== التحقق من تسجيل الدخول =====
+  if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
+
+  // ===== معالج خطأ الصورة =====
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 
 </body>

@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clothes </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Clothes - Vocabulary Lesson</title>
     <link rel="icon" type="image/png" href="logo7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -20,9 +20,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -37,20 +35,36 @@
             border-bottom: 3px solid #ffc107;
             position: relative;
             flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
             color: #ffc107;
-            order: 2;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
         .search-icon-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            order: 1;
+            flex-wrap: wrap;
         }
 
         /* ===== شريط البحث المتغير ===== */
@@ -62,7 +76,7 @@
         }
 
         .search-icon-btn {
-            background: #ffc107;
+            background: #fcfaf6;
             color: #0a094e;
             border: none;
             width: 40px;
@@ -135,12 +149,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -197,9 +214,11 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.2s;
         }
 
         .back-home a:hover {
+            transform: translateX(-5px);
             color: #e0a800;
         }
 
@@ -313,7 +332,6 @@
             transform: scale(1.02);
         }
 
-        /* ===== زر الصوت - شكل مربع رمادي ===== */
         .sound-btn {
             position: absolute;
             bottom: 10px;
@@ -442,6 +460,7 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.2s;
         }
 
         .footer-links a:hover {
@@ -455,7 +474,45 @@
             font-size: 12px;
         }
 
+        .instruction {
+            text-align: center;
+            font-size: 12px;
+            color: #ffc107;
+            background: #0a094e;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 193, 7, 0.5);
+        }
+        
+        .center-text {
+            text-align: center;
+        }
+
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .logout-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
             .main-container {
                 max-width: 100%;
                 padding: 0 15px;
@@ -478,6 +535,10 @@
                 right: 8px;
                 border-radius: 5px;
             }
+            
+            .back-home {
+                margin: 15px 20px;
+            }
         }
 
         @media (max-width: 550px) {
@@ -485,18 +546,17 @@
                 padding: 12px 15px;
             }
             
-            .platform-logo {
-                font-size: 16px;
+            .logo-img {
+                height: 40px;
             }
             
             .logout-btn {
-                padding: 5px 12px;
-                font-size: 11px;
+                padding: 6px 12px;
+                font-size: 12px;
             }
             
             .back-home {
                 margin: 12px 20px;
-                text-align: left;
             }
             
             .white-card {
@@ -556,6 +616,10 @@
         }
         
         @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
             .cards-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -590,34 +654,22 @@
                 border-radius: 4px;
             }
         }
-        
-        .instruction {
-            text-align: center;
-            font-size: 12px;
-            color: #ffc107;
-            background: #0a094e;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 193, 7, 0.5);
-        }
-        
-        .center-text {
-            text-align: center;
-        }
-         img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-header">
-        <div class="platform-logo">
-            <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-        </div>
+        <a href="welcome.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         
         <div class="search-icon-container">
             <div class="search-wrapper">
@@ -629,20 +681,25 @@
                     <button class="search-btn" onclick="searchItems()">Search</button>
                 </div>
             </div>
-            <button class="logout-btn" onclick="logout()">Logout</button>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
         </div>
     </div>
 
     <div class="search-results-dropdown" id="searchResults"></div>
 
     <div class="back-home">
-        <a href="A1-A2 vocabulary.html">← Back to vocabulary Lessons</a>
+        <a href="A1-A2 vocabulary.html">
+            <i class="fa-solid fa-arrow-right"></i> Back to vocabulary Lessons
+        </a>
     </div>
 
     <div class="main-container">
         <div class="white-card">
             <div class="external-text">
-                <strong>Clothes Collection </strong><br>
+                <strong>👕 Clothes Collection</strong>
             </div>
             <div class="center-text">
                 <span class="instruction">🔊 Click the square button to hear the pronunciation</span>
@@ -653,12 +710,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/coat.avif" alt="coat">
+                                <img src="images/coat.avif" alt="coat" onerror="this.src='https://via.placeholder.com/150?text=coat'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('coat')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -671,12 +728,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/hat-.avif" alt="hat">
+                                <img src="images/hat-.avif" alt="hat" onerror="this.src='https://via.placeholder.com/150?text=hat'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('hat')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -689,12 +746,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/jacket.avif" alt="jacket">
+                                <img src="images/jacket.avif" alt="jacket" onerror="this.src='https://via.placeholder.com/150?text=jacket'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('jacket')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -707,12 +764,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/jeans.avif" alt="jeans">
+                                <img src="images/jeans.avif" alt="jeans" onerror="this.src='https://via.placeholder.com/150?text=jeans'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('jeans')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -725,12 +782,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/jumper.avif" alt="jumper">
+                                <img src="images/jumper.avif" alt="jumper" onerror="this.src='https://via.placeholder.com/150?text=jumper'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('jumper')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -743,12 +800,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/shirt.avif" alt="shirt">
+                                <img src="images/shirt.avif" alt="shirt" onerror="this.src='https://via.placeholder.com/150?text=shirt'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('shirt')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -761,12 +818,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/skirt.avif" alt="skirt">
+                                <img src="images/skirt.avif" alt="skirt" onerror="this.src='https://via.placeholder.com/150?text=skirt'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('skirt')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -779,12 +836,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/sweatshirt.avif" alt="sweatshirt">
+                                <img src="images/sweatshirt.avif" alt="sweatshirt" onerror="this.src='https://via.placeholder.com/150?text=sweatshirt'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('sweatshirt')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -797,12 +854,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/top.avif" alt="top">
+                                <img src="images/top.avif" alt="top" onerror="this.src='https://via.placeholder.com/150?text=top'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('top')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -815,12 +872,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/trainers.avif" alt="trainers">
+                                <img src="images/trainers.avif" alt="trainers" onerror="this.src='https://via.placeholder.com/150?text=trainers'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('trainers')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -833,12 +890,12 @@
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/trousers.avif" alt="trousers">
+                                <img src="images/trousers.avif" alt="trousers" onerror="this.src='https://via.placeholder.com/150?text=trousers'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('trousers')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -847,16 +904,16 @@
                 </div>
                 
                 <!-- T-shirt -->
-                <div class="photo-card" data-name="Tshirt" data-correct="Tshirt" data-word="t-shirt">
+                <div class="photo-card" data-name="tshirt" data-correct="tshirt" data-word="t-shirt">
                     <div class="flip-card-inner">
                         <div class="flip-front">
                             <div class="image-container">
-                                <img src="images/T-shirt.avif" alt="t-shirt">
+                                <img src="images/T-shirt.avif" alt="t-shirt" onerror="this.src='https://via.placeholder.com/150?text=t-shirt'">
                                 <button class="sound-btn" onclick="event.stopPropagation(); playSound('t-shirt')">🔊</button>
                             </div>
                         </div>
                         <div class="flip-back">
-                            <h4> Write name</h4>
+                            <h4>✏️ Write name</h4>
                             <input type="text" class="answer-input" placeholder="type here...">
                             <button class="submit-answer">Submit</button>
                             <div class="feedback-msg"></div>
@@ -869,11 +926,13 @@
 
     <div class="main-footer">
         <div class="footer-links">
-            <a href="welcome.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-            <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer"
-            2026 English Learning Platform. All rights reserved ©
+            <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
+        </div>
+        <div class="copyright">
+            © 2026 English Learning Platform. All rights reserved.
         </div>
     </div>
 
@@ -927,12 +986,12 @@
                     e.stopPropagation();
                     const userAnswer = answerInput.value.trim().toLowerCase();
                     if(userAnswer === '') {
-                        feedbackDiv.innerHTML = '⚠️ Write answer';
+                        feedbackDiv.innerHTML = '⚠️ Please write your answer';
                         feedbackDiv.className = 'feedback-msg wrong';
                         return;
                     }
                     if(userAnswer === correctAnswer) {
-                        feedbackDiv.innerHTML = '✅ Correct!';
+                        feedbackDiv.innerHTML = '✅ Correct! Great job!';
                         feedbackDiv.className = 'feedback-msg correct';
                         setTimeout(() => {
                             card.classList.remove('flipped');
@@ -940,7 +999,7 @@
                             feedbackDiv.innerHTML = '';
                         }, 1000);
                     } else {
-                        feedbackDiv.innerHTML = `❌ Wrong! Answer: ${correctAnswer}`;
+                        feedbackDiv.innerHTML = `❌ Wrong! The correct answer is: ${correctAnswer}`;
                         feedbackDiv.className = 'feedback-msg wrong';
                     }
                 });
@@ -969,7 +1028,7 @@
         document.addEventListener('click', function(event) {
             if (searchWrapper && !searchWrapper.contains(event.target)) {
                 searchWrapper.classList.remove('open');
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
             }
         });
 
@@ -978,13 +1037,22 @@
             searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
         }
 
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         function searchItems() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.photo-card');
             
             if (searchTerm === '') {
                 cards.forEach(card => card.style.display = 'block');
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
                 return;
             }
             
@@ -999,30 +1067,48 @@
                 }
             });
             
-            if (visibleCount > 0) {
-                searchResultsDiv.innerHTML = `<div class="search-result-item">Found ${visibleCount} item(s)</div>`;
-                searchResultsDiv.classList.add('show');
-            } else {
-                searchResultsDiv.innerHTML = '<div class="no-results">No items found</div>';
-                searchResultsDiv.classList.add('show');
+            if (searchResultsDiv) {
+                if (visibleCount > 0) {
+                    searchResultsDiv.innerHTML = `<div class="search-result-item">🔍 Found ${visibleCount} item(s) matching "${escapeHtml(searchTerm)}"</div>`;
+                    searchResultsDiv.classList.add('show');
+                } else {
+                    searchResultsDiv.innerHTML = '<div class="no-results">📭 No items found matching "' + escapeHtml(searchTerm) + '"</div>';
+                    searchResultsDiv.classList.add('show');
+                }
             }
         }
 
+        // ===== تسجيل الخروج المحسن =====
         function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
         }
         
+        // ===== التحقق من تسجيل الدخول =====
         if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
         
+        // ===== تفعيل البحث بالضغط على Enter =====
         const searchInputField = document.getElementById('searchInput');
         if(searchInputField) {
             searchInputField.addEventListener('keyup', function(e) {
                 if(e.key === 'Enter') searchItems();
             });
         }
+
+        // ===== معالج خطأ الصورة =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

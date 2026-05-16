@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Login - English Platform</title>
     <link rel="icon" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,7 +15,7 @@
         }
 
         body {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
                         url('images/333.png');
             background-size: cover;
             background-position: center;
@@ -26,29 +27,58 @@
         }
 
         .navbar {
-            background: #0a094e;
+            background: rgba(10, 9, 78, 0.95);
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 15px;
+            backdrop-filter: blur(10px);
         }
 
-        .navbar h3 {
+        .logo-link {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: #ffc107;
             font-size: 22px;
             font-weight: bold;
-            color: #ffc107;
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
             font-size: 16px;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .nav-links a:hover {
             color: #ffc107;
+            transform: translateY(-2px);
         }
 
         .main-content {
@@ -56,23 +86,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .container {
             max-width: 450px;
             width: 100%;
-            background: rgba(255, 255, 255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 35px;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h2 {
             text-align: center;
             margin-bottom: 25px;
             color: white;
+            font-size: 28px;
         }
 
         .tab-buttons {
@@ -85,22 +128,23 @@
             flex: 1;
             padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             background: rgba(255, 255, 255, 0.2);
             color: white;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
         .tab-btn.active {
             background: #ffc107;
-            color: #1a2b3c;
+            color: #0a094e;
         }
 
         .tab-btn:hover {
             background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .tab-content {
@@ -109,6 +153,12 @@
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .form-group {
@@ -117,39 +167,59 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: white;
             font-weight: bold;
         }
 
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
         input, select {
             width: 100%;
-            padding: 12px;
+            padding: 12px 12px 12px 40px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
+            transition: 0.2s;
         }
 
         input:focus, select:focus {
             outline: 2px solid #ffc107;
+            transform: scale(1.01);
         }
 
         .btn-submit {
             width: 100%;
             padding: 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             background: #ffc107;
-            color: #1a2b3c;
+            color: #0a094e;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn-submit:hover:not(:disabled) {
             background: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
         }
 
         .btn-submit:disabled {
@@ -173,27 +243,33 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .guest-btn:hover {
             background: #ffc107;
-            color: #1a2b3c;
+            color: #0a094e;
+            transform: translateY(-2px);
         }
 
         .guest-note {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(255, 255, 255, 0.6);
             margin-top: 10px;
         }
 
         .message {
             margin-top: 15px;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
             display: none;
+            animation: fadeIn 0.3s ease;
         }
 
         .message.success {
@@ -212,8 +288,8 @@
             margin-top: 20px;
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 13px;
         }
 
         .demo-accounts p {
@@ -234,10 +310,15 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
         }
 
         .back-link a:hover {
             color: #ffc107;
+            transform: translateX(-5px);
         }
 
         .loading {
@@ -256,57 +337,149 @@
             to { transform: rotate(360deg); }
         }
 
-        @media (max-width: 500px) {
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .container {
+                padding: 25px;
+                margin: 0 15px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 550px) {
             .navbar {
                 flex-direction: column;
-                gap: 10px;
                 text-align: center;
             }
-            .nav-links a {
-                margin: 0 10px;
+            
+            .logo-img {
+                height: 40px;
             }
+            
+            .nav-links {
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .nav-links a {
+                font-size: 14px;
+            }
+            
             .container {
                 padding: 20px;
             }
+            
+            h2 {
+                font-size: 22px;
+            }
+            
+            .tab-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            input, select {
+                padding: 10px 10px 10px 35px;
+                font-size: 14px;
+            }
+            
+            .btn-submit, .guest-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
         }
-        img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+            
+            .demo-accounts {
+                font-size: 11px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .container, .tab-content.active, .message {
+                animation: none;
+            }
+            
+            .btn-submit:hover:not(:disabled),
+            .guest-btn:hover,
+            .logo-link:hover,
+            .nav-links a:hover {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="https://mohamedredjam-red.github.io/learning-english/index.html" style="text-decoration: none;"><img src="images/LOGO111.png" alt=""></a>
+        <a href="index.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         <div class="nav-links">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="#">Contact</a>
+            <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
         </div>
     </div>
 
     <div class="main-content">
         <div class="container">
-            <h2>Welcome Back</h2>
+            <h2><i class="fa-solid fa-language"></i> Welcome Back</h2>
             
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
-                <button class="tab-btn" onclick="switchTab('register')">Register</button>
+                <button class="tab-btn active" onclick="switchTab('login')">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </button>
+                <button class="tab-btn" onclick="switchTab('register')">
+                    <i class="fa-solid fa-user-plus"></i> Register
+                </button>
             </div>
 
             <!-- Login Tab -->
             <div id="login-tab" class="tab-content active">
                 <form id="loginForm" onsubmit="return false;">
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="loginEmail" value="student@example.com" required>
+                        <label><i class="fa-solid fa-envelope"></i> Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="loginEmail" value="student@example.com" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="loginPassword" value="123456" required>
+                        <label><i class="fa-solid fa-lock"></i> Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="loginPassword" value="123456" required>
+                        </div>
                     </div>
-                    <button type="button" class="btn-submit" id="loginBtn" onclick="handleLogin()">Login</button>
+                    <button type="button" class="btn-submit" id="loginBtn" onclick="handleLogin()">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </button>
                 </form>
                 <div id="loginMessage" class="message"></div>
             </div>
@@ -315,30 +488,47 @@
             <div id="register-tab" class="tab-content">
                 <form id="registerForm" onsubmit="return false;">
                     <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="regName" required>
+                        <label><i class="fa-solid fa-user"></i> Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="regName" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="regEmail" required>
+                        <label><i class="fa-solid fa-envelope"></i> Email</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="email" id="regEmail" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="regPassword" minlength="6" required>
+                        <label><i class="fa-solid fa-lock"></i> Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="regPassword" minlength="6" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" id="regConfirm" required>
+                        <label><i class="fa-solid fa-check-circle"></i> Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <input type="password" id="regConfirm" required>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Level</label>
-                        <select id="regLevel">
-                            <option value="A">A - Beginner</option>
-                            <option value="B">B - Intermediate</option>
-                            <option value="C">C - Advanced</option>
-                        </select>
+                        <label><i class="fa-solid fa-chart-line"></i> Level</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <select id="regLevel">
+                                <option value="A">A - Beginner</option>
+                                <option value="B">B - Intermediate</option>
+                                <option value="C">C - Advanced</option>
+                            </select>
+                        </div>
                     </div>
-                    <button type="button" class="btn-submit" id="registerBtn" onclick="handleRegister()">Create Account</button>
+                    <button type="button" class="btn-submit" id="registerBtn" onclick="handleRegister()">
+                        <i class="fa-solid fa-user-plus"></i> Create Account
+                    </button>
                 </form>
                 <div id="registerMessage" class="message"></div>
             </div>
@@ -346,22 +536,24 @@
             <!-- Guest Access Section -->
             <div class="guest-section">
                 <button class="guest-btn" onclick="continueAsGuest()">
-                    Continue as Guest
+                    <i class="fa-solid fa-user-astronaut"></i> Continue as Guest
                 </button>
                 <p class="guest-note">
-                    No account needed. Your progress won't be saved.
+                    <i class="fa-solid fa-info-circle"></i> No account needed. Your progress won't be saved.
                 </p>
             </div>
 
             <div class="demo-accounts">
-                <p><strong>Demo Accounts:</strong></p>
-                <p>📧 student@example.com / 123456</p>
-                <p>📧 teacher@example.com / 123456</p>
-                <p>📧 mohamed@gmail.com / 123456</p>
+                <p><strong><i class="fa-solid fa-flask"></i> Demo Accounts:</strong></p>
+                <p><i class="fa-solid fa-envelope"></i> student@example.com / 123456</p>
+                <p><i class="fa-solid fa-envelope"></i> teacher@example.com / 123456</p>
+                <p><i class="fa-solid fa-envelope"></i> mohamed@gmail.com / 123456</p>
             </div>
 
             <div class="back-link">
-                <a href="https://mohamedredjam-red.github.io/learning-english/index.html">← Back to Home</a>
+                <a href="index.html">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Home
+                </a>
             </div>
         </div>
     </div>
@@ -412,7 +604,6 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    // حفظ بيانات المستخدم في localStorage
                     localStorage.setItem('userId', data.user.id);
                     localStorage.setItem('userName', data.user.name);
                     localStorage.setItem('userEmail', data.user.email);
@@ -424,7 +615,7 @@
                     messageDiv.style.display = 'block';
                     
                     setTimeout(() => {
-                        window.location.href = '/welcome.html';
+                        window.location.href = 'welcome.html';
                     }, 1000);
                 } else {
                     messageDiv.className = 'message error';
@@ -432,7 +623,7 @@
                     messageDiv.style.display = 'block';
                     
                     loginBtn.disabled = false;
-                    loginBtn.innerHTML = 'Login';
+                    loginBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Login';
                 }
             } catch (error) {
                 console.error('Login error:', error);
@@ -441,7 +632,7 @@
                 messageDiv.style.display = 'block';
                 
                 loginBtn.disabled = false;
-                loginBtn.innerHTML = 'Login';
+                loginBtn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Login';
             }
         }
 
@@ -458,7 +649,6 @@
             messageDiv.style.display = 'none';
             messageDiv.innerHTML = '';
             
-            // التحقق من تطابق كلمة المرور
             if (password !== confirm) {
                 messageDiv.className = 'message error';
                 messageDiv.innerHTML = '❌ Passwords do not match';
@@ -481,7 +671,6 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    // حفظ بيانات المستخدم في localStorage
                     localStorage.setItem('userId', data.user.id);
                     localStorage.setItem('userName', data.user.name);
                     localStorage.setItem('userEmail', data.user.email);
@@ -493,7 +682,7 @@
                     messageDiv.style.display = 'block';
                     
                     setTimeout(() => {
-                        window.location.href = '/welcome.html';
+                        window.location.href = 'welcome.html';
                     }, 1000);
                 } else {
                     messageDiv.className = 'message error';
@@ -501,7 +690,7 @@
                     messageDiv.style.display = 'block';
                     
                     registerBtn.disabled = false;
-                    registerBtn.innerHTML = 'Create Account';
+                    registerBtn.innerHTML = '<i class="fa-solid fa-user-plus"></i> Create Account';
                 }
             } catch (error) {
                 console.error('Register error:', error);
@@ -510,7 +699,7 @@
                 messageDiv.style.display = 'block';
                 
                 registerBtn.disabled = false;
-                registerBtn.innerHTML = 'Create Account';
+                registerBtn.innerHTML = '<i class="fa-solid fa-user-plus"></i> Create Account';
             }
         }
 
@@ -527,17 +716,16 @@
             
             const loginMessage = document.getElementById('loginMessage');
             loginMessage.className = 'message success';
-            loginMessage.innerHTML = '👤 Continuing as guest...';
+            loginMessage.innerHTML = '👤 Continuing as guest... Redirecting...';
             loginMessage.style.display = 'block';
             
             setTimeout(() => {
-                window.location.href = '/learning-english/welcome.html';
+                window.location.href = 'welcome.html';
             }, 500);
         }
 
         // ========== التحقق من تسجيل الدخول مسبقاً ==========
         if (localStorage.getItem('userId') && !localStorage.getItem('userId').startsWith('guest_')) {
-            // التحقق من صحة الجلسة مع الخادم
             const sessionId = localStorage.getItem('sessionId');
             if (sessionId) {
                 fetch(`${API_URL}/verify`, {
@@ -550,19 +738,26 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.valid) {
-                        window.location.href = '/welcome.html';
+                        window.location.href = 'welcome.html';
                     } else {
-                        // الجلسة غير صالحة، مسح البيانات
                         localStorage.clear();
                     }
                 })
-                .catch(() => {
-                    // في حالة خطأ الاتصال، لا نقوم بالتوجيه التلقائي
-                });
+                .catch(() => {});
             } else {
-                window.location.href = '/welcome.html';
+                window.location.href = 'welcome.html';
             }
         }
+
+        // ========== معالج خطأ الصورة ==========
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

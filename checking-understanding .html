@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 1: Checking Understanding - Speaking A1</title>
   <link rel="icon" href="logo7.png">
 
@@ -15,8 +15,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -31,18 +30,37 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
     }
 
     .buttons {
       display: flex;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .buttons button {
@@ -52,10 +70,12 @@
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     .buttons button:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .back {
@@ -66,6 +86,14 @@
       color: #ffc107;
       text-decoration: none;
       font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .back a:hover {
+      transform: translateX(-5px);
     }
 
     .container {
@@ -73,6 +101,7 @@
       margin: 20px auto;
       padding: 0 20px;
       flex: 1;
+      width: 100%;
     }
 
     .card {
@@ -80,6 +109,7 @@
       border-radius: 10px;
       padding: 30px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .card h1 {
@@ -87,11 +117,12 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .video-section video {
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto 15px;
@@ -106,6 +137,7 @@
     .task-block h3 {
       color: #003366;
       margin-bottom: 15px;
+      font-size: 20px;
     }
 
     .question-card {
@@ -121,26 +153,38 @@
       font-weight: bold;
       color: #0a094e;
       margin-bottom: 10px;
+      font-size: 16px;
     }
 
     .question-card label {
       margin-right: 20px;
       color: #333;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .question-card input[type="radio"] {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
     }
 
     .check-btn {
       background: #ffc107;
       border: none;
-      padding: 6px 15px;
+      padding: 8px 20px;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
       margin-top: 10px;
+      transition: 0.2s;
     }
 
     .check-btn:hover {
       background: #e0a800;
+      transform: scale(1.02);
     }
 
     .reset-btn {
@@ -152,10 +196,12 @@
       cursor: pointer;
       font-weight: bold;
       margin-top: 15px;
+      transition: 0.2s;
     }
 
     .reset-btn:hover {
-      background: #333366;
+      background: #1e1c7a;
+      transform: scale(1.02);
     }
 
     .next-lesson {
@@ -167,13 +213,16 @@
       background: #ffc107;
       color: #0a094e;
       text-decoration: none;
-      padding: 10px 25px;
+      padding: 12px 30px;
       border-radius: 25px;
       font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
     }
 
     .next-lesson a:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .footer {
@@ -184,43 +233,188 @@
       border-top: 3px solid #ffc107;
     }
 
-    .footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 14px;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
-    .footer a:hover {
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .footer-links a:hover {
       color: #ffc107;
     }
 
     .copyright {
       color: rgba(255,255,255,0.5);
       font-size: 12px;
-      margin-top: 15px;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 6px 15px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 15px 20px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .task-block h3 {
+        font-size: 18px;
+      }
+      
+      .question-card p {
+        font-size: 14px;
+      }
+      
+      .question-card label {
+        font-size: 14px;
+        margin-right: 15px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .buttons button {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 12px 15px;
+      }
+      
+      .back a {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .task-block h3 {
+        font-size: 16px;
+      }
+      
+      .question-card {
+        padding: 12px;
+      }
+      
+      .question-card p {
+        font-size: 13px;
+      }
+      
+      .question-card label {
+        font-size: 12px;
+        margin-right: 12px;
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+      
+      .check-btn, .reset-btn {
+        padding: 6px 15px;
+        font-size: 12px;
+      }
+      
+      .next-lesson a {
+        padding: 10px 25px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-card label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      .question-card input[type="radio"] {
+        margin-left: 5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">
-    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-  </div>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="buttons">
-    <button>🔍</button>
-    <button onclick="logout()">Logout</button>
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 </div>
 
 <div class="back">
-  <a href="A1speaking.html">← Back to Speaking Lessons</a>
+  <a href="A1speaking.html">
+    <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+  </a>
 </div>
 
 <div class="container">
@@ -228,11 +422,11 @@
     <h1>📖 Lesson 1: Checking Understanding</h1>
     
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/20.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch Video 1 carefully, then answer:</p>
+      <p style="margin-top:10px; color: #666;">🎬 Watch the video carefully, then answer the questions below.</p>
     </div>
 
     <div class="task-block">
@@ -243,7 +437,8 @@
         <label><input type="radio" name="q1" value="True"> True</label>
         <label><input type="radio" name="q1" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(1)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(1)">✓ Check Answer</button>
+        <span id="feedback1" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
       <div class="question-card">
@@ -251,7 +446,8 @@
         <label><input type="radio" name="q2" value="True"> True</label>
         <label><input type="radio" name="q2" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(2)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(2)">✓ Check Answer</button>
+        <span id="feedback2" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
       <div class="question-card">
@@ -259,7 +455,8 @@
         <label><input type="radio" name="q3" value="True"> True</label>
         <label><input type="radio" name="q3" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(3)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(3)">✓ Check Answer</button>
+        <span id="feedback3" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
       <div class="question-card">
@@ -267,7 +464,8 @@
         <label><input type="radio" name="q4" value="True"> True</label>
         <label><input type="radio" name="q4" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(4)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(4)">✓ Check Answer</button>
+        <span id="feedback4" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
       <div class="question-card">
@@ -275,7 +473,8 @@
         <label><input type="radio" name="q5" value="True"> True</label>
         <label><input type="radio" name="q5" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(5)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(5)">✓ Check Answer</button>
+        <span id="feedback5" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
       <div class="question-card">
@@ -283,24 +482,25 @@
         <label><input type="radio" name="q6" value="True"> True</label>
         <label><input type="radio" name="q6" value="False"> False</label>
         <br>
-        <button class="check-btn" onclick="checkTask1(6)">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1(6)">✓ Check Answer</button>
+        <span id="feedback6" style="margin-left: 10px; font-size: 12px;"></span>
       </div>
 
-      <button class="reset-btn" onclick="resetTask1()">Reset All Answers</button>
+      <button class="reset-btn" onclick="resetTask1()">⟳ Reset All Answers</button>
     </div>
   </div>
 </div>
 
 <div class="next-lesson">
-  <a href="making-suggestions .html">→ Next Lesson</a>
+  <a href="making-suggestions .html">→ Next Lesson: Making Suggestions</a>
 </div>
 
 <div class="footer">
-  <div>
-    <a href="welcome.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#">Contact</a>
-    <a href="#">Help</a>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
   </div>
   <div class="copyright">
     © 2026 English Learning Platform. All rights reserved.
@@ -318,17 +518,29 @@
     6: "True"
   };
 
-  // دالة التحقق من الإجابة
+  // دالة التحقق من الإجابة مع عرض التغذية الراجعة
   function checkTask1(num) {
     let selected = document.querySelector(`input[name="q${num}"]:checked`);
+    let feedbackSpan = document.getElementById(`feedback${num}`);
+    
     if (!selected) {
-      alert("⚠️ Please choose an option!");
+      feedbackSpan.innerHTML = '⚠️ Please choose an option!';
+      feedbackSpan.style.color = '#ff9800';
       return;
     }
+    
     if (selected.value === correctAnswers[num]) {
-      alert("✅ Correct! Well done!");
+      feedbackSpan.innerHTML = '✅ Correct! Well done!';
+      feedbackSpan.style.color = '#4caf50';
+      // إضافة تأثير بصري مؤقت
+      setTimeout(() => {
+        if (feedbackSpan.innerHTML === '✅ Correct! Well done!') {
+          feedbackSpan.innerHTML = '';
+        }
+      }, 2000);
     } else {
-      alert("❌ Wrong! Try again.");
+      feedbackSpan.innerHTML = '❌ Wrong! Try again.';
+      feedbackSpan.style.color = '#f44336';
     }
   }
 
@@ -339,16 +551,47 @@
       radios.forEach(radio => {
         radio.checked = false;
       });
+      let feedbackSpan = document.getElementById(`feedback${i}`);
+      if (feedbackSpan) {
+        feedbackSpan.innerHTML = '';
+      }
     }
-    alert("🔄 All answers have been reset!");
+    // إظهار رسالة短暂ة
+    const resetBtn = document.querySelector('.reset-btn');
+    const originalText = resetBtn.textContent;
+    resetBtn.textContent = '✓ Reset Complete!';
+    setTimeout(() => {
+      resetBtn.textContent = originalText;
+    }, 1500);
   }
 
-  // دالة تسجيل الخروج
+  // دالة تسجيل الخروج المحسنة
   function logout() {
-    localStorage.clear();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+
+  // التحقق من تسجيل الدخول
+  if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
+
+  // معالج خطأ الصورة
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
+
+<!-- إضافة FontAwesome للأيقونات -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </body>
 </html>

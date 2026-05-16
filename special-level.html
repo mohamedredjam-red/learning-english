@@ -2,184 +2,440 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special level</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Text to Speech Converter - Special Level</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         *{
             margin: 0;
             padding: 0;
-            font-family: 'poppins',sans-serif;
+            font-family: 'Poppins', sans-serif;
             box-sizing: border-box;
         }
+        
+        body {
+            background: linear-gradient(135deg, #0e2c68, #8e1515);
+            min-height: 100vh;
+        }
+        
         .hero{
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(135deg,#0e2c68,#8e1515);
+            background: linear-gradient(135deg, #0e2c68, #8e1515);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             color: #fff;
-
+            padding: 40px 20px;
         }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-button:hover {
+            background: #ffc107;
+            color: #0a094e;
+            transform: translateX(-5px);
+        }
+        
         .hero h1{
             font-size: 45px;
             font-weight: 600;
-            margin-top: -50px;
-            margin-bottom: 50px;
+            margin-top: -30px;
+            margin-bottom: 40px;
+            text-align: center;
         }
+        
         .hero h1 span{
-            color: #ff2963;
+            color: #ffc107;
         }
+        
+        .hero h1 i {
+            margin-right: 10px;
+            color: #ffc107;
+        }
+        
         textarea{
             width: 600px;
+            max-width: 90%;
             height: 250px;
-            background: #403d84;
+            background: rgba(64, 61, 132, 0.9);
             color: #fff;
-            font-size: 15px;
-            border: 0;
+            font-size: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
             outline: 0;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             resize: none;
             margin-bottom: 30px;
+            transition: 0.3s;
         }
+        
+        textarea:focus {
+            border-color: #ffc107;
+            box-shadow: 0 0 15px rgba(255,193,7,0.3);
+        }
+        
         textarea::placeholder{
             font-size: 16px;
-            color: #ddd;
+            color: rgba(255,255,255,0.6);
         }
+        
         .row{
             width: 600px;
+            max-width: 90%;
             display: flex;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
+        
         button{
-            background: #ff2963;
-            color: #fff;
+            background: #ffc107;
+            color: #0a094e;
             font-size: 16px;
-            padding: 10px 30px;
+            padding: 12px 30px;
             border-radius: 35px;
             border: 0;
             outline: 0;
             cursor: pointer;
             display: flex;
             align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: 0.3s;
         }
-        button img{
-            width: 16px;
-            margin-right: 10px;
+        
+        button:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
+        
         select{
-            flex:1;
+            flex: 1;
             color: #fff;
-            background: #403d84;
+            background: rgba(64, 61, 132, 0.9);
             height: 50px;
             padding: 0 20px;
             outline: 0;
-            border: 0;
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 35px;
             appearance: none;
-            background-image: url(images/dropdown.png);
-            background-repeat: no-repeat;
-            background-size: 15px;
-            background-position-x: calc(100% - 20px);
-            background-position-y: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
         }
         
-        /* ========== FIXED MEDIA QUERIES ONLY ========== */
-        @media (max-width: 782px) {
+        select:focus {
+            border-color: #ffc107;
+        }
+        
+        select option {
+            background: #0e2c68;
+            color: white;
+        }
+        
+        /* ========== MEDIA QUERIES ========== */
+        
+        @media (max-width: 768px) {
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
             .hero h1 {
-                font-size: 35px;
+                font-size: 32px;
                 margin-top: -20px;
                 margin-bottom: 30px;
-                text-align: center;
-                padding: 0 15px;
             }
             
             textarea {
-                width: 90%;
-                max-width: 500px;
-                height: 220px;
+                height: 200px;
+                font-size: 14px;
+            }
+            
+            textarea::placeholder {
+                font-size: 14px;
             }
             
             .row {
-                width: 90%;
-                max-width: 500px;
                 flex-direction: column;
                 gap: 15px;
             }
             
             select {
                 width: 100%;
-                background-position-y: center;
+                height: 45px;
             }
             
             button {
                 width: 100%;
                 justify-content: center;
+                padding: 12px 20px;
             }
         }
 
         @media (max-width: 480px) {
+            .hero {
+                padding: 30px 15px;
+            }
+            
             .hero h1 {
-                font-size: 28px;
+                font-size: 24px;
                 margin-top: 0;
                 margin-bottom: 25px;
             }
             
             textarea {
-                width: 95%;
-                height: 200px;
-                font-size: 14px;
+                height: 180px;
+                font-size: 13px;
+                padding: 15px;
             }
             
-            .row {
-                width: 95%;
+            textarea::placeholder {
+                font-size: 13px;
             }
             
             select {
-                height: 45px;
-                font-size: 14px;
+                height: 42px;
+                font-size: 13px;
             }
             
             button {
-                padding: 8px 20px;
+                padding: 10px 20px;
                 font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 20px;
+            }
+            
+            textarea {
+                height: 160px;
+                font-size: 12px;
+            }
+        }
+        
+        /* رسالة الحالة */
+        .status-message {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 30px;
+            font-size: 12px;
+            display: none;
+        }
+        
+        .status-message.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تحسين للشاشات الكبيرة */
+        @media (min-width: 1200px) {
+            textarea {
+                width: 700px;
+                height: 300px;
+            }
+            
+            .row {
+                width: 700px;
             }
         }
     </style>
 </head>
 <body>
+    <a href="welcome.html" class="back-button">
+        <i class="fa-solid fa-arrow-left"></i> Back
+    </a>
+    
     <div class="hero">
-        <h1>Text to speech <span>converter</span></h1>
-        <textarea placeholder="Write anything here...."></textarea>
+        <h1>
+            <i class="fa-solid fa-volume-high"></i> 
+            Text to <span>Speech</span> 
+            <i class="fa-solid fa-microphone"></i>
+        </h1>
+        
+        <textarea id="textInput" placeholder="Write or paste your text here... (e.g., Hello! Welcome to English learning platform)"></textarea>
+        
         <div class="row">
-            <select></select>
-            <button><img src="images/play.png">Listen</button>
+            <select id="voiceSelect">
+                <option value="">Loading voices...</option>
+            </select>
+            <button id="speakBtn">
+                <i class="fa-solid fa-play"></i> Listen
+            </button>
+        </div>
+        
+        <div id="statusMsg" class="status-message">
+            <i class="fa-solid fa-info-circle"></i> Ready to speak
         </div>
     </div>
-<script>
-    let speech = new SpeechSynthesisUtterance()
 
-    let voices = []
-
-    let voiceSelect = document.querySelector("select")
-
-    window.speechSynthesis.onvoiceschanged = () =>{
-        voices = window.speechSynthesis.getVoices()
-        speech.voice = voices[0]
-
-        voices.forEach((voice, i) => (voiceSelect.options[i]= new Option(voice.name, i)))
-    }
-    voiceSelect.addEventListener("change" , () =>{
-        speech.voice = voices[voiceSelect.value]
-    })
-
-    document.querySelector("button").addEventListener("click",()=>{
-        speech.text = document.querySelector("textarea").value
-        window.speechSynthesis.speak(speech)
-    })
-</script>
+    <script>
+        // عناصر DOM
+        const textInput = document.getElementById('textInput');
+        const speakBtn = document.getElementById('speakBtn');
+        const voiceSelect = document.getElementById('voiceSelect');
+        const statusMsg = document.getElementById('statusMsg');
+        
+        let speech = new SpeechSynthesisUtterance();
+        let voices = [];
+        
+        // تحميل الأصوات المتاحة
+        function loadVoices() {
+            voices = window.speechSynthesis.getVoices();
+            
+            if (voices.length === 0) {
+                voiceSelect.innerHTML = '<option value="">No voices available</option>';
+                return;
+            }
+            
+            voiceSelect.innerHTML = '';
+            
+            // تصنيف الأصوات (تفضيل الأصوات الإنجليزية)
+            const englishVoices = voices.filter(voice => voice.lang.startsWith('en'));
+            const otherVoices = voices.filter(voice => !voice.lang.startsWith('en'));
+            const sortedVoices = [...englishVoices, ...otherVoices];
+            
+            sortedVoices.forEach((voice, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = `${voice.name} (${voice.lang})`;
+                if (voice.lang === 'en-US' && voice.name.includes('Google')) {
+                    option.selected = true;
+                }
+                voiceSelect.appendChild(option);
+            });
+            
+            // تعيين الصوت الافتراضي
+            const defaultVoiceIndex = voiceSelect.value || 0;
+            speech.voice = voices[defaultVoiceIndex];
+            
+            showStatus(`✅ Loaded ${voices.length} voices`, 2000);
+        }
+        
+        // عرض رسالة الحالة
+        function showStatus(message, duration = 2000) {
+            statusMsg.innerHTML = `<i class="fa-solid fa-info-circle"></i> ${message}`;
+            statusMsg.classList.add('show');
+            setTimeout(() => {
+                statusMsg.classList.remove('show');
+            }, duration);
+        }
+        
+        // تغيير الصوت
+        voiceSelect.addEventListener('change', () => {
+            const selectedIndex = voiceSelect.value;
+            if (voices[selectedIndex]) {
+                speech.voice = voices[selectedIndex];
+                showStatus(`🎤 Voice changed to: ${voices[selectedIndex].name}`, 1500);
+            }
+        });
+        
+        // تشغيل النص
+        function speakText() {
+            const text = textInput.value.trim();
+            
+            if (text === '') {
+                showStatus('⚠️ Please write some text first!', 2000);
+                textInput.style.borderColor = '#ff2963';
+                setTimeout(() => {
+                    textInput.style.borderColor = 'rgba(255,255,255,0.2)';
+                }, 2000);
+                return;
+            }
+            
+            // إلغاء أي كلام قيد التشغيل
+            window.speechSynthesis.cancel();
+            
+            speech.text = text;
+            
+            // أحداث التشغيل
+            speech.onstart = () => {
+                showStatus('🔊 Speaking...', 1000);
+                speakBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Speaking...';
+                speakBtn.disabled = true;
+            };
+            
+            speech.onend = () => {
+                showStatus('✅ Done!', 1500);
+                speakBtn.innerHTML = '<i class="fa-solid fa-play"></i> Listen';
+                speakBtn.disabled = false;
+            };
+            
+            speech.onerror = () => {
+                showStatus('❌ Error! Please try again.', 2000);
+                speakBtn.innerHTML = '<i class="fa-solid fa-play"></i> Listen';
+                speakBtn.disabled = false;
+            };
+            
+            window.speechSynthesis.speak(speech);
+        }
+        
+        // زر التشغيل
+        speakBtn.addEventListener('click', speakText);
+        
+        // دعم Enter للتشغيل (Ctrl + Enter)
+        textInput.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                speakText();
+            }
+        });
+        
+        // تحميل الأصوات (مع compatibility)
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
+        
+        // محاولة تحميل الأصوات فوراً
+        if (window.speechSynthesis.getVoices().length > 0) {
+            loadVoices();
+        } else {
+            setTimeout(loadVoices, 100);
+        }
+        
+        // نص افتراضي للترحيب
+        const defaultText = "Hello! Welcome to the English Learning Platform. This is a text to speech converter. You can type any text and listen to it in different voices. Practice your pronunciation and improve your English listening skills!";
+        textInput.placeholder = defaultText;
+        
+        // إضافة مثال عند النقر المزدوج
+        textInput.addEventListener('dblclick', () => {
+            if (textInput.value === '') {
+                textInput.value = defaultText;
+                showStatus('📝 Example text added!', 1500);
+            }
+        });
+        
+        console.log('🎤 Text to Speech Converter Ready!');
+    </script>
 </body>
 </html>

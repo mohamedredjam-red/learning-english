@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 1: Apologising - Speaking A2</title>
   <link rel="icon" href="logo7.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,8 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -30,20 +29,38 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
-      color: #ffc107;
-      font-size: 22px;
-      font-weight: bold;
+    .logo-link {
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
 
-    /* ===== شريط البحث المتغير ===== */
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
+      color: #ffc107;
+      font-size: 22px;
+      font-weight: bold;
+      display: none;
+    }
+
     .search-icon-container {
       display: flex;
       align-items: center;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     .search-wrapper {
@@ -54,7 +71,7 @@
     }
 
     .search-icon-btn {
-      background: #ffc107;
+      background: #fcfaf6;
       color: #0a094e;
       border: none;
       width: 40px;
@@ -127,20 +144,25 @@
       background: #ffc107;
       color: #0a094e;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-radius: 30px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .logout-btn:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .search-results-dropdown {
       position: absolute;
       top: 80px;
-      right: 40px;
+      right: 140px;
       width: 350px;
       background: #0a094e;
       border: 1px solid rgba(255,255,255,0.2);
@@ -149,6 +171,7 @@
       overflow-y: auto;
       z-index: 1000;
       display: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
     .search-results-dropdown.show {
@@ -160,6 +183,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
       cursor: pointer;
       color: white;
+      transition: 0.2s;
     }
 
     .search-result-item:hover {
@@ -174,9 +198,14 @@
       color: #ffc107;
       text-decoration: none;
       font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
     }
 
     .back a:hover {
+      transform: translateX(-5px);
       color: #e0a800;
     }
 
@@ -191,6 +220,7 @@
       border-radius: 10px;
       padding: 30px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .card h1 {
@@ -198,12 +228,14 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .section {
       margin-top: 25px;
       border: 1px solid #ddd;
       border-radius: 8px;
+      overflow: hidden;
     }
 
     .section-title {
@@ -214,6 +246,7 @@
       justify-content: space-between;
       font-weight: bold;
       color: #0a094e;
+      transition: 0.2s;
     }
 
     .section-title:hover {
@@ -250,16 +283,18 @@
     }
 
     .btn-true, .btn-false {
-      padding: 6px 15px;
+      padding: 8px 20px;
       margin-right: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
       cursor: pointer;
       background: #f0f0f0;
+      transition: 0.2s;
     }
 
     .btn-true:hover, .btn-false:hover {
       background: #e0e0e0;
+      transform: scale(1.02);
     }
 
     .feedback {
@@ -270,10 +305,12 @@
 
     .feedback.correct {
       color: green;
+      font-weight: bold;
     }
 
     .feedback.wrong {
       color: red;
+      font-weight: bold;
     }
 
     .input-group {
@@ -283,6 +320,7 @@
     .input-group label {
       display: block;
       margin-bottom: 5px;
+      font-weight: bold;
     }
 
     .input-group input {
@@ -290,6 +328,12 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       width: 250px;
+      transition: 0.2s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #ffc107;
     }
 
     .btn {
@@ -300,10 +344,12 @@
       border-radius: 5px;
       cursor: pointer;
       background: #f0f0f0;
+      transition: 0.2s;
     }
 
     .btn:hover {
       background: #e0e0e0;
+      transform: translateY(-2px);
     }
 
     .counter {
@@ -324,35 +370,176 @@
       border-top: 3px solid #ffc107;
     }
 
-    .footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 14px;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
-    .footer a:hover {
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
       color: #ffc107;
     }
 
     .copyright {
       color: rgba(255,255,255,0.5);
       font-size: 12px;
-      margin-top: 15px;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .logout-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 15px 20px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .search-wrapper.open .search-input-wrapper {
+        width: 250px;
+      }
+      
+      .search-input {
+        width: 150px;
+      }
+      
+      .search-results-dropdown {
+        width: 300px;
+        right: 10px;
+        top: 130px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .search-icon-container {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .logout-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .back {
+        margin: 12px 15px;
+      }
+      
+      .back a {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .section-title {
+        padding: 12px 15px;
+        font-size: 14px;
+      }
+      
+      .section-content {
+        padding: 15px;
+      }
+      
+      .input-group input {
+        width: 100%;
+      }
+      
+      .btn-true, .btn-false {
+        padding: 6px 15px;
+        font-size: 13px;
+      }
+      
+      .btn {
+        padding: 6px 15px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question p {
+        font-size: 14px;
+      }
+      
+      .btn-true, .btn-false {
+        padding: 5px 12px;
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">
-    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-  </div>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="search-icon-container">
     <div class="search-wrapper">
       <button class="search-icon-btn" id="searchToggleBtn">
@@ -363,29 +550,33 @@
         <button class="search-btn" onclick="searchContent()">Search</button>
       </div>
     </div>
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <button class="logout-btn" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 </div>
 
 <div class="search-results-dropdown" id="searchResults"></div>
 
 <div class="back">
-  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+  <a href="A2speaking.html">
+    <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+  </a>
 </div>
 
 <div class="container">
   <div class="card">
-    <h1>📖 Lesson 1: Apologising</h1>
+    <h1><i class="fa-solid fa-hand-peace"></i> Lesson 1: Apologising</h1>
 
     <!-- ========== الدرس التعليمي ========== -->
     <div class="section" id="lesson">
       <div class="section-title" onclick="toggleSection('lesson')">
-        <span>📖 Lesson Content</span>
-        <span class="arrow">▼</span>
+        <span><i class="fa-solid fa-book-open"></i> Lesson Content</span>
+        <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
       </div>
       <div class="section-content">
-        <p><strong>Transcript:</strong></p>
-        <p>
+        <p><strong>📝 Transcript:</strong></p>
+        <p style="line-height: 1.6;">
           <strong>Ana:</strong> Hi! I'm Ana. Welcome to What to Say!<br><br>
           Do you know what to say when you want to apologise? Listen out for useful language for apologising.<br><br>
           <strong>Paul:</strong> Noelia! I am so sorry! Are you OK?<br>
@@ -397,14 +588,14 @@
           <strong>Paul:</strong> Honestly, it's fine. Don't worry about it.
         </p>
         <hr>
-        <p><strong>📌 Useful phrases:</strong></p>
-        <ul style="margin-left: 20px;">
-          <li>I'm so sorry.</li>
-          <li>I'm really sorry.</li>
-          <li>That's all right.</li>
-          <li>It was my fault.</li>
-          <li>I'm sorry too.</li>
-          <li>Don't worry about it.</li>
+        <p><strong><i class="fa-solid fa-star"></i> Useful phrases:</strong></p>
+        <ul style="margin-left: 20px; line-height: 1.8;">
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> I'm so sorry.</li>
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> I'm really sorry.</li>
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> That's all right.</li>
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> It was my fault.</li>
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> I'm sorry too.</li>
+          <li><i class="fa-solid fa-check-circle" style="color: #0a094e;"></i> Don't worry about it.</li>
         </ul>
       </div>
     </div>
@@ -412,51 +603,53 @@
     <!-- ========== التمرين 1: True or False ========== -->
     <div class="section" id="task1">
       <div class="section-title" onclick="toggleSection('task1')">
-        <span>📝 Task 1: True or False</span>
-        <span class="arrow">▼</span>
+        <span><i class="fa-solid fa-pen-to-square"></i> Task 1: True or False</span>
+        <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
       </div>
       <div class="section-content">
         <div class="question" id="q1">
           <p>1. Noelia is trying to go quickly.</p>
-          <button class="btn-true" onclick="checkAnswer('q1', true, this)">True</button>
-          <button class="btn-false" onclick="checkAnswer('q1', false, this)">False</button>
+          <button class="btn-true" onclick="checkAnswer('q1', true, this)">✓ True</button>
+          <button class="btn-false" onclick="checkAnswer('q1', false, this)">✗ False</button>
           <span class="feedback"></span>
         </div>
 
         <div class="question" id="q2">
           <p>2. Paul thinks it's funny that Noelia falls over.</p>
-          <button class="btn-true" onclick="checkAnswer('q2', false, this)">True</button>
-          <button class="btn-false" onclick="checkAnswer('q2', true, this)">False</button>
+          <button class="btn-true" onclick="checkAnswer('q2', false, this)">✓ True</button>
+          <button class="btn-false" onclick="checkAnswer('q2', true, this)">✗ False</button>
           <span class="feedback"></span>
         </div>
 
         <div class="question" id="q3">
           <p>3. They both apologise.</p>
-          <button class="btn-true" onclick="checkAnswer('q3', true, this)">True</button>
-          <button class="btn-false" onclick="checkAnswer('q3', false, this)">False</button>
+          <button class="btn-true" onclick="checkAnswer('q3', true, this)">✓ True</button>
+          <button class="btn-false" onclick="checkAnswer('q3', false, this)">✗ False</button>
           <span class="feedback"></span>
         </div>
 
         <div class="question" id="q4">
           <p>4. Noelia is hurt.</p>
-          <button class="btn-true" onclick="checkAnswer('q4', false, this)">True</button>
-          <button class="btn-false" onclick="checkAnswer('q4', true, this)">False</button>
+          <button class="btn-true" onclick="checkAnswer('q4', false, this)">✓ True</button>
+          <button class="btn-false" onclick="checkAnswer('q4', true, this)">✗ False</button>
           <span class="feedback"></span>
         </div>
 
-        <div class="counter" id="counter1">4 items remaining</div>
-        <button class="btn" onclick="resetTask('task1')">Try again</button>
+        <div class="counter" id="counter1">📊 4 items remaining</div>
+        <button class="btn" onclick="resetTask('task1')">
+          <i class="fa-solid fa-rotate-left"></i> Try again
+        </button>
       </div>
     </div>
 
     <!-- ========== التمرين 2: Complete the dialogue ========== -->
     <div class="section" id="task2">
       <div class="section-title" onclick="toggleSection('task2')">
-        <span>📝 Task 2: Complete the dialogue</span>
-        <span class="arrow">▼</span>
+        <span><i class="fa-solid fa-comments"></i> Task 2: Complete the dialogue</span>
+        <span class="arrow"><i class="fa-solid fa-chevron-down"></i></span>
       </div>
       <div class="section-content">
-        <p><strong>Complete the dialogue using:</strong> about, fault, OK, fine, so sorry, really, too, right</p>
+        <p><strong>Complete the dialogue using:</strong> <span style="background: #f0f0f0; padding: 4px 8px; border-radius: 5px;">about | fault | OK | fine | so sorry | really | too | right</span></p>
 
         <div class="input-group">
           <label>Paul: Noelia! I am <input type="text" id="gap1" placeholder="...">! Are you <input type="text" id="gap2" placeholder="...">?</label>
@@ -480,8 +673,12 @@
           <label>Paul: Honestly, it's <input type="text" id="gap7" placeholder="...">. Don't worry <input type="text" id="gap8" placeholder="..."> it.</label>
         </div>
 
-        <button class="btn" onclick="checkDialogue()">Check Answers</button>
-        <button class="btn" onclick="clearDialogue()">Clear</button>
+        <button class="btn" onclick="checkDialogue()">
+          <i class="fa-solid fa-check-double"></i> Check Answers
+        </button>
+        <button class="btn" onclick="clearDialogue()">
+          <i class="fa-solid fa-eraser"></i> Clear
+        </button>
         <div id="dialogueFeedback" class="feedback" style="display:block; margin-top:10px;"></div>
       </div>
     </div>
@@ -490,11 +687,11 @@
 </div>
 
 <div class="footer">
-  <div>
-    <a href="welcome.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-    <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer">Help</a>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+    <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
   </div>
   <div class="copyright">
     © 2026 English Learning Platform. All rights reserved.
@@ -520,10 +717,10 @@
     if (feedbackSpan.innerHTML !== '') return;
     
     if (correctValue === true) {
-      feedbackSpan.innerHTML = '✓ Correct!';
+      feedbackSpan.innerHTML = '✓ Correct! Well done!';
       feedbackSpan.className = 'feedback correct';
     } else {
-      feedbackSpan.innerHTML = '✗ Wrong!';
+      feedbackSpan.innerHTML = '✗ Wrong! Try again.';
       feedbackSpan.className = 'feedback wrong';
     }
     
@@ -548,7 +745,7 @@
     }
     
     var counter = document.getElementById('counter1');
-    if (counter) counter.innerHTML = remaining + ' items remaining';
+    if (counter) counter.innerHTML = '📊 ' + remaining + ' items remaining';
   }
   
   // ========== إعادة تعيين التمرين ==========
@@ -574,7 +771,7 @@
   function checkDialogue() {
     var answers = {
       gap1: 'so sorry',
-      gap2: 'OK',
+      gap2: 'ok',
       gap3: 'really',
       gap4: 'right',
       gap5: 'fault',
@@ -603,6 +800,7 @@
     feedback.innerHTML = 'You got ' + correctCount + ' out of ' + total + ' correct!';
     if (correctCount === total) {
       feedback.style.color = 'green';
+      feedback.innerHTML += ' 🎉 Perfect!';
     } else {
       feedback.style.color = 'red';
     }
@@ -654,22 +852,40 @@
     }
     
     if (searchResultsDiv) {
-      searchResultsDiv.innerHTML = `<div class="search-result-item">🔍 Searching for: "${searchTerm}"</div>
-                                    <div class="search-result-item">📚 This lesson covers: Apologising phrases, dialogue completion, True/False questions</div>`;
+      searchResultsDiv.innerHTML = `<div class="search-result-item">
+                                      <i class="fa-solid fa-search"></i> 🔍 Searching for: "${searchTerm}"
+                                    </div>
+                                    <div class="search-result-item">
+                                      <i class="fa-solid fa-book-open"></i> 📚 This lesson covers: 
+                                      <strong>Apologising phrases, dialogue completion, True/False questions</strong>
+                                    </div>`;
       searchResultsDiv.classList.add('show');
     }
   }
   
-  // ========== تسجيل الخروج ==========
+  // ========== تسجيل الخروج المحسن ==========
   function logout() {
-    localStorage.clear();
-    window.location.href = 'index.html';
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
   }
   
   // ========== التحقق من تسجيل الدخول ==========
   if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
+
+  // ========== معالج خطأ الصورة ==========
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 </body>
 </html>

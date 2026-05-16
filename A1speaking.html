@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Speaking A1 - Lessons</title>
     <link rel="icon" href="logo7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,8 +16,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -33,6 +32,7 @@
             justify-content: space-between;
             border-bottom: 3px solid #ffc107;
             flex-wrap: wrap;
+            gap: 15px;
         }
 
         .platform-logo a {
@@ -40,6 +40,25 @@
             font-size: 22px;
             font-weight: bold;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
         /* ===== شريط البحث المتغير ===== */
@@ -47,6 +66,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .search-wrapper {
@@ -57,7 +77,7 @@
         }
 
         .search-icon-btn {
-            background: #ffc107;
+            background: #fcfaf6;
             color: #0a094e;
             border: none;
             width: 40px;
@@ -130,12 +150,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -146,7 +169,7 @@
         .search-results-dropdown {
             position: absolute;
             top: 80px;
-            right: 40px;
+            right: 140px;
             width: 350px;
             background: #0a094e;
             border: 1px solid rgba(255,255,255,0.2);
@@ -155,6 +178,7 @@
             overflow-y: auto;
             z-index: 1000;
             display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .search-results-dropdown.show {
@@ -166,10 +190,17 @@
             border-bottom: 1px solid rgba(255,255,255,0.1);
             cursor: pointer;
             color: white;
+            transition: 0.2s;
         }
 
         .search-result-item:hover {
             background: rgba(255,193,7,0.2);
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
         }
 
         .back-home {
@@ -180,6 +211,14 @@
             color: #ffc107;
             font-size: 16px;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .back-home a:hover {
+            transform: translateX(-5px);
         }
 
         .main-container {
@@ -187,6 +226,7 @@
             margin: 20px auto;
             padding: 0 20px;
             flex: 1;
+            width: 100%;
         }
 
         .card {
@@ -194,6 +234,7 @@
             border-radius: 10px;
             padding: 30px;
             color: #333;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .card h1 {
@@ -201,12 +242,14 @@
             margin-bottom: 20px;
             border-bottom: 3px solid #ffc107;
             padding-bottom: 10px;
+            font-size: 28px;
         }
 
         .lesson-card {
             margin-top: 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
+            overflow: hidden;
         }
 
         .lesson-header {
@@ -215,6 +258,7 @@
             cursor: pointer;
             display: flex;
             justify-content: space-between;
+            transition: 0.2s;
         }
 
         .lesson-header:hover {
@@ -225,10 +269,27 @@
             display: none;
             padding: 15px;
             border-top: 1px solid #ddd;
+            background: #fafafa;
         }
 
         .lesson-card.active .lesson-content {
             display: block;
+        }
+
+        .lesson-content a {
+            color: #0a094e;
+            text-decoration: none;
+            background: #ffc107;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .lesson-content a:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
         }
 
         .main-footer {
@@ -242,7 +303,7 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
             margin-bottom: 15px;
         }
@@ -251,6 +312,7 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.2s;
         }
 
         .footer-links a:hover {
@@ -261,10 +323,136 @@
             color: rgba(255,255,255,0.5);
             font-size: 12px;
         }
-         img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        /* ================= MEDIA QUERIES المتقدمة ================= */
+        
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .logout-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .back-home {
+                margin: 15px 20px;
+            }
+            
+            .main-container {
+                padding: 0 15px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card h1 {
+                font-size: 24px;
+            }
+            
+            .search-wrapper.open .search-input-wrapper {
+                width: 250px;
+            }
+            
+            .search-input {
+                width: 150px;
+            }
+            
+            .search-results-dropdown {
+                width: 300px;
+                right: 10px;
+                top: 130px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .search-icon-container {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .search-icon-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .search-wrapper.open .search-input-wrapper {
+                width: 200px;
+            }
+            
+            .search-input {
+                width: 120px;
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+            
+            .search-btn {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+            
+            .logout-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .card h1 {
+                font-size: 20px;
+            }
+            
+            .lesson-header {
+                font-size: 14px;
+            }
+            
+            .back-home a {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .card h1 {
+                font-size: 18px;
+            }
+            
+            .lesson-header {
+                padding: 12px;
+            }
+            
+            .lesson-content a {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -272,7 +460,11 @@
 
 <div class="main-header">
     <div class="platform-logo">
-        <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
+        <a href="welcome.html">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
     </div>
     <div class="search-icon-container">
         <div class="search-wrapper">
@@ -284,47 +476,58 @@
                 <button class="search-btn" onclick="searchLessons()">Search</button>
             </div>
         </div>
-        <button class="logout-btn" onclick="logout()">Logout</button>
+        <button class="logout-btn" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </button>
     </div>
 </div>
 
 <div class="search-results-dropdown" id="searchResults"></div>
 
 <div class="back-home">
-    <a href="speaking.html">← Back to Speaking Lessons</a>
+    <a href="speaking.html">
+        <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+    </a>
 </div>
 
 <div class="main-container">
     <div class="card">
-        <h1>Speaking A1</h1>
+        <h1>🗣️ Speaking A1</h1>
 
         <div class="lesson-card" id="L1">
             <div class="lesson-header" onclick="toggleLesson('L1')">
-                <span>Lesson 1: Checking Understanding</span>
-                <span>▼</span>
+                <span>📖 Lesson 1: Checking Understanding</span>
+                <span><i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <div class="lesson-content">
-                <p><strong>Start learning:</strong> <a href="checking-understanding .html">Click here to start Lesson 1</a></p>
+                <p>Learn how to check if someone understands you in English.</p>
+                <p><strong>Start learning:</strong></p>
+                <a href="checking-understanding .html">Start Lesson 1 →</a>
             </div>
         </div>
 
         <div class="lesson-card" id="L2">
             <div class="lesson-header" onclick="toggleLesson('L2')">
-                <span>Lesson 2: Making Suggestions</span>
-                <span>▼</span>
+                <span>💡 Lesson 2: Making Suggestions</span>
+                <span><i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <div class="lesson-content">
-                <p><strong>Start learning:</strong> <a href="making-suggestions .html">Click here to start Lesson 2</a></p>
+                <p>Learn how to make suggestions and give advice in English.</p>
+                <p><strong>Start learning:</strong></p>
+                <a href="making-suggestions .html">Start Lesson 2 →</a>
             </div>
         </div>
 
         <div class="lesson-card" id="L3">
             <div class="lesson-header" onclick="toggleLesson('L3')">
-                <span>Lesson 3: Meeting New People</span>
-                <span>▼</span>
+                <span>👋 Lesson 3: Meeting New People</span>
+                <span><i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <div class="lesson-content">
-                <p><strong>Start learning:</strong> <a href="meeting-people .html">Click here to start Lesson 3</a></p>
+                <p>Learn how to introduce yourself and meet new people.</p>
+                <p><strong>Start learning:</strong></p>
+                <a href="meeting-people .html">Start Lesson 3 →</a>
             </div>
         </div>
     </div>
@@ -332,10 +535,10 @@
 
 <div class="main-footer">
     <div class="footer-links">
-        <a href="welcome.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-        <a href="Chat-bot.html"  target="_blank" rel="noopener noreferrer">Help</a>
+        <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+        <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+        <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
     </div>
     <div class="copyright">
         © 2026 English Learning Platform. All rights reserved.
@@ -343,11 +546,15 @@
 </div>
 
 <script>
+    // ===== فتح وإغلاق الدروس =====
     function toggleLesson(id) {
-        document.getElementById(id).classList.toggle("active");
+        const element = document.getElementById(id);
+        if (element) {
+            element.classList.toggle("active");
+        }
     }
 
-    // ===== شريط البحث المتغير =====
+    // ===== شريط البحث المتطور =====
     const searchToggleBtn = document.getElementById('searchToggleBtn');
     const searchWrapper = document.querySelector('.search-wrapper');
     const searchResultsDiv = document.getElementById('searchResults');
@@ -357,7 +564,10 @@
             e.stopPropagation();
             searchWrapper.classList.toggle('open');
             if (searchWrapper.classList.contains('open')) {
-                setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+                setTimeout(() => { 
+                    const searchInput = document.getElementById('searchInput');
+                    if (searchInput) searchInput.focus();
+                }, 100);
             }
         });
     }
@@ -365,38 +575,88 @@
     document.addEventListener('click', function(event) {
         if (searchWrapper && !searchWrapper.contains(event.target)) {
             searchWrapper.classList.remove('open');
-            searchResultsDiv.classList.remove('show');
+            if (searchResultsDiv) searchResultsDiv.classList.remove('show');
         }
     });
 
     const searchInputWrapper = document.getElementById('searchInputWrapper');
     if (searchInputWrapper) {
-        searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+        searchInputWrapper.addEventListener('click', function(e) { 
+            e.stopPropagation(); 
+        });
     }
 
+    // قائمة الدروس للبحث
+    const lessons = [
+        { title: "Checking Understanding", link: "checking-understanding .html" },
+        { title: "Making Suggestions", link: "making-suggestions .html" },
+        { title: "Meeting New People", link: "meeting-people .html" }
+    ];
+
     function searchLessons() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+        const searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+        
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (!searchResultsDiv) return;
         
         if (searchTerm === '') {
             searchResultsDiv.classList.remove('show');
             return;
         }
         
-        searchResultsDiv.innerHTML = `
-            <div class="search-result-item">🔍 Searching for: "${searchTerm}"</div>
-            <div class="search-result-item">📚 Lessons: Checking Understanding, Making Suggestions, Meeting New People</div>
-        `;
-        searchResultsDiv.classList.add('show');
+        const results = lessons.filter(lesson => 
+            lesson.title.toLowerCase().includes(searchTerm)
+        );
+        
+        if (results.length > 0) {
+            let html = '';
+            results.forEach(result => {
+                html += `
+                    <div class="search-result-item" onclick="window.location.href='${result.link}'">
+                        <div><i class="fa-solid fa-book-open"></i> ${result.title}</div>
+                        <small style="color: #ffc107;">Click to open lesson →</small>
+                    </div>
+                `;
+            });
+            searchResultsDiv.innerHTML = html;
+            searchResultsDiv.classList.add('show');
+        } else {
+            searchResultsDiv.innerHTML = '<div class="no-results">📭 No lessons found matching "' + escapeHtml(searchTerm) + '"</div>';
+            searchResultsDiv.classList.add('show');
+        }
     }
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // ===== تسجيل الخروج المحسن =====
     function logout() {
-        localStorage.clear();
-        window.location.href = 'index.html';
+        if (confirm('Are you sure you want to logout?')) {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = 'index.html';
+        }
     }
     
+    // ===== التحقق من تسجيل الدخول =====
     if (!localStorage.getItem('userId')) {
         window.location.href = 'index.html';
     }
+
+    // ===== معالج خطأ الصورة =====
+    window.addEventListener('DOMContentLoaded', () => {
+        const logoImg = document.querySelector('.logo-img');
+        if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+            logoImg.style.display = 'none';
+            const textSpan = logoImg.nextElementSibling;
+            if (textSpan) textSpan.style.display = 'block';
+        }
+    });
 </script>
 </body>
 </html>

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 2: Making Suggestions - Speaking A1</title>
   <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     * {
@@ -15,8 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -31,13 +31,31 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
     }
 
     .buttons {
@@ -48,14 +66,19 @@
     .buttons button {
       background: #ffc107;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .buttons button:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .back {
@@ -66,9 +89,14 @@
       color: #ffc107;
       text-decoration: none;
       font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
     }
 
     .back a:hover {
+      transform: translateX(-5px);
       color: #e0a800;
     }
 
@@ -77,6 +105,7 @@
       margin: 20px auto;
       padding: 0 20px;
       flex: 1;
+      width: 100%;
     }
 
     .card {
@@ -84,6 +113,7 @@
       border-radius: 10px;
       padding: 30px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .card h1 {
@@ -91,16 +121,24 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .video-section video {
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto 15px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
     }
 
     .task-block {
@@ -112,6 +150,7 @@
       margin-bottom: 15px;
       border-left: 4px solid #ffc107;
       padding-left: 10px;
+      font-size: 20px;
     }
 
     .question-card {
@@ -143,14 +182,16 @@
       cursor: pointer;
       font-weight: bold;
       margin-top: 10px;
+      transition: 0.2s;
     }
 
     .check-btn:hover {
       background: #e0a800;
+      transform: scale(1.02);
     }
 
     .reset-btn {
-      background: #0a094e;
+      background: #6c757d;
       color: white;
       border: none;
       padding: 8px 16px;
@@ -159,28 +200,29 @@
       font-weight: bold;
       margin-top: 10px;
       margin-left: 10px;
+      transition: 0.2s;
     }
 
     .reset-btn:hover {
-      background: #333366;
+      background: #5a6268;
+      transform: scale(1.02);
     }
 
     #word-bank, #answer-area {
       margin: 15px 0;
       padding: 12px;
       border-radius: 8px;
+      min-height: 80px;
     }
 
     #word-bank {
       background: #e8f4f8;
       border: 2px dashed #0a094e;
-      min-height: 70px;
     }
 
     #answer-area {
       background: #f0f8e8;
       border: 2px solid #4caf50;
-      min-height: 70px;
     }
 
     #word-bank span, #answer-area span {
@@ -192,6 +234,12 @@
       cursor: grab;
       border: 1px solid #0a094e;
       box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
+
+    #word-bank span:hover, #answer-area span:hover {
+      transform: scale(1.02);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
 
     #answer-area span {
@@ -212,14 +260,16 @@
       background: #ffc107;
       color: #0a094e;
       text-decoration: none;
-      padding: 10px 25px;
+      padding: 12px 30px;
       border-radius: 25px;
       font-weight: bold;
       display: inline-block;
+      transition: 0.3s;
     }
 
     .next-lesson a:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .footer {
@@ -230,84 +280,224 @@
       border-top: 3px solid #ffc107;
     }
 
-    .footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 14px;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
-    .footer a:hover {
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
       color: #ffc107;
     }
 
     .copyright {
       color: rgba(255,255,255,0.5);
       font-size: 12px;
-      margin-top: 15px;
     }
 
     hr {
       margin: 20px 0;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 15px 20px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .task-block h3 {
+        font-size: 18px;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .back {
+        margin: 12px 15px;
+      }
+      
+      .back a {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .task-block h3 {
+        font-size: 16px;
+      }
+      
+      .question-card {
+        padding: 12px;
+      }
+      
+      .question-card label {
+        font-size: 14px;
+      }
+      
+      #word-bank span, #answer-area span {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+      
+      .check-btn, .reset-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-card p {
+        font-size: 14px;
+      }
+      
+      #word-bank span, #answer-area span {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">
-    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-  </div>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="buttons">
-    <button>🔍</button>
     <button onclick="logout()">
-      <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout
-      
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
     </button>
-     
   </div>
 </div>
 
 <div class="back">
-  <a href="A1speaking.html">← Back to Speaking Lessons</a>
+  <a href="A1speaking.html">
+    <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+  </a>
 </div>
 
 <div class="container">
   <div class="card">
-    <h1>📖 Lesson 2: Making Suggestions</h1>
+    <h1><i class="fa-solid fa-lightbulb"></i> Lesson 2: Making Suggestions</h1>
 
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/19.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch the video carefully, then answer:</p>
+      <p class="video-caption">🎬 Watch the video carefully, then answer the questions below.</p>
     </div>
 
     <!-- Task 1 -->
     <div class="task-block">
-      <h3>Task 1: Choose the best summary</h3>
+      <h3><i class="fa-solid fa-check-circle"></i> Task 1: Choose the best summary</h3>
       <div class="question-card">
         <p>Which sentence gives the best summary of the video?</p>
-        <label><input type="radio" name="task1" value="A"> A. Yuna and Noelia have a long meeting and don't make any decisions.</label>
-        <label><input type="radio" name="task1" value="B"> B. Yuna and Noelia share lots of ideas and work very well in a short meeting.</label>
-        <label><input type="radio" name="task1" value="C"> C. Yuna and Noelia both get phone calls during the meeting.</label>
+        <label>
+          <input type="radio" name="task1" value="A"> 
+          A. Yuna and Noelia have a long meeting and don't make any decisions.
+        </label>
+        <label>
+          <input type="radio" name="task1" value="B"> 
+          B. Yuna and Noelia share lots of ideas and work very well in a short meeting.
+        </label>
+        <label>
+          <input type="radio" name="task1" value="C"> 
+          C. Yuna and Noelia both get phone calls during the meeting.
+        </label>
         <br>
-        <button class="check-btn" onclick="checkTask1()">Check Answer</button>
+        <button class="check-btn" onclick="checkTask1()">
+          <i class="fa-solid fa-check"></i> Check Answer
+        </button>
       </div>
     </div>
 
     <!-- Task 2: Word Ordering with Drag & Drop -->
     <div class="task-block">
-      <h3>Task 2: Word Ordering</h3>
+      <h3><i class="fa-solid fa-arrows-up-down"></i> Task 2: Word Ordering</h3>
       <div class="question-card">
         <p>Put the words in the correct order to make a sentence:</p>
-        <p style="font-size:14px; color:#666;">💡 Tip: "How about starting with social media?"</p>
+        <p style="font-size:14px; color:#666; background:#e0e0e0; padding:5px 10px; border-radius:5px;">
+          💡 Tip: "How about starting with social media?"
+        </p>
         
         <div id="word-bank">
           <span draggable="true">How</span>
@@ -317,26 +507,32 @@
           <span draggable="true">social media?</span>
         </div>
         
-        <p style="margin:10px 0 5px;">→ Drop words here (in correct order):</p>
+        <p style="margin:10px 0 5px;"><i class="fa-solid fa-arrow-right"></i> Drop words here (in correct order):</p>
         <div id="answer-area"></div>
         
-        <button class="check-btn" onclick="checkTask2()">Check Answer</button>
-        <button class="reset-btn" onclick="resetAll()">Reset All</button>
+        <button class="check-btn" onclick="checkTask2()">
+          <i class="fa-solid fa-check-double"></i> Check Answer
+        </button>
+        <button class="reset-btn" onclick="resetAll()">
+          <i class="fa-solid fa-rotate-left"></i> Reset All
+        </button>
       </div>
     </div>
 
     <div class="next-lesson">
-      <a href="meeting-people .html">→ Next Lesson</a>
+      <a href="meeting-people .html">
+        → Next Lesson: Meeting People <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </div>
 </div>
 
 <div class="footer">
-  <div>
-    <a href="welcome.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#">Contact</a>
-    <a href="#">Help</a>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
   </div>
   <div class="copyright">
     © 2026 English Learning Platform. All rights reserved.
@@ -364,14 +560,12 @@
 
   // إعداد السحب لجميع الكلمات
   function setupDragEvents() {
-    // كلمات بنك الكلمات
     document.querySelectorAll("#word-bank span").forEach(word => {
       word.setAttribute("draggable", "true");
       word.addEventListener("dragstart", handleDragStart);
       word.addEventListener("dragend", handleDragEnd);
     });
 
-    // كلمات منطقة الإجابة
     document.querySelectorAll("#answer-area span").forEach(word => {
       word.setAttribute("draggable", "true");
       word.addEventListener("dragstart", handleDragStart);
@@ -412,12 +606,8 @@
         clonedWord.addEventListener("dragstart", handleDragStart);
         clonedWord.addEventListener("dragend", handleDragEnd);
         
-        // إضافة الكلمة إلى المنطقة الجديدة
         targetZone.appendChild(clonedWord);
-        
-        // حذف الكلمة الأصلية
         draggedWord.remove();
-        
         draggedWord = null;
       });
     });
@@ -447,26 +637,13 @@
       radio.checked = false;
     });
     
-    // إعادة تعيين Task 2 - إعادة الكلمات إلى بنك الكلمات
+    // إعادة تعيين Task 2
     const wordBank = document.getElementById("word-bank");
     const answerArea = document.getElementById("answer-area");
     
-    // جمع كل الكلمات من كلا المنطقتين
-    const allWords = [];
-    
-    answerArea.querySelectorAll("span").forEach(span => {
-      allWords.push(span.textContent);
-    });
-    
-    wordBank.querySelectorAll("span").forEach(span => {
-      allWords.push(span.textContent);
-    });
-    
-    // تفريغ المنطقتين
     wordBank.innerHTML = "";
     answerArea.innerHTML = "";
     
-    // إعادة إنشاء الكلمات في بنك الكلمات بالترتيب الصحيح
     const defaultWords = ["How", "about", "starting", "with", "social media?"];
     defaultWords.forEach(word => {
       const span = document.createElement("span");
@@ -476,16 +653,34 @@
       span.addEventListener("dragend", handleDragEnd);
       wordBank.appendChild(span);
     });
+    
+    // رسالة تأكيد
+    alert("🔄 All answers have been reset!");
   }
 
-  // تسجيل الخروج
+  // ===== تسجيل الخروج المحسن =====
   function logout() {
-    localStorage.clear();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // ===== التحقق من تسجيل الدخول =====
+  if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
 
-  // تهيئة الصفحة
-  document.addEventListener("DOMContentLoaded", () => {
+  // ===== معالج خطأ الصورة =====
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+    
     setupDropZones();
     setupDragEvents();
   });

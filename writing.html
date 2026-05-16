@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>English Platform - Writing Lessons</title>
     <link rel="icon" type="image/png" href="logo7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,9 +19,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             color: white;
         }
@@ -42,168 +40,61 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .header-left {
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .menu-btn{
-
-            width:45px;
-            height:45px;
-
-            border:none;
-
-            border-radius:40px;
-
-            background:#0a094e;
-            color:#ffffff;
-
-            font-size:20px;
-
-            cursor:pointer;
-
-            transition:0.3s;
-        }
-
-        .menu-btn:hover{
-            background:rgba(0, 0, 0, .4)
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-        }
-
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
-            color: #ffc107;
-            line-height: 1.2;
-        }
-
-        .platform-logo a {
-            color: #ffc107;
-        }
-
-        .platform-logo span {
-            color: white;
-            margin: 0 5px;
-        }
-
-        .platform-sub {
-            font-size: 13px;
-            color: white;
-            letter-spacing: 1px;
-            margin-top: 2px;
-        }
-
-        .logout-btn {
-            background: #ffc107;
-            color: #0a094e;
+        .menu-btn {
+            width: 45px;
+            height: 45px;
             border: none;
-            padding: 10px 18px;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: 0.3s;
-        }
-
-        .logout-btn:hover {
-            background: #e0a800;
-            transform: translateY(-2px);
-        }
-
-        /* ================= SIDEBAR ================= */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -320px;
-            width: 300px;
-            height: 100vh;
+            border-radius: 40px;
             background: #0a094e;
-            overflow-y: auto;
-            transition: 0.3s ease;
-            z-index: 2000;
-            padding: 20px;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .sidebar.show {
-            left: 0;
+        .menu-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
         }
 
-        .sidebar-top {
+        .logo-link {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
         }
 
-        .close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        .sidebar-section {
-            margin-bottom: 25px;
+        .logo-img:hover {
+            transform: scale(1.05);
         }
 
-        .sidebar-title {
+        .logo-text {
             color: #ffc107;
-            font-size: 15px;
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 8px;
+            display: none;
         }
 
-        .sidebar a {
-            display: block;
-            padding: 12px 10px;
-            border-radius: 8px;
-            transition: 0.2s;
-            margin-bottom: 5px;
-        }
-
-        .sidebar a:hover {
-            background: rgba(255,193,7,0.15);
-            color: #ffc107;
-        }
-
-        .sidebar a i {
-            width: 22px;
-        }
-
-        /* ================= OVERLAY ================= */
-        .sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-            z-index: 1500;
-        }
-
-        .sidebar-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ================= SEARCH ================= */
         .search-icon-container {
             display: flex;
             align-items: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .search-wrapper {
@@ -214,7 +105,7 @@
         }
 
         .search-icon-btn {
-            background: #ffc107;
+            background: #fcfaf6;
             color: #0a094e;
             border: none;
             width: 40px;
@@ -283,6 +174,25 @@
             background: #e0a800;
         }
 
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
+        }
+
         .search-results-dropdown {
             position: absolute;
             top: 80px;
@@ -330,6 +240,91 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
+        /* ================= SIDEBAR ================= */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #0a094e;
+            overflow-y: auto;
+            transition: 0.3s ease;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .sidebar.show {
+            left: 0;
+        }
+
+        .sidebar-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #ffc107;
+            transform: scale(1.1);
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title {
+            color: #ffc107;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+            margin-bottom: 5px;
+        }
+
+        .sidebar a:hover {
+            background: rgba(255,193,7,0.15);
+            color: #ffc107;
+        }
+
+        .sidebar a i {
+            width: 22px;
+        }
+
+        /* ================= OVERLAY ================= */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1500;
+        }
+
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* ================= WELCOME BANNER ================= */
         .welcome-banner {
             background: rgba(255,255,255,0.1);
@@ -342,6 +337,19 @@
             align-items: center;
             justify-content: space-between;
             gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .welcome-text h1 {
@@ -392,10 +400,12 @@
             border-radius: 10px;
             margin: 20px;
             transition: 0.7s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
             transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .project-image img {
@@ -420,6 +430,8 @@
             text-transform: uppercase;
             font-weight: 800;
             margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .project-title span {
@@ -469,6 +481,13 @@
             flex-wrap: wrap;
         }
 
+        .footer-links a {
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         .footer-links a:hover {
             color: #ffc107;
         }
@@ -481,6 +500,7 @@
         }
 
         /* ================= MEDIA QUERIES ================= */
+        
         @media (max-width: 1024px) {
             .lessons-section {
                 gap: 20px;
@@ -491,18 +511,20 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-            }
-
             .main-header {
                 padding: 12px 15px;
             }
-
-            .platform-logo {
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .menu-btn {
+                width: 40px;
+                height: 40px;
                 font-size: 18px;
             }
-
+            
             .logout-btn {
                 padding: 8px 12px;
                 font-size: 12px;
@@ -556,11 +578,26 @@
             .search-results-dropdown {
                 width: 300px;
                 right: 10px;
-                top: 75px;
+                top: 130px;
             }
         }
 
         @media (max-width: 600px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-left {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-icon-container {
+                width: 100%;
+                justify-content: center;
+            }
+            
             .project-card {
                 width: 100%;
                 max-width: 350px;
@@ -569,10 +606,10 @@
         }
 
         @media (max-width: 480px) {
-            .platform-logo {
-                font-size: 16px;
+            .logo-img {
+                height: 40px;
             }
-
+            
             .welcome-text h1 {
                 font-size: 20px;
             }
@@ -622,7 +659,7 @@
             .search-results-dropdown {
                 width: 280px;
                 right: 5px;
-                top: 70px;
+                top: 120px;
             }
 
             .back-home {
@@ -633,10 +670,25 @@
                 font-size: 13px;
             }
         }
-        img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .welcome-text h1 {
+                font-size: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .welcome-banner {
+                animation: none;
+            }
+            
+            .project-card:hover {
+                transform: none !important;
+            }
         }
     </style>
 </head>
@@ -649,9 +701,11 @@
                 <i class="fa-solid fa-bars"></i>
             </button>
             <div class="logo-section">
-                <div class="platform-logo">
-                    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-                </div>
+                <a href="welcome.html" class="logo-link">
+                    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="logo-text">📚 English Platform</span>
+                </a>
             </div>
         </div>
         
@@ -678,14 +732,14 @@
     <!-- ================= SIDEBAR ================= -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-top">
-            <h2>Menu</h2>
+            <h2><i class="fa-solid fa-bars"></i> Menu</h2>
             <button class="close-btn" id="closeBtn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
 
         <div class="sidebar-section">
-            <div class="sidebar-title">Main</div>
+            <div class="sidebar-title"><i class="fa-solid fa-house"></i> Main</div>
             <a href="welcome.html">
                 <i class="fa-solid fa-house"></i>
                 Home
@@ -693,7 +747,7 @@
         </div>
 
         <div class="sidebar-section">
-            <div class="sidebar-title">Skills</div>
+            <div class="sidebar-title"><i class="fa-solid fa-star"></i> Skills</div>
             <a href="speaking.html">
                 <i class="fa-solid fa-microphone"></i>
                 Speaking
@@ -713,7 +767,7 @@
         </div>
 
         <div class="sidebar-section">
-            <div class="sidebar-title">Grammar</div>
+            <div class="sidebar-title"><i class="fa-solid fa-language"></i> Grammar</div>
             <a href="A1-A2 Grammar.html">
                 <i class="fa-solid fa-layer-group"></i>
                 A1-A2 Grammar
@@ -725,7 +779,7 @@
         </div>
 
         <div class="sidebar-section">
-            <div class="sidebar-title">Vocabulary</div>
+            <div class="sidebar-title"><i class="fa-solid fa-book-open"></i> Vocabulary</div>
             <a href="A1-A2 vocabulary.html">
                 <i class="fa-solid fa-seedling"></i>
                 A1-A2 Vocabulary
@@ -733,7 +787,7 @@
         </div>
 
         <div class="sidebar-section">
-            <div class="sidebar-title">Extra</div>
+            <div class="sidebar-title"><i class="fa-solid fa-gamepad"></i> Extra</div>
             <a href="game.html">
                 <i class="fa-solid fa-gamepad"></i>
                 Hangman Game
@@ -766,83 +820,83 @@
     <!-- ================= BACK BUTTON ================= -->
     <div class="back-home">
         <a href="welcome.html">
-            <i class="fa-solid fa-arrow-left"></i> Back
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
         </a>
     </div>
 
     <!-- ================= WELCOME BANNER ================= -->
     <div class="welcome-banner">
         <div class="welcome-text">
-            <h1>Writing</h1>
-            <p>Choose a writing lesson</p>
+            <h1>✍️ Writing</h1>
+            <p>Choose a writing lesson to improve your composition skills</p>
         </div>
-        <div class="level-badge" id="levelDisplay">Level A - Beginner</div>
+        <div class="level-badge" id="levelDisplay">📘 Level A - Beginner</div>
     </div>
 
     <!-- ================= LESSONS SECTION ================= -->
     <div class="lessons-section">
         <h1>Choose a writing lesson</h1>
 
-        <div class="project-card">
+        <div class="project-card" onclick="window.location.href='A1-writing-lesson.html'">
             <div class="project-image">
-                <img src="images/A1-w.png" alt="A1 Writing">
+                <img src="images/A1-w.png" alt="A1 Writing" onerror="this.src='https://via.placeholder.com/300x200?text=A1+Writing'">
             </div>
             <div class="project-info">
-                <p class="project-category">Level A1</p>
+                <p class="project-category"><i class="fa-solid fa-layer-group"></i> Level A1</p>
                 <strong class="project-title">
-                    <span>A1 Writing</span>
+                    <span>📘 A1 Writing</span>
                     <a class="more-details" href="#">view more →</a>
                 </strong>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" onclick="window.location.href='A2-writing-lesson.html'">
             <div class="project-image">
-                <img src="images/A2-w.webp" alt="A2 Writing">
+                <img src="images/A2-w.webp" alt="A2 Writing" onerror="this.src='https://via.placeholder.com/300x200?text=A2+Writing'">
             </div>
             <div class="project-info">
-                <p class="project-category">Level A2</p>
+                <p class="project-category"><i class="fa-solid fa-layer-group"></i> Level A2</p>
                 <strong class="project-title">
-                    <span>A2 Writing</span>
+                    <span>📙 A2 Writing</span>
                     <a class="more-details" href="#">view more →</a>
                 </strong>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" onclick="window.location.href='B1-writing-lesson.html'">
             <div class="project-image">
-                <img src="images/b1-w.jpg" alt="B1 Writing">
+                <img src="images/b1-w.jpg" alt="B1 Writing" onerror="this.src='https://via.placeholder.com/300x200?text=B1+Writing'">
             </div>
             <div class="project-info">
-                <p class="project-category">Level B1</p>
+                <p class="project-category"><i class="fa-solid fa-layer-group"></i> Level B1</p>
                 <strong class="project-title">
-                    <span>B1 Writing</span>
+                    <span>📗 B1 Writing</span>
                     <a class="more-details" href="#">view more →</a>
                 </strong>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" onclick="window.location.href='B2-writing-lesson.html'">
             <div class="project-image">
-                <img src="images/b2-w.jpg" alt="B2 Writing">
+                <img src="images/b2-w.jpg" alt="B2 Writing" onerror="this.src='https://via.placeholder.com/300x200?text=B2+Writing'">
             </div>
             <div class="project-info">
-                <p class="project-category">Level B2</p>
+                <p class="project-category"><i class="fa-solid fa-layer-group"></i> Level B2</p>
                 <strong class="project-title">
-                    <span>B2 Writing</span>
+                    <span>📕 B2 Writing</span>
                     <a class="more-details" href="#">view more →</a>
                 </strong>
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" onclick="window.location.href='C1-writing-lesson.html'">
             <div class="project-image">
-                <img src="images/c1-w.jpg" alt="C1 Writing">
+                <img src="images/c1-w.jpg" alt="C1 Writing" onerror="this.src='https://via.placeholder.com/300x200?text=C1+Writing'">
             </div>
             <div class="project-info">
-                <p class="project-category">Level C1</p>
+                <p class="project-category"><i class="fa-solid fa-layer-group"></i> Level C1</p>
                 <strong class="project-title">
-                    <span>C1 Writing</span>
+                    <span>📖 C1 Writing</span>
                     <a class="more-details" href="#">view more →</a>
                 </strong>
             </div>
@@ -852,12 +906,13 @@
     <!-- ================= FOOTER ================= -->
     <footer class="main-footer">
         <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="#">Privacy</a>
-            <a href="https://www.instagram.com/english_learning_page__/">Contact</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa-solid fa-lock"></i> Privacy</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
         </div>
         <div class="copyright">
-            © 2026 English Platform
+            © 2026 English Platform. All rights reserved.
         </div>
     </footer>
 
@@ -866,11 +921,21 @@
         const userLevel = localStorage.getItem('level') || 'A';
         
         let levelText = '';
-        if (userLevel === 'A') levelText = 'Level A - Beginner';
-        else if (userLevel === 'B') levelText = 'Level B - Intermediate';
-        else levelText = 'Level C - Advanced';
+        let levelEmoji = '';
         
-        document.getElementById('levelDisplay').textContent = levelText;
+        if (userLevel === 'A') {
+            levelText = 'Level A - Beginner';
+            levelEmoji = '📘';
+        } else if (userLevel === 'B') {
+            levelText = 'Level B - Intermediate';
+            levelEmoji = '📙';
+        } else {
+            levelText = 'Level C - Advanced';
+            levelEmoji = '📗';
+        }
+        
+        const levelDisplay = document.getElementById('levelDisplay');
+        if (levelDisplay) levelDisplay.textContent = `${levelEmoji} ${levelText}`;
 
         // ================= SIDEBAR FUNCTIONS =================
         const menuBtn = document.getElementById("menuBtn");
@@ -882,6 +947,7 @@
             menuBtn.addEventListener("click", () => {
                 sidebar.classList.add("show");
                 overlay.classList.add("show");
+                document.body.style.overflow = 'hidden';
             });
         }
 
@@ -896,7 +962,15 @@
         function closeSidebar() {
             sidebar.classList.remove("show");
             overlay.classList.remove("show");
+            document.body.style.overflow = '';
         }
+
+        // إغلاق القائمة بالضغط على ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sidebar.classList.contains('show')) {
+                closeSidebar();
+            }
+        });
 
         // ================= SEARCH FUNCTIONS =================
         const searchToggleBtn = document.getElementById('searchToggleBtn');
@@ -908,7 +982,10 @@
                 e.stopPropagation();
                 searchWrapper.classList.toggle('open');
                 if (searchWrapper.classList.contains('open')) {
-                    setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+                    setTimeout(() => { 
+                        const searchInput = document.getElementById('searchInput');
+                        if (searchInput) searchInput.focus();
+                    }, 100);
                 }
             });
         }
@@ -916,21 +993,25 @@
         document.addEventListener('click', function(event) {
             if (searchWrapper && !searchWrapper.contains(event.target)) {
                 searchWrapper.classList.remove('open');
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
             }
         });
 
-        const searchInputWrapper = document.getElementById('searchInputWrapper');
-        if (searchInputWrapper) {
-            searchInputWrapper.addEventListener('click', function(e) { e.stopPropagation(); });
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         function searchLessons() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+            
+            const searchTerm = searchInput.value.toLowerCase().trim();
             const projectCards = document.querySelectorAll('.project-card');
             
             if (searchTerm === '') {
-                searchResultsDiv.classList.remove('show');
+                if (searchResultsDiv) searchResultsDiv.classList.remove('show');
                 projectCards.forEach(card => card.style.display = 'block');
                 return;
             }
@@ -938,9 +1019,10 @@
             let results = [];
             
             projectCards.forEach(card => {
-                const title = card.querySelector('.project-title span').textContent.toLowerCase();
-                const category = card.querySelector('.project-category').textContent.toLowerCase();
-                const link = card.querySelector('.more-details').getAttribute('href');
+                const titleSpan = card.querySelector('.project-title span');
+                const title = titleSpan ? titleSpan.textContent.toLowerCase() : '';
+                const category = card.querySelector('.project-category')?.textContent.toLowerCase() || '';
+                const link = card.querySelector('.more-details')?.getAttribute('href') || '#';
                 
                 if (title.includes(searchTerm) || category.includes(searchTerm)) {
                     card.style.display = 'block';
@@ -950,36 +1032,51 @@
                 }
             });
             
-            if (results.length > 0) {
-                let html = '';
-                results.slice(0, 5).forEach(result => {
-                    html += `
-                        <div class="search-result-item" onclick="window.location.href='${result.link}'">
-                            <div class="search-result-title">${result.title}</div>
-                            <div class="search-result-description">${result.description}</div>
-                        </div>
-                    `;
-                });
-                searchResultsDiv.innerHTML = html;
-                searchResultsDiv.classList.add('show');
-            } else if (searchTerm !== '') {
-                searchResultsDiv.innerHTML = '<div class="no-results">No writing lessons found</div>';
-                searchResultsDiv.classList.add('show');
-            } else {
-                searchResultsDiv.classList.remove('show');
+            if (searchResultsDiv) {
+                if (results.length > 0) {
+                    let html = '';
+                    results.slice(0, 5).forEach(result => {
+                        html += `
+                            <div class="search-result-item" onclick="window.location.href='${result.link}'">
+                                <div class="search-result-title"><i class="fa-solid fa-pen"></i> ${escapeHtml(result.title)}</div>
+                                <div class="search-result-description">${escapeHtml(result.description)}</div>
+                            </div>
+                        `;
+                    });
+                    searchResultsDiv.innerHTML = html;
+                    searchResultsDiv.classList.add('show');
+                } else if (searchTerm !== '') {
+                    searchResultsDiv.innerHTML = '<div class="no-results"><i class="fa-solid fa-search"></i> No writing lessons found matching "' + escapeHtml(searchTerm) + '"</div>';
+                    searchResultsDiv.classList.add('show');
+                } else {
+                    searchResultsDiv.classList.remove('show');
+                }
             }
         }
 
-        // ================= LOGOUT =================
+        // ================= LOGOUT المحسن =================
         function logout() {
-            localStorage.clear();
-            window.location.href = 'index.html';
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
         }
         
         // ================= CHECK LOGIN =================
         if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
+
+        // ================= معالج خطأ الصورة =================
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>

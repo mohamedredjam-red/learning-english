@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adjectives ending in '-ed' and '-ing'</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Adjectives ending in '-ed' and '-ing' - Grammar Lesson</title>
     <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         * {
@@ -15,9 +16,7 @@
         }
 
         body {
-            background: linear-gradient(#29376a,#940f0f);
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
             background-attachment: fixed;
             min-height: 100vh;
             color: white;
@@ -28,14 +27,33 @@
             padding: 15px 40px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
             border-bottom: 3px solid #ffc107;
+            flex-wrap: wrap;
         }
 
-        .platform-logo {
-            font-size: 22px;
-            font-weight: 800;
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
             color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
         }
 
         .logout-container {
@@ -46,12 +64,15 @@
             background: #ffc107;
             color: #0a094e;
             border: none;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .logout-btn:hover {
@@ -70,16 +91,18 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            transition: 0.2s;
         }
 
         .back-home a:hover {
+            transform: translateX(-5px);
             color: #e0a800;
         }
 
         .main-container {
             max-width: 700px;
             margin: 30px auto;
-            padding: 0;
+            padding: 0 20px;
         }
 
         .white-card {
@@ -123,6 +146,8 @@
             background: #f8f9fa;
             padding: 20px;
             margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
         }
 
         .examples-title {
@@ -161,6 +186,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #ddd;
+            transition: 0.2s;
         }
 
         .question-header:hover {
@@ -222,14 +248,17 @@
         .option-btn {
             background: #f0f0f0;
             border: 1px solid #ddd;
-            padding: 10px 25px;
+            padding: 12px 25px;
             font-size: 16px;
             color: #333;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
         }
 
         .option-btn:hover {
             background: #e0e0e0;
+            transform: scale(1.02);
         }
 
         .option-btn.selected {
@@ -253,10 +282,13 @@
             color: #333;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
         }
 
-        .nav-btn:hover {
+        .nav-btn:hover:not(:disabled) {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .nav-btn:disabled {
@@ -278,10 +310,16 @@
             font-size: 14px;
             color: #333;
             cursor: pointer;
+            border-radius: 8px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .action-btn:hover {
             background: #e0e0e0;
+            transform: translateY(-2px);
         }
 
         .items-counter {
@@ -296,6 +334,7 @@
             padding: 15px;
             font-size: 14px;
             display: none;
+            border-radius: 8px;
         }
 
         .feedback.show {
@@ -328,15 +367,20 @@
             border-collapse: collapse;
             width: 100%;
             margin: 20px 0;
+            overflow-x: auto;
+            display: block;
         }
+        
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
         }
+        
         th {
             background-color: #f2f2f2;
             color: #0a094e;
+            font-weight: bold;
         }
 
         .main-footer {
@@ -359,6 +403,10 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer-links a:hover {
@@ -371,64 +419,225 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 12px;
         }
-        img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
+
+        /* ================= MEDIA QUERIES ================= */
+        
+        @media (max-width: 768px) {
+            .main-header {
+                padding: 12px 20px;
+            }
+            
+            .logo-img {
+                height: 45px;
+            }
+            
+            .logout-btn {
+                padding: 8px 15px;
+                font-size: 12px;
+            }
+            
+            .back-home {
+                margin: 15px 20px;
+            }
+            
+            .main-container {
+                padding: 0 15px;
+            }
+            
+            .white-card {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            .intro-text, .instruction {
+                font-size: 14px;
+            }
+            
+            .question-text {
+                font-size: 18px;
+            }
+            
+            .option-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .nav-btn, .action-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .main-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logout-container {
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            .logout-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .back-home {
+                margin: 12px 15px;
+            }
+            
+            .back-home a {
+                font-size: 13px;
+            }
+            
+            .white-card {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 16px;
+            }
+            
+            .question-header {
+                padding: 15px 20px;
+            }
+            
+            .question-header h3 {
+                font-size: 16px;
+            }
+            
+            .question-content {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 16px;
+            }
+            
+            .options {
+                gap: 10px;
+            }
+            
+            .option-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            
+            .nav-btn {
+                padding: 8px;
+                font-size: 13px;
+            }
+            
+            .action-btn {
+                padding: 6px 15px;
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 6px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .question-text {
+                font-size: 14px;
+            }
+            
+            .option-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .option-btn:hover, .nav-btn:hover, .action-btn:hover {
+                transform: none !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="main-header">
-        <div class="platform-logo">
-           <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-        </div>
+        <a href="welcome.html" class="logo-link">
+            <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="logo-text">📚 English Platform</span>
+        </a>
         
         <div class="logout-container">
             <button class="logout-btn" onclick="logout()">
-                Logout
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
             </button>
         </div>
     </div>
 
     <div class="back-home">
-        <a href="A1-A2 Grammar.html">← Back to Grammar Lessons</a>
+        <a href="A1-A2 Grammar.html">
+            <i class="fa-solid fa-arrow-left"></i> Back to Grammar Lessons
+        </a>
     </div>
 
     <div class="main-container">
         <!-- البطاقة 1: Grammar test 1 -->
         <div class="white-card">
-            <h1>Grammar test 1</h1>
-            <h2>Grammar A1-A2: Adjectives ending in '-ed' and '-ing':1</h2>
+            <h1><i class="fa-solid fa-spell-check"></i> Grammar test 1</h1>
+            <h2>Grammar A1-A2: Adjectives ending in '-ed' and '-ing'</h2>
             
             <div class="intro-text">
-                Do you know the difference between bored and boring? Test what you know with interactive exercises and read the explanation to help you.
+                Do you know the difference between <strong>bored</strong> and <strong>boring</strong>? Test what you know with interactive exercises and read the explanation to help you.
             </div>
 
             <div class="examples-box">
-                <div class="examples-title">Look at these examples to see how adjectives ending in -ed and -ing are used.</div>
+                <div class="examples-title">📚 Look at these examples to see how adjectives ending in -ed and -ing are used.</div>
                 <div class="example-item">
-                    I was really <strong>bored</strong> in that presentation.
+                    <i class="fa-solid fa-face-frown"></i> I was really <strong>bored</strong> in that presentation.
                 </div>
                 <div class="example-item">
-                    That was a really <strong>boring</strong> presentation.
+                    <i class="fa-solid fa-face-meh"></i> That was a really <strong>boring</strong> presentation.
                 </div>
             </div>
 
             <div class="exercise-title">
-                Try this exercise to test your grammar.
+                <i class="fa-solid fa-pen-to-square"></i> Try this exercise to test your grammar.
             </div>
         </div>
 
         <!-- البطاقة 2: بطاقة الأسئلة مع سهم للإخفاء والإظهار -->
         <div class="question-card">
             <div class="question-header" onclick="toggleQuestions()">
-                <h3>Grammar A1-A2: Adjectives ending in '-ed' and '-ing': 1</h3>
+                <h3><i class="fa-solid fa-question-circle"></i> Grammar A1-A2: Adjectives ending in '-ed' and '-ing': Exercise 1</h3>
                 <span class="arrow" id="toggle-arrow">▼</span>
             </div>
             
             <div class="question-content" id="question-content">
-                <div class="instruction">Choose the correct word.</div>
+                <div class="instruction"><i class="fa-solid fa-check-circle"></i> Choose the correct word.</div>
                 
                 <div class="question-number" id="question-number">Question 1 of 7</div>
                 <div class="question-text" id="question-text">Loading...</div>
@@ -438,14 +647,24 @@
                 </div>
 
                 <div class="navigation-buttons">
-                    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()" disabled>← Previous</button>
-                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()">Next →</button>
+                    <button class="nav-btn" id="prev-btn" onclick="prevQuestion()" disabled>
+                        <i class="fa-solid fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="nav-btn" id="next-btn" onclick="nextQuestion()">
+                        Next <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="action-btn" onclick="showAnswer()">Show answers</button>
-                    <button class="action-btn" onclick="showFeedback()">Show feedback</button>
-                    <button class="action-btn" onclick="resetCurrentQuestion()">Try again</button>
+                    <button class="action-btn" onclick="showAnswer()">
+                        <i class="fa-solid fa-eye"></i> Show answers
+                    </button>
+                    <button class="action-btn" onclick="showFeedback()">
+                        <i class="fa-solid fa-comment"></i> Show feedback
+                    </button>
+                    <button class="action-btn" onclick="resetCurrentQuestion()">
+                        <i class="fa-solid fa-rotate-left"></i> Try again
+                    </button>
                 </div>
 
                 <div class="feedback" id="feedback-message"></div>
@@ -455,7 +674,7 @@
 
         <!-- البطاقة 3: Grammar Explanation -->
         <div class="white-card">
-            <h2>Read the explanation to learn more.</h2>
+            <h2><i class="fa-solid fa-book-open"></i> Read the explanation to learn more.</h2>
             
             <div style="color:#555; line-height:1.6; margin-bottom:15px;">
                 <strong>Grammar explanation</strong><br>
@@ -463,48 +682,52 @@
             </div>
 
             <div style="margin:20px 0;">
-                <h4 style="color:#0a094e; margin-bottom:10px;">-ed adjectives</h4>
+                <h4 style="color:#0a094e; margin-bottom:10px;"><i class="fa-solid fa-face-frown"></i> -ed adjectives</h4>
                 <p style="color:#555;">Adjectives that end in -ed generally describe emotions – they tell us how people feel.</p>
-                <ul style="color:#555; margin-left:20px;">
-                    <li>I was so bored in that lesson, I almost fell asleep.</li>
-                    <li>He was surprised to see Helen after all those years.</li>
-                    <li>She was really tired and went to bed early.</li>
+                <ul style="color:#555; margin-left:20px; margin-top:10px;">
+                    <li><i class="fa-solid fa-clock"></i> I was so bored in that lesson, I almost fell asleep.</li>
+                    <li><i class="fa-solid fa-surprise"></i> He was surprised to see Helen after all those years.</li>
+                    <li><i class="fa-solid fa-bed"></i> She was really tired and went to bed early.</li>
                 </ul>
             </div>
 
             <div style="margin:20px 0;">
-                <h4 style="color:#0a094e; margin-bottom:10px;">-ing adjectives</h4>
+                <h4 style="color:#0a094e; margin-bottom:10px;"><i class="fa-solid fa-film"></i> -ing adjectives</h4>
                 <p style="color:#555;">Adjectives that end in -ing generally describe the thing that causes the emotion – a boring lesson makes you feel bored.</p>
-                <ul style="color:#555; margin-left:20px;">
-                    <li>Have you seen that film? It's really frightening.</li>
-                    <li>I could listen to her for hours. She's so interesting.</li>
-                    <li>I can't sleep! That noise is really annoying!</li>
+                <ul style="color:#555; margin-left:20px; margin-top:10px;">
+                    <li><i class="fa-solid fa-video"></i> Have you seen that film? It's really frightening.</li>
+                    <li><i class="fa-solid fa-music"></i> I could listen to her for hours. She's so interesting.</li>
+                    <li><i class="fa-solid fa-volume-high"></i> I can't sleep! That noise is really annoying!</li>
                 </ul>
             </div>
 
             <table>
-                <tr>
-                    <th>ed adjectives (how you feel)</th>
-                    <th>ing adjectives (description)</th>
-                </tr>
-                <tr><td>annoyed</td><td>annoying</td></tr>
-                <tr><td>bored</td><td>boring</td></tr>
-                <tr><td>confused</td><td>confusing</td></tr>
-                <tr><td>disappointed</td><td>disappointing</td></tr>
-                <tr><td>excited</td><td>exciting</td></tr>
-                <tr><td>frightened</td><td>frightening</td></tr>
-                <tr><td>interested</td><td>interesting</td></tr>
-                <tr><td>surprised</td><td>surprising</td></tr>
-                <tr><td>tired</td><td>tiring</td></tr>
-                <tr><td>worried</td><td>worrying</td></tr>
+                <thead>
+                    <tr>
+                        <th><i class="fa-solid fa-face-frown"></i> -ed adjectives (how you feel)</th>
+                        <th><i class="fa-solid fa-film"></i> -ing adjectives (description)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>annoyed</td><td>annoying</td></tr>
+                    <tr><td>bored</td><td>boring</td></tr>
+                    <tr><td>confused</td><td>confusing</td></tr>
+                    <tr><td>disappointed</td><td>disappointing</td></tr>
+                    <tr><td>excited</td><td>exciting</td></tr>
+                    <tr><td>frightened</td><td>frightening</td></tr>
+                    <tr><td>interested</td><td>interesting</td></tr>
+                    <tr><td>surprised</td><td>surprising</td></tr>
+                    <tr><td>tired</td><td>tiring</td></tr>
+                    <tr><td>worried</td><td>worrying</td></tr>
+                </tbody>
             </table>
         </div>
 
         <!-- البطاقة 4: Grammar Test 2 -->
         <div class="white-card">
-            <h1>Grammar A1-A2: Adjectives ending in '-ed' and '-ing': 2</h1>
+            <h1><i class="fa-solid fa-pen-ruler"></i> Grammar A1-A2: Adjectives ending in '-ed' and '-ing': Exercise 2</h1>
             
-            <div class="instruction">Choose the correct word.</div>
+            <div class="instruction"><i class="fa-solid fa-check-circle"></i> Choose the correct word.</div>
             
             <div class="question-number" id="test2-question-number">Question 1 of 5</div>
             <div class="question-text" id="test2-question-text">Loading...</div>
@@ -512,30 +735,38 @@
             <div class="options" id="test2-options-container"></div>
 
             <div class="navigation-buttons">
-                <button class="nav-btn" id="test2-prev-btn" onclick="prevTest2Question()" disabled>← Previous</button>
-                <button class="nav-btn" id="test2-next-btn" onclick="nextTest2Question()">Next →</button>
+                <button class="nav-btn" id="test2-prev-btn" onclick="prevTest2Question()" disabled>
+                    <i class="fa-solid fa-arrow-left"></i> Previous
+                </button>
+                <button class="nav-btn" id="test2-next-btn" onclick="nextTest2Question()">
+                    Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
 
-            <div style="display:flex; gap:15px; margin:20px 0;">
-                <button class="action-btn" onclick="checkTest2Answer()">Check</button>
-                <button class="action-btn" onclick="resetTest2()">Try again</button>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="checkTest2Answer()">
+                    <i class="fa-solid fa-check-double"></i> Check
+                </button>
+                <button class="action-btn" onclick="resetTest2()">
+                    <i class="fa-solid fa-rotate-left"></i> Try again
+                </button>
             </div>
 
             <div class="feedback" id="test2-feedback"></div>
             <div class="items-counter" id="test2-counter">5 items remaining</div>
 
             <div class="test-again">
-                Do this exercise to test your grammar again.
+                <i class="fa-solid fa-repeat"></i> Do this exercise to test your grammar again.
             </div>
         </div>
     </div>
 
     <div class="main-footer">
         <div class="footer-links">
-            <a href="welcome.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="https://www.instagram.com/english_learning_page__/" target="_blank" rel="noopener noreferrer">Contact</a>
-            <a href="Chat-bot.html" target="_blank" rel="noopener noreferrer">Help</a>
+            <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
         </div>
         <div class="copyright">
             © 2026 English Learning Platform. All rights reserved.
@@ -638,7 +869,7 @@
             const feedback = document.getElementById('feedback-message');
             const correctAnswer = questions[currentQuestion].correct;
             
-            feedback.innerHTML = `<strong>The correct answer is "${correctAnswer}".</strong>`;
+            feedback.innerHTML = `<i class="fa-solid fa-lightbulb"></i> <strong>The correct answer is "${correctAnswer}".</strong>`;
             feedback.className = 'feedback show';
         }
 
@@ -649,16 +880,16 @@
             const userAnswer = selectedAnswers[currentQuestion];
             
             if (!userAnswer) {
-                feedback.innerHTML = 'Please select an answer first.';
+                feedback.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Please select an answer first.';
                 feedback.className = 'feedback show wrong';
                 return;
             }
             
             if (userAnswer === correctAnswer) {
-                feedback.innerHTML = '✓ Excellent! That\'s correct.';
+                feedback.innerHTML = '<i class="fa-solid fa-check-circle"></i> ✓ Excellent! That\'s correct.';
                 feedback.className = 'feedback show correct';
             } else {
-                feedback.innerHTML = `✗ Sorry, that's not right. The correct answer is "${correctAnswer}".`;
+                feedback.innerHTML = `<i class="fa-solid fa-times-circle"></i> ✗ Sorry, that's not right. The correct answer is "${correctAnswer}".`;
                 feedback.className = 'feedback show wrong';
             }
         }
@@ -733,17 +964,17 @@
             const userAnswer = test2Answers[test2CurrentQuestion];
             
             if (!userAnswer) {
-                feedback.innerHTML = 'Please select an answer first.';
+                feedback.innerHTML = '<i class="fa-solid fa-exclamation-triangle"></i> Please select an answer first.';
                 feedback.className = 'feedback show wrong';
                 feedback.style.display = 'block';
                 return;
             }
             
             if (userAnswer === correctAnswer) {
-                feedback.innerHTML = '✓ Correct! Well done.';
+                feedback.innerHTML = '<i class="fa-solid fa-check-circle"></i> ✓ Correct! Well done.';
                 feedback.className = 'feedback show correct';
             } else {
-                feedback.innerHTML = `✗ Wrong. The correct answer is "${correctAnswer}".`;
+                feedback.innerHTML = `<i class="fa-solid fa-times-circle"></i> ✗ Wrong. The correct answer is "${correctAnswer}".`;
                 feedback.className = 'feedback show wrong';
             }
             feedback.style.display = 'block';
@@ -758,6 +989,7 @@
         function logout() {
             if (confirm('Are you sure you want to logout?')) {
                 localStorage.clear();
+                sessionStorage.clear();
                 window.location.href = 'index.html';
             }
         }
@@ -765,6 +997,16 @@
         if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
+
+        // معالج خطأ الصورة
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
 
         // Load first question
         loadQuestion(0);

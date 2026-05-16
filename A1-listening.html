@@ -211,7 +211,7 @@
             opacity: 1;
         }
 
-        /* ======== ONLY MEDIA QUERIES ADDED (NO OTHER CHANGES) ======== */
+        /* ======== MEDIA QUERIES المتقدمة ======== */
         
         /* Large tablets and small desktops (1024px and below) */
         @media (max-width: 1024px) {
@@ -286,6 +286,11 @@
             .right-section a i {
                 font-size: 2rem;
             }
+            .video {
+                width: 100%;
+                max-width: 330px;
+                margin: 0 auto 40px auto;
+            }
         }
 
         /* Small mobile devices (480px and below) */
@@ -328,9 +333,12 @@
             .right-section a i {
                 font-size: 2rem;
             }
+            .video-title {
+                font-size: 1.4rem;
+            }
         }
 
-        /* Very narrow devices (360px and below) - keeps everything visible */
+        /* Very narrow devices (360px and below) */
         @media (max-width: 360px) {
             .mid-section form {
                 width: 120px;
@@ -349,79 +357,84 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* دعم الوضع الأفقي على الجوالات */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .video {
+                width: 280px;
+            }
+            .thumbnail {
+                height: 158px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="left-section">
-            <i class="material-icons logo">menu</i>
-            <img src="images/A1-listening-logo.jpg" alt="">
+            <i class="material-icons logo" id="menuIcon">menu</i>
+            <img src="images/A1-listening-logo.jpg" alt="Logo">
         </div>
         <div class="mid-section">
-            <form action="">
-                <input type="text" placeholder="search">
-                <button><i class="material-icons logo">search</i></button>
+            <form action="" onsubmit="return false;">
+                <input type="text" id="searchInput" placeholder="Search videos...">
+                <button type="button" id="searchBtn"><i class="material-icons logo">search</i></button>
             </form>
-            <i class="material-icons mic">mic</i>
+            <i class="material-icons mic" id="micBtn">mic</i>
         </div>
         <div class="right-section">
-            <a href="">
-                <i class="material-icons logo">notifications</i>
+            <a href="welcome.html" id="logoutLink">
+                <i class="material-icons logo">logout</i>
             </a>
         </div>
     </header>
     <div class="content-area">
         <aside id="sidebar">
             <nav>
-                <a href="welcome.html" class="nav-link active">
+                <a href="welcome.html" class="nav-link">
                     <i class="material-icons logo">home</i>
-                    <span id="active-span">Home</span>
+                    <span>Home</span>
                 </a>
                 <hr>
 
                 <a href="speaking.html" class="nav-link">
                     <i class="material-icons mic">mic</i>
-                    <span >Speaking</span>
+                    <span>Speaking</span>
                 </a>
-                <a href="writing.html" class="nav-link ">
+                <a href="writing.html" class="nav-link">
                     <i class="material-icons">edit</i>
-
-                    <span >Writing</span>
+                    <span>Writing</span>
                 </a>
-                <a href="reading.html" class="nav-link ">
+                <a href="reading.html" class="nav-link">
                     <i class="material-icons">menu_book</i>
-
-                    <span >Reading</span>
+                    <span>Reading</span>
                 </a>
-                <a href="listening.html" class="nav-link ">
+                <a href="listening.html" class="nav-link active">
                     <i class="material-icons">headphones</i>
-
-                    <span >listening</span>
+                    <span>Listening</span>
                 </a>
                 <hr>
                 <a href="A1-A2 Grammar.html" class="nav-link">
                     <i class="material-icons-round">layers</i>
-                    <span >A1-A2 Grammar</span>
+                    <span>A1-A2 Grammar</span>
                 </a>
                 <a href="B1-B2 grammar.html" class="nav-link">
                     <i class="material-icons-round">show_chart</i>
-                    <span >B1-B2 Grammar</span>
+                    <span>B1-B2 Grammar</span>
                 </a>
                 <hr>
-                <a href="A1-A2 vocabulary.html" class="nav-link ">
+                <a href="A1-A2 vocabulary.html" class="nav-link">
                     <i class="material-icons-round">grass</i>
-                    <span >A1-A2 Vocabulary</span>
+                    <span>A1-A2 Vocabulary</span>
                 </a>
-                <a href="game.html" class="nav-link ">
+                <a href="game.html" class="nav-link">
                     <i class="material-icons">sports_esports</i>
-                    <span >Hangman Game</span>
+                    <span>Hangman Game</span>
                 </a>
-                <a href="WordScramble.html" class="nav-link ">
+                <a href="WordScramble.html" class="nav-link">
                     <i class="material-icons-outlined">extension</i>
-
-                    <span >Word Scramble</span>
+                    <span>Word Scramble</span>
                 </a>
-                
             </nav>
         </aside>
         
@@ -429,10 +442,10 @@
         <div id="overlay" class="overlay"></div>
         
         <main>
-            <div class="videos-container">
+            <div class="videos-container" id="videosContainer">
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="The Laziest.html"><img src="images/The Laziest.jpg" alt=""></a>
+                        <a href="The Laziest.html"><img src="images/The Laziest.jpg" alt="The Laziest"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -445,7 +458,7 @@
             
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="three-bears.html"><img src="images/first-meet.jpg" alt=""></a>
+                        <a href="three-bears.html"><img src="images/first-meet.jpg" alt="Three Bears"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -457,7 +470,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/The Enchiridion!.jpg" alt=""></a>
+                        <a href="#"><img src="images/The Enchiridion!.jpg" alt="The Enchiridion"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -469,7 +482,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/The Big Sister.jpg" alt=""></a>
+                        <a href="#"><img src="images/The Big Sister.jpg" alt="The Big Sister"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -481,7 +494,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/Craig of the Creek.jpg" alt=""></a>
+                        <a href="#"><img src="images/Craig of the Creek.jpg" alt="Craig of the Creek"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -493,7 +506,7 @@
                 </div>
                 <div class="video">
                     <div class="thumbnail">
-                        <a href="#"><img src="images/The Powerpuff Girls.jpg" alt=""></a>
+                        <a href="#"><img src="images/The Powerpuff Girls.jpg" alt="Powerpuff Girls"></a>
                     </div>
                     <div class="video-details">
                         <div class="title">
@@ -503,69 +516,122 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </main>
     </div>
     
-    <!-- ===== السكريبت المسؤول عن ظهور القائمة فوق المحتوى مع الخلفية الداكنة ===== -->
     <script>
         (function() {
-            // العناصر المطلوبة
+            // ===== القائمة الجانبية المتحركة =====
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
-            const menuIcon = document.querySelector('.left-section .material-icons.logo');
+            const menuIcon = document.getElementById('menuIcon');
             
-            if (!sidebar || !overlay || !menuIcon) return;
-            
-            // دالة لفتح القائمة
-            function openMenu() {
-                sidebar.classList.add('open');
-                overlay.classList.add('show');
-                document.body.style.overflow = 'hidden'; // منع تمرير الصفحة خلف القائمة
-            }
-            
-            // دالة لإغلاق القائمة
-            function closeMenu() {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('show');
-                document.body.style.overflow = ''; // إعادة التمرير
-            }
-            
-            // تبديل حالة القائمة
-            function toggleMenu() {
-                if (sidebar.classList.contains('open')) {
-                    closeMenu();
-                } else {
-                    openMenu();
+            if (sidebar && overlay && menuIcon) {
+                function openMenu() {
+                    sidebar.classList.add('open');
+                    overlay.classList.add('show');
+                    document.body.style.overflow = 'hidden';
                 }
-            }
-            
-            // عند النقر على أيقونة القائمة
-            menuIcon.addEventListener('click', function(event) {
-                event.stopPropagation();
-                toggleMenu();
-            });
-            
-            // عند النقر على الخلفية الداكنة (overlay) يتم إغلاق القائمة
-            overlay.addEventListener('click', function() {
-                closeMenu();
-            });
-            
-            // عند الضغط على زر Esc في لوحة المفاتيح يتم إغلاق القائمة
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sidebar.classList.contains('open')) {
-                    closeMenu();
+                
+                function closeMenu() {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('show');
+                    document.body.style.overflow = '';
                 }
-            });
-            
-            // عند النقر على أي رابط داخل القائمة، يتم إغلاق القائمة (اختياري لتجربة أفضل)
-            const navLinks = sidebar.querySelectorAll('.nav-link');
-            navLinks.forEach(function(link) {
-                link.addEventListener('click', function() {
+                
+                function toggleMenu() {
+                    if (sidebar.classList.contains('open')) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+                
+                menuIcon.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    toggleMenu();
+                });
+                
+                overlay.addEventListener('click', function() {
                     closeMenu();
                 });
-            });
+                
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && sidebar.classList.contains('open')) {
+                        closeMenu();
+                    }
+                });
+                
+                const navLinks = sidebar.querySelectorAll('.nav-link');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        closeMenu();
+                    });
+                });
+            }
+            
+            // ===== وظيفة البحث =====
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const videosContainer = document.getElementById('videosContainer');
+            const videos = document.querySelectorAll('.video');
+            
+            function filterVideos() {
+                if (!searchInput) return;
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                videos.forEach(video => {
+                    const title = video.querySelector('.video-title')?.textContent.toLowerCase() || '';
+                    if (searchTerm === '' || title.includes(searchTerm)) {
+                        video.style.display = 'block';
+                    } else {
+                        video.style.display = 'none';
+                    }
+                });
+            }
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', filterVideos);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keyup', function(event) {
+                    if (event.key === 'Enter') {
+                        filterVideos();
+                    }
+                });
+            }
+            
+            // ===== وظيفة تسجيل الخروج =====
+            function logout() {
+                if (confirm('Are you sure you want to logout?')) {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    window.location.href = 'index.html';
+                }
+            }
+            
+            const logoutLink = document.getElementById('logoutLink');
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+            
+            // ===== التحقق من تسجيل الدخول =====
+            if (!localStorage.getItem('userId')) {
+                window.location.href = 'index.html';
+            }
+            
+            // ===== معالج خطأ الصورة =====
+            const logoImg = document.querySelector('.left-section img');
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    this.src = 'https://via.placeholder.com/60x60?text=Logo';
+                };
+            }
         })();
     </script>
 </body>

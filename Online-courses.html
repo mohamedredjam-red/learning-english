@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Premium English Learning</title>
 <link rel="icon" type="image/png" href="logo7.png">
 
@@ -34,16 +34,29 @@
     padding:6px 30px;
     box-shadow:0 2px 10px rgba(0,0,0,0.12);
     z-index:1000;
+    flex-wrap: wrap;
+    gap: 15px;
     }
 
-    nav img{
-    width:110px;
-    cursor:pointer;
+    .logo-link {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo-img {
+        width: 110px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+        transform: scale(1.05);
     }
 
     nav ul{
     display:flex;
     align-items:center;
+    flex-wrap: wrap;
     }
 
     nav ul li{
@@ -101,6 +114,7 @@
     font-size:14px;
     font-weight:600;
     transition:0.3s;
+    display: inline-block;
     }
 
     .blue{
@@ -111,6 +125,7 @@
     .blue:hover{
     background:#Fdc93b;
     color:#000;
+    transform: translateY(-2px);
     }
 
     .yellow{
@@ -120,21 +135,28 @@
 
     .yellow:hover{
     background:#fff;
+    transform: translateY(-2px);
     }
 
     /* Responsive */
     @media(max-width:768px){
-
     nav{
     padding:8px 15px;
+    flex-direction: column;
+    text-align: center;
     }
 
-    nav img{
+    .logo-img{
     width:90px;
     }
 
+    nav ul{
+    justify-content: center;
+    margin-top: 8px;
+    }
+
     nav ul li{
-    margin-left:10px;
+    margin-left:15px;
     }
 
     nav ul li a{
@@ -151,6 +173,18 @@
     }
 
     }
+    
+    @media(max-width:550px){
+    nav ul li{
+    margin-left:10px;
+    }
+    
+    .btn a{
+    padding:10px 18px;
+    font-size:12px;
+    }
+    }
+
     #features{
         padding: 5vw 8vw 0 8vw;
         text-align: center;
@@ -164,6 +198,13 @@
     #features .fea-box{
         background-color: #F9F9FF;
         text-align: start;
+        padding: 25px;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+    #features .fea-box:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     #features .fea-box i{
         font-size: 2.3rem;
@@ -196,6 +237,14 @@
         background-color: #F9F9FF;
         height: 100%;
         position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    #course .courses:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     #course .courses img{
@@ -231,7 +280,8 @@
        #experts .profile img{
         width: 160px;
         height: 160px;
-
+        border-radius: 50%;
+        object-fit: cover;
        }
 
        #experts .expert-box{
@@ -243,6 +293,12 @@
        #experts .expert-box .profile{
         background: #fafaf1;
         padding: 30px 10px;
+        border-radius: 10px;
+        transition: 0.3s;
+       }
+       #experts .expert-box .profile:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
        }
        #experts .expert-box .profile  
        .pro-links{
@@ -254,12 +310,13 @@
         border: 1px solid rgb(21, 21, 100);
         cursor: pointer;
         transition: 0.3s ease;
+        border-radius: 5px;
        }
        .pro-links i:hover{
         background: rgb(21, 21, 100);
         color: #fff;
         border: 1px solid rgb(21, 21, 100);
-        cursor: pointer;
+        transform: translateY(-2px);
         
        }
        footer{
@@ -272,6 +329,7 @@
        }
        footer .footer-col{
         padding-bottom: 40px;
+        min-width: 180px;
        }
        footer h3{
         color: rgb(241, 240, 245);
@@ -288,6 +346,7 @@
        }
        footer li:hover{
         color: rgb(241, 240, 245);
+        transform: translateX(5px);
        }
        footer p{
         color: #7b838a;
@@ -302,6 +361,7 @@
         border: none;
         outline: none;
         color: #fff;
+        border-radius: 5px 0 0 5px;
        }
        footer .subscribe a{
         text-decoration: none;
@@ -309,6 +369,7 @@
         padding: 12px 15px;
         background-color: #fff;
         font-weight: 600;
+        border-radius: 0 5px 5px 0;
        }
        footer .subscribe a.yellow{
         color: #2C2C2C;
@@ -319,6 +380,7 @@
        footer .subscribe a.yellow:hover{
         color: rgb(21, 21, 100);
         background: #fff;
+        transform: translateY(-2px);
        }
        footer .copyright{
         margin-top: 20px;
@@ -327,6 +389,7 @@
         align-items: center;
         width: 100%;
         flex-wrap: wrap;
+        gap: 15px;
        }
        footer .copyright p{
         color: #fff;
@@ -338,10 +401,12 @@
        footer .copyright .pro-links i{
         background-color: #5f7185;
         color: #fff;
+        border-radius: 5px;
        }
        footer .copyright .pro-links i:hover{
         background-color: #Fdc93b;
         color: #2c2c2c;
+        transform: translateY(-2px);
         
        }
 
@@ -352,32 +417,36 @@
 <body>
 
     <nav>
-        <img src="images/logo12.png" alt="Logo">
+        <a href="index.html" class="logo-link">
+            <img src="images/logo12.png" alt="Logo" class="logo-img" 
+                 onerror="this.style.display='none'; this.nextElementSibling?.style?.display='block';">
+        </a>
 
     <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#features">About</a></li>
-        <li><a href="#course">Courses</a></li>
-        <li><a href="#footer">Contact</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a class="active" href="#home">🏠 Home</a></li>
+        <li><a href="#features">✨ About</a></li>
+        <li><a href="#course">📚 Courses</a></li>
+        <li><a href="#footer">📞 Contact</a></li>
+        <li><a href="interface.html">🔑 Login</a></li>
     </ul>
 </nav>
 
 <section id="home">
-    <h2>Unlock Premium English Learning Excellence</h2>
+    <h2>🌟 Unlock Premium English Learning Excellence</h2>
 
     <p>
         Welcome to a premium English learning experience designed for ambitious learners who seek real progress and lasting success. Learn speaking, grammar, writing and listening with confidence.
     </p>
 
     <div class="btn">
-        <a href="#features" class="blue">Learn More</a>
-        <a href="#course" class="yellow">Visit Courses</a>
+        <a href="#features" class="blue">Learn More →</a>
+        <a href="#course" class="yellow">Visit Courses →</a>
     </div>
 
 </section>
+
 <section id="features">
-    <h1>Awesome features</h1>
+    <h1>🚀 Awesome features</h1>
     <p>Improve your English skills with expert lessons and modern tools designed for success.</p>
     <div class="fea-base">
         <div class="fea-box">
@@ -400,14 +469,15 @@
         </div>
     </div>
 </section>
+
 <section id="course">
-    <h1>Our Popular Courses</h1>
+    <h1>📖 Our Popular Courses</h1>
     <p>Explore our most popular English courses designed to improve your skills quickly and effectively.</p>
     <div class="course-box">
         <div class="courses">
-            <img src="images/EP.png" alt="">
+            <img src="images/EP.png" alt="Exam Preparation" onerror="this.src='https://via.placeholder.com/300x200?text=Course'">
             <div class="details">
-                <span>Updates 22/04/2026</span>
+                <span>📅 Updates 22/04/2026</span>
                 <h6>Exam Preparation Course</h6>
                 <div class="star">
                     <i class="fas fa-star"></i>
@@ -415,7 +485,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <span>(239)</span>
+                    <span>(239 reviews)</span>
                 </div>
             </div>
             <div class="cost">
@@ -423,9 +493,9 @@
             </div>
         </div>
         <div class="courses">
-            <img src="images/ESP.png" alt="">
+            <img src="images/ESP.png" alt="ESP Course" onerror="this.src='https://via.placeholder.com/300x200?text=Course'">
             <div class="details">
-                <span>Updates 22/04/2026</span>
+                <span>📅 Updates 22/04/2026</span>
                 <h6>English For Specific Purposes Course</h6>
                 <div class="star">
                     <i class="fas fa-star"></i>
@@ -433,7 +503,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <span>(218)</span>
+                    <span>(218 reviews)</span>
                 </div>
             </div>
             <div class="cost">
@@ -441,17 +511,17 @@
             </div>
         </div>
         <div class="courses">
-            <img src="images/BE.png" alt="">
+            <img src="images/BE.png" alt="Business English" onerror="this.src='https://via.placeholder.com/300x200?text=Course'">
             <div class="details">
-                <span>Updates 22/04/2026</span>
-                <h6>Buisness English Course</h6>
+                <span>📅 Updates 22/04/2026</span>
+                <h6>Business English Course</h6>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <span>(150)</span>
+                    <span>(150 reviews)</span>
                 </div>
             </div>
             <div class="cost">
@@ -459,9 +529,9 @@
             </div>
         </div>
         <div class="courses">
-            <img src="images/GE.png" alt="">
+            <img src="images/GE.png" alt="General English" onerror="this.src='https://via.placeholder.com/300x200?text=Course'">
             <div class="details">
-                <span>Updates 22/04/2026</span>
+                <span>📅 Updates 22/04/2026</span>
                 <h6>General English Course</h6>
                 <div class="star">
                     <i class="fas fa-star"></i>
@@ -469,7 +539,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
-                    <span>(314)</span>
+                    <span>(314 reviews)</span>
                 </div>
             </div>
             <div class="cost">
@@ -478,13 +548,14 @@
         </div>
     </div>
 </section>
+
 <section id="experts">
-    <h1>community Experts</h1>
+    <h1>👨‍🏫 Community Experts</h1>
     <p>Meet our professional English experts dedicated to helping you improve your skills with modern methods, clear guidance, and real results.</p>
     
     <div class="expert-box">
         <div class="profile">
-            <img src="images/pro1.png" alt="">
+            <img src="images/pro1.png" alt="David Smith" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
             <h6>David Smith</h6>
             <p>Business English Coach</p>
             <div class="pro-links">
@@ -495,7 +566,7 @@
         </div>
 
         <div class="profile">
-            <img src="images/pro2.png" alt="">
+            <img src="images/pro2.png" alt="Sarah Brown" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
             <h6>Sarah Brown</h6>
             <p>Grammar & Writing Expert</p>
             <div class="pro-links">
@@ -506,7 +577,7 @@
         </div>
 
         <div class="profile">
-            <img src="images/pro3.png" alt="">
+            <img src="images/pro3.png" alt="Emma Johnson" onerror="this.src='https://via.placeholder.com/160x160?text=Profile'">
             <h6>Emma Johnson</h6>
             <p>IELTS & Speaking Expert</p>
             <div class="pro-links">
@@ -517,9 +588,10 @@
         </div>
     </div> 
 </section>
+
 <footer id="footer">
-    <div class="footer-col" >
-        <h3>Popular Courses</h3>
+    <div class="footer-col">
+        <h3>📚 Popular Courses</h3>
         <li>English Grammar Mastery</li>
         <li>Speaking Confidence</li>
         <li>Business English</li>
@@ -527,15 +599,15 @@
     </div>
 
     <div class="footer-col">
-        <h3>Quick Links</h3>
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Courses</li>
-        <li>Contact Us</li>
+        <h3>🔗 Quick Links</h3>
+        <li onclick="window.location.href='#home'">Home</li>
+        <li onclick="window.location.href='#features'">About Us</li>
+        <li onclick="window.location.href='#course'">Courses</li>
+        <li onclick="window.location.href='#footer'">Contact Us</li>
     </div>
 
     <div class="footer-col">
-        <h3>Learning Resources</h3>
+        <h3>📖 Learning Resources</h3>
         <li>Free Lessons</li>
         <li>Vocabulary Guides</li>
         <li>Pronunciation Tips</li>
@@ -543,7 +615,7 @@
     </div>
 
     <div class="footer-col">
-        <h3>Support</h3>
+        <h3>🛡️ Support</h3>
         <li>Help Center</li>
         <li>FAQ</li>
         <li>Terms of Service</li>
@@ -551,11 +623,11 @@
     </div>
 
     <div class="footer-col">
-        <h3>Newsletter</h3>
+        <h3>📧 Newsletter</h3>
         <p>Subscribe to receive new courses, learning tips, and exclusive offers.</p>
 
         <div class="subscribe">
-            <input type="text" placeholder="Enter Your Email">
+            <input type="email" placeholder="Enter Your Email">
             <a href="#" class="yellow">SUBSCRIBE</a>
         </div>
     </div>
@@ -573,44 +645,85 @@
 </footer>
 
 <script>
-/* ضع هذا الكود فقط قبل </body> مباشرة */
-/* لا يغيّر أي شيء في HTML أو CSS */
-
 document.addEventListener("DOMContentLoaded", function () {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 
-
-    /* بطاقات الدروس */
+    // Course cards click handler
     const courses = document.querySelectorAll(".courses");
 
-    courses[0].onclick = function(){
-        window.location.href = "exam-preparation.html";
-    };
+    if (courses[0]) {
+        courses[0].onclick = function(){
+            window.location.href = "pay.hmtl";
+        };
+    }
 
-    courses[1].onclick = function(){
-        window.location.href = "esp-course.html";
-    };
+    if (courses[1]) {
+        courses[1].onclick = function(){
+            window.location.href = "pay.html";
+        };
+    }
 
-    courses[2].onclick = function(){
-        window.location.href = "business-english.html";
-    };
+    if (courses[2]) {
+        courses[2].onclick = function(){
+            window.location.href = "pay.html";
+        };
+    }
 
-    courses[3].onclick = function(){
-        window.location.href = "general-english.html";
-    };
+    if (courses[3]) {
+        courses[3].onclick = function(){
+            window.location.href = "pay.html";
+        };
+    }
 
-    /* جعل البطاقات قابلة للنقر */
+    // Make all course cards clickable with cursor pointer
     courses.forEach(function(course){
         course.style.cursor = "pointer";
     });
 
-    /* زر الاشتراك */
+    // Subscribe button handler
     const subscribeBtn = document.querySelector(".subscribe a");
+    const subscribeInput = document.querySelector(".subscribe input");
 
-    subscribeBtn.onclick = function(e){
-        e.preventDefault();
-        alert("Thank you for subscribing!");
-    };
+    if (subscribeBtn) {
+        subscribeBtn.onclick = function(e){
+            e.preventDefault();
+            const email = subscribeInput ? subscribeInput.value.trim() : '';
+            if (email === '') {
+                alert("📧 Please enter your email address!");
+            } else if (!email.includes('@') || !email.includes('.')) {
+                alert("⚠️ Please enter a valid email address!");
+            } else {
+                alert(`✅ Thank you for subscribing with: ${email}!`);
+                if (subscribeInput) subscribeInput.value = '';
+            }
+        };
+    }
 
+    // Footer links click handler
+    const footerLinks = document.querySelectorAll('.footer-col li');
+    footerLinks.forEach(link => {
+        if (link.getAttribute('onclick')) return;
+        link.style.cursor = "pointer";
+    });
+});
+
+// إضافة معالج خطأ للصورة
+window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+        logoImg.style.display = 'none';
+    }
 });
 </script>
 </body>

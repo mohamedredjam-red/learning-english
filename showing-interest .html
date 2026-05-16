@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Lesson 3: Showing interest - Speaking A2</title>
   <link rel="icon" href="logo7.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <style>
     * {
@@ -15,8 +16,7 @@
     }
 
     body {
-      background: linear-gradient(#29376a,#940f0f);
-      background-size: cover;
+      background: linear-gradient(135deg, #29376a 0%, #940f0f 100%);
       background-attachment: fixed;
       min-height: 100vh;
       color: white;
@@ -31,13 +31,31 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 3px solid #ffc107;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .logo a {
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 55px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-text {
       color: #ffc107;
       font-size: 22px;
       font-weight: bold;
-      text-decoration: none;
+      display: none;
     }
 
     .buttons {
@@ -48,14 +66,19 @@
     .buttons button {
       background: #ffc107;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .buttons button:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .back {
@@ -66,9 +89,14 @@
       color: #ffc107;
       text-decoration: none;
       font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
     }
 
     .back a:hover {
+      transform: translateX(-5px);
       color: #e0a800;
     }
 
@@ -77,6 +105,7 @@
       margin: 20px auto;
       padding: 0 20px;
       flex: 1;
+      width: 100%;
     }
 
     .card {
@@ -84,6 +113,7 @@
       border-radius: 10px;
       padding: 30px;
       color: #333;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .card h1 {
@@ -91,16 +121,24 @@
       margin-bottom: 20px;
       border-bottom: 3px solid #ffc107;
       padding-bottom: 10px;
+      font-size: 28px;
     }
 
     .video-section video {
       width: 100%;
-      max-width: 700px;
+      max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto 15px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .video-caption {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+      text-align: center;
     }
 
     .question-card {
@@ -110,6 +148,11 @@
       margin: 15px 0;
       border-radius: 6px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
+
+    .question-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .question-card label {
@@ -121,10 +164,12 @@
 
     .question-card input {
       width: 70%;
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
       margin-right: 10px;
+      transition: 0.2s;
+      font-size: 14px;
     }
 
     .question-card input:focus {
@@ -135,18 +180,20 @@
     .check-btn {
       background: #ffc107;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.2s;
     }
 
     .check-btn:hover {
       background: #e0a800;
+      transform: scale(1.02);
     }
 
     .reset-btn {
-      background: #0a094e;
+      background: #6c757d;
       color: white;
       border: none;
       padding: 10px 20px;
@@ -154,10 +201,15 @@
       cursor: pointer;
       font-weight: bold;
       margin-top: 15px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .reset-btn:hover {
-      background: #333366;
+      background: #5a6268;
+      transform: translateY(-2px);
     }
 
     .feedback {
@@ -185,10 +237,12 @@
       padding: 10px 20px;
       border-radius: 6px;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     .next-link:hover {
       background: #e0a800;
+      transform: translateY(-2px);
     }
 
     .footer {
@@ -199,100 +253,253 @@
       border-top: 3px solid #ffc107;
     }
 
-    .footer a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 14px;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
     }
 
-    .footer a:hover {
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-links a:hover {
       color: #ffc107;
     }
 
     .copyright {
       color: rgba(255,255,255,0.5);
       font-size: 12px;
-      margin-top: 15px;
     }
-     img{
-            font-size: 12px;
-            height: 60px;
-            width: auto;
-        }
+
+    /* ================= MEDIA QUERIES ================= */
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+      
+      .logo-img {
+        height: 45px;
+      }
+      
+      .buttons button {
+        padding: 8px 15px;
+        font-size: 12px;
+      }
+      
+      .back {
+        margin: 15px 20px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .card h1 {
+        font-size: 24px;
+      }
+      
+      .question-card input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      .video-caption {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo-img {
+        height: 40px;
+      }
+      
+      .buttons {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .back {
+        margin: 12px 15px;
+      }
+      
+      .back a {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 15px;
+      }
+      
+      .card h1 {
+        font-size: 20px;
+      }
+      
+      .question-card {
+        padding: 12px;
+      }
+      
+      .question-card label {
+        font-size: 14px;
+      }
+      
+      .question-card input {
+        padding: 8px;
+        font-size: 13px;
+      }
+      
+      .check-btn, .reset-btn, .next-link {
+        padding: 8px 16px;
+        font-size: 13px;
+      }
+      
+      .reset-btn, .next-link {
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0;
+      }
+      
+      .next-link {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo-img {
+        height: 35px;
+      }
+      
+      .card h1 {
+        font-size: 18px;
+      }
+      
+      .question-card label {
+        font-size: 13px;
+      }
+      
+      .feedback {
+        font-size: 12px;
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo">
-    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-  </div>
+  <a href="welcome.html" class="logo-link">
+    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="logo-text">📚 English Platform</span>
+  </a>
   <div class="buttons">
-    <button>🔍</button>
-    <button onclick="logout()">Logout</button>
+    <button onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i> Logout
+    </button>
   </div>
 </div>
 
 <div class="back">
-  <a href="A2speaking.html">← Back to Speaking Lessons</a>
+  <a href="A2speaking.html">
+    <i class="fa-solid fa-arrow-left"></i> Back to Speaking Lessons
+  </a>
 </div>
 
 <div class="container">
   <div class="card">
-    <h1>📖 Lesson 3: Showing interest</h1>
+    <h1><i class="fa-solid fa-heart"></i> Lesson 3: Showing interest</h1>
 
     <div class="video-section">
-      <video controls>
+      <video controls poster="">
         <source src="videos/18.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <p style="margin-top:10px;">🎬 Watch the video carefully, then answer:</p>
+      <p class="video-caption">🎬 Watch the video carefully, then answer the questions below.</p>
     </div>
 
     <!-- Question 1 -->
     <div class="question-card">
-      <label>1. Noelia thinks that the weather in the UK is horrible.</label>
+      <label><i class="fa-solid fa-question-circle"></i> 1. Noelia thinks that the weather in the UK is horrible.</label>
       <input type="text" id="answer1" placeholder="Type True or False...">
-      <button class="check-btn" onclick="checkQuestion(1)">Check Answer</button>
+      <button class="check-btn" onclick="checkQuestion(1)">
+        <i class="fa-solid fa-check"></i> Check Answer
+      </button>
       <span id="feedback1" class="feedback"></span>
     </div>
 
     <!-- Question 2 -->
     <div class="question-card">
-      <label>2. Bob has always lived in the UK.</label>
+      <label><i class="fa-solid fa-question-circle"></i> 2. Bob has always lived in the UK.</label>
       <input type="text" id="answer2" placeholder="Type True or False...">
-      <button class="check-btn" onclick="checkQuestion(2)">Check Answer</button>
+      <button class="check-btn" onclick="checkQuestion(2)">
+        <i class="fa-solid fa-check"></i> Check Answer
+      </button>
       <span id="feedback2" class="feedback"></span>
     </div>
 
     <!-- Question 3 -->
     <div class="question-card">
-      <label>3. Bob broke his leg in the summer.</label>
+      <label><i class="fa-solid fa-question-circle"></i> 3. Bob broke his leg in the summer.</label>
       <input type="text" id="answer3" placeholder="Type True or False...">
-      <button class="check-btn" onclick="checkQuestion(3)">Check Answer</button>
+      <button class="check-btn" onclick="checkQuestion(3)">
+        <i class="fa-solid fa-check"></i> Check Answer
+      </button>
       <span id="feedback3" class="feedback"></span>
     </div>
 
     <!-- Question 4 -->
     <div class="question-card">
-      <label>4. Bob still has problems with his leg today.</label>
+      <label><i class="fa-solid fa-question-circle"></i> 4. Bob still has problems with his leg today.</label>
       <input type="text" id="answer4" placeholder="Type True or False...">
-      <button class="check-btn" onclick="checkQuestion(4)">Check Answer</button>
+      <button class="check-btn" onclick="checkQuestion(4)">
+        <i class="fa-solid fa-check"></i> Check Answer
+      </button>
       <span id="feedback4" class="feedback"></span>
     </div>
 
-    <button class="reset-btn" onclick="resetAllQuestions()">Reset All Answers</button>
-    <a href="lesson4_speaking_a2.html" class="next-link">→ Next Lesson</a>
+    <button class="reset-btn" onclick="resetAllQuestions()">
+      <i class="fa-solid fa-rotate-left"></i> Reset All Answers
+    </button>
+    <a href="lesson4_speaking_a2.html" class="next-link">
+      → Next Lesson <i class="fa-solid fa-arrow-right"></i>
+    </a>
   </div>
 </div>
 
 <div class="footer">
-  <div>
-    <a href="welcome.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="#">Contact</a>
-    <a href="#">Help</a>
+  <div class="footer-links">
+    <a href="welcome.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+    <a href="#"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <a href="#"><i class="fa-solid fa-headset"></i> Help</a>
   </div>
   <div class="copyright">
     © 2026 English Learning Platform. All rights reserved.
@@ -300,12 +507,12 @@
 </div>
 
 <script>
-  // الإجابات الصحيحة (بدون مسافات زائدة)
+  // الإجابات الصحيحة
   const correctAnswers = {
-    1: ["true"],
-    2: ["false"],
-    3: ["true"],
-    4: ["true"]
+    1: ["true", "yes", "correct"],
+    2: ["false", "no", "incorrect"],
+    3: ["true", "yes", "correct"],
+    4: ["true", "yes", "correct"]
   };
 
   // دالة التحقق من الإجابة
@@ -315,7 +522,9 @@
     let fb = document.getElementById(`feedback${num}`);
 
     if (val === "") {
-      alert("⚠️ Please type an answer (True or False)!");
+      fb.innerHTML = "⚠️ Please type an answer (True or False)!";
+      fb.className = "feedback wrong";
+      input.style.border = "2px solid #dc3545";
       return;
     }
 
@@ -324,11 +533,12 @@
     if (isCorrect) {
       fb.innerHTML = "✅ Correct! Well done!";
       fb.className = "feedback correct";
-      input.style.border = "2px solid green";
+      input.style.border = "2px solid #28a745";
     } else {
-      fb.innerHTML = "❌ Wrong! The correct answer is " + correctAnswers[num][0].toUpperCase() + ". Watch the video again.";
+      let correctAnswer = num === 2 ? "False" : "True";
+      fb.innerHTML = `❌ Wrong! The correct answer is ${correctAnswer}. Watch the video again.`;
       fb.className = "feedback wrong";
-      input.style.border = "2px solid red";
+      input.style.border = "2px solid #dc3545";
     }
   }
 
@@ -338,7 +548,7 @@
       let input = document.getElementById(`answer${i}`);
       if (input) {
         input.value = "";
-        input.style.border = "1px solid #ccc";
+        input.style.border = "2px solid #ddd";
       }
       let feedback = document.getElementById(`feedback${i}`);
       if (feedback) {
@@ -346,14 +556,39 @@
         feedback.className = "feedback";
       }
     }
-    alert("🔄 All answers have been reset!");
+    
+    // إظهار رسالة短暂ة
+    const resetBtn = document.querySelector('.reset-btn');
+    const originalText = resetBtn.innerHTML;
+    resetBtn.innerHTML = '<i class="fa-solid fa-check"></i> Reset Complete!';
+    setTimeout(() => {
+      resetBtn.innerHTML = originalText;
+    }, 1500);
   }
 
-  // دالة تسجيل الخروج
+  // ===== تسجيل الخروج المحسن =====
   function logout() {
-    localStorage.clear();
+    if (confirm('Are you sure you want to logout?')) {
+      localStorage.clear();
+      sessionStorage.clear();
+      window.location.href = 'index.html';
+    }
+  }
+  
+  // ===== التحقق من تسجيل الدخول =====
+  if (!localStorage.getItem('userId')) {
     window.location.href = 'index.html';
   }
+
+  // ===== معالج خطأ الصورة =====
+  window.addEventListener('DOMContentLoaded', () => {
+    const logoImg = document.querySelector('.logo-img');
+    if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+      logoImg.style.display = 'none';
+      const textSpan = logoImg.nextElementSibling;
+      if (textSpan) textSpan.style.display = 'block';
+    }
+  });
 </script>
 
 </body>

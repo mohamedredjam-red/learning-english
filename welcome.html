@@ -1,683 +1,694 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>English Platform - Learn English</title>
-
-    <link rel="icon"
-          type="image/png"
-          href="logo7.png">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>English Platform - Welcome</title>
+    <link rel="icon" type="image/png" href="logo7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        body{
-
-            background:
-            linear-gradient(rgba(0,0,0,0.5),
-            rgba(0,0,0,0.5)),
-            url('images/333.png');
-
-            background-size:cover;
-            background-position:center;
-            background-attachment:fixed;
-
-            min-height:100vh;
-
-            color:white;
-
-            display:flex;
-            flex-direction:column;
+        body {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/333.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
         }
 
-        a{
-            text-decoration:none;
-            color:white;
+        a {
+            text-decoration: none;
+            color: white;
         }
 
         /* ================= HEADER ================= */
-
-        .main-header{
-
-            background:#0a094e;
-
-            padding:15px 25px;
-
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-
-            border-bottom:3px solid #ffc107;
-
-            position:sticky;
-            top:0;
-
-            z-index:1000;
+        .main-header {
+            background: #0a094e;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ffc107;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        .header-left{
-
-            display:flex;
-            align-items:center;
-            gap:15px;
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .menu-btn{
-
-            width:45px;
-            height:45px;
-
-            border:none;
-
-            border-radius:40px;
-
-            background:#0a094e;
-            color:#ffffff;
-
-            font-size:20px;
-
-            cursor:pointer;
-
-            transition:0.3s;
+        .menu-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 40px;
+            background: #0a094e;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        .menu-btn:hover{
-            background:rgba(0, 0, 0, .4)
+        .menu-btn:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
         }
 
-        .logo-section{
-            display:flex;
-            align-items:center;
+        .logo-link {
+            display: flex;
+            align-items: center;
         }
 
-       
-
-        
-
-        .logout-btn{
-
-            background:#ffc107;
-            color:#0a094e;
-
-            border:none;
-
-            padding:10px 18px;
-
-            border-radius:30px;
-
-            font-weight:bold;
-
-            cursor:pointer;
-
-            display:flex;
-            align-items:center;
-            gap:6px;
-
-            transition:0.3s;
+        .logo-img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        .logout-btn:hover{
+        .logo-img:hover {
+            transform: scale(1.05);
+        }
 
-            background:#e0a800;
+        .logo-text {
+            color: #ffc107;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
+        }
 
-            transform:translateY(-2px);
+        .logout-btn {
+            background: #ffc107;
+            color: #0a094e;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #e0a800;
+            transform: translateY(-2px);
         }
 
         /* ================= SIDEBAR ================= */
-
-        .sidebar{
-
-            position:fixed;
-
-            top:0;
-            left:-320px;
-
-            width:300px;
-            height:100vh;
-
-            background:#0a094e;
-
-            overflow-y:auto;
-
-            transition:0.3s ease;
-
-            z-index:2000;
-
-            padding:20px;
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100vh;
+            background: #0a094e;
+            overflow-y: auto;
+            transition: 0.3s ease;
+            z-index: 2000;
+            padding: 20px;
         }
 
-        .sidebar.show{
-            left:0;
+        .sidebar.show {
+            left: 0;
         }
 
-        .sidebar-top{
-
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-
-            margin-bottom:25px;
+        .sidebar-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
         }
 
-        .close-btn{
-
-            background:none;
-            border:none;
-
-            color:white;
-
-            font-size:24px;
-
-            cursor:pointer;
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .sidebar-section{
-            margin-bottom:25px;
+        .close-btn:hover {
+            color: #ffc107;
+            transform: scale(1.1);
         }
 
-        .sidebar-title{
-
-            color:#ffc107;
-
-            font-size:15px;
-            font-weight:bold;
-
-            margin-bottom:10px;
-
-            border-bottom:1px solid rgba(255,255,255,0.1);
-
-            padding-bottom:8px;
+        .sidebar-section {
+            margin-bottom: 25px;
         }
 
-        .sidebar a{
-
-            display:block;
-
-            padding:12px 10px;
-
-            border-radius:8px;
-
-            transition:0.2s;
-
-            margin-bottom:5px;
+        .sidebar-title {
+            color: #ffc107;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
         }
 
-        .sidebar a:hover{
-
-            background:rgba(255,193,7,0.15);
-
-            color:#ffc107;
+        .sidebar a {
+            display: block;
+            padding: 12px 10px;
+            border-radius: 8px;
+            transition: 0.2s;
+            margin-bottom: 5px;
         }
 
-        .sidebar a i{
-            width:22px;
+        .sidebar a:hover {
+            background: rgba(255,193,7,0.15);
+            color: #ffc107;
+        }
+
+        .sidebar a i {
+            width: 22px;
         }
 
         /* ================= OVERLAY ================= */
-
-        .sidebar-overlay{
-
-            position:fixed;
-
-            inset:0;
-
-            background:rgba(0,0,0,0.5);
-
-            opacity:0;
-            visibility:hidden;
-
-            transition:0.3s;
-
-            z-index:1500;
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1500;
         }
 
-        .sidebar-overlay.show{
-
-            opacity:1;
-            visibility:visible;
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* ================= WELCOME ================= */
-
-        .welcome-banner{
-
-            background:rgba(255,255,255,0.1);
-
-            backdrop-filter:blur(10px);
-
-            border:1px solid rgba(255,255,255,0.1);
-
-            border-radius:15px;
-
-            margin:30px 40px;
-
-            padding:30px 40px;
-
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-
-            gap:20px;
+        .welcome-banner {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            margin: 30px 40px;
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease;
         }
 
-        .welcome-text h1{
-
-            font-size:30px;
-
-            margin-bottom:8px;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .welcome-text p{
-
-            color:rgba(255,255,255,0.75);
-
-            font-size:16px;
+        .welcome-text h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
         }
 
-        .level-badge{
-
-            background:#ffc107;
-            color:#0a094e;
-
-            padding:10px 24px;
-
-            border-radius:30px;
-
-            font-weight:bold;
+        .welcome-text p {
+            color: rgba(255,255,255,0.75);
+            font-size: 16px;
         }
 
-        /* ================= MAIN ================= */
+        .level-badge {
+            background: #ffc107;
+            color: #0a094e;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
 
-        .main-content{
-            flex:1;
+        /* ================= MAIN CONTENT ================= */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .dashboard-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            width: 200px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+            border-color: #ffc107;
+        }
+
+        .dashboard-card i {
+            font-size: 48px;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
         }
 
         /* ================= FOOTER ================= */
-
-        .main-footer{
-
-            background:#0a094e;
-
-            padding:30px;
-
-            border-top:3px solid #ffc107;
-
-            margin-top:auto;
+        .main-footer {
+            background: #0a094e;
+            padding: 30px;
+            border-top: 3px solid #ffc107;
+            margin-top: auto;
         }
 
-        .footer-links{
-
-            display:flex;
-            justify-content:center;
-
-            gap:30px;
-
-            flex-wrap:wrap;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .footer-links a:hover{
-            color:#ffc107;
+        .footer-links a {
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .copyright{
-
-            margin-top:20px;
-
-            text-align:center;
-
-            font-size:12px;
-
-            color:rgba(255,255,255,0.6);
+        .footer-links a:hover {
+            color: #ffc107;
         }
 
-        /* ================= MOBILE ================= */
-
-        @media(max-width:768px){
-
-            body{
-                background-attachment:scroll;
-            }
-
-            .main-header{
-                padding:12px 15px;
-            }
-
-            .platform-logo{
-                font-size:18px;
-            }
-
-            .logout-btn{
-                padding:8px 12px;
-                font-size:12px;
-            }
-
-            .sidebar{
-                width:270px;
-            }
-
-            .welcome-banner{
-
-                flex-direction:column;
-
-                text-align:center;
-
-                margin:15px;
-
-                padding:20px;
-            }
-
-            .welcome-text h1{
-                font-size:24px;
-            }
-        }
-
-        @media(max-width:480px){
-
-            .platform-logo{
-                font-size:16px;
-            }
-
-            .welcome-text h1{
-                font-size:20px;
-            }
-
-            .welcome-text p{
-                font-size:13px;
-            }
-
-            .level-badge{
-                font-size:13px;
-            }
-        }
-        img{
+        .copyright {
+            margin-top: 20px;
+            text-align: center;
             font-size: 12px;
-            height: 60px;
-            width: auto;
+            color: rgba(255,255,255,0.6);
         }
 
-    </style>
+        /* ================= MEDIA QUERIES ================= */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
 
+            .main-header {
+                padding: 12px 15px;
+            }
+
+            .logo-img {
+                height: 45px;
+            }
+
+            .logout-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .sidebar {
+                width: 270px;
+            }
+
+            .welcome-banner {
+                flex-direction: column;
+                text-align: center;
+                margin: 15px;
+                padding: 20px;
+            }
+
+            .welcome-text h1 {
+                font-size: 24px;
+            }
+
+            .dashboard-card {
+                width: 160px;
+                padding: 20px;
+            }
+
+            .dashboard-card i {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .logo-img {
+                height: 40px;
+            }
+
+            .welcome-text h1 {
+                font-size: 20px;
+            }
+
+            .welcome-text p {
+                font-size: 13px;
+            }
+
+            .level-badge {
+                font-size: 13px;
+                padding: 8px 18px;
+            }
+
+            .dashboard-cards {
+                gap: 15px;
+            }
+
+            .dashboard-card {
+                width: 140px;
+                padding: 15px;
+            }
+
+            .dashboard-card i {
+                font-size: 32px;
+            }
+
+            .dashboard-card h3 {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .logo-img {
+                height: 35px;
+            }
+
+            .dashboard-card {
+                width: 120px;
+                padding: 12px;
+            }
+
+            .dashboard-card i {
+                font-size: 28px;
+            }
+
+            .dashboard-card h3 {
+                font-size: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .welcome-banner {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <!-- ================= HEADER ================= -->
-
     <div class="main-header">
-
         <div class="header-left">
-
             <button class="menu-btn" id="menuBtn">
                 <i class="fa-solid fa-bars"></i>
             </button>
-
             <div class="logo-section">
-
-                <div class="platform-logo">
-
-                    <a href="welcome.html"><img src="images/LOGO111.png" alt=""></a>
-
-                    
-
-                </div>
-
+                <a href="welcome.html" class="logo-link">
+                    <img src="images/LOGO111.png" alt="Logo" class="logo-img" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="logo-text">📚 English Platform</span>
+                </a>
             </div>
-
         </div>
-
         <button class="logout-btn" onclick="logout()">
-
-            <i class="fa-solid fa-right-from-bracket"></i>            
-            Logout
-
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
         </button>
-
     </div>
 
     <!-- ================= OVERLAY ================= -->
-
     <div class="sidebar-overlay" id="overlay"></div>
 
     <!-- ================= SIDEBAR ================= -->
-
     <div class="sidebar" id="sidebar">
-
         <div class="sidebar-top">
-
-            
+            <h2><i class="fa-solid fa-bars"></i> Menu</h2>
             <button class="close-btn" id="closeBtn">
-                
+                <i class="fa-solid fa-xmark"></i>
             </button>
-
         </div>
 
         <div class="sidebar-section">
-
-            <div class="sidebar-title"><a href="welcome.html"><img src="images/LOGO111.png" alt=""></div></a>
-
+            <div class="sidebar-title"><i class="fa-solid fa-house"></i> Main</div>
             <a href="welcome.html">
                 <i class="fa-solid fa-house"></i>
                 Home
             </a>
-
         </div>
 
         <div class="sidebar-section">
-
-            <div class="sidebar-title">Skills</div>
-
+            <div class="sidebar-title"><i class="fa-solid fa-star"></i> Skills</div>
             <a href="speaking.html">
                 <i class="fa-solid fa-microphone"></i>
                 Speaking
             </a>
-
             <a href="writing.html">
                 <i class="fa-solid fa-pen"></i>
                 Writing
             </a>
-
             <a href="reading.html">
                 <i class="fa-solid fa-book"></i>
                 Reading
             </a>
-
             <a href="listening.html">
                 <i class="fa-solid fa-headphones"></i>
                 Listening
             </a>
-
         </div>
 
         <div class="sidebar-section">
-
-            <div class="sidebar-title">Grammar</div>
-
+            <div class="sidebar-title"><i class="fa-solid fa-language"></i> Grammar</div>
             <a href="A1-A2 Grammar.html">
                 <i class="fa-solid fa-layer-group"></i>
                 A1-A2 Grammar
             </a>
-
             <a href="B1-B2 grammar.html">
                 <i class="fa-solid fa-chart-line"></i>
                 B1-B2 Grammar
             </a>
-
         </div>
 
         <div class="sidebar-section">
-
-            <div class="sidebar-title">Vocabulary</div>
-
+            <div class="sidebar-title"><i class="fa-solid fa-book-open"></i> Vocabulary</div>
             <a href="A1-A2 vocabulary.html">
                 <i class="fa-solid fa-seedling"></i>
                 A1-A2 Vocabulary
             </a>
-
         </div>
 
         <div class="sidebar-section">
-
-            <div class="sidebar-title">Extra</div>
-
+            <div class="sidebar-title"><i class="fa-solid fa-gamepad"></i> Extra</div>
             <a href="game.html">
                 <i class="fa-solid fa-gamepad"></i>
                 Hangman Game
             </a>
-
             <a href="WordScramble.html">
                 <i class="fa-solid fa-puzzle-piece"></i>
                 Word Scramble
             </a>
-
             <a href="to-do-list.html">
                 <i class="fa-solid fa-check-circle"></i>
                 Set your goals
             </a>
-
             <a href="traduction.html">
                 <i class="fa-solid fa-language"></i>
                 Translate
             </a>
-
             <a href="Online-courses.html">
                 <i class="fa-solid fa-laptop"></i>
                 Online courses
             </a>
-
             <a href="children-learning.html">
                 <i class="fa-solid fa-child"></i>
                 Kids learn English
             </a>
-
         </div>
-
     </div>
 
     <!-- ================= WELCOME ================= -->
-
     <div class="welcome-banner">
-
         <div class="welcome-text">
-
             <h1>
-                Welcome back,
+                <i class="fa-solid fa-hand-peace"></i> Welcome back,
                 <span id="userName">Guest User</span>!
             </h1>
-
             <p>
-                Continue your English learning journey
+                <i class="fa-solid fa-rocket"></i> Continue your English learning journey
             </p>
-
         </div>
-
         <div class="level-badge" id="levelDisplay">
-            Level A - Beginner
+            📘 Level A - Beginner
         </div>
-
     </div>
 
     <!-- ================= CONTENT ================= -->
-
-    <div class="main-content"></div>
+    <div class="main-content">
+        <div class="dashboard-cards">
+            <div class="dashboard-card" onclick="location.href='speaking.html'">
+                <i class="fa-solid fa-microphone"></i>
+                <h3>Speaking</h3>
+                <p>Practice speaking skills</p>
+            </div>
+            <div class="dashboard-card" onclick="location.href='writing.html'">
+                <i class="fa-solid fa-pen"></i>
+                <h3>Writing</h3>
+                <p>Improve writing skills</p>
+            </div>
+            <div class="dashboard-card" onclick="location.href='reading.html'">
+                <i class="fa-solid fa-book"></i>
+                <h3>Reading</h3>
+                <p>Enhance reading skills</p>
+            </div>
+            <div class="dashboard-card" onclick="location.href='listening.html'">
+                <i class="fa-solid fa-headphones"></i>
+                <h3>Listening</h3>
+                <p>Improve listening skills</p>
+            </div>
+            <div class="dashboard-card" onclick="location.href='A1-A2 Grammar.html'">
+                <i class="fa-solid fa-layer-group"></i>
+                <h3>Grammar</h3>
+                <p>Learn grammar rules</p>
+            </div>
+            <div class="dashboard-card" onclick="location.href='A1-A2 vocabulary.html'">
+                <i class="fa-solid fa-seedling"></i>
+                <h3>Vocabulary</h3>
+                <p>Expand your vocabulary</p>
+            </div>
+        </div>
+    </div>
 
     <!-- ================= FOOTER ================= -->
-
-   
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="about.html"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#"><i class="fa-solid fa-lock"></i> Privacy</a>
+            <a href="https://www.instagram.com/english_learning_page__/" target="_blank"><i class="fa-brands fa-instagram"></i> Contact</a>
+            <a href="Chat-bot.html" target="_blank"><i class="fa-solid fa-headset"></i> Help</a>
+        </div>
+        <div class="copyright">
+            © 2026 English Platform. All rights reserved.
+        </div>
+    </footer>
 
     <!-- ================= JS ================= -->
-
     <script>
+        // ================= USER DATA =================
+        const userName = localStorage.getItem('userName') || 'Guest User';
+        const userLevel = localStorage.getItem('level') || 'A';
 
-        // ================= USER =================
-
-        const userName =
-        localStorage.getItem('userName') || 'Guest User';
-
-        const userLevel =
-        localStorage.getItem('level') || 'A';
-
-        document.getElementById('userName').textContent =
-        userName;
+        document.getElementById('userName').textContent = userName;
 
         let levelText = '';
-
-        if(userLevel === 'A'){
+        let levelEmoji = '';
+        
+        if (userLevel === 'A') {
             levelText = 'Level A - Beginner';
-        }
-
-        else if(userLevel === 'B'){
+            levelEmoji = '📘';
+        } else if (userLevel === 'B') {
             levelText = 'Level B - Intermediate';
-        }
-
-        else{
+            levelEmoji = '📙';
+        } else {
             levelText = 'Level C - Advanced';
+            levelEmoji = '📗';
         }
 
-        document.getElementById('levelDisplay').textContent =
-        levelText;
+        document.getElementById('levelDisplay').textContent = `${levelEmoji} ${levelText}`;
 
-        // ================= SIDEBAR =================
+        // ================= SIDEBAR FUNCTIONS =================
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const closeBtn = document.getElementById("closeBtn");
 
-        const menuBtn =
-        document.getElementById("menuBtn");
+        if (menuBtn) {
+            menuBtn.addEventListener("click", () => {
+                sidebar.classList.add("show");
+                overlay.classList.add("show");
+                document.body.style.overflow = 'hidden';
+            });
+        }
 
-        const sidebar =
-        document.getElementById("sidebar");
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeSidebar);
+        }
 
-        const overlay =
-        document.getElementById("overlay");
+        if (overlay) {
+            overlay.addEventListener("click", closeSidebar);
+        }
 
-        const closeBtn =
-        document.getElementById("closeBtn");
+        function closeSidebar() {
+            sidebar.classList.remove("show");
+            overlay.classList.remove("show");
+            document.body.style.overflow = '';
+        }
 
-        menuBtn.addEventListener("click", () => {
-
-            sidebar.classList.add("show");
-
-            overlay.classList.add("show");
+        // إغلاق القائمة بالضغط على ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && sidebar.classList.contains('show')) {
+                closeSidebar();
+            }
         });
 
-        closeBtn.addEventListener("click", closeSidebar);
-
-        overlay.addEventListener("click", closeSidebar);
-
-        function closeSidebar(){
-
-            sidebar.classList.remove("show");
-
-            overlay.classList.remove("show");
-        }
-
-        // ================= LOGOUT =================
-
-        function logout(){
-
-            localStorage.clear();
-
-            window.location.href = 'index.html';
+        // ================= LOGOUT المحسن =================
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = 'index.html';
+            }
         }
 
         // ================= CHECK LOGIN =================
-
-        if(!localStorage.getItem('userId')){
-
+        if (!localStorage.getItem('userId')) {
             window.location.href = 'index.html';
         }
 
+        // ================= معالج خطأ الصورة =================
+        window.addEventListener('DOMContentLoaded', () => {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg && logoImg.complete && logoImg.naturalWidth === 0) {
+                logoImg.style.display = 'none';
+                const textSpan = logoImg.nextElementSibling;
+                if (textSpan) textSpan.style.display = 'block';
+            }
+        });
     </script>
-
 </body>
 </html>
